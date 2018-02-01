@@ -1,0 +1,104 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--header-->
+<include file="Public:top"/>
+	<!--header-->
+
+	<div class="warpper">
+		<div class="back_bg">
+			<div class="container">
+
+				<div class="">
+					<img src="__IMAGES__/au1.jpg" width="100%">
+				</div>
+				<div class="link-block">
+
+
+					<div class="inquiries">
+						<a  href="{:U('Shop/Announ/announ')}">专家问询
+
+						<span></span>
+						</a>
+						<a class="on1" href="{:U('Shop/Announ/announ2')}">德意小博士<span></span></a>
+						<a class="" href="{:U('Shop/Announ/announ3')}">商城公告<span></span></a>
+
+					</div>
+
+
+					<foreach item="vo" name="dyxbs">
+					<div class="party_text bg">
+						<a href="/announ_inner.html?id={$vo.id}">
+							<div class="time">
+								<span>{$vo.D}</span>
+								{$vo.M}<br>
+								{$vo.Y}
+							</div>
+							<div class="party_tx">
+								<div class="title ">{$vo.title}</div>
+
+								<div class="num"><span>发布者： {$vo.author}</span><span>浏览次数：{$vo.click}</span></div>
+								<div class="text">
+									<div>{$vo.gai}</div>
+
+								</div>
+							</div>
+						</a>
+					</div>
+					</foreach>
+				</div>
+				<!--<div class="page page1   clearfix">
+
+					<span class="first1">首页</span>
+					<span class="red_bg"> 1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+					<span>...</span>
+					<span class="first1">尾页</span>
+
+				</div>-->
+                
+			</div>
+
+		</div>
+	</div>
+	<include file="Public:footer"/>
+			<include file="Public:menu_right"/>
+			
+</body>
+
+<script>
+
+//	$( ".swiper1" ).height( 600 )
+
+$(document).ready(function(){
+
+
+
+$(window).resize(function(){
+
+})
+
+
+
+	var hei = $( ".meal_img" ).width() + 75;
+
+	$( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+} )
+$( window ).scroll( function()
+{
+
+} )
+
+</script>
+
+<script>
+
+
+</script>
+
+</html>

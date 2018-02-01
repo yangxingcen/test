@@ -1,0 +1,137 @@
+<include file="Public:head"/>
+<style>
+    .btn-success {
+        margin-top: 12px;
+    }
+
+    .access-padding {
+        padding: 3px;
+    }
+
+    .access-padding div {
+        float: left;
+        margin-right: 5px;
+    }
+
+    .access-padding a:hover {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">权限配置<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+
+            <form action="" method="post">
+                <div class="clearfix"><a href="javascript:;" class="btn btn-success fl " onclick="J_Add(this)">添加顶部导航</a></div>
+            </form>
+            <table class="wxtables">
+                <colgroup>
+                    <col width="100%">
+                </colgroup>
+                <tbody>
+                <foreach name="cache" item="v1">
+                    <tr>
+                        <td class="access-padding level-1" style="background-color: #58A0D3;">
+                            <span style="font-size: 80%;color:#FFF">[头部导航]</span> <b>{$v1.classname} </b>
+                            [<a onclick="J_Add(this)" href="javascript:;" data-id="{$v1.id}" data-classname="{$v1.classname}" data-pid="{$v1.pid}" data-level="{$v1.level}">创建子节点</a>
+                            <a onclick="J_Edit(this)"  href="javascript:;" data-id="{$v1.id}" data-controller="{$v1.controller}" data-action="{$v1.action}" data-classname="{$v1.classname}" data-pid="{$v1.pid}" data-level="{$v1.level}" data-sorts="{$v1.sorts}">修改</a>
+                            <if condition="$v1['id'] gt 1"><a href="javascript:;" onclick="J_Change(this)" data-id="{$v1['id']}" data-item="is_del">删除</a> </if>]
+                        </td>
+                    </tr>
+                    <foreach name="v1['nodes']" item="v2">
+                        <tr>
+                            <td class="access-padding  level-2" style="background-color:#D9D9D9;">
+                                &nbsp;&nbsp;
+                                <span style="font-size: 80%;color:#999">[左侧标签]</span> {$v2.classname}
+                                [<a onclick="J_Add(this)" href="javascript:;" data-id="{$v2.id}" data-classname="{$v2.classname}" data-pid="{$v2.pid}" data-level="{$v2.level}">创建子节点</a>
+                                <a onclick="J_Edit(this)" href="javascript:;" data-id="{$v2.id}" data-controller="{$v2.controller}" data-action="{$v2.action}" data-classname="{$v2.classname}" data-pid="{$v2.pid}" data-level="{$v2.level}" data-sorts="{$v2.sorts}">修改</a>
+                                <if condition="$v2['pid'] gt 1"><a href="javascript:;" onclick="J_Change(this)" data-id="{$v2['id']}" data-item="is_del">删除</a></if>]
+                            </td>
+                        </tr>
+                        <foreach name="v2['nodes']" item="v3" key="k">
+                            <tr>
+                                <td class="access-padding  level-3">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span style="font-size: 80%;color:#999">[左侧导航]</span> <b>{$v3.classname}</b>
+                                    [<a onclick="J_Add(this)" href="javascript:;" data-id="{$v3.id}" data-classname="{$v3.classname}" data-pid="{$v3.pid}" data-level="{$v3.level}">创建子节点</a>
+                                    <a onclick="J_Edit(this)" href="javascript:;" data-id="{$v3.id}" data-controller="{$v3.controller}" data-action="{$v3.action}" data-classname="{$v3.classname}" data-pid="{$v3.pid}" data-level="{$v3.level}" data-sorts="{$v3.sorts}">修改</a>
+                                    <if condition="$v3['pid2'] gt 1"><a href="javascript:;" onclick="J_Change(this)" data-id="{$v3['id']}" data-item="is_del">删除</a></if> ]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="access-padding  level-4">
+                                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span style="font-size: 80%;color:#999">[内容节点]</span>
+                                    </div>
+                                    <volist name="v3['nodes']" id="v4">
+                                    <div> <i class="green">{$v4['classname']}</i>
+                                        [<a onclick="J_Edit(this)" href="javascript:;" data-id="{$v4['id']}" data-controller="{$v4['controller']}" data-action="{$v4['action']}" data-classname="{$v4['classname']}" data-pid="{$v4['pid']}" data-level="{$v4['level']}" data-sorts="{$v4['sorts']}">修改</a>
+                                        <if condition="$v4['pid3'] gt 1"><a href="javascript:;" onclick="J_Change(this)" data-id="{$v4['id']}" data-item="is_del">删除</a> </if>]
+                                    </div>
+                                    </volist>
+                                </td>
+                            </tr>
+                        </foreach>
+                    </foreach>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="tables-btmctrl clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- end container -->
+<!--=======================添加节点 1===============================-->
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height:auto;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加节点</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>节点名称</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="classname">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>控制器名</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="controller">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>方法名</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="action">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>排序</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="sorts" value="0">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" class="input" name="pid">
+        <input type="hidden" class="input" name="id">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a></div>
+</div>
+<!--=======================添加节点 2===============================-->
+
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/System/nodeList.js"></script><!--页面js-->
+

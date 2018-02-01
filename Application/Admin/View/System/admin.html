@@ -1,0 +1,119 @@
+<include file="Public:head"/>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">管理员列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <form action="" method="post">
+                <div class="clearfix"><a href="javascript:;" class="btn btn-success fl BtnAddClass">添加管理员</a></div>
+            </form>
+            <table class="wxtables mgt15">
+                <colgroup>
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="20%">
+                    <col width="15%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="15%">
+                </colgroup>
+                <thead>
+                <tr align="center">
+                    <td>ID</td>
+                    <td>登录账号</td>
+                    <td>所属群组</td>
+                    <td>最后登录时间</td>
+                    <td>登录次数</td>
+                    <td>状态</td>
+                    <td>添加时间</td>
+                    <td class="center">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo" key="k">
+                    <tr align="center">
+                        <td>{$vo.id}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.per_name}</td>
+                        <td>{$vo.last_login}</td>
+                        <td>{$vo.login_num}</td>
+                        <td onclick="J_Change(this)" data-item="is_open" data-id="{$vo.id}" style="cursor: pointer">
+                            <eq name="vo.is_open" value="0"><span class="red">已禁用</span></eq>
+                            <eq name="vo.is_open" value="1"><span class="green">启用中</span></eq>
+                        </td>
+                        <td>{$vo.add_time}</td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-warning" onclick="J_Edit(this)" title="编辑" data-id='{$vo.id}' data-username='{$vo.username}' data-cate='{$vo.cate}'><i class="gicon-edit white"></i></a>
+                            <gt name="vo['id']" value="1">
+                                <a href="jsvascript:;" class="btn btn-danger" title="删除" onclick="J_Change(this)" data-item="is_del" data-id="{$vo.id}"><i class="gicon-trash white"></i></a>
+                            </gt>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="tables-btmctrl clearfix">
+                <div class="fl">
+                    <div class="fr">
+                        <div class="pages">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end container -->
+<!--添加/编辑分类 1-->
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height:auto; overflow: visible;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加账号</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="Form_one">
+    <div class="jbox-container" style="height: 140px;overflow: visible;">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>登录账号：</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="username"
+                       onkeyup="value=value.replace(/[^\w\.\/]/ig,'')">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>登录密码：</label>
+
+            <div class="form-controls">
+                <input type="password" class="input" name="password"
+                       onkeyup="value=value.replace(/[^\w\.\/]/ig,'')">
+                <span class="fi-help-text">修改时不用填写密码</span>
+            </div>
+        </div>
+
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>管理员权限：</label>
+
+            <div class="form-controls">
+                <select class="select cate" name="cate">
+                    <foreach name="cate_list" item="vo">
+                        <option value="{$vo.id}">{$vo.per_name}</option>
+                    </foreach>
+                </select>
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="id">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+    </form>
+</div>
+<!--添加/编辑分类 2-->
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/System/admin.js"></script><!--页面js-->

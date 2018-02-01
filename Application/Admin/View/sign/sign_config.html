@@ -1,0 +1,113 @@
+<include file="Public:head"/>
+
+<link rel="stylesheet" href="__CSS__/Goods/addGoods.css"/><!--当前页面自定义-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">
+                <empty name="info.id">签到配置<else/>修改签到配置</empty>
+                <a href="javascript:history.back(-1)" class="btn" style="float: right">返回</a>
+            </h1>
+
+            <div>
+                <!--商品参数 1-->
+                <div class="panel-single panel-single-light mgt20" id="tab3" style="display: block">
+                    <h3 class="cst_h3 mgb20">签到参数</h3>
+                    <form id="Form_3">
+                        <input name="id" value="1" hidden>
+                        <div class="formitems">
+                            <table id="goodsparamtable">
+                                <tr>
+                                    <th>开始天数</th>
+                                    <th>结束天数</th>
+                                    <th>赠送积分</th>
+                                </tr>
+                                <tr id='param_list'>
+                                    <td><input type="text" class="input" name="start_day[]" value="{$sign_config.0.start_day}"/></td>
+                                    <td><input type="text" class="input large" name="end_day[]" value="{$sign_config.0.end_day}"/></td>
+                                    <td><input type="text" class="input large" name="give_integral[]" value="{$sign_config.0.give_integral}"/></td>
+                                </tr>
+
+                                <volist name='sign_config' id='info' offset="1">
+                                    <tr>
+                                        <td><input type="text" class="input" name="start_day[]" value="{$info.start_day}"/></td>
+                                        <td><input type="text" class="input large" name="end_day[]" value="{$info.end_day}"/></td>
+                                        <td><input type="text" class="input large" name="give_integral[]" value="{$info.give_integral}"/></td>
+                                        <td><span class="thisparam gicon-remove" onclick="J_del_param(this)" title='删除' style="padding-top:2px;cursor:pointer;"></span></td>
+                                    </tr>
+                                </volist>
+                            </table>
+                            <div>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-mini" onclick="J_add_param(this)" title="添加"><i class="gicon-plus white"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="panel-single panel-single-light mgt20 txtCenter ">
+                            <a href="javascript:;" onclick="baocun()" class="btn">保存</a>
+
+                        </div>
+                    </form>
+                </div>
+                <!--商品参数 2-->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<include file="Public:foot"/>
+
+</div>
+
+<script>
+    /*添加商品参数 1*/
+    function J_add_param(obj) {
+        var html = "<tr>" +
+            "<td> <input type=\"text\" class=\"input\" name=\"start_day[]\" /></td>" +
+            "<td> <input type=\"text\" class=\"input large\" name=\"end_day[]\"/> </td>" +
+            "<td> <input type=\"text\" class=\"input large\" name=\"give_integral[]\"/> </td>" +
+            "<td style='width:30px'>" +
+            "<span class=\"thisparam gicon-remove\" onclick='J_del_param(this)' title='删除' style=\"padding-top:2px;cursor:pointer;\"></span>" +
+            "</td>" +
+            "</tr>";
+        $(obj).parent().parent().find("#goodsparamtable").append(html);
+        J_del_param();
+    }
+    /*添加商品参数 2*/
+    /*删除参数 1*/
+    function J_del_param(obj){
+        $(obj).parent().parent().remove();
+    }
+    /*删除参数 2*/
+</script>
+
+<script>
+    function  baocun() {
+
+        $.ajax({
+            type:"POST",
+            url:"/Admin/Sign/sign_config",
+            data:$("#Form_3").serialize(),
+            cache:false,
+            async:false,
+            dataType:"json",
+            beforeSend:function(){
+            },
+            success:function(data){
+                if(data.status==1){
+                    dialog.showTips(data.info, "",1);
+                }
+
+            },
+            error: function(){
+
+            }
+        })
+
+    }
+
+</script>

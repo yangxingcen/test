@@ -1,0 +1,205 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="__CSS__//lists.css">
+
+<div class="container">
+<div class="inner clearfix"> <include file="Public:left"/>
+  <!-- end content-left -->
+
+  <div class="content-right fl">
+    <h1 class="content-right-title">服务流程</h1>
+    <!--<a href="{:U('/Admin/'.CONTROLLER_NAME.'/addeditcontent/classid/'.$classid.'/action/'.ACTION_NAME)}" class="btn btn-success">发布内容</a>--> 
+    <!-- end tabs -->
+
+    <table class="wxtables mgt10" style="text-align:center;">
+      <colgroup>
+       <!--<col width="2%">--> 
+  
+      <col width="30%">
+      <col width="30%">
+
+	  <col width="30%">
+      </colgroup>
+      <thead>
+        <tr class="po_list">
+           <!--<td><i class="icon_check"></i></td> -->
+        
+          <td>标题</td>
+
+          <td>图片</td>
+ 
+          <td>操作<span></span></td>
+        </tr>
+      </thead>
+      <tbody>
+        <foreach name="cache" item="vo">
+          <tr>
+            <!--<td><input type="checkbox" class="check checkbox table-ckbs" data-id="{$vo['id']}"></td>-->
+   
+			<td>{$vo.title}</td>
+
+            <td><div class="goodswrap"> 
+                <a href="__ROOT__{$vo['pic']}" class="block" target="_blank" title="{$vo['title']}">
+                <if condition="$vo.pic neq null">
+                <div class="table-item-img"> <img src="__ROOT__{$vo['pic']}" alt="" width="50px"> </div>
+                </if>
+                </a> </div>
+            </td>
+
+            <td>
+                <a href="{:U('/Admin/'.CONTROLLER_NAME.'/addeditcontent/id/'.$vo['id'].'/action/'.ACTION_NAME.$urllink)}" class="btn btn-primary j-editClass" title="编辑">编辑</a>
+                <!--<a href="javaScript:;" data-id="{$vo['id']}" data-num="1" data-name="{$name}" data-pid="{$cate_id}" class="btn btn-warning updown"  title="上移">上移</a>
+      			<a href="javaScript:;" data-id="{$vo['id']}" data-num="2" data-name="{$name}" data-pid="{$cate_id}" class="btn btn-warning updown"  title="下移">下移</a>
+                <a href="javaScript:;"onclick="btn_del({$vo.id})" class="btn j-delClass btn-danger " title="删除" >删除</a>-->
+              </td>
+          </tr>
+        </foreach>
+      </tbody>
+    </table>
+    <!-- end wxtables -->
+    <!-- end wxtables 
+    <div class="tables-btmctrl clearfix">
+      <div class="fl">
+        <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+        <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+		<a href="javascript:;" class="btn btn-danger " onclick="btn_del()" >多选删除</a>
+
+
+          <div class="pages">{$page} </div>
+
+      </div>
+      <!-- end tables-btmctrl -->
+
+    </div>
+    <!-- end content-right -->
+  </div>
+</div>
+<!-- end container -->
+<include file="Public:foot"/>
+<script>
+
+</script>
+
+<script>
+    //改变状态
+    function status(obj){
+       var _this= $(obj)
+      var id   =_this.attr("data-id");
+      var item = _this.attr("data-item");
+      $.post("{:U('Admin/Index/changeStatus')}", {
+        id:id,
+        item:item,
+        tab : 'content'
+      }, function(data){
+        if(data.status == 1){
+          _this.css({color:"#0C0"}).html("√");
+        }else if(data.status == 2){
+          _this.css({color:"#c00"}).html("×");
+        }else{
+          alert(data.info);
+        }
+      }, "json")
+    }
+
+
+    //删除
+    function btn_del(id){
+        var id = id ;
+       dialog.showTips("确定删除吗","firm",function (){
+              if(!id){
+                id = "";
+             
+                $('.check:checked').each(function(){
+                    id = id + $(this).attr("data-id") + '-';
+                });
+      
+              }
+        
+            $.ajax({
+                url: "{:U('/Admin/Index/delsoftAll')}",
+                type: "post",
+                dataType: "json",
+                data: {
+                    id: id,
+                    tab: 'content',
+                }
+            }).done(function (res) {
+                if (res.status == 1) {
+                    dialog.showTips(res.info,"","{:U('Admin/'.CONTROLLER_NAME.'/'.ACTION_NAME.$urllink)}");
+                } else {
+                  console.dir(res.info);
+                    dialog.showTips(res.info,"warn");
+                }
+            })
+        
+      });
+      
+    }
+
+	//上下移
+	$(".updown").click(function(){
+		var id = $(this).attr("data-id");
+		var num = $(this).attr("data-num");
+		var title = $(this).attr("data-name");
+		var pid = $(this).attr("data-pid");
+		////console.dir(id);
+		//console.dir(num);
+		//return false;
+		$.post(
+			"{:U('Admin/Index/updown')}" ,
+			{
+				id   : id,
+				num  : num,
+				title: 'name',
+				val  : title,
+				pid  : pid,
+				pname: 'cate_id',
+				tab  : 'content',
+				sort : 'sort',
+                classid:'{$classid}'
+			}, 
+			function (data){
+
+			    //console.dir(data.info);
+			    if(data.status){
+					 window.location.reload();
+			    }else{
+					alert(data.info);
+				}
+				
+			}
+		)
+	})
+	
+	//转移分类
+  function changeALL(){
+    dialog.showTips("确定转移所有选中的分类？","firm",function (){
+    var ids = "";
+    $(".table-ckbs:checked").each(function(i){
+      ids += $(this).attr("data-id")+"-"
+    })
+	
+    var pid = $("#select_class_id").val();
+	
+    $.post(
+      "{:U('Admin/Index/change')}" ,
+      {
+        ids:ids,
+        pid:pid,
+        tab:'content',
+        pname:'cate_id',
+      }, 
+      function (data){
+        if(data.info!='移动成功'){
+          alert(data.info);
+        }
+          //console.dir(data.info);
+          if(data.status){
+			dialog.showTips(data.info,"","{:U('Admin/'.CONTROLLER_NAME.'/'.ACTION_NAME.$urllink)}");
+          }
+      }
+    )
+  });
+
+}
+
+</script>

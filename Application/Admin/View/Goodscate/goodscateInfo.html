@@ -1,0 +1,141 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">[{$cache.classname}]--分类配置详情<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <form id="Form_one">
+                <div class="panel-single panel-single-light mgt20">
+                    <h3 class="cst_h3 mgb20">基本信息</h3>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>分类英文名称：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.en_classname}" name="en_classname">
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>中文描述：</label>
+                        <div class="form-controls">
+                            <textarea name="describe" style="padding: 10px;width: 400px;height: 50px;"> {$cache.describe}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>英文描述：</label>
+                        <div class="form-controls">
+                            <textarea name="en_describe" style="padding: 10px;width: 400px;height: 50px;">{$cache.en_describe}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name">上传前景图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,5)">
+                                <input name="pic1" value="{$cache['pic1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议图片大小:参考页面尺寸</span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name">上传移动端图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic2']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,5)">
+                                <input name="pic2" value="{$cache['pic2']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议图片大小：800 * 533 px</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name">上传背景图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic3']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,5)">
+                                <input name="pic3" value="{$cache['pic3']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议图片大小:参考页面尺寸</span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name">上传分类首页图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic4']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,5)">
+                                <input name="pic4" value="{$cache['pic4']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议图片大小:600 * 600 px</span>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name">微信端分类广告位图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic5']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,5)">
+                                <input name="pic5" value="{$cache['pic5']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议图片大小:600 * 210 px</span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>分类价格区间：</label>
+                        <div class="form-controls">
+                            <div class="formitems">
+                                <table id="goodsparamtable">
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>值</th>
+                                    </tr>
+                                    <tr id='param_list'>
+                                        <td><input type="text" class="input" name="small[]" value="{$cache.price_arr.0.0}"/></td>
+                                        <td><input type="text" class="input large" name="big[]" value="{$cache.price_arr.0.1}"/></td>
+                                    </tr>
+                                    <volist name='cache.price_arr' id='vo' offset="1" >
+                                        <tr>
+                                            <td><input type="text" class="input" name="small[]" value="{$vo.0}"/></td>
+                                            <td><input type="text" class="input large" name="big[]"  value="{$vo.1}"/></td>
+                                            <td> <span class="thisparam gicon-remove" title='删除' style="padding-top:2px;cursor:pointer;"></span></td>
+                                        </tr>
+                                    </volist>
+                                </table>
+                                <div>
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-mini" id="add_param" title="添加"><i class="gicon-plus white"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>上次更新时间：</label>
+                        <div class="form-controls">{$cache.edit_time}</div>
+                    </div>
+                    <div class="panel-single panel-single-light mgt20 txtCenter">
+                        <input type="hidden" name="id" value="{$cache.id}">
+                        <button type="button" class="btn btn-primary" onclick="J_Confirm(this)">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="__JS__/GoodsCate/goodscateInfo.js"></script><!--页面js-->
+<include file="Public:foot"/>

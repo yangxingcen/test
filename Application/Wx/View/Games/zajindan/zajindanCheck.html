@@ -1,0 +1,62 @@
+<include file="Public:header_zajindan"/>
+
+<body>
+
+	<div class="wapper check">
+		<div class="header list_header">
+			中奖查询
+			<a href="javascript:history.go(-1);" class="header_but"><img src="__IMAGES__/l_left.png" width="100%"></a>
+		</div>
+
+		<div class="check_cont">
+			<img src="__IMAGES__/c_ti.png" width="100%" class="check_tit">
+
+			<foreach name="list" item="v">
+			<div class="sah_ib">
+				<img src="__IMAGES__/c_3.png" width="100%">
+				<div class="sah_ib2">
+					<div class="check_con clearfix">
+						<div class="check_con_img">
+							<if condition="$v['prize_type'] neq 3">
+							<img src="__IMAGES__/djj.png" width="100%">
+							<else/>
+								<img src="{$v.goods_pic}" width="100%">
+							</if>
+						</div>
+						<div class="check_con_txt">
+							<h5>{$v.goods_name|mb_substr=###,0,13,'utf-8'}</h5>
+							<p>{$v.addtime|date="Y.m.d H:i",###}</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			</foreach>
+
+
+			<div class="list_bottom clearfix">
+				<div class="list_bottom_con"><a href="{:U('Wx/Games/zajindanList')}">奖品列表</a></div>
+				<div class="list_bottom_con on"><a href="{:U('Wx/Games/zajindanCheck')}">中奖查询</a></div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+$( document ).ready( function()
+{
+
+	var mySwiper1 = new Swiper( '.swiper-container-dan', {
+		autoplay: 4000,
+		loop: true,
+		slidesPerView: 3,
+		speed: 400,
+		paginationClickable: true,
+		autoplayDisableOnInteraction: false,
+	} )
+
+	$( ".check" ).css( "min-height", $( window ).height() )
+} )
+</script>
+</html>

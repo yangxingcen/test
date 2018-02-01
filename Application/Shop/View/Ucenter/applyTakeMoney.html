@@ -1,0 +1,102 @@
+<include file='Public:header'/>
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+
+<div class="user">
+    <div class="container">
+        <div class="row">
+            <include file="Public:ucenterLeft" />
+            <div class="col-sm-10">
+                <div class="user_tit">
+                    <p>提现</p>
+                </div>
+                <div class="user_cz">
+                    <p><span>余额：</span><b>￥{$userinfo['wallet']}</b></p>
+                    <p><span>提现金额：</span><input type="text" id="money" placeholder="{$userinfo['wallet']}"></p>
+                    <p><span>提现至：</span>
+                        <select name="" id="bank" class="sel">
+                            <foreach name="banks" item="v">
+                                <option value="{$v['id']}">{$v['bank_name']}-{$v['bank_branch']}</option>
+                            </foreach>
+                        </select>
+                    </p>
+                    <p><a href="##" id="take">提现</a></p>
+                </div>
+
+                <div class="user_csa user_r5 ">
+                    <h5>我的提现记录</h5>
+
+                    <table>
+                        <tr>
+                            <th style="width:15%;">提现金额</th>
+                            <th style="width:15%;">提现银行</th>
+                            <th style="width:20%;">金额提现至</th>
+                            <th style="width:15%;">申请时间</th>
+                            <th style="width:15%;">处理时间</th>
+                            <th style="width:15%;">状态</th>
+                        </tr>
+                        <foreach name="cache" item="v">
+                            <td style=" border:0;">￥{$v['money']}</td>
+                            <td>{$v['bank_name']}-{$v['bank_branch']}</td>
+                            <td>{$v['bank_no']}</td>
+                            <td>{$v['create_at']|date="Y-m-d H:i:s",###}</td>
+                            <td>
+                                <notempty name="v['deal_at']">
+                                    {$v['deal_at']|date="Y-m-d H:i:s",###}
+                                </notempty>
+                            </td>
+                            <td><a href="##">
+                                <switch name="v['status']">
+                                    <case value="0">申请成功</case>
+                                    <case value="1">已受理</case>
+                                    <case value="2">已拒绝</case>
+                                    <default />无效
+                                </switch>
+                            </a></td>
+                            </tr>
+                        </foreach>
+                    </table>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+</body>
+</html>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script>
+    $("#take").click(function (){
+        var money  = $("#money").val();
+        var bankid = $("#bank").val();
+        if(!money.match(/^[0-9]+(\.[0-9]{1,2})?$/)){
+            alert("请输入正确的提取金额！");return false;
+        }
+        if(parseFloat(money)>parseFloat("{$userinfo['wallet']}")){
+            alert("余额不足！");return false;
+        }
+        if(!bankid){
+            alert("请选择提取金额的银行卡！");return false;
+        }
+        $.post("{:U('Ucenter/applyTakeMoney')}",{money:money,bankid:bankid}, function (data){
+            if(data.status == 1){
+                dialog.showTips(data.info, "firm",function (){
+                    window.location.reload();
+                })
+            }else{
+                alert(data.info);
+            }
+        })
+    })
+
+</script>

@@ -1,0 +1,91 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="container">
+            <div class="about clearfix">
+
+
+
+
+                <h5 class="xinsh">购物条款</h5>
+
+					<div class="about_left">
+
+						<div class="pro_con">
+
+							<div class="pro_box_tit">
+
+								<a href="{:U('Shop/Help/help_13')}" style="background:#e50011;" >
+									<img src="__IMAGES__/help_13_o.png" width="35">
+									<p>隐私保护政策</p>
+								</a>
+								<a href="{:U('Shop/Help/help_14')}"  >
+									<img src="__IMAGES__/help_14_o.png" width="35">
+									<p>会员注册协议</p>
+								</a>
+								<a href="{:U('Shop/Help/help_15')}" > <img src="__IMAGES__/help_15_o.png" width="35">
+									<p>商城使用条款</p>
+								</a>
+
+
+							</div>
+
+						</div>
+
+					</div>
+
+                <div class="about_right">
+
+                    <div class="brand">
+                        <h5>{$result["title"]} <span>发布日期：{$result.gai}</span></h5>
+
+
+                        <div class="help">
+
+                            <div class="help_list">
+                                <p>{$result["content"]}</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <include file='Public:footer'/>
+        <include file='Public:menu_right'/>
+    </div>
+</div>
+</body>
+
+<script>
+
+    //	$( ".swiper1" ).height( 600 )
+
+    $( document ).ready( function()
+    {
+
+        var hei = $( ".meal_img" ).width() + 75;
+
+        $( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+    } )
+    $( window ).resize( function()
+    {
+
+        //      $( ".swiper1" ).height( 600 )
+
+    } )
+    $( window ).scroll( function()
+    {
+
+    } )
+
+</script>
+
+</html>

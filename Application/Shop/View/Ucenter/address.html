@@ -1,0 +1,99 @@
+<include file='Public:header'/>
+<body style="min-width:1024px">
+<include file='Public:top'/>
+<!--  / user  -->
+<div class="user">
+  <div class="container">
+
+        <div class="row">
+        <include file="Public:ucenterLeft"/>
+        <div class="col-sm-10">
+           <div class="user_r5">
+              <h5><!--已保存收货地址(地址最多10条，还能保存{$address_num}条)--> <a href="javascript:void(0);" class='add'>+新建地址</a></h5>
+             <notempty name="info">
+                <table>
+                  <tr>
+                    <th style="width:10%;">收货人</th>
+                    <th style="width:35%;">地址</th>
+                    <th style="width:20%;">联系方式</th>
+                    <th style="width:35%;">操作</th>
+                  </tr>
+                      <foreach name='info' item='vo'>
+                        <tr>
+                          <td>{$vo.consignee}</td>
+                          <td>{$vo.province}{$vo.city}{$vo.district}{$vo.place}</td>
+                          <td>{$vo.telephone}</td>
+                          <td><a class="dizhi_bj edit" href="javascript:void(0);" data-id="{$vo.id}" data-consignee='{$vo.consignee}' data-province='{$vo.province}' data-city='{$vo.city}' data-district='{$vo.district}' data-place='{$vo.place}' data-telephone='{$vo.telephone}' data-default='{$vo.isdefault}'>编辑</a><a href='javascript:void(0);' class='del' data-id="{$vo.id}" data-url = "{:U('Shop/Ucenter/delAddress')}">删除</a>
+                            <eq name="vo['default']" value="1">
+                              <a href="javascript:void(0);" class="moren moren_on">默认地址</a>
+                            </eq>
+                          </td>
+                        </tr>
+                      </foreach>
+                  </table>
+               <else />
+                   <div class="user_r_kong">
+                     <div class="kong" style="height: 1140px;">
+                       <div class="kong_con">
+                         <img src="/Public/Shop/Images/order_no.png" width="70">
+                         <h5>暂无收货地址</h5>
+                       </div>
+                     </div>
+                   </div>
+             </notempty>
+            </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<div class="dizhi">
+  <div class="dizhi_bg"></div>
+  <div class="dizhi_con">
+    <img src="__IMAGES__/dizhi_close.png" width="24">
+    <h5>新建地址</h5>
+    <div class="dizhi_list clearfix">
+      <p class="dizhi_l">收货人：<input type="text" name="consignee"></p>
+      <p class="dizhi_r">手机号码：<input type="text" name="telephone" maxlength="11" onKeyUp="this.value=this.value.replace(/\D/g,'')"
+                                     onafterpaste="this.value=this.value.replace(/\D/g,'')"></p>
+    </div>
+    <input type="hidden" id="url" value="/Shop/Ucenter/addAddress">
+    <input type="hidden" name="id">
+    <div class="dizhi_list clearfix">
+      <span style="position:relative; top:8px;">所在地区:</span>
+      <div class="docs-methods" style="display:inline-block; width:82%;">
+        <form class="form-inline" style="width:100%;">
+          <div id="distpicker" style="width:100%;">
+            <div class="form-group" style="width:100%;">
+              <div style="position: relative; width:100%;">
+                <input id="city-picker3" class="form-control" readonly type="text" value="浙江省/杭州市/西湖区" data-toggle="city-picker" name="city">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dizhi_list clearfix">
+      <span>详细地址：</span>
+      <textarea name="address"></textarea>
+    </div>
+    <div class="dizhi_btn clearfix">
+      <div class="w_chkbox"><input type="checkbox" name="dft" id='dft' class="j_checkbox"><span>设为默认</span></div>
+      <div class="dizhi_btn1">
+        <a href="javascript:void(0);" class="dizhi_btn1_on" id="btn">确定</a>
+        <a href="javascript:void(0);" class="cancel">取消</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  / user  -->
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+</body>
+<script language="javascript" src="__JS__/city-picker.data.js"></script>
+<script language="javascript" src="__JS__/city-picker.js"></script>
+<script language="javascript" src="__JS__/address.js"></script>
+<script language="javascript" src="__JS__/index.js"></script>
+</html>

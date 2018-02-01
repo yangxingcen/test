@@ -1,0 +1,43 @@
+<include file="Public:header_ucenter"/>
+
+<body>
+	<!-- top -->
+	<div class="integral">
+
+		<a href="javascript:history.go(-1)">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+
+		<div class="tegral">修改昵称</div>
+
+	</div>
+	<!-- top end -->
+	<!-- user -->
+	<div class="warpper">
+		<div class="bangding">
+			<div class="forgetp2 xiugai">
+				<ul>
+					<li class="yzm yzm4">
+						<span>我的昵称</span>
+						<if condition="$info['person_name']">
+							<input type="text" name="person_name" value="{$info['person_name']}">
+						<else />
+							<input type="text" name="person_name" value="{$info['telephone']}">
+						</if>
+						
+					</li>
+				</ul>
+			</div>
+			<div class="nextp">
+				<a href="javascript:volid(0);" onclick="sub_name();">提交</a>
+			</div>
+		</div>
+	</div>
+
+		<!-- user end -->
+
+</body>
+</html>
+<script type="text/javascript" src="__JS__/ucenter/myname.js"></script>

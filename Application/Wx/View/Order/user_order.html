@@ -1,0 +1,108 @@
+<include file="Public:header"/>
+
+<body>
+	<div class="integral">
+		<a href="/wx_ucenter.html">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+		<div class="tegral">全部订单</div>
+		<div class="pro_share1">
+			<div class="pro_share_rig">
+				<span></span>
+				<div class="message"><ul class="message_ul">
+								<include file="Public:left"/>
+							</ul>
+					<div class="triangle">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="user_order_top">
+		<ul class="clearfix">
+			<li class="on"><a href="/wx_order.html">全部</a></li>
+			<li><a href="/wx_order1.html">待付款</a></li>
+			<li><a href="/wx_order2.html">待发货</a></li>
+			<li><a href="/wx_order3.html">待收货</a></li>
+			<li><a href="/wx_order4.html">待评价</a></li>
+		</ul>
+	</div>
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-top: 82px;padding-bottom: 0%; background: #f5f5f9;">
+		<!--有订单-->
+		<div class="user_order_list">
+			<notempty name="order_list">
+				<volist name="order_list" id="val">
+					<div class="user_order_list_con">
+						<div class="user_order_list_top clearfix">
+							订单编号: {$val.order_no} <span class="tx">{$val.status}</span>
+						</div>
+						<volist name="val.data" id="vo">
+							<div class="user_order_list_ct clearfix">
+								<a href="user_din_in.html">
+									<div class="img"><img src="{$vo.goods_pic}" width="100%"></div>
+									<div class="user_order_list_tx">
+										<div class="title">{$vo.cate_one}{$vo.cate_two}{$vo.goods_name}</div>
+										<div class="tx"><notempty name="vo.sku_info">系列:{$vo.sku_info}</notempty></div>
+										<div class="text">
+											<div class="now">￥{$vo.goods_price}</div>
+											<div class="bef">￥{$vo.goods_oprice}</div>
+											<div class="num">x<span>{$vo.goods_nums}</span></div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</volist>
+						<div class="user_order_list_text">
+							共{$val.nums}件商品 合计:￥<span>{$val.total_fee}</span>(含运费￥0.00)
+						</div>
+						<div class="user_order_list_bot clearfix">
+							<a href="##" class="on">提醒发货</a>
+						</div>
+					</div>
+				</volist>
+			<else />
+				<div class="user_order_list_none">
+					<img src="__IMAGES__/uo1.png" width="40%">
+					<div class="title">您还没有相关的订单</div>
+					<div class="text">可以去看看有哪些想买的</div>
+				</div>
+			</notempty>
+		</div>
+		<!--有订单-->
+		
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+$( document ).ready( function()
+{
+	var clickNumber = 0;
+	$( '.pro_share_rig' ).click( function()
+	{
+		if( clickNumber == 0 )
+		{
+			$( this ).find( ".message" ).fadeIn();
+			clickNumber = 1;
+		}
+		else
+		{
+
+			$( this ).find( ".message" ).fadeOut();
+			clickNumber = 0;
+		}
+
+	} )
+
+
+
+} )
+
+</script>
+</html>

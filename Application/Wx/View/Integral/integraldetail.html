@@ -1,0 +1,388 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-bottom: 50px;padding-top: 40px;">
+
+	<div class="integral1 clearfix">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+			<div class="tegral">积分产品</div>
+
+			<div class="pro_share"></div>
+
+		</div>
+		
+		<div class="products_inner">
+			<div class="partic">
+				<div class="swiper-container swiper1">
+					<div class="swiper-wrapper">
+						<volist name="goodsInfo.pic1" id="vo">
+							<div class="swiper-slide"><img src="{$vo}" width="100%"></div>
+						</volist>
+					</div>
+
+					<div class="pagination pagination_gr"></div>
+				</div>
+			</div>
+			<div class="products_inner_zi">
+				<div class="products_inner_zi1">
+					<h5>{$goodsInfo.name}</h5>
+					<div class="model">{$goodsInfo.goods_name}</div>
+					<p><span class="present1">兑换积分：{$goodsInfo.price}积分</span></p>
+				
+				
+				</div>
+			</div>
+			<div class="products_inner_zi2">
+				<h5><b>配送至：</b><img src="__IMAGES__/map1.png" width="100%" class="map1">
+					<span>{$address.province}</span><span>{$address.city}</span><span>{$address.district}</span>
+					<br>
+					<!-- <span style="color: #aaaaaa; padding-left: 52px;">最快2017-11-13日送到</span> -->
+					<img class="pro_more" style="margin-top:12px;" src="__IMAGES__/pro_more.png" width="20">
+				</h5>
+			</div>
+
+		
+			
+
+			<div class="pro_box_ls">
+
+				<div class="products_inner_con" style="display:block;">
+					<div class="inner_con_tit">
+						<h5>产品详情 </h5>
+						<span></span>
+					</div>
+
+					{$goodsInfo.detail}
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="load_dh">
+			<div class="load_dh_bg"></div>
+			<div class="load8">
+
+				<div class="load8-container load81">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+
+				<div class="load8-container load82">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+
+				<div class="load8-container load83">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+	<div class="pro_show_bg">
+
+	</div>
+
+
+	<div class="show_div show_xz">
+		<div class="show_div_con">
+			<div class="show_xz_t clearfix">
+				<img src="{$goodsInfo.logo_pic}" width="100">
+				<h5 class="price">¥{$goodsInfo.price}</h5>
+				<p>库存<span class="kucun">{$goodsInfo.stock}</span>件</p>
+				<!-- <p><b>配送至：</b><span>西湖区</span><span>已选</span>天然气</p> -->
+			</div>
+			<div class="show_div_cons" style="margin-top:92px; height:258px;">
+
+				<div class="show_xza">
+					<h5>配送区域<span>(配送地可能会影响库存，请正确选择)</span></h5>
+					<a href="/wx_address.html?id={$goodsinfo.id}&type=1"><p><img src="__IMAGES__/map1.png" width="15">
+						<span>{$address.province}</span><span>{$address.city}</span><span>{$address.district}</span>
+						{$address.place} <i class="fa fa-angle-right"></i></p></a>
+					<!-- <span>19:00前付款，承诺11月20送到，可选送货时间</span> -->
+				</div>
+				<notempty name="goodsInfo['is_sku']">
+					<div class="show_xzb">
+						<volist name="sku_item" id="vo">
+							<p><b>{$vo.classname}</b></br>
+								<volist name="vo.subset" id="xo" key="k">
+							
+										<span class="sku-item" data-id="{$xo.skuid}" data-pid="{$vo.id}">{$xo.classname}</span>
+										<input type="hidden" id="sku_{$xo.skuid}" class="sku_id" value="">
+								</volist>
+							</p>
+						</volist>
+					</div>
+				</notempty>
+				<div class="show_xzc">
+					<h5>购买数量
+						<span class="pro_jia">+</span><span class="pro_num">1</span><span class="pro_jian">-</span>
+					</h5>
+				</div>
+
+			</div>
+		</div>
+		<div class="show_xzd clearfix">
+			<a href="javascropt:volid(0);" onclick="ok_sku();" style="width:100%;">确定</a>
+		</div>
+	</div>
+
+	<div class="pro_share_con">
+		<div class="inner_con_tit">
+			<h5 class="inner_con_tit">分享到</h5>
+			<span></span>
+		</div>
+		<div class="pro_share_icon">
+			<a href="##"><i class="fa fa-qq"></i></a>
+			<a href="##"><i class="fa fa-weixin " style="background: #29b01c;"></i></a>
+			<a href="##"><i class="fa fa-weibo" style="background: #ea5d5c;"></i></a>
+
+		</div>
+
+	</div>
+
+	<div class="products_inner_btn clearfix">
+		
+		<div class="integral_in_btn"><a href="javascript:volid(0);" onclick="ok_order();">马上兑换</a></div>
+	</div>
+	<input type="hidden" id="user_id" value="{$user_id}">
+	<input type="hidden" id="goodsid" value={$id}>
+	<input type="hidden" id="is_sku" value="{$goodsInfo.is_sku}">
+	<input type="hidden" id="skuid" value="">
+	<input type="hidden" id="address_id" value="{$address.id}">
+	<input type="hidden" id="price" value="{$goodsInfo.price}">
+</body>
+<script>
+
+$( document ).ready( function()
+{
+
+	var mySwiper = new Swiper( '.swiper1', {
+		pagination: '.pagination_gr',
+		loop: true,
+		autoplay: 3000,
+		spaceBetween: 0,
+		paginationClickable: true,
+	} )
+
+	//	     1优惠卷
+	$( '.pro_show_bg' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeOut( 300 );
+		$( '.pro_share_con' ).stop( true, true ).fadeOut( 300 );
+
+		$( '.show_div' ).stop( true, true ).animate( { bottom: "-425px" }, 500 );
+		$( 'body' ).removeClass( 'body_on' );
+	} )
+	$( '.pro_share' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.pro_share_con' ).stop( true, true ).fadeIn( 300 );
+	} )
+	$( '.show_div>a' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeOut( 300 );
+		$( '.show_div' ).stop( true, true ).animate( { bottom: "-425px" }, 500 );
+		$( 'body' ).removeClass( 'body_on' );
+	} )
+	$( '.products_inner_jf1' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_jf' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	$( '.products_inner_zi2' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_xz' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	$( '.pro_inner_cs1 h5' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_cs1' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	$( '.insurance' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_fw' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	$( '.products_inner_jf3' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_sh' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	$( '.show_xzb p span' ).click( function()
+	{
+		$( this ).parent().find( 'span' ).removeClass( 'show_xzb_on' );
+		$( this ).addClass( 'show_xzb_on' );
+	} )
+	$( '.products_inner_jf2' ).click( function()
+	{
+		$( '.pro_show_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.show_jifen' ).stop( true, true ).animate( { bottom: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+	} )
+
+	var sco = $( ".proinner_nav" ).offset().top;
+
+	$( '.proinner_nav a' ).click( function()
+	{
+		var s7 = $( this ).index();
+		$( '.proinner_nav a' ).removeClass( 'proinner_nav_on' );
+		$( this ).addClass( 'proinner_nav_on' );
+
+		$( '.products_inner_con' ).stop( true ).fadeOut( 0 );
+		$( '.products_inner_con' ).eq( s7 ).stop( true ).fadeIn( 300 );
+		$( "html,body" ).animate( { scrollTop: sco - 40 }, 1000 )
+	} )
+
+	$( ".pro_innera_s" ).click( function()
+	{
+		var _this = $( this )
+		if( _this.hasClass( "on" ) )
+		{
+			_this.removeClass( "on" )
+		}
+		else
+		{
+			_this.addClass( "on" )
+		}
+	} )
+
+	$( window ).scroll( function()
+	{
+
+		if( $( window ).scrollTop() > sco )
+		{
+			$( ".proinner_nav" ).addClass( "proinn_fix" )
+
+		}
+		else
+		{
+			$( ".proinner_nav" ).removeClass( "proinn_fix" )
+		}
+
+	} )
+
+	$( ".screening_yy ul li " ).click( function()
+	{
+		$( ".screening_yy ul li" ).removeClass();
+		$( this ).addClass( "bord_li" );
+
+	} )
+
+	$( '.meal_one' ).click( function()
+	{
+
+		if( $( this ).hasClass( "treat" ) )
+		{
+
+			$( ".meal_one" ).removeClass( "treat" )
+			$( ".meal_set" ).stop( true ).slideUp( 500 )
+			$( ".treatment" ).stop( true ).slideDown( 500 )
+
+		}
+		else
+		{
+			$( ".meal_one" ).removeClass( "treat" )
+			$( this ).addClass( "treat" );
+
+			$( ".meal_set" ).stop( true ).slideUp( 500 )
+			$( this ).find( ".meal_set" ).stop( true ).slideDown( 500 )
+			$( ".treatment" ).stop( true ).slideDown( 500 )
+			$( this ).find( ".treatment" ).stop( true ).slideUp( 500 )
+
+		}
+
+	} )
+
+} )
+
+</script>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/integral/detail.js"></script>
+<script>
+var sku_id = 0;
+    <notempty name="goodsinfo['is_sku']">
+        <notempty name="sku_data">
+        // alert(111);
+        (function (){
+            var discount = 1;
+            var sku = {$sku_data};                                      //当前商品的全部SKU数列
+            $(".sku-item").click(function (){                        //触发
+            	// alert(111);
+                setTimeout(function(){                                  //
+                    var keys = getSkuKey();                              //获取sku key值
+
+                    var data = sku[keys];
+                    if(data){
+  
+                        $(".price").html("¥"+data['price']);              //打折是在现价的基础上打折
+                        $(".kucun").html(data['stock']);
+
+
+
+
+                        sku_id = data['id'];
+                    }else{
+                        $(".kucun").html(0);
+                        sku_id = 0;
+                    }
+                }, 0)
+            })
+
+            function getSkuKey(){
+                var arr = [];
+                $(".show_xzb_on").each(function (i){
+                    arr.push($(this).attr('data-id'))
+                })
+                arr.sort(function (a, b){
+                    return a-b;
+                })
+                return "-"+arr.join("-")+"-";
+            }
+
+            Array.prototype.zyffliter = function (str){
+                var arr = [];
+                for(var i=0;i<this.length;i++){
+                    if(this[i] != str){
+                        arr.push(this[i])
+                    }
+                }
+                return arr;
+            }
+
+        }())
+        </notempty>
+        </notempty>
+</script>
+<script>
+</script>
+</html>

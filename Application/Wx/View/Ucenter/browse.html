@@ -1,0 +1,113 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f5f5f9;padding-bottom: 0%;">
+		<div class="integral">
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+			<div class="tegral">浏览记录</div>
+			<div class="collect_zt_btn1">编辑</div>
+		</div>
+
+		<div class="collect" style="margin-top: 0%">
+			<volist name="info" id="vo">
+				<div class="collect_cont">
+					<div class="collect_top collect_top1"><span class="uesr_check"></span>{$vo.add_time}</div>
+					<div class="collect_con clearfix" data-llid="{$vo.id}">
+						<span class="uesr_check"></span>
+						<div class="img"><a href="/wx_detail.html?id={$vo.goods.id}"><img src="{$vo.goods.logo_pic}" width="100%"></a></div>
+						<div class="collect_text">
+							<div class="collect_text_con">
+								<a href="/wx_detail.html?id={$vo.goods.id}">
+									<div class="title">{$vo.goods.goods_name}</div>
+									<div class="tit">{$vo.goods.goods_des}</div>
+								</a>
+								<div class="price">
+									<div class="num">￥<span>{$vo.goods.price}</span> <p>{$vo.goods.sales}人付款</p></div>
+									<!-- <div class="tx hid"><a href="/wx_collect_inner.html">找相似</a></div> -->
+								</div>
+							</div>
+						</div>
+						<div class="collect_con_bg"></div>
+					</div>
+				</div>
+			</volist>
+		</div>
+
+	</div>
+	
+
+	<div class="user_order_list_btn clearfix" >
+		<div class="user_order_list_btn_left"><span class="uesr_check"></span>全选</div><a href="javascript:volid(0);" onclick="all_del();">删除</a>
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/ucenter/browse.js"></script>
+<script>
+$( document ).ready( function()
+{
+	$( ".collect_zt_btn1" ).click( function()
+	{
+		if($(".collect" ).hasClass("on")){
+			$(".collect,.collect_top,.collect_con" ).removeClass("on")
+			$( ".collect_zt_btn1" ).text("编辑")
+			$(".user_order_list_btn" ).fadeOut(500)
+
+		}else{
+			$(".collect" ).addClass("on")
+			$( ".collect_zt_btn1" ).text("完成")
+			$(".user_order_list_btn" ).fadeIn(500)
+
+		}
+	} )
+
+	$(".collect_con_bg" ).click(function(){
+		var _this=$(this ).parents(".collect_con")
+		if(_this.hasClass("on")){
+			_this.removeClass("on")
+			_this.siblings(".collect_top").removeClass("on")
+
+		}else{
+			_this.addClass("on")
+		}
+
+	})
+	$(".collect_top" ).click(function(){
+		var _this=$(this )
+		if(_this.hasClass("on")){
+			_this.removeClass("on")
+			_this.siblings(".collect_con").removeClass("on")
+
+		}else{
+			_this.addClass("on")
+			_this.siblings(".collect_con").addClass("on")
+		}
+
+
+	})
+
+	$(".user_order_list_btn_left" ).click(function(){
+		var _this=$(this )
+		if(_this.hasClass("on")){
+			_this.removeClass("on")
+			$(".collect_con,.collect_top").removeClass("on")
+
+		}else{
+			_this.addClass("on")
+			$(".collect_con,.collect_top").addClass("on")
+		}
+
+	})
+
+
+} )
+
+</script>
+</html>

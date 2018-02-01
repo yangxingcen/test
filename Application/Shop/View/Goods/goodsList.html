@@ -1,0 +1,116 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="inner_title">
+        <div class="container">
+            <h5><a href="__HOST__">首页</a></h5><i class="fa fa-angle-right"></i>
+            <span><a href="/goodslist.html">产品中心</a></span>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="row clm25">
+                <div class="col-sm-2 clp25">
+                    <div class="products_class">
+                        <img src="__ROOT__{$propic.pic}" width="100%">
+                        <div class="might">您可能感兴趣的是:</div>
+                        <volist name="interested" id="val_int">
+                            <a href="/detail.html?id={$val_int.id}">
+                                <div class="terest">
+                                    <div class="terest_img"><img src="{$val_int.logo_pic}" width="100%"></div>
+                                    <div class="terest_txt">
+                                        <h5>{$val_int.cate_1} {$val_int.cate_2}</h5>
+
+                                        <p>{$val_int.goods_des}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </volist>
+                    </div>
+                </div>
+                <div class="col-sm-10 clp25">
+                    <div class="products_con">
+
+                        <div class="pro_class">
+                            <h5>
+                                <i class="cate">产品分类：</i>
+                                <span class="s_cate" data-id="">全部</span>
+                                <volist name="goods_cate" id="val">
+                                    <span onclick="J_getSon(this)" data-id="{$val['id']}" class="s_cate">{$val.classname}</span>
+                                </volist>
+                                <strong><b>更多</b><img src="__IMAGES__/mm.png" width="15"> </strong>
+                            </h5>
+                            <h5 class="c_xilie" style="display: none">
+                                <i>产品系列：</i>
+                            </h5>
+                            <h5 class="c_jiage" style="display: none">
+                                <i>产品价格：</i>
+                            </h5>
+                        </div>
+
+                        <div class="pro_list_top clearfix">
+                            <div class="pro_list_tops">
+                                <span class="zonghe">综合排序</span>
+                            </div>
+                            <div class="pro_list_tops">
+                                <span class="shijian" data-val="{:I('get.sj')}">上市时间</span>
+                                <eq name="sj" value="1"><i class="fa fa-caret-down "></i></eq>
+                                <eq name="sj" value="2"><i class="fa fa-caret-up"></i></eq>
+                            </div>
+                            <div class="pro_list_tops">
+                                <span class="jiage" data-val="{:I('get.jg')}">价格</span>
+                                <eq name="jg" value="2"><i class="fa fa-caret-up"></i></eq>
+                                <eq name="jg" value="1"><i class="fa fa-caret-down"></i></eq>
+                            </div>
+                        </div>
+
+                        <div class="products_box2">
+                            <div class="row clm6">
+                                <volist name="cache" id="val">
+                                    <div class="col-sm-3 clp6">
+                                        <a href="/detail.html?id={$val.id}">
+                                            <div class="sec3_list">
+                                                <div class="sec3_list_t">
+                                                    <eq name="val.is_new" value="1"><b class="youh">新品</b></eq>
+                                                    <eq name="val.is_cuxiao" value="1"><b class="youh">促销</b></eq>
+                                                </div>
+
+                                                <eq name="val.stock" value="0"><span class="youhuo">无货</span></eq>
+
+                                                <div class="sec3_img">
+                                                    <img src="{$val.logo_pic}" width="100%">
+                                                </div>
+
+                                                <div class="sec3_zi">
+                                                    <h5>{$val.goods_name}</h5>
+                                                    <span>￥{$val.price}<i>评论：{$val.comment_num|default="0"}</i></span>
+                                                    <hr>
+                                                    <p>{$val.cate_1} {$val.cate_2}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </volist>
+                            </div>
+                            <div class="pro_page">
+                                {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+<script>
+    var J_goods_cate = jQuery.parseJSON('{$J_goods_cate}');
+</script>
+</body>
+<script language="javascript" src="__JS__/goods/goodsList.js"></script>
+<script language="javascript" src="__JS__/product.js"></script>
+</html>

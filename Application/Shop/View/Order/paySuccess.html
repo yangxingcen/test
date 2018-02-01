@@ -1,0 +1,83 @@
+<include file="Public:header"/>
+<body style="min-width:1024px">
+<include file="Public:top"/>
+
+<!--  / order1  -->
+<div class="order1">
+    <div class="container" style="">
+        <div class="pro_inner_t">
+            <a href="index.html"><h5>首页</h5></a><i class="fa fa-angle-right"></i>
+            <p>提交订单</p>
+        </div>
+        <div class="shop_dd_zf  shop_dd_zf1 clearfix">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="shop_dd_cg shop_dd_cg_n">
+                        <i class="fa fa-check"></i>支付成功 感谢你的支持！
+                    </div>
+
+                    <div class="row" style="margin-top:60px;">
+                        <div class="col-sm-5">
+                            <div class="xiad_cont">
+                                <p>商品合计：￥{$info.total_price}</p>
+                                <p>运费：￥0.00</p>
+                                <p>实付：<span>￥{$info.total_fee}</span></p>
+                                <b></b>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="xiad_cont">
+                                <p>下单时间：{$info.order_time}</p>
+                                <p>收货人：{$info.consignee}</p>
+                                <p>联系电话：{$info.mobile}</p>
+                                <p>收货地址：{$info.province}{$info.city}{$info.district}{$info.address}</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sei_dta">
+                        <a href="/my_orderList.html">
+                            <button>查看订单</button>
+                        </a>
+                        <div class="sei_dta_a">
+                            <a href="/main.html">继续逛>></a>
+
+                        </div>
+                    </div>
+                    <!--<div class="shop_dd_right">
+                        <div class="shop_dd_right_left">
+                            <h4>支付成功！<a href="shop.html">返回购物车</a></h4>
+                            <h5>我们将<b><span>7</span></b>天内给您安排发货</h5>
+                            <h6>你可以在随时查看您的<a href="loginvitation.htmlcs.html">物流信息</a></h6>
+                            <p>收货信息：谭斌丽 <span>156****1782</span>    浙江  杭州市  江干区    </p>
+
+                            <h6 class="li_pro"><a href="prolist.html">浏览更多产品</a></h6>
+
+                        </div>
+
+                    </div>-->
+                </div>
+                <div class="col-xs-4">
+                    <div class="phone_app">
+
+                        <img src="__IMAGES__/phone_app.png" width="100%"/></div>
+                    <div class="download_app">
+                        关注我们首单立减8元
+                        <a href="##">随时随地了解订单物流>></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--  / order1  -->
+
+<include file='Public:footer'/>
+<include file="Public:right"/>
+</body>
+</html>

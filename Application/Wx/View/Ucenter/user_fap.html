@@ -1,0 +1,80 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">发票</div>
+
+		</div>
+
+		<div class="invoice">
+			<h5>我的增值税发票</h5>
+			<table>
+				<tr>
+					<th style="width:45%;">单位名称</th>
+					<th style="width:27.5%;">纳税人</th>
+					<th style="width:27.5%;">操作</th>
+				</tr>
+				<volist name="info" id="vo">
+					<tr>
+						<td>{$vo.unit_name}</td>
+						<td>{$vo.name}</td>
+						<td><a href="javascript:volid;" onclick="del_fap(id);" id="{$vo.id}">删除</a> <a href="/wx_user_fap_in.html?id={$vo.id}">查看</a></td>
+					</tr>
+				</volist>
+			</table>
+		</div>
+
+		<div class="invoice_btn">
+			<div class="voice_btn1">
+				<a href="javascript:volid(0);">新增增值税发票</a>
+			</div>
+
+			<div class="invoice_cons">
+				<div class="user_r6">
+					<div class="user8_con2">
+						<p><span>单位名称：</span><input type="text" name="unit_name" placeholder="请输入单位名称"></p>
+						<p><span>纳税人识别号：</span><input type="tel" name="name_num" placeholder="请输入纳税人识别号" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></p>
+						<p><span>注册地址：</span><input type="text" name="address" placeholder="请输入注册地址"></p>
+						<p><span>注册电话：</span><input type="tel" name="phone" placeholder="请输入手机号" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></p>
+						<p><span>开户银行：</span><input type="text" name="bank" placeholder="请输入开户银行"></p>
+						<p><span>银行账户：</span><input type="text" name="bank_num" placeholder="请输入银行账户" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></p>
+						<div class="user_r6_line"></div>
+						<a href="javascript:volid(0);" onclick="user_fap();">保存</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+$( document ).ready( function()
+{
+	$( '.voice_btn1' ).click( function()
+	{
+		$( '.invoice_cons' ).stop( true ).slideDown( 500 );
+	} )
+	$( '.user8_con2>a' ).click( function()
+	{
+		$( '.invoice_cons' ).stop( true ).slideUp( 500 );
+	} )
+} )
+
+</script>
+<script type="text/javascript" src="__JS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/ucenter/user_fap.js"></script>
+</html>

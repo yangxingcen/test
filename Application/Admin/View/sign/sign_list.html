@@ -1,0 +1,61 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">签到日志<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="用户手机" style="width: 150px" class="input mini" name="telephone" value="">
+                    <button class="btn btn-primary" style="line-height:28px;"><i class="gicon-search white"></i>查询</button>
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>用户账号</td>
+                        <td>连续签到/天</td>
+                        <td>签到前积分</td>
+                        <td>赠送积分</td>
+                        <td>签到后积分</td>
+                        <td>签到来源</td>
+                        <td>签到时间</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>56</td>
+                        <td>17682329232</td>
+                        <td>6</td>
+                        <td>100</td>
+                        <td>20</td>
+                        <td>120</td>
+                        <td>detail</td>
+                        <td>2018-01-09 19:57:26</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+

@@ -1,0 +1,113 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+	<div class="warpper">
+		<div class="back_bg">
+			<div class="container">
+				<div class="about clearfix">
+
+					<h5 class="xinsh">支付/配送</h5>
+
+					<div class="about_left">
+
+						<div class="pro_con">
+
+							<div class="pro_box_tit">
+								<a href="{:U('Shop/Help/help_12')}" style="background:#e50011;">
+									<img src="__IMAGES__/help_12_o.png" width="35">
+									<p>付款方式</p>
+								</a>
+								<a href="{:U('Shop/Help/help_11')}" > <img src="__IMAGES__/help_11_o.png" width="35">
+									<p>配送方式</p>
+								</a>
+
+								<a href="{:U('Shop/Help/help_9')}" >
+									<img src="__IMAGES__/help_9_o.png" width="35">
+									<p>验货签收</p>
+								</a>
+
+								<a href="{:U('Shop/Help/help_10')}" >
+									<img src="__IMAGES__/help_pei.png" width="35">
+									<p>配送问题</p>
+								</a>
+								<a href="{:U('Shop/Help/help_18')}" >
+									<img src="__IMAGES__/help_pei1.png" width="35">
+									<p>配送范围</p>
+								</a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="about_right">
+
+						<div class="brand">
+							<h5>付款方式 <span>发布日期：{$fkfs[0].gai}</span></h5>
+							
+                            
+                            <div class="help">
+                                <foreach item="vo" name="fkfs"> 
+								<div class="help_list">
+                                  <h4>{$vo.title}</h4>
+                                  {$vo.content}
+                                </div>
+                                </foreach>
+
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+        <include file='Public:footer'/>
+        <include file='Public:menu_right'/>
+	</div>
+
+</body>
+
+<script>
+
+//	$( ".swiper1" ).height( 600 )
+
+$( document ).ready( function()
+{
+
+	var hei = $( ".meal_img" ).width() + 75;
+
+	$( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+} )
+$( window ).resize( function()
+{
+
+	//      $( ".swiper1" ).height( 600 )
+
+} )
+$( window ).scroll( function()
+{
+
+} )
+
+</script>
+
+<script>
+
+//$( ".nav_ti" ).hover( function()
+//		{
+//			$( ".banner_nav" ).slideDown()
+//
+//		}
+//		, function()
+//		{
+//			$( ".banner_nav" ).slideUp()
+//
+//		} )
+
+</script>
+
+</html>

@@ -1,0 +1,180 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f5f5f9;padding-bottom: 0%;">
+
+		<div class="integral">
+
+			<a href="/wx_ucenter.html">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">优惠券</div>
+
+			<div class="pro_share1">
+
+				<div class="pro_share_rig">
+
+					<span></span>
+
+					<div class="message"><ul class="message_ul">
+								<include file="Public:left"/>
+							</ul>
+						<div class="triangle">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="collect_zt clearfix">
+			<div class="collect_zt_btn">编辑</div>
+			<div class="left clearfix">
+				<div class="collect_zt_con on" style=" float: left;">
+					<a href="/wx_coupon.html">全部(10)</a>
+				</div>
+				<div class="collect_zt_con" style=" float: right;">
+					<a href="/wx_coupon.html">已失效</a>
+				</div>
+				<div class="collect_zt_con" style="text-align: center;">
+					<a href="/wx_coupon.html">未使用</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="coupon">
+			<div class="coupon_con clearfix">
+				<span class="uesr_check"></span>
+				<div class="coupon_con_c">
+					<div class="user3_list">
+						<div class="user_r3_j1">
+							<span class="jiaqian"><b>￥</b><i>100</i></span>
+							<p>有效期 2017.08.29-2017.09.30</p>
+							<div class="user_r3_j2">
+								现金抵用券<br>
+								<span>消费满2000元使用</span>
+							</div>
+
+						</div>
+
+						<div class="user_r3_j3">
+							未使用
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="coupon_con clearfix">
+				<span class="uesr_check"></span>
+				<div class="coupon_con_c">
+					<div class="user3_list on">
+						<div class="user_r3_j1">
+							<span class="jiaqian"><b>￥</b><i>100</i></span>
+							<p>有效期 2017.08.29-2017.09.30</p>
+							<div class="user_r3_j2">
+								现金抵用券<br>
+								<span>消费满2000元使用</span>
+							</div>
+
+						</div>
+
+						<div class="user_r3_j3">
+							已使用
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="coupon_con clearfix">
+				<span class="uesr_check"></span>
+				<div class="coupon_con_c">
+					<div class="user3_list on">
+						<div class="user_r3_j1">
+							<span class="jiaqian"><b>￥</b><i>100</i></span>
+							<p>有效期 2017.08.29-2017.09.30</p>
+							<div class="user_r3_j2">
+								现金抵用券<br>
+								<span>消费满2000元使用</span>
+							</div>
+
+						</div>
+
+						<div class="user_r3_j3">
+							已失效
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="user_order_list_btn clearfix">
+		<div class="user_order_list_btn_left"><span class="uesr_check"></span>全选</div>
+		<a href="##">删除</a>
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+$( document ).ready( function()
+{
+
+	$( ".collect_zt_btn" ).click( function()
+	{
+		if($(".coupon" ).hasClass("on")){
+			$(".coupon" ).removeClass("on")
+			$( ".collect_zt_btn" ).text("编辑")
+			$(".user_order_list_btn" ).fadeOut(500)
+		}else{
+			$(".coupon" ).addClass("on")
+			$( ".collect_zt_btn" ).text("完成")
+			$(".user_order_list_btn" ).fadeIn(500)
+		}
+	} )
+
+	$(".coupon_con" ).click(function(){
+		var _this=$(this )
+		if(_this.hasClass("on")){
+			_this.removeClass("on")
+
+		}else{
+			_this.addClass("on")
+		}
+
+	})
+
+	$( ".user_order_list_btn_left" ).click( function()
+	{
+		var _this = $( this )
+		if( _this.hasClass( "on" ) )
+		{
+			_this.removeClass( "on" )
+			$( ".coupon_con" ).removeClass( "on" )
+
+		}
+		else
+		{
+			_this.addClass( "on" )
+			$( ".coupon_con" ).addClass( "on" )
+		}
+
+	} )
+} )
+
+</script>
+</html>

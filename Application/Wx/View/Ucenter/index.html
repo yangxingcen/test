@@ -1,0 +1,221 @@
+<include file="Public:header_ucenter"/>
+
+<body>
+<include file="Public:foot"/>
+	
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-top: 0%;">
+
+		<div class="user">
+
+			<div class="user_banner">
+				<div class="setting clearfix">
+					<p><a href="/wx_my_info.html">设置</a></p>
+					<div class="setting_img"><a href="/wx_user_new.html"><img src="__IMAGES__/mess.png" width="100%"></a></div>
+				</div>
+
+				<div class=" send clearfix">
+					<div class="real">
+						<div class="user_tx1_img">
+							<img src="{$info.person_img}" width="100%">
+						</div>
+						<!--<span>待实名认证</span>-->
+
+					</div>
+
+					<div class="real_txt">
+						<if condition="$info['person_name']">
+							<h5>{$info.person_name}</h5>
+						<else />
+							<h5>{$info.telephone}</h5>
+						</if>
+						<p>积分:<span>{$info.integral}</span><a href="wx_integral_info.html">明细</a></p>
+					</div>
+
+					<div class="sign" onclick="qiandao()">
+						<img src="__IMAGES__/qiandao.png" width="100%">
+						<a href="javascript:volid(0);">签到送好礼</a>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="personal">
+
+				<div class="mine clearfix">
+					<div class="mine_one">
+						<h5>0</h5>
+						<p>我的分享</p>
+					</div>
+					<div class="mine_one">
+						<h5>0</h5>
+						<p>交易记录</p>
+					</div>
+					<div class="mine_one">
+						<h5>0</h5>
+						<p>佣金记录</p>
+					</div>
+					<div class="mine_one">
+						<h5>0</h5>
+						<p>我的提现</p>
+					</div>
+
+				</div>
+				<div class="user_list">
+					<a href="/wx_order.html"><h5>
+						我的订单
+						<span>查看全部订单<i class="fa fa-angle-right"></i></span>
+					</h5></a>
+					<div class="user_lists ">
+						<ul class="clearfix">
+							<a href="/wx_order1.html">
+								<li>
+									<img src="__IMAGES__/user_1.png" width="100%">
+									<span>待付款</span>
+								</li>
+							</a>
+							<a href="/wx_order2.html">
+								<li>
+									<img src="__IMAGES__/user_2.png" width="100%">
+									<span>待发货</span>
+								</li>
+							</a>
+							<a href="/wx_order3.html">
+								<li>
+									<img src="__IMAGES__/user_3.png" width="100%">
+									<span>待收货</span>
+								</li>
+							</a>
+							<a href="/wx_order4.html">
+								<li>
+									<img src="__IMAGES__/user_4.png" width="100%">
+									<span>待评价</span>
+								</li>
+							</a>
+							<a href="/wx_order5.html">
+								<li style="border-right:none;">
+									<img src="__IMAGES__/user_5.png" width="100%">
+									<span>退款/售后</span>
+								</li>
+							</a>
+
+						</ul>
+					</div>
+				</div>
+
+				<div class="user_list">
+					<a href="javascript:volid(0);"><h5>
+						我的工具
+
+					</h5></a>
+					<div class="user_lists ">
+						<div class=" tools ">
+							<div class="tools1 clearfix">
+								<a href="/wx_browse.html">
+									<div class="tools_one">
+										<img src="__IMAGES__/gj1.png" width="100%">
+										<span>浏览记录</span>
+									</div>
+								</a>
+								<a href="/wx_collect.html">
+									<div class="tools_one">
+										<img src="__IMAGES__/gj2.png" width="100%">
+										<span>我的收藏</span>
+									</div>
+								</a>
+								<a href="/wx_coupon.html">
+									<div class="tools_one">
+										<img src="__IMAGES__/gj3.png" width="100%">
+										<span>我的优惠券</span>
+									</div>
+								</a>
+								<a href="/wx_fen_x.html">
+									<div class="tools_one">
+										<img src="__IMAGES__/gj4.png" width="100%">
+										<span>我的分销</span>
+									</div>
+								</a>
+							</div>
+							<div class="tools2 clearfix">
+								<a href="/wx_user_pingj.html">
+									<div class="tools_one" style="border-right:none;">
+										<img src="__IMAGES__/gj5.png" width="100%">
+										<span>我的评价</span>
+									</div>
+								</a>
+								<a href="/wx_address.html">
+									<div class="tools_one" style="border-right:none;">
+										<img src="__IMAGES__/gj6.png" width="100%">
+										<span>地址管理</span>
+									</div>
+								</a>
+								<a href="/wx_integral_add.html">
+									<div class="tools_one" style="border-right:none;">
+										<img src="__IMAGES__/gj7.png" width="100%">
+										<span>我的积分</span>
+									</div>
+								</a>
+								<a href="/wx_user_fap.html">
+									<div class="tools_one" style="border-right:none;">
+										<img src="__IMAGES__/gj8.png" width="100%">
+										<span>发票信息</span>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="will_value">
+
+					<h5><img src="__IMAGES__/huiy.png" width="100%"> 我的会值员</h5>
+
+					<div class="super clearfix">
+
+						<div class="super_on">
+
+							<h4>1168 <i class="fa fa-long-arrow-up"></i></h4>
+							<p class="super_p1"><img src="__IMAGES__/jifen.png" width="100%"> 超级会员</p>
+							<span>比上期+10</span>
+						</div>
+
+						<div class="super_on">
+							<h4 class="traffic"><img src="__IMAGES__/liuliang.png" width="100%"></h4>
+							<p class="super_p2">积分兑换流量券</p>
+							<span>满400分专享</span>
+						</div>
+					</div>
+
+					<div class="pick_up"><a href="javascript:volid(0);">领取会员权益</a></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!--  / warpper  -->
+
+</body>
+<script>
+function  qiandao() {
+    var user_id={$userinfo['id']};
+    if(confirm('测试签到'+user_id)){
+        $.ajax({
+            url: "{:U('Wx/Ucenter/qiandao')}",
+            type:'get',
+            data : 'user_id='+user_id ,
+            success : function(data){
+                if(data.status==1){
+                    dialog.showTips(data.info, "",1);
+                }else{
+                    dialog.showTips(data.info, "warn");
+                }
+            }
+        });
+    }
+}
+</script>
+</html>

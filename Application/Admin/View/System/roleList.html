@@ -1,0 +1,68 @@
+<include file="Public:head"/>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">角色管理<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+
+            <form action="" method="post">
+                <div class="clearfix"><a href="javascript:;" class="btn btn-success fl BtnAddClass">添加角色</a></div>
+            </form>
+            <table class="wxtables mgt15">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>角色名称</td>
+                    <td>添加时间</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.per_name}</td>
+                        <td>{$vo.add_time}</td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-warning" onclick="J_Edit(this)" title="编辑" data-id="{$vo.id}"
+                               data-per_name="{$vo.per_name}"><i class="gicon-trash white"></i></a>
+                            <a href="{:U('Admin/System/roleSet',array('id'=>$vo['id']))}" class="btn btn-primary"
+                               title="选择节点">选择节点</a>
+                            <gt name="vo['id']" value="1">
+                                <a href="javascript:;" class="btn btn-danger"  onclick="J_Change(this)" data-item="is_del" data-id="{$vo.id}" title="删除"><i class="gicon-trash white"></i></a>
+                            </gt>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+        </div>
+    </div>
+</div>
+<!-- end container -->
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height:auto;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加角色</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>角色名称：</label>
+
+            <div class="form-controls">
+                <input type="text" class="input per_name" name="per_name">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="id">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+</div>
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/System/roleList.js"></script><!--页面js-->

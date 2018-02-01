@@ -1,0 +1,128 @@
+<div class="col-sm-2">
+  <div class="user_left">
+    <div class="user_tx">
+      <div class="user_tx_img">
+        <empty name="topInfo.person_img">
+          <img id="person_img" class="user_headimg" src="__IMAGES__/user.jpg" width="100">
+          <else />
+          <img id="person_img" class="user_headimg" src="{$topInfo['person_img']}" width="100">
+        </empty>
+        <span><img src="__IMAGES__/user_tx1.png" width="22"></span></div>
+      <span><notempty name="topInfo.person_name">{$topInfo['person_name']}<else />{$topInfo['telephone']}</notempty></span></br>
+      <a href="/login.html">切换帐号</a></div>
+    <div class="user_nav">
+      <ul>
+        <h5>交易管理</h5>
+        <a href="/my_orderList.html">
+          <li>我的订单</li>
+        </a>
+        <a href="{:U('Ucenter/refundOrder')}">
+          <li>退款/退货</li>
+        </a>
+        <div class="user_nav_line"></div>
+        <h5>评论管理</h5>
+        <a href="{:U('Ucenter/myEvaluate')}">
+          <li>待评价 <span></span>(好评送积分)</li>
+        </a>
+        <a href="{:U('Ucenter/myEvaluateDetail')}">
+          <li>已评价</li>
+        </a>
+        <div class="user_nav_line"></div>
+        <h5>我的账户</h5>
+        <a href="/my_integral.html">
+          <li>我的积分</li>
+        </a>
+        <a href="/conversionRecord.html">
+          <li>积分兑换记录</li>
+        </a>
+        <a href="{:U('Ucenter/coupon')}">
+          <li>我的优惠券</li>
+        </a>
+        <a href="{:U('Ucenter/inviteFriends')}">
+          <li>邀请好友</li>
+        </a>
+        <div class="user_nav_line"></div>
+        <h5>我的分销</h5>
+        <a href="{:U('Ucenter/myShare')}">
+          <li>我的分享</li>
+        </a>
+        <a href="{:U('Ucenter/myTradingRecord')}">
+          <li>交易记录</li>
+        </a>
+        <a href="{:U('Ucenter/commissionRecord')}">
+          <li>佣金记录</li>
+        </a>
+        <a href="{:U('Ucenter/takeMoney')}">
+          <li>我的提现</li>
+        </a>
+        <div class="{:U('Ucenter/myEvaluate')}"></div>
+        <div class="user_nav_line"></div>
+        <h5>个人信息</h5>
+        <a href="/my_info.html">
+          <li>我的资料</li>
+        </a>
+        <a href="{:U('Ucenter/accountSecurity')}">
+          <li>账号安全</li>
+        </a>
+        <a href="/my_bankcard.html">
+          <li>我的银行卡</li>
+        </a>
+        <a href="{:U('Ucenter/ValueAddedInvoices')}">
+          <li>我的增值税发票</li>
+        </a>
+        <a href="/my_address.html">
+          <li <eq name="urlname" value="address">class="user_nav_on"</eq>>收货地址</li>
+        </a>
+        <a href="{:U('Ucenter/editPwd')}">
+          <li>修改密码</li>
+        </a>
+        <a href="/my_collections.html">
+          <li>我的收藏夹</li>
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>
+<input class="needsclick" style="display:none;" type="file" id="imgfile" onChange="readFile(this)" style="" accept="image/jpg,image/jpeg,image/png"/>
+<script>
+    var img_str,el;
+    function readFile(obj){
+        var file = obj.files[0];
+        //判断类型是不是图片
+        if(!/image\/\w+/.test(file.type)){
+            dialog.showTips('请确保文件为图像类型', "warn");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e){
+            img_str=this.result;
+            $.ajax({
+                type: 'POST',
+                url: "{:U('Shop/Ucenter/upload_base64')}",
+                data: {'img_str':img_str},
+                dataType: 'json',
+                cache:false,
+                success: function(data){
+                    console.dir(data);
+                    if(data.flag==1){
+                        console.log(data.img);
+                        $('.user_headimg').attr('src', data.img);
+                    }else{
+                        dialog.showTips('头像上传失败！', "warn");
+                    }
+                },
+                error: function(xhr, type, error){
+                    // console.log(type);
+                    // console.log(error);
+                },
+                complete: function(xhr, status){
+                    // el.hide();
+                }
+            });
+        }
+    }
+    $("#person_img").click(function (){
+        $("#imgfile").trigger("click")
+    })
+</script>

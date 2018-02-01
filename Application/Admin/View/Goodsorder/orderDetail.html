@@ -1,0 +1,1041 @@
+<include file="Public:head"/>
+<link rel="stylesheet" href="__CSS__/city-picker.css">
+<style type="text/css">
+.city-picker-span {
+    width: 200px !important;
+}
+.city-select-content {
+    width: auto !important;
+}
+.packbag-group .packbag-list {
+    padding: 20px 33px;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+}
+.packbag-list .packbag-media {
+    width: 100px;
+}
+.packbag-list .packbag-inner {
+    border-left: 1px solid #efefef;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.packbag {
+    padding: 0 30px;
+}
+.packbag-title {
+    line-height: 33px;
+}
+.packbag-goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.packbag-goods {
+    width: 25%;
+    display: flex;
+    display: -webkit-flex;
+    margin: 10px 0 5px;
+}
+.packbag-goods-media {
+    width: 52px;
+    height: 52px;
+    margin-right: 10px;
+}
+.packbag-goods-inner {
+    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+  .yincang{
+    display: none;
+  }
+
+</style>
+<div class="container">
+  <div class="inner clearfix"> <include file="Public:left"/> 
+    <!-- end content-left -->
+    <div class="content-right fl">
+      <h1 class="content-right-title">订单详情<a href="javascript:history.back(-1)" class="btn" style="float: right">返回</a></h1>
+      <ul class="wizard">
+        <li class="wizard-item complete">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num">1</span> <span class="wizard-icstp-title">买家下单</span> <span class="wizard-icstp-date">{$cache.order_time|date="Y-m-d H:i:s",###}</span> </dt>
+            <dd class="wizard-ic-desc" style="width:100px;"></dd>
+          </dl>
+        </li>
+        <li class="wizard-item  <gt name='cache.order_status' value='1'>complete</gt>">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num">2</span> <span class="wizard-icstp-title">买家付款</span> 
+              <gt name='cache.order_status' value='1'>
+                <span class="wizard-icstp-date">{$cache.pay_time|date="Y-m-d H:i:s",###}</span> 
+              </gt>
+            </dt>
+            <dd class="wizard-ic-desc" style="width:100px;"></dd>
+          </dl>
+        </li>
+        <eq name="cache['refund_status']" value="2">
+            <li class="wizard-item complete">
+              <dl class="wizard-item-content">
+                <dt class="wizard-ic-step"> <span class="wizard-icstp-num">3</span> <span class="wizard-icstp-title">拒绝退款</span> <span class="wizard-icstp-date">{$cache.refund_time|date="Y-m-d H:i:s",###}</span> </dt>
+                <dd class="wizard-ic-desc" style="width:100px;"></dd>
+              </dl>
+            </li>
+        </eq>
+        <in name="cache['order_status']" value="8,9,10">
+            <li class="wizard-item  <php>if(in_array($cache['order_status'],array(8,9,10))) echo complete</php>">
+              <dl class="wizard-item-content">
+                <dt class="wizard-ic-step"> <span class="wizard-icstp-num">3</span> <span class="wizard-icstp-title">申请退款中</span> <span class="wizard-icstp-date">{$cache.applyrefund_time|date="Y-m-d H:i:s",###}</span></dt>
+                <dd class="wizard-ic-desc" style="width:100px;"></dd>
+              </dl>
+            </li>
+            <eq name="cache['order_status']" value="10">
+                <li class="wizard-item  <php>if(in_array($cache['order_status'],array(10))) echo complete</php>">
+                  <dl class="wizard-item-content">
+                    <dt class="wizard-ic-step"> <span class="wizard-icstp-num">4</span> <span class="wizard-icstp-title">拒绝退款</span> <span class="wizard-icstp-date">{$cache.refund_time|date="Y-m-d H:i:s",###}</span> </dt>
+                  </dl>
+                </li>
+            <else/>
+                <li class="wizard-item  <php>if(in_array($cache['order_status'],array(9))) echo complete</php>">
+                  <dl class="wizard-item-content">
+                    <dt class="wizard-ic-step"> <span class="wizard-icstp-num">4</span> <span class="wizard-icstp-title">退款完成</span> <span class="wizard-icstp-date">{$cache.refund_time|date="Y-m-d H:i:s",###}</span> </dt>
+                  </dl>
+                </li>
+            </eq>
+        <else/>
+        <li class="wizard-item <gt name='cache.order_status' value='3'>complete</gt>">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num"><eq name="cache.refund_status" value="2">4<else/>3</eq></span> <span class="wizard-icstp-title">商家发货</span> <span class="wizard-icstp-date">
+              <neq name="cache.shipping_time" value="">{$cache.shipping_time|date="Y-m-d H:i:s",###}</neq>
+              </span> </dt>
+            <dd class="wizard-ic-desc" style="width:100px;"></dd>
+          </dl>
+        </li>
+        <li class="wizard-item <gt name='cache.order_status' value='5'>complete</gt>">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num"><eq name="cache.refund_status" value="2">5<else/>4</eq></span> <span class="wizard-icstp-title">买家收货</span> <span class="wizard-icstp-date">
+              <neq name="cache.receive_time" value="">{$cache.receive_time|date="Y-m-d H:i:s",###}</neq>
+              </span> </dt>
+            <dd class="wizard-ic-desc" style="width:100px;"></dd>
+          </dl>
+        </li>
+        <li class="wizard-item <gt name='cache.order_status' value='6'>complete</gt>">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num"><eq name="cache.refund_status" value="2">6<else/>5</eq></span> <span class="wizard-icstp-title">买家评价</span> <span class="wizard-icstp-date">
+              <neq name="cache.pingjia_time" value="">{$cache.pingjia_time|date="Y-m-d H:i:s",###}</neq>
+              </span> </dt>
+            <dd class="wizard-ic-desc" style="width:100px;"></dd>
+          </dl>
+        </li>
+        <li class="wizard-item  <eq name='cache.order_status' value='7'>complete</eq>">
+          <dl class="wizard-item-content">
+            <dt class="wizard-ic-step"> <span class="wizard-icstp-num"><eq name="cache.refund_status" value="2">7<else/>6</eq></span> <span class="wizard-icstp-title">订单完成</span> <span class="wizard-icstp-date">
+              <neq name="cache.complete_time" value=''>{$cache.complete_time|date="Y-m-d H:i:s",###}</neq>
+              </span> </dt>
+          </dl>
+        </li>
+        </in>
+      </ul>
+      <div class="chartBox mgt30">
+        <div class="cb-title">订单信息</div>
+        <div class="cb-contain">
+          <ul class="info-table mgl15">
+            <li class="long"> <span class="bold">订单编号：</span><span>{$cache.order_no}</span></li>
+            <li class="long"> <span class="bold">付款方式：</span> <span><a href="javascript:void(0);"> 
+              <!-- 0 微信支付 1 支付宝支付 2余额 -->
+              <switch name="cache.pay_way">
+                <case value="0"><span class="colorRed">待支付</span></case>
+                <case value="1">微信支付</case>
+                <case value="2">支付宝支付</case>
+                <case value="3">货到付款</case>
+              </switch>
+              </a> </span>
+            </li>
+            <li class="long"> <span class="bold">买家昵称：</span> <span><a href="{:U('Admin/Member/detail',array('id'=>$cache['userid']))}"> {$cache.user.person_name|default='未填写'}</a> </span> </li>
+            <li class="long"> <span class="bold">买家姓名：</span> <span>{$cache.user.realname|default='未填写'}</span> </li>
+            <li class="long"> <span class="bold">买家联系方式：</span> <span>{$cache.user.telephone|default='未填写'}</span> </li>
+            <li class="long"> <span class="bold">买家备注</span>：</span> 
+                <span>
+                    <a href="javascript:void(0);"> {$cache.remark1|default='未填写'}</a>
+                    <a href="javascript:void(0);" class="btn btn-primary editRemark">编辑备注</a>
+                </span>
+            </li>
+            <li class="long"> <span class="bold">订单状态：</span> <span class="colorRed"> 
+              <!-- 0已取消,1:待付款,2:待成团,3:待发货,4:部分发货,5:待收货,6:待评价,7:已完成,8:申请退款中,9:退款完成,10:拒绝退款,11:前台订单删除 -->
+              <switch name="cache.order_status">
+                <case value="0">已取消</case>
+                <case value="1">待付款</case>
+                <case value="2">待发货</case>
+                <case value="3">已发货</case>
+                <case value="4">已完成</case>
+                <case value="5">已关闭</case>
+                <case value="6">退款中</case>
+                <case value="7">订单删除</case>
+              </switch>
+              </span> 
+            </li>
+            <in name="cache['order_status']" value='2'>
+              <li class="long">
+                <a href="javascript:void(0);" class="btn btn-primary delivery">确认发货</a>
+              </li>
+            </in>
+          </ul>
+        </div>
+        <div class="cb-title">收货人信息</div>
+        <div class="cb-contain">
+          <ul class="info-table mgl15">
+            <li class="long"> <span class="bold">收货人：</span> <span><a href="javascript:void(0);"> {$cache.consignee}</a> </span> </li>
+            <li class="long"> <span class="bold">联系方式：</span> <span><a href="javascript:void(0);"> {$cache.mobile}</a> </span> </li>
+            <li class="long"> <span class="bold">收货地址：</span> <span><a href="javascript:void(0);"> {$cache.province} {$cache.city} {$cache.district} {$cache.address}</a> </span> </li>
+             <li class="long"> <a href="javascript:void(0);" class="btn btn-primary editAddress" id="j-order-close">修改订单收货信息</a> </li>
+          </ul>
+        </div>
+      </div>
+
+      <table class="wxtables mgt15">
+        <colgroup>
+        <col width="50%">
+        <col width="20%">
+        <col width="16%">
+        <col width="15%">
+        <col width="15%">
+        </colgroup>
+        <thead>
+          <tr>
+            <td>商品名</td>
+            <td>价格 - 积分</td>
+            <td>数量</td>
+            <td>小计</td>
+          </tr>
+        </thead>
+        <tbody>
+          <foreach name="cache[goods]" item="vo">
+            <tr>
+              <td><a href="javascript:void(0)" class="block" target="_blank" title="">
+                <div class="table-item-img"> <a href="{:U('Admin/goods/addgoods',array('id'=>$vo['goods_id']))}"><img src="{$vo.goods_pic}" alt=""></a> </div>
+                <div class="table-item-info" style="width:80%;">
+                  <p style="height:auto;">商品名称：{$vo.goods_name}</p>
+                  <p style="height:auto;">{$vo.sku_info}</p>
+                </div>
+                </a></td>
+              <gt name="cache['use_integral']" value="0">
+              <td>¥{$vo.goods_price} - {$vo.goods_integral}</td>
+              <td>{$vo.goods_nums}</td>
+              <td>￥{$vo['goods_price']*$vo['goods_nums']} - {$vo['goods_integral']*$vo['goods_nums']} 积分</td>
+              <else/>
+              <td>¥{$vo.goods_price}</td>
+              <td>{$vo.goods_nums}</td>
+              <td>￥{$vo['goods_price']*$vo['goods_nums']}</td>
+              </gt>
+            </tr>
+            <notempty name="vo['comment']">
+              <tr>
+                <td colspan="2">[评价内容]:<br>
+                  {$vo['comment']}</td>
+                <td colspan="3">[评价时间]:<br>
+                  {$vo['comment_time']|date="Y-m-d H:i:s",###}</td>
+              </tr>
+            </notempty>
+          </foreach>
+        </tbody>
+      </table>
+      <in name="cache['order_status']" value="2,3,4">
+        <eq name='cache.issubbag' value='0'>
+          <div class="chartBox mgt30">
+            <div class="cb-title">物流信息
+              <eq name='cache.order_status' value='5'>
+                <a href='javascript:void(0)' class='btn btn-primary receive'>确定收货</a>
+              </eq>
+            </div>
+            <div class="cb-contain">
+              <ul class="info-table mgl15">
+                <li class="long"> <span class="bold">物流公司：</span> <span><a href="javascript:void(0);"> {$cache.express_name} </a> </span> </li>
+                <li class="long"> <span class="bold">物流单号：</span> <span><a href="javascript:void(0);"> {$cache.express_no} </a> </span> </li>
+                <li class="long"> <span class="bold">物流详情：</span>
+                  <notempty name="express">
+                  <foreach name="express" item="v">
+                    <p>{$v['ftime']} {$v['context']}</p>
+                  </foreach>
+                  <else/>
+                    <p>未查询到物流信息</p>
+                  </notempty>
+                </li>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <else/>
+           <div class="chartBox mgt30">
+            <div class="cb-title">包裹信息</div>
+            <div class="cb-contain packbag-group" style="border: 1px solid #efefef;">
+                <volist name="bagExp" id='vo' key='k'>
+                    <div class="packbag-list">
+                        <div class="packbag-media"><i class="icow icow-baoguo" style="display: inline-block;vertical-align: middle;font-size: 22px"></i>包裹 {$k}</div>
+                        <div class="packbag-inner">
+                            <div class="packbag">
+                                <div class="packbag-title">
+                                    <span style="margin-right: 40px">快递：{$vo.express_name}</span>
+                                    <span style="margin-right: 15px">快递单号：{$vo.express_no}</span>
+                                    <span style="margin-right: 40px"><a data-name="{$vo.express_ma}" data-no="{$vo.express_no}" style='color: #1C89D5;' class="text-primary op SeeWuliu" href="javascript:void(0)">查看物流</a></span>
+                                    <span style="margin-right: 40px">发货时间：{$vo.express_time}</span>
+                                    <eq name='vo.is_receive' value='0'>
+                                      <span style="margin-right: 40px"><a data-name="{$vo.express_ma}" data-no="{$vo.express_no}" style='color: #1C89D5;' class="text-primary op receive" href="javascript:void(0)">确认收货</a></span>
+                                    <else/>
+                                       <span style="margin-right: 40px;color: #f00;">已收货</span>
+                                    </eq>
+                                </div>
+                                <div class="packbag-goods-list">
+                                  <volist name='vo.goodslist' id='vv'>
+                                    <div class="packbag-goods">
+                                        <div class="packbag-goods-media" style="width:auto;height:auto;margin-right:0px;">
+                                            <img src="{$vv.goods_pic}" width='80'>
+                                        </div>
+                                        <div class="packbag-goods-inner">
+                                            <p class="title">
+                                                <!--a href="javascript:void(0)" style="display: block;line-height:18px;max-width:350px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{$vv.goods_name}</a-->
+                                                <a href="javascript:void(0)" style="display: block;line-height:18px;max-width:350px;">{$vv.goods_name}</a>
+                                            </p>
+                                            <!--p>¥ {$vv.goods_price}</p-->
+                                        </div>
+                                    </div>
+                                  </volist>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+          </div>
+        </eq>
+      </in>
+    </div>
+    <div class="clearfix">
+      <ul class="cache-statistics fr">
+
+        <!--   <li class="formitems" style="text-align:right">
+            <div class="form-controls" style="text-align:right;margin-right:10px;">
+              <b>订单总积分： </b>{$cache.total_integral}积分</div>
+          </li> -->
+
+        <li class="formitems" style="text-align:right">
+          <div class="form-controls" style="text-align:right;margin-right:10px;"> <b>订单总金额： </b>¥{$cache.total_fee}</div>
+        </li>
+        <li class="formitems" style="text-align:right">
+          <div class="form-controls" style="text-align:right;margin-right:10px; color:red"> <b>实际支付金额： </b>￥{$cache.pay_price}</div>
+        </li>
+        <li class="txtCenter" style="text-align:right;margin-right:10px;"> 
+           <a href="javascript:history.back(-1);" class="btn" >返回</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end content-right --> 
+</div>
+</div>
+<!-- end container -->
+<style>
+.tuihuoinfo{position: fixed;width: 740px;height: auto;left: 46%;top: 46%;margin-left: -230px;margin-top: -210px;z-index: 999998;}
+}
+.tuihuoinfoimg{float:left;width:100px;height:130px;margin:6px 4px 0px 0px;}
+</style>
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox editfenlei disshow quxiao" style="min-height:300px;height:auto;width:500px" id="updatewuliu">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">订单发货</div>
+    <a href="javascript:;" class="jbox-close cancle"></a></div>
+  <div class="jbox-container">
+
+    <div class="formitems">
+        <label class="fi-name"><span class="colorRed"></span>收货人：</label>
+        <div class="form-controls">
+            {$cache.consignee} / {$cache.mobile} <br/>
+            {$cache['province']} {$cache['city']} {$cache['district']} {$cache['address']}
+            <span class="fi-help-text"></span>
+        </div>
+    </div> 
+    <div class="formitems">
+        <label class="fi-name"><span class="colorRed"></span>快递公司：</label>
+        <div class="form-controls">
+            <input type="text" class="input" name="search_company" value="" placeholder="请输入公司名字">
+            <button class="btn btn-primary search_company" title="搜索"><i class="gicon-search white"></i></button>
+        </div>
+    </div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>快递公司：</label>
+      <div class="form-controls">
+        <select name="express_name" class="select" id="">
+            <option value="">请选择快递公司</option>
+            <foreach name="express_list" item="vo">
+            <if condition=" $vo.express_ma eq $cache['express_ma']">
+                <option value="{$vo.express_ma}" selected="selected">{$vo.express_company}</option>
+                <else />
+                <option value="{$vo.express_ma}">{$vo.express_company}</option>
+            </if>
+            </foreach>
+        </select>
+        <span class="fi-help-text"></span> </div>
+    </div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>快递单号：</label>
+      <div class="form-controls">
+        <input type="text" class="input describe1" name="express_no" value="{$cache.express_no}">
+        <input type="hidden" name="order_id" value="{$cache.id}">
+        <span class="fi-help-text"></span> </div>
+    </div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>发货类型：</label>
+      <div class="form-controls" id="fhtype">
+         <input type="radio" name="fh_type" value="0" checked onchange="xiugaiFhType(0)"/> 按订单发货
+         <input type="radio" name="fh_type" value="1" onchange="xiugaiFhType(1)"/> 商品分包裹发货
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+
+    <div class="formitems" id="thisgoods" style="display:none;">
+      <label class="fi-name"><span class="colorRed">*</span>发货商品：</label>
+      <div class="form-controls" id="goodslist">
+         <br/><input type="checkbox" name="goodsid" value="0" /> <img src="/Public/Public/images/logo.png" width='30' height='30'> 按订单发货
+      </div>
+    </div>
+
+    <div class="jbox-buttons" style="text-align:center;"> 
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">取消</a> 
+      <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="fahuo">发货</a> 
+    </div>
+  </div>
+</div>
+
+<div class="jbox editfenlei disshow quxiao" style="height:255px;" id="editremark">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">备注信息</div>
+    <a href="javascript:;" class="jbox-close cancle"></a></div>
+  <div class="jbox-container">
+    <div class="formitems">
+      <!-- <label class="fi-name"><span class="colorRed">*</span>快递公司：</label> -->
+      <div class="form-controls" style="margin-left: 25px;">
+        <textarea name='remark' id="remark" cols='50' rows='9' style="padding:5px">{$cache.remark1}</textarea>
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+    <div class="jbox-buttons" style="text-align:center;"> 
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">取消</a> 
+      <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="TJRemark">提交</a> 
+    </div>
+  </div>
+</div>
+
+<div class="jbox editfenlei disshow quxiao" style="min-height:200px;height:auto" id="wuliuK">
+  <div class="jbox-title">
+    <div class="jbox-title-txt" style="line-height: 22px;">物流详情<br>*&nbsp;物流信息仅供参考,准确信息可前往该物流官网查询</div>
+    <a href="javascript:;" class="jbox-close cancle"></a></div>
+  <div class="jbox-container">
+    <div class="formitems" style="min-height:100px;height:auto" id="wuliulist">
+        <p>未查询到物流信息</p>
+    </div>
+    <div class="jbox-buttons" style="text-align:right;"> 
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">关闭</a> 
+      <!-- <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="TJRemark">提交</a>  -->
+    </div>
+  </div>
+</div>
+
+<div class="jbox editfenlei disshow quxiao" style="min-height:255px;height:auto;overflow: visible;width: 450px;z-index:9999" id="address">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">编辑收货信息</div>
+    <a href="javascript:;" class="jbox-close cancle"></a></div>
+  <div class="jbox-container">
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>收货人：</label>
+      <div class="form-controls">
+         <input type="text" class="input consignee" name="consignee" value="{$cache.consignee}" />
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>手机号：</label>
+      <div class="form-controls">
+         <input type="text" class="input mobile" name="mobile" value="{$cache.mobile}" />
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed">*</span>修改地址：</label>
+      <div class="form-controls">
+         <input type="radio" name="is_address" value="0" checked onchange="xiugaiAddress(0)"/> 否
+         <input type="radio" name="is_address" value="1" onchange="xiugaiAddress(1)"/> 是
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+
+    <div class="formitems isXGaddress" style="display:none;">
+      <label class="fi-name"><span class="colorRed"></span>地址：</label>
+      <div class="form-controls">
+         {$cache.province} {$cache.city} {$cache.district} {$cache.address}
+        <span class="fi-help-text">
+      </span> 
+      </div>
+    </div>
+
+    <div class="formitems isXGaddress" style="display:none;">
+      <label class="fi-name"><span class="colorRed">*</span>新地址区域：</label>
+      <div class="form-controls" style="position: relative;width:280px;">
+          <input id="city-picker1" class="form-control city-picker-input" readonly="" type="text" value="{$cache['province']}/{$cache['city']}/{$cache['district']}" name="country" data-toggle="city-picker">
+      </div>
+    </div>
+    <div class="formitems isXGaddress" style="display:none;">
+      <label class="fi-name"><span class="colorRed">*</span>新详细地址：</label>
+      <div class="form-controls">
+          <textarea name='address' id="newaddress" cols='25' rows='5' style="padding:5px">{$cache.address}</textarea>
+
+      </div>
+    </div>
+
+    <div class="jbox-buttons" style="text-align:center;"> 
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">取消</a> 
+      <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="BCAddress">保存</a> 
+    </div>
+  </div>
+</div>
+
+<div class="jbox editfenlei disshow quxiao" style="height:146px;" id="receive">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">确认收货</div>
+    <a href="javascript:;" class="jbox-close cancle"></a></div>
+  <div class="jbox-container">
+    <div class="formitems" style=''>
+      <div class="form-controls" style="margin-left: 25px;">
+        确认用户已经收到货物了吗？
+        <input type='hidden' id="expressno" value='0'>
+        <span class="fi-help-text"></span> 
+      </div>
+    </div>
+    <div class="jbox-buttons" style="text-align:center;"> 
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">取消</a> 
+      <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="TJReceive">确定</a> 
+    </div>
+  </div>
+</div>
+
+<include file="Public:foot"/> 
+<script type="text/javascript" src="__JS__/city-picker.data.js"></script> 
+<script type="text/javascript" src="__JS__/city-picker.js"></script> 
+<script>
+    function xiugaiAddress(obj){
+      // alert(obj);
+      if(obj == 0){
+         $('.isXGaddress').hide();
+      }else{
+         $('.isXGaddress').show();
+      }
+    }
+
+    function xiugaiFhType(obj){
+      if(obj == 0){
+         $('#thisgoods').hide();
+      }else{
+         $('#thisgoods').show();
+      }
+    }
+
+  $(document).ready(function(){
+
+  /*  $("#city-picker").citypicker({
+      province: '{$cache["province"]}',
+      city: '{$cache["city"]}',
+      district: '{$cache["district"]}'
+    });*/
+
+    $(".cancle").click(function(){
+      $(this).parent().parent('.jbox').hide();
+      $('#updatewuliu').hide();
+      $('#editremark').hide();
+      $('#address').hide();
+      $('#wuliuK').hide();
+      $('#receive').hide();
+      $("#albums-overlay").hide();
+    })
+
+    $(".receive").click(function(){
+        var expressno = $(this).attr('data-no');
+        $("#expressno").val(expressno);
+        $('#receive').show();
+        $("#albums-overlay").show();
+    })
+
+    $(".editRemark").click(function(){
+      $("#albums-overlay").show();
+      $("#editremark").show();
+    })
+
+    $(".editAddress").click(function(){
+      $("#albums-overlay").show();
+      $("#address").show();
+    })
+
+    $(".SeeWuliu").click(function(){
+      var express_ma = $(this).attr('data-name');
+      var express_no = $(this).attr('data-no');
+      // alert(express_ma+'-'+express_no);
+
+      var data = {express_ma: express_ma,express_no:express_no};
+      $.ajax({
+        url: "{:U('Admin/goodsorder/seeWuliu')}",
+        type: "post",
+        dataType: "json",
+        data: data,
+      }).done(function (g) {
+        if(g.status == 1) {
+            var exp  = g.info;
+            var html = '';
+            for (var i = 0; i < exp.length; i++) {
+                html += "<p>"+exp[i].ftime+" "+exp[i].context+"</p>";
+            };
+            $("#wuliulist").html(html);
+            $("#albums-overlay").show();
+            $("#wuliuK").show();
+        } else {
+            alert(g.info);
+            return false;
+        }
+      })
+    })
+
+    $("#TJReceive").click(function(){
+      var order_id   = "{$cache.id}";
+      var type       = "{$cache.issubbag}";
+      var express_no = $("#expressno").val();
+      var data = {orderid: order_id,type:type,express_no:express_no};
+      $.ajax({
+        url: "{:U('Admin/goodsorder/receiveGoods')}",
+        type: "post",
+        dataType: "json",
+        data: data,
+      }).done(function (g) {
+        if (g.status == 1) {
+            dialog.showTips(g.info, "",1);
+        }else{
+            alert(g.info);
+            return false;
+        }
+      })
+    })
+
+    $(".delivery").click(function(){
+      var order_id = "{$cache.id}";
+      var type = "{$cache.issubbag}";
+      if(type == 1){
+         $("#thisgoods").show();
+         var ppp = '';
+         ppp = "<input type='radio' disabled name='fh_type' value='0'/> 按订单发货<input type='radio' name='fh_type' readonly value='1' checked/> 商品分包裹发货";
+         $("#fhtype").html(ppp);
+      }
+
+      var data = {orderid: order_id};
+      $.ajax({
+        url: "{:U('Admin/goodsorder/goodslist')}",
+        type: "post",
+        dataType: "json",
+        data: data,
+      }).done(function (g) {
+        if (g.status == 1) {
+          var goods = g.info;
+          var html = '';
+          for (var i = 0; i < goods.length; i++) {
+            html += "<br/><input type='checkbox' name='goodsid' value='"+goods[i].goodsid+"' /> <img src='"+goods[i].goodsimg+"' width='30' height='30'>"+goods[i].goodsname;
+          };
+          $("#goodslist").html(html);
+          $("#albums-overlay").show();
+          $("#updatewuliu").show();
+        } else {
+          alert(g.info);
+          return false;
+        }
+      })
+    });
+    /***快递公司搜索S***/
+    $(".editfenlei .search_company").click(function(){
+        var category = $.trim($(".editfenlei input[name='search_company']").val());
+        if(category){
+            var stat = true;
+            $(".editfenlei select[name=express_name] option").each(function(){
+                var txt = $.trim($(this).text());
+                if(txt.indexOf(category) !=-1){
+                    $(this).attr("selected","selected");
+                    stat=false;
+                    return false;
+                }
+            });
+            if(stat){
+                dialog.showTips('没有找到相关快递公司','warn');
+            }
+        }else{
+            dialog.showTips('请输入快递公司名称','warn');
+        }
+    });
+    /***快递公司搜索S***/
+    $("#fahuo").click(function(){
+        var express_name = $.trim($("#updatewuliu select[name=express_name]").find("option:selected").text());
+        var express_ma = $.trim($("#updatewuliu select[name=express_name]").val());
+        var express_no = $.trim($("#updatewuliu input[name=express_no]").val());
+        var order_id = "{$cache.id}";
+        var fh_type = $("input[name='fh_type']:checked").val();
+        if(!express_ma){
+            alert("请选择快递公司");return false;
+        }
+        if(!express_no){
+            alert("请填写快递单号！");return false;
+        }
+        if(fh_type == 1){
+            var goodslist = '';
+            $("input[name='goodsid']:checked").each(function(){
+                goodslist += $(this).val() + ',';
+            })
+            goodslist = goodslist.substring(0,goodslist.length-1);
+            if(!goodslist){
+                alert("请选择发货商品！");return false;
+            }
+        }
+        var data = {orderid: order_id,express_ma:express_ma,express_name:express_name,express_no:express_no,fh_type:fh_type,goodslist:goodslist}
+        $.ajax({
+            url: "{:U('Admin/goodsorder/express')}",
+            type: "post",
+            dataType: "json",
+            data: data,
+        }).done(function (g) {
+            if (g.status == 1) {
+                dialog.showTips(g.info, "",1);
+            } else {
+                alert(g.info);
+            }
+        })
+    })
+
+    $("#TJRemark").click(function(){
+      var remark = $.trim($("#remark").val());
+      var order_id = "{$cache.id}";
+      
+      var data = {orderid: order_id,remark:remark}
+      console.log(data);
+      $.ajax({
+        url: "{:U('Admin/goodsorder/editRemark')}",
+        type: "post",
+        dataType: "json",
+        data: data
+      }).done(function (g) {
+        if (g.status == 1) {
+          alert(g.info);
+          window.location.reload();
+        } else {
+          alert(g.info);
+        }
+      })
+    });
+
+    $("#BCAddress").click(function(){
+      var consignee = $.trim($(".consignee").val());
+      var mobile = $.trim($(".mobile").val());
+      var is_address = $.trim($("input[name='is_address']:checked").val());
+      var country = $.trim($("#city-picker1").val());
+      var newaddress = $.trim($("#newaddress").val());
+      var order_id = "{$cache.id}";
+      
+      if(consignee == ''){
+        dialog.showTips("收货人不能为空！","warn"); return false;
+      }
+      if(mobile == ''){
+        dialog.showTips("手机号不能为空！","warn"); return false;
+      }
+
+      if(!mobile.match(/^1[345789][0-9]{9}$/)){
+          dialog.showTips('手机号格式错误!', "warn");return false;
+      }
+
+      if(is_address == 1){
+          if(country == ''){
+            dialog.showTips("地区不能为空！","warn"); return false;
+          }
+          if(newaddress == ''){
+            dialog.showTips("详细地址不能为空！","warn"); return false;
+          }
+      }
+
+      var data = {orderid: order_id,consignee:consignee,mobile:mobile,is_address:is_address,country:country,address:newaddress};
+      // console.log(data);
+      // return false;
+
+      $.ajax({
+        url: "{:U('Admin/goodsorder/editAddress')}",
+        type: "post",
+        dataType: "json",
+        data: data,
+      }).done(function (g) {
+        if (g.status == 1) {
+          alert(g.info);
+          window.location.reload();
+        } else {
+          alert(g.info);
+        }
+      })
+    })
+
+  })
+</script>
+
+<!--20171017-->
+<div class="jbox tuikuan disshow quxiao" style="height:auto;">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">退款信息</div>
+    <a href="javascript:;" class="jbox-close cancle"></a>
+  </div>
+  <div class="jbox-container">
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed"></span>订单编号：</label>
+      <div class="form-controls"><span class="fi-help-text" id="oorderno"></span> </div>
+    </div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed"></span>支付金额：</label>
+      <div class="form-controls"><span class="fi-help-text" id="zhifujine"></span> </div>
+    </div>
+    <div class="formitems zhifujifen yincang"  >
+      <label class="fi-name"><span class="colorRed"></span>抵扣积分：</label>
+      <div class="form-controls"><span class="fi-help-text" id="zhifujifen"></span> </div>
+    </div>
+    <div class="clear"></div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed"></span>商品金额：</label>
+      <div class="form-controls"><span class="fi-help-text" id="shangpinjine"></span> </div>
+    </div>
+    <div class="formitems shangpinjifen yincang" >
+      <label class="fi-name"><span class="colorRed"></span>商品积分：</label>
+      <div class="form-controls"><span class="fi-help-text" id="shangpinjifen"></span> </div>
+    </div>
+    <div class="formitems">
+      <label class="fi-name"><span class="colorRed"></span>退款金额：</label>
+      <div class="form-controls">
+        <input type="text" value=""  class="input" name="refund_fee" onkeyup="if( ! /^(0|[1-9]\d{0,8}?)(\.\d{0,2})?$/.test(this.value)){this.value='';}" onafterpaste="if( ! /^(0|[1-9]\d{0,8}?)(\.\d{0,2})?$/.test(this.value)){this.value='';}" maxlength="10">
+        <span class="fi-help-text"></span> </div>
+    </div>
+    <div class="formitems tuikuanjifen yincang" >
+      <label class="fi-name"><span class="colorRed"></span>退款积分：</label>
+      <div class="form-controls">
+        <input type="text" value=""  class="input" name="refund_jifen" onkeyup="if( ! /^(0|[1-9]\d{0,8}?)(\.\d{0,2})?$/.test(this.value)){this.value='';}" onafterpaste="if( ! /^(0|[1-9]\d{0,8}?)(\.\d{0,2})?$/.test(this.value)){this.value='';}" maxlength="10">
+        <span class="fi-help-text"></span> </div>
+    </div>
+    <div class="jbox-buttons" style="text-align:center;">
+      <a href="javascript:;" class="jbox-buttons-ok btn cancle">取消</a>
+      <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" id="ac-tuikuan">退款</a>
+    </div>
+  </div>
+</div>
+<!--20171017-->
+<div class="jbox tuihuoinfo disshow quxiao">
+  <div class="jbox-title">
+    <div class="jbox-title-txt">退款原因</div>
+    <a href="javascript:;" class="jbox-close cancle"></a>
+  </div>
+  <div class="jbox-container">
+    <div class="formitems" id='tuihuoinfoview'></div>
+  </div>
+</div>
+<script>
+    $(".cancle").click(function(){
+        $(this).parent().parent('.jbox').hide();
+        $('#albums-overlay').hide();
+        $(".quxiao").hide();
+    })
+    //申请退款理由
+    $(".a-sqly").click(function(){
+        var tuihuoinfo = $(this).attr('data-tuihuoinfo');
+        if(tuihuoinfo){
+            tuihuoinfo = JSON.parse(tuihuoinfo);
+        }else{
+            dialog.showTips('没有找到退货理由信息',"warn"); return false;
+        }
+        console.log(tuihuoinfo);
+        var cljd = tklx = hwzt ='';
+        switch(parseInt(tuihuoinfo.is_tuihuo)){
+            case 1:
+                cljd ='申请退货';
+            break;
+            case 2:
+                cljd ='线上退货';
+            break;
+            case 3:
+                cljd ='拒绝退货';
+            break;
+            case 4:
+                cljd ='撤销退货申请';
+            break;
+            case 5:
+                cljd ='线下退货';
+            break;
+            default:
+                cljd ='未申请退货';
+            break;
+        }
+        switch(parseInt(tuihuoinfo.refund_type)){
+            case 1:
+                tklx ='仅退款';
+            break;
+            default:
+                tklx ='退货退款';
+            break;
+        }
+        switch(parseInt(tuihuoinfo.goodsstatus)){
+            case 1:
+                hwzt ='未收到货';
+            break;
+            default:
+                hwzt ='已收到货';
+            break;
+        }
+        
+        var html="";
+        html +='<table class="wxtables table-order mgt20">';
+        html +='<colgroup><col width="50%"><col width="50%"></colgroup>';
+        html +='<tbody>';
+        html +='<tr><td>申请时间：'+tuihuoinfo.apply_tuihuo_time+'</td><td>申请次数：'+tuihuoinfo.apply_tuihuo_num+'</td></tr>';
+        html +='<tr><td>处理进度：'+cljd+'</td><td>处理时间：'+tuihuoinfo.comp_tuihuo_time+'</td></tr>';
+        html +='<tr><td>退款类型：'+tklx+'</td><td>货物状态：'+hwzt+'</td></tr>';
+        html +='<tr><td>退款原因：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+tuihuoinfo.refundreason+'</td>';
+        html +='<td>退货说明：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+tuihuoinfo.refund_msg+'</td></tr>';
+        html +='<tr><td colspan="2">上传凭证：<br>';
+        $.each(tuihuoinfo.refund_img,function(k,v){
+            if(v){
+                html +='<a href="'+v+'" target="_blank"><img src="'+v+'" style="float:left;width:100px;height:130px;margin:6px 4px 0px 0px;"></a>';
+            }
+        });
+        html +='</td></tr>';
+        html +='<tr><td>退款金额：¥'+tuihuoinfo.refund_fee+'</td><td>退款积分：'+tuihuoinfo.refund_integral+'</td></tr>';
+        html +='</tbody>';
+        html +='</table>';
+        
+        $(".tuihuoinfo #tuihuoinfoview").html(html);
+        $('.tuihuoinfo').show();
+        $("#albums-overlay").show();
+    });
+    
+    
+    //订单号,订单id,支付的金额,支付的积分,支付的方式
+    var orderno = ordergoodsid = zhifujine = zhifujifen = shangpinjine = shangpinjifen =0;
+    $(".a-xstk").click(function(){
+        ordergoodsid     = parseInt($(this).attr('data-id'));
+        orderno          = $.trim($(this).attr('data-order_no'));
+        zhifujine        = parseFloat($(this).attr('data-zhifujine'));
+        zhifujifen       = parseFloat($(this).attr('data-zhifujifen'));         console.log(zhifujifen);
+        shangpinjine     = parseFloat($(this).attr('data-shangpinjine'));
+        shangpinjifen    = parseFloat($(this).attr('data-shangpinjifen'));
+        $('#oorderno').text(orderno);
+        /*支付金额  支付积分*/
+        $('#zhifujine').text(zhifujine);
+        if(zhifujifen){
+            $(".zhifujifen").removeClass("yincang");
+            //$(".tuikuan input[name=refund_jifen]").removeClass("yincang");
+            $(".tuikuan .tuikuanjifen").removeClass("yincang");
+            $('#zhifujifen').text(zhifujifen);
+        }
+        /*支付金额  支付积分*/
+        /*商品金额  商品积分*/
+        $('#shangpinjine').text(shangpinjine);
+        if(shangpinjifen){
+            $(".shangpinjifen").removeClass("yincang");
+            $('#shangpinjifen').text(shangpinjifen);
+        }
+        /*商品金额  商品积分*/
+        $(".tuikuan input[name=refund_fee]").val(shangpinjine)
+        $(".tuikuan input[name=refund_jifen]").val(shangpinjifen)
+        $('#albums-overlay').show();
+        $('.tuikuan').show();
+    });
+    $("#ac-tuikuan").click(function(){
+        var rfee    = parseFloat($(".tuikuan input[name=refund_fee]").val());
+        var rjifen  = parseFloat($(".tuikuan input[name=refund_jifen]").val());
+        
+        if(!rfee){
+            dialog.showTips('请填写退款金额',"warn"); return false;
+        }
+        if(rfee > zhifujine){
+            dialog.showTips('退款金额不能大于支付金额',"warn"); return false;
+        }
+        if(rjifen){
+            if(rjifen > zhifujifen){
+                dialog.showTips('退款积分不能大于支付积分',"warn"); return false;
+            }
+        }else{
+            rjifen = 0;
+        }
+        //订单商品id,退款金额,退款积分
+        var data ={action:'lineReturn',ordergoodsid:ordergoodsid,rfee:rfee,rjifen:rjifen};
+        $.ajax({
+            url:"{:U('/Admin/Goodsorder/orderGoodsRefunds')}",
+            type:'post',
+            data :data,
+            datatype : 'json',
+            success:function(g){
+                console.log(g);
+                if(g.status ==1){
+                    dialog.showTips(g.info,"",1);
+                }else{
+                    dialog.showTips(g.info,"warn");
+                }
+            }
+        });
+    });
+    $('.a-xxtk').click(function(){
+        var ordergoodsid = parseInt($(this).attr('data-id'));
+        console.log(ordergoodsid);
+        if(confirm('您确定要执行线下退货吗,该操作不可逆哦?')){
+            var data = {action:'offlineReturn',ordergoodsid:ordergoodsid}
+            $.ajax({
+                url:"{:U('/Admin/Goodsorder/orderGoodsRefunds')}",
+                type:'post',
+                data :data,
+                datatype : 'json',
+                success:function(g){
+                    console.log(g);
+                    if(g.status ==1){
+                        dialog.showTips(g.info,"",1);
+                    }else{
+                        dialog.showTips(g.info,"warn");
+                    }
+                }
+            });
+        }else{
+            dialog.showTips('恭喜你做了正确的选择',"warn"); return false;
+        }
+    });
+    $('.a-jjtk').click(function(){
+        var ordergoodsid = parseInt($(this).attr('data-id'));
+        console.log(ordergoodsid);
+        if(confirm('您确定要拒绝此退货吗,该操作不可逆哦?')){
+            var data = {action:'acRefuse',ordergoodsid:ordergoodsid}
+            $.ajax({
+                url:"{:U('/Admin/Goodsorder/orderGoodsRefunds')}",
+                type:'post',
+                data :data,
+                datatype : 'json',
+                success:function(g){
+                    console.log(g);
+                    if(g.status ==1){
+                        dialog.showTips(g.info,"",1);
+                    }else{
+                        dialog.showTips(g.info,"warn");
+                    }
+                }
+            });
+        }else{
+            dialog.showTips('恭喜你做了正确的选择',"warn"); return false;
+        }
+    });
+</script>
+<!--20171017-->

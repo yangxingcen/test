@@ -1,0 +1,3 @@
+<?php
+//000000003600a:35:{s:2:"id";s:2:"10";s:7:"cate_id";s:1:"4";s:5:"title";s:70:"公告:双11超值1元福袋，即享七重特权，赠好礼！！！";s:8:"en_title";s:0:"";s:6:"author";s:0:"";s:9:"en_author";s:0:"";s:3:"des";N;s:6:"en_des";N;s:3:"key";N;s:4:"key1";N;s:4:"key2";N;s:6:"en_key";N;s:7:"en_key1";N;s:7:"en_key2";N;s:3:"pic";N;s:4:"pic1";N;s:4:"pic2";N;s:4:"pic3";N;s:7:"content";s:0:"";s:8:"content1";N;s:10:"en_content";s:0:"";s:11:"en_content1";N;s:7:"addtime";s:10:"2017-12-12";s:10:"is_display";s:1:"1";s:6:"titles";N;s:11:"promulgator";N;s:5:"click";s:1:"0";s:12:"is_recommend";N;s:8:"is_index";N;s:4:"sort";s:2:"17";s:4:"des1";N;s:7:"en_des1";N;s:3:"gai";s:0:"";s:6:"en_gai";s:0:"";s:6:"status";s:1:"1";}
+?>

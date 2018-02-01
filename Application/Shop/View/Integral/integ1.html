@@ -1,0 +1,85 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+	<div class="warpper">
+		<div class="back_bg">
+			<div class="container">
+				<div class="about clearfix">
+
+					<div class="about_right1">
+
+						<img src="__IMAGES__/jifen.jpg" width="100%">
+
+					</div>
+					<div class="employ">
+
+						<h4><img src="__IMAGES__/dui.png" width="25">{$jfxz.title}</h4>
+
+						{$jfxz.content}
+
+						<div class="employ_m">
+							<a href="javascript:history.go(-1)" class="ledmore2 ">
+								<span class="m1"></span>
+								<span class="m2">返回</span>
+
+							</a>
+
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+	
+	</div>
+
+</body>
+
+<script>
+
+//	$( ".swiper1" ).height( 600 )
+
+$( document ).ready( function()
+{
+
+	var hei = $( ".meal_img" ).width() + 75;
+
+	$( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+} )
+$( window ).resize( function()
+{
+
+	//      $( ".swiper1" ).height( 600 )
+
+} )
+$( window ).scroll( function()
+{
+
+} )
+
+</script>
+
+<script>
+
+//$( ".nav_ti" ).hover( function()
+//		{
+//			$( ".banner_nav" ).slideDown()
+//
+//		}
+//		, function()
+//		{
+//			$( ".banner_nav" ).slideUp()
+//
+//		} )
+
+</script>
+
+</html>

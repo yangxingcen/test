@@ -1,0 +1,135 @@
+<include file='Public:header'/>
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+<style>
+  .user_tit{
+    background: #CEAF64;
+  }
+  .user_tit p{
+    box-sizing: border-box;
+    padding:0 15px;
+    font-size: 120%;
+    color:white;
+    line-height: 42px;
+  }
+  .user_tit p a{
+    float:right;
+    line-height: 40px;
+  }
+  .user_tit a:hover{
+    color:white !important;
+  }
+
+.user_cz{
+  width:100%;
+  padding:20px;
+  margin:20px 0;
+  border:1px solid #e8e8e8;
+  }
+.user_cz p{
+  margin-bottom:20px;
+  } 
+.user_cz p span{
+  display:inline-block;
+  width:80px;
+  vertical-align:top;
+  font-size:13px;
+  letter-spacing:1px;
+  color:#666;
+  margin-right:10px;
+  line-height:40px;
+  }
+.user_cz p select{
+  display:inline-block;
+  vertical-align:top;
+  width:300px;
+  letter-spacing:1px;
+  border:1px solid #e8e8e8;
+  height:40px;
+  color:#999;
+  } 
+.user_cz b{
+  font-size:15px;
+  color:#CEAF64;
+  display:inline-block;
+  line-height:40px;
+  }   
+.user_cz p input{
+  width:300px;
+  display:inline-block;
+  line-height:20px;
+  padding:10px;
+  border:1px solid #e8e8e8;
+  }
+.user_cz p a{
+  display:inline-block;
+  line-height:40px;
+  color:#fff;
+  font-size:14px;
+  letter-spacing:1px;
+  background:#CEAF64;
+  width:300px;
+  text-align:center;
+  margin-left:90px;
+  border-radius:3px;
+  } 
+
+</style>
+<!--  / header  --> 
+<!--  / warpper  -->
+<div class="warpper width100" style="padding-bottom:60px; background:#fff;">
+<div class="user">
+  <div class="container">  
+      {/* 导航栏 */}
+      <include file="Public:ucenterLeft" />
+      {/* 导航栏 */}
+      <div class="col-sm-10">
+          <div class="user_tit">
+              <p>我的钱包</p>
+          </div>
+          <div class="user13_main">
+              <table class="table table-bordered">
+                  <foreach name="res" item="vo">
+                  <tr>
+                      <td class="p1">我的总额：</td>
+                      <td class="p2">￥2000.00</td>
+                  </tr>
+                  <tr>
+                      <td class="p1">我的余额：</td>
+                      <td class="p2">￥{$vo.wallet}</td>
+                  </tr>
+                  <tr>
+                      <td class="p1">我的佣金：</td>
+                      <td class="p2">￥500.00</td>
+                  </tr>
+                  <tr>
+                      <td class="p1">购物积分：</td>
+                      <td class="p2">￥0.00</td>
+                  </tr>
+                  </foreach>
+                  <tr>
+                      <td colspan="2" style=" padding:20px 0;">
+                          <div class="user13_box">
+
+                              <a href="applyTakeMoney">提现</a>
+                          </div>
+                      </td>
+                  </tr>
+              </table>
+          </div>
+
+      </div>
+    </div> 
+  </div>
+</div>    
+</div>
+
+<!--  / warpper  --> 
+
+<div class="jg"></div>
+<script language="javascript" src="__JS__/takeMoney.js"></script>
+<!--  / footer  -->
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+</body>

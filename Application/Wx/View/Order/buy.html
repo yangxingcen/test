@@ -1,0 +1,133 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">确认订单</div>
+
+		</div>
+
+		<a href="/wx_address.html">
+			<div class="products_inner_zi2 products_que">
+				<h5><img src="__IMAGES__//map1.png" width="100%" class="map1">
+					<span>{$address['province']}</span> <span>{$address['city']}</span> <span>{$address['district']} {$address['place']}</span>
+					<br>
+					<span style="color: #aaaaaa; padding-left: 15px;">{$address['consignee']}{$address['telephone']}</span>
+					<img class="" style="margin-top:12px;" src="__IMAGES__//rr.png" width="20">
+				</h5>
+			</div>
+		</a>
+
+		<div class="confirm ">
+
+			<div class=" order_det">订单详情</div>
+			<volist name="order_list" id="val">
+			<div class="clearfix">
+				<div class="confirm_img">
+					<img src="{$val.goods_img}" width="100%">
+				</div>
+				<div class="confirm_txt">
+					<h5>{$val.cate_one}{$val.cate_two}{$val.goods_title}</h5>
+					<p>规格：{$val.sku_name}</p>
+					<div class="conf_money clearfix">¥{$val.price} <span>x {$val.num}</span></div>
+				</div>
+
+			</div>
+			</volist>
+			<div class="freight">
+				<p>运费</p>
+
+				<span>店铺包邮</span>
+			</div>
+
+			<!--<a href="coupon.html">-->
+			<!--<div class="coupons clearfix">-->
+
+				<!--<div class="coupons_left"><img src="__IMAGES__//yhj.png" width="20"><span>优惠券</span></div>-->
+				<!--<div class="coupons_right">-<span>50.00</span><img src="__IMAGES__//rr.png" width="20"></div>-->
+			<!--</div>-->
+			<!--</a>-->
+		</div>
+		<div class="order_1" style="margin-bottom:10px;">
+			<a href="/wx_user_fap.html">
+				<div class="order_12" style="border-bottom:1px solid #e8e8e8;">
+					<h5>发票信息 <p><notempty name="invoice">电子发票-增值普票-<span>{$invoice.name}</span></notempty><img src="__IMAGES__//rr.png" width="20"></p></h5>
+				</div>
+			</a>
+			<h5 class="mjyy">买家留言<input type="text" placeholder="请输入给卖家的留言"></h5>
+			<h5 class="zongji">共{$num}件商品 合计：<span>¥{$countprice}</span></h5>
+		</div>
+		<!--<div class="gral_dui">-->
+
+			<!--&lt;!&ndash;<p><img src="__IMAGES__//jf.png" width="20">可用12积分抵用12块钱</p>&ndash;&gt;-->
+
+			<!--<div class="push">-->
+				<!--<span></span>-->
+			<!--</div>-->
+
+		<!--</div>-->
+
+		<div class="amount">
+			<p>总金额 <span><i>￥</i>{$countprice}</span></p>
+		</div>
+
+		<div class="mount_nav">
+			<a href="##">确认支付</a>
+			<div class="payment">实付款： ¥<span>{$countprice}</span></div>
+
+		</div>
+		<div class="refunds_bg"></div>
+		<!--<div class="using_jifen">-->
+			<!--<div class="order1_2t clearfix">-->
+				<!--<input type="text" placeholder="输入使用积分">-->
+				<!--<span>确定</span>-->
+			<!--</div>-->
+
+			<!--&lt;!&ndash;<div class="order1_2ta">&ndash;&gt;-->
+				<!--&lt;!&ndash;<p>共有积分3000分， 可使用3000分</p>&ndash;&gt;-->
+				<!--&lt;!&ndash;<span>-￥30</span>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+			<!--&lt;!&ndash;<div class="order1_2_b clearfix">&ndash;&gt;-->
+
+				<!--&lt;!&ndash;<a class="order1_2_b2" href="##">确定</a>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+		<!--</div>-->
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+
+$( document ).ready( function()
+{
+	$( ".using_jifen" ).height( $( window ).height() )
+	$( ".push" ).click( function()
+	{
+
+		if( $( this ).hasClass( "on1" ) )
+		{
+			$( ".push" ).removeClass( "on1" )
+		}
+		else
+		{
+			$( ".push" ).addClass( "on1" )
+		}
+
+	} )
+
+
+} )
+</script>
+</html>

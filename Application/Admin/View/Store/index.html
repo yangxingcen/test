@@ -1,0 +1,109 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">门店列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="alert alert-info disable-del"> 目前拥有 <span style="font-size:16px;">{$count}</span> 个门店。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <div class="clearfix">
+                <a href="{:U('admin/Store/addStore')}" class="btn btn-success fl BtnAddClass">添加门店</a>
+            </div>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="门店名称" class="input" name="store_name" value="{:I('get.store_name')}">
+                    <button class="btn btn-primary" style="line-height:28px;"><i class="gicon-search white"></i>查询</button>
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <!-- end tables-searchbox -->
+                <table class="wxtables" style="text-align:center;">
+                    <colgroup>
+                        <col width="1%">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <td><i class="icon_check"></i></td>
+                        <td>门店名称</td>
+                        <td>省份</td>
+                        <td>地级市</td>
+                        <td>区、县级市</td>
+                        <td>地址</td>
+                        <td>电话</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="cache" item="vo">
+                        <tr >
+                            <td><input type="checkbox" class="checkbox table-ckbs check" data-id="{$vo.id}" value="{$vo.id}" data-name=""></td>
+                            <td>{$vo.storename}</td>
+                            <td align="left">{$vo.province}</td>
+                            <td>{$vo.city}</td>
+                            <td>{$vo.district}</td>
+                            <td>{$vo.address}</td>
+                            <td>{$vo.telephone}</td>
+                            <td>
+                                <a href="{:U('admin/store/editstore',array('id'=>$vo[id],'name'=>$vo[storename]))}" class='btn btn-warning'  title="编辑"><i class="gicon-edit white"></i></a>
+                                    <a href="{:U('admin/store/delStore',array('id'=>$vo[id],'name'=>$vo[storename]))}" onclick="return confirm('确定要删除吗？')" class='btn btn-danger' title="删除"><i class="gicon-trash white"></i></a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                        <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                        <a href="javascript:;"  style="background-color:#f0ad4e;border-color:#eea236;"  class="btn btn-primary del">删除</a>
+                    </div>
+                    <div class="fr">
+                        <div class="pages">
+                            {$page}
+                        </div>
+                        <!-- end paginate -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.del').click(function(){
+            var Id ='';
+            if($('.check:checked').length ==0){
+                alert('请选择要删除的门店');return false;
+            }
+            if(confirm('确定删除多个门店吗！')){
+                $('.check:checked').each(function(){
+                    Id = Id + $(this).val() + ',';
+                });
+
+                $.post("{:U('Admin/Store/delStore')}",{'id':Id,'type':'some'},function(data){
+                    if(data.status==1){
+                        alert(data.info);
+                        location.reload();
+                    }
+                },'json');
+            }
+        })
+    })
+</script>
+<include file="Public:foot"/>

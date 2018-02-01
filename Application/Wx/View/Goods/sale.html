@@ -1,0 +1,285 @@
+<include file="Public:header"/>
+
+
+	<script src="__SCRIPT__/mobiscroll.2.13.2.js"></script>
+	<link href="__STYLE__/mobiscroll.2.13.2.css" rel="stylesheet" />
+
+	<script type="text/javascript">
+	$(function () {
+		var curr = new Date().getFullYear();
+		var opt = {
+			'default': {
+				theme: 'default',
+				mode: 'scroller',
+				display: 'modal',
+				animate: 'fade'
+			},
+			'select': {
+				preset: 'select'
+			},
+			'select-opt': {
+				preset: 'select',
+				group: true,
+				width: 50
+			}
+		}
+		$('.demo-test-select').scroller($.extend(opt['select'],opt['default']));
+	});
+	</script>
+</head>
+
+<body>
+
+
+	<!--  / warpper  -->
+	<div class="warpper" style="background: #f5f5f9;padding-bottom: 0px;">
+
+		<div class="integral">
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+			<div class="tegral">限时促销</div>
+			<div class="pro_share1">
+
+				<div class="pro_share_rig">
+
+					<span></span>
+
+					<div class="message"><ul class="message_ul">
+						<include file="Public:left"/>
+
+					</ul>
+						<div class="triangle">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="integral_sx">
+			<div class="integral_sx_top clearfix">
+				<div class="integral_sx_top_t"><a href="##">推荐</a></div>
+				<div class="integral_sx_top_t on"><a href="##">人气 <img src="__IMAGES__/iti5.png"></a></div>
+				<div class="integral_sx_top_t"><a href="##">价格 <img src="__IMAGES__/iti4.png"></a></div>
+				<div class="integral_sx_top_t">
+					<a href="##"  for="city">筛选 <img src="__IMAGES__/iti6.png"></a>
+					<select id="city" class="demo-test-select" data-role="none">
+						<option value="1">0-20000</option>
+						<option value="2">20000-50000</option>
+						<option value="3">50000-100000</option>
+						<option value="4">100000-200000</option>
+						<option value="5">大于200000</option>
+					</select>
+				</div>
+			</div>
+			<div class="integral_sx_t integral_sx_t1 clearfix">
+				<div class="swiper-container swiper-container-nav">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ff4548;">
+										<img src="__IMAGES__/main_list11.png" width="28">
+									</div>
+									<h5>全部</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ffa600;">
+										<img src="__IMAGES__/main_list1.png" width="28">
+									</div>
+									<h5>吸油烟机</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ff4548;">
+										<img src="__IMAGES__/main_list2.png" width="28">
+									</div>
+									<h5>嵌入式灶具</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#238eff;">
+										<img src="__IMAGES__/main_list3.png" width="28">
+									</div>
+									<h5>嵌入式消毒柜</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#f51a83;">
+										<img src="__IMAGES__/main_list4.png" width="28">
+									</div>
+									<h5>嵌入式蒸箱</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ff4548;">
+										<img src="__IMAGES__/main_list5.png" width="28">
+									</div>
+									<h5>嵌入式烤箱</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ffa600;">
+										<img src="__IMAGES__/main_list6.png" width="28">
+									</div>
+									<h5>蒸烤一体</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ff4548;">
+										<img src="__IMAGES__/main_list7.png" width="28">
+									</div>
+									<h5>嵌入式微波炉</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#238eff;">
+										<img src="__IMAGES__/main_list8.png" width="28">
+									</div>
+									<h5>洗碗机</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#f51a83;">
+										<img src="__IMAGES__/main_list9.png" width="28">
+									</div>
+									<h5>燃气热水器</h5>
+								</div>
+							</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="##">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ffa600;">
+										<img src="__IMAGES__/main_list10.png" width="28">
+									</div>
+									<h5>电热水器</h5>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="sale">
+			<div class="sale_con clearfix">
+				<a href="/wx_detail.html">
+					<div class="sale_img"><img src="__IMAGES__/list1.png" width="100%"></div>
+					<div class="sale_text">
+						<div class="title">德意（DE&E）852E智能强排近吸式抽油烟机</div>
+						<div class="text">CXW-150-HJ9868</div>
+						<div class="num">特惠价：￥4280</div>
+						<div class="tx">原价：￥4500</div>
+						<div class="ft_clock">剩余：<span>01</span> 天 <span>08</span> 小时 <span>50</span> 分 <span>57</span> 秒</div>
+					</div>
+				</a>
+			</div>
+			<div class="sale_con clearfix">
+				<a href="/wx_detail.html">
+					<div class="sale_img"><img src="__IMAGES__/list1.png" width="100%"></div>
+					<div class="sale_text">
+						<div class="title">德意（DE&E）852E智能强排近吸式抽油烟机</div>
+						<div class="text">CXW-150-HJ9868</div>
+						<div class="num">特惠价：￥4280</div>
+						<div class="tx">原价：￥4500</div>
+						<div class="ft_clock">剩余：<span>01</span> 天 <span>08</span> 小时 <span>50</span> 分 <span>57</span> 秒</div>
+					</div>
+				</a>
+			</div>
+			<div class="sale_con clearfix">
+				<a href="/wx_detail.html">
+					<div class="sale_img"><img src="__IMAGES__/list1.png" width="100%"></div>
+					<div class="sale_text">
+						<div class="title">德意（DE&E）852E智能强排近吸式抽油烟机</div>
+						<div class="text">CXW-150-HJ9868</div>
+						<div class="num">特惠价：￥4280</div>
+						<div class="tx">原价：￥4500</div>
+						<div class="ft_clock">剩余：<span>01</span> 天 <span>08</span> 小时 <span>50</span> 分 <span>57</span> 秒</div>
+					</div>
+				</a>
+			</div>
+			<div class="sale_con clearfix">
+				<a href="/wx_detail.html">
+					<div class="sale_img"><img src="__IMAGES__/list1.png" width="100%"></div>
+					<div class="sale_text">
+						<div class="title">德意（DE&E）852E智能强排近吸式抽油烟机</div>
+						<div class="text">CXW-150-HJ9868</div>
+						<div class="num">特惠价：￥4280</div>
+						<div class="tx">原价：￥4500</div>
+						<div class="ft_clock">剩余：<span>01</span> 天 <span>08</span> 小时 <span>50</span> 分 <span>57</span> 秒</div>
+					</div>
+				</a>
+			</div>
+			<div class="sale_con clearfix">
+				<a href="/wx_detail.html">
+					<div class="sale_img"><img src="__IMAGES__/list1.png" width="100%"></div>
+					<div class="sale_text">
+						<div class="title">德意（DE&E）852E智能强排近吸式抽油烟机</div>
+						<div class="text">CXW-150-HJ9868</div>
+						<div class="num">特惠价：￥4280</div>
+						<div class="tx">原价：￥4500</div>
+						<div class="ft_clock">剩余：<span>01</span> 天 <span>08</span> 小时 <span>50</span> 分 <span>57</span> 秒</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+var mySwiperNav = new Swiper( '.swiper-container-nav', {
+	autoplay: 4000,
+	slidesPerView: 4,
+	speed: 300,
+	autoplayDisableOnInteraction: false,
+	grabCursor: true,
+	paginationClickable: true
+} )
+$( document ).ready( function()
+{
+
+
+
+
+} )
+
+</script>
+</html>

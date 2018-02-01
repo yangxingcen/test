@@ -1,0 +1,2258 @@
+[ 2018-01-09T08:38:27+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_web_config` [ RunTime:0.0352s ]
+SQL: SELECT * FROM `tb_shop_web_config` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0206s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0176s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0100s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_announ` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tb_announ` WHERE `cate_id` = 4 ORDER BY id desc LIMIT 1   [ RunTime:0.0236s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.042200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.042200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T08:38:33+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0040s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0030s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T08:38:39+08:00 ] 127.0.0.1 /wx_goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`classname`,`pid`,`pic5` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='9' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='10' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='35' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='8' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='19' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='6' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='16' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='5' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='17' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='4' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='18' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='3' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='15' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='2' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='20' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='21' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='22' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='1' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='11' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='12' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='13' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='14' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 181 行.
+NOTIC: [8] Undefined variable: xo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 240 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T08:38:42+08:00 ] 127.0.0.1 /wx_cart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 82 行.
+
+[ 2018-01-09T08:38:42+08:00 ] 127.0.0.1 /Wx/User/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T08:38:45+08:00 ] 127.0.0.1 /wx_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0030s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0040s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T08:38:51+08:00 ] 127.0.0.1 /wx_product.html?cate_pid=6
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`classname`,`pid`,`pic` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0040s ]
+SQL: SELECT g.id,g.goods_name,g.logo_pic,g.goods_des,g.comment_num,g.price,c.classname FROM tb_goods g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_pid  WHERE ( g.is_groom=1 and g.is_del=0 and g.is_sale=1 and cate_pid="6" )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7030c0ea65ed7191b373fb0506269efd.php 第 65 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T15:26:35+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_web_config` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_shop_web_config` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0070s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0060s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_announ` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_announ` WHERE `cate_id` = 4 ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T15:29:01+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0120s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0100s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T15:29:02+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0120s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0120s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0110s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T15:29:02+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0090s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0100s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0080s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T15:32:36+08:00 ] 127.0.0.1 /wx_goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0090s ]
+SQL: SELECT `id`,`classname`,`pid`,`pic5` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='9' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0080s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='10' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='35' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='8' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='19' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='6' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='16' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='5' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='17' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='4' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='18' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='3' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='15' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='2' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='20' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='21' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='22' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='1' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='11' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='12' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='13' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='14' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 181 行.
+NOTIC: [8] Undefined variable: xo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 240 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T15:32:37+08:00 ] 127.0.0.1 /wx_login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T15:33:30+08:00 ] 127.0.0.1 /wx_goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`classname`,`pid`,`pic5` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='9' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='10' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='35' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='8' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='19' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='6' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='16' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='5' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='17' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='4' ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='18' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='3' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='15' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='2' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='20' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='21' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='22' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( status=0 and is_del=0 and pid='1' ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='11' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='12' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='13' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic` FROM `tb_goods` WHERE ( cate_id='14' and is_groom=1 and is_del=0 and is_sale=1 ) LIMIT 3   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 181 行.
+NOTIC: [8] Undefined variable: xo E:\WWW\deyiShop\Runtime\Cache\Wx\7bdac47b9680c3fad2fe685633c09b75.php 第 240 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:08:04+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_web_config` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_shop_web_config` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0080s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0080s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_announ` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_announ` WHERE `cate_id` = 4 ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:08:07+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0110s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0110s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0110s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:08:08+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0090s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0090s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0050s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0020s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:08:09+08:00 ] 127.0.0.1 /wx_login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:08:25+08:00 ] 127.0.0.1 /Wx/User/validate_login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_member` WHERE `telephone` = '17614047663' AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral` [ RunTime:0.0090s ]
+SQL: SELECT `integral` FROM `tb_integral` WHERE ( is_del=0 and status=0 and id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_status` [ RunTime:0.0090s ]
+SQL: SELECT `action` FROM `tb_integral_status` WHERE ( add_time >="2018-01-09 00:00:00" and add_time <="2018-01-10 00:00:00" and user_id="59" and is_del=0 and action=1 ) LIMIT 1   [ RunTime:0.0080s ]
+SQL: UPDATE `tb_member` SET `integral`='9116' WHERE `id` = 59 [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_status` [ RunTime:0.0110s ]
+SQL: INSERT INTO `tb_integral_status` (`action`,`user_id`,`integral`,`integral_befor`,`integral_after`,`s_type`) VALUES ('1','59','10','9106','9116','1') [ RunTime:0.0240s ]
+SQL: UPDATE `tb_member` SET `login_num`='4' WHERE `id` = 59 [ RunTime:0.0010s ]
+
+[ 2018-01-09T20:08:26+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0110s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:09:17+08:00 ] 127.0.0.1 /wx_my_info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:10:47+08:00 ] 127.0.0.1 /wx_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0070s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0070s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:10:48+08:00 ] 127.0.0.1 /wx_activity.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:10:56+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:11:37+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:11:39+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:12:39+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:12:41+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:12:42+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:13:14+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:13:25+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:13:59+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:14:01+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:14:07+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:14:40+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:15:00+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:15:45+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:16:54+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:17:09+08:00 ] 127.0.0.1 /wx_cart.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_cart` WHERE `user_id` = 59 ORDER BY id desc  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: price E:\WWW\deyiShop\Application\Wx\Controller\OrderController.class.php 第 96 行.
+NOTIC: [8] Undefined variable: oprice E:\WWW\deyiShop\Application\Wx\Controller\OrderController.class.php 第 97 行.
+NOTIC: [8] Undefined variable: result E:\WWW\deyiShop\Application\Wx\Controller\OrderController.class.php 第 100 行.
+NOTIC: [8] Undefined variable: num E:\WWW\deyiShop\Application\Wx\Controller\OrderController.class.php 第 106 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:17:12+08:00 ] 127.0.0.1 /wx_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0070s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0070s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:17:40+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:17:52+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:17:56+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:17:56+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:17:57+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:18:00+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:28:35+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:28:39+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:32:23+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:32:24+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:32:30+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0180s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:32:42+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:34:37+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:34:40+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:37:09+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:37:12+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0010s ]
+SQL: SELECT `signday` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:52:17+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:52:21+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `integral`='10' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: integral E:\WWW\deyiShop\Application\Wx\Controller\UcenterController.class.php 第 647 行.
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`source`) VALUES ('9116','10',NULL,'1','1515502341','') [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:52:54+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:52:55+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:52:55+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:52:55+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:52:57+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `integral`='10' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`source`) VALUES ('10','10','10','1','1515502377','') [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:54:30+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:54:42+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:54:43+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:54:47+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=559 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`source`) VALUES ('1618','10','1618','1','1515502487','') [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:55:38+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:55:40+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`source`) VALUES ('1618','10','1628','1','1515502540','') [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:56:40+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:56:40+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:56:42+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`source`) VALUES ('1628','10','1638','1','2018-01-09 20:56:42','') [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:57:12+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:57:12+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:57:14+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`user_id`,`source`) VALUES ('1638','10','1648','1','2018-01-09 20:57:14','59','') [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:57:15+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:57:15+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-09T20:57:16+08:00 ] 127.0.0.1 /wx_ucenter.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_member` WHERE ( id='59' and isdel=0 and status=0 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:57:21+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0220s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`user_id`,`source`) VALUES ('1648','10','1658','1','2018-01-09 20:57:21','59','') [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-09T20:57:30+08:00 ] 127.0.0.1 /Wx/Ucenter/qiandao.html?user_id=59
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_member` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `tb_member` WHERE `id` = 59 AND `status` = 0 AND `isdel` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tb_cart` WHERE `user_id` = 59 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_log` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `tb_sign_log` WHERE ( user_id=59 and date_format(from_unixtime(addtime),'%Y%m%d')=20180108 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `signday`='1' WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_sign_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_sign_config` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `tb_member` SET `integral`=integral+10 WHERE ( id=59 ) [ RunTime:0.0000s ]
+SQL: SELECT `signday`,`integral` FROM `tb_member` WHERE ( id=59 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `tb_sign_log` (`current_integral`,`give_integral`,`total_integral`,`total_day`,`addtime`,`user_id`,`source`) VALUES ('1658','10','1668','1','2018-01-09 20:57:30','59','') [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

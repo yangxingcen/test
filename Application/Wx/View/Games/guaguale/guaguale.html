@@ -1,0 +1,323 @@
+<include file="Public:header_gua"/>
+
+
+<!--外-->
+<script type="text/javascript">
+    var _htmlFontSize = (function () {
+        var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+        if (clientWidth > 640) clientWidth = 640;
+        document.documentElement.style.fontSize = clientWidth * 1 / 16 + "px";
+        return clientWidth * 1 / 16;
+    })();
+</script>
+<link rel="stylesheet" type="text/css" href="__GGLCSS__/base.min.css"/>
+
+
+
+<script type="text/javascript" src="__GGLJS__/jquery.eraser.js"></script>
+<!--外-->
+
+<body >
+
+<div class="header list_header">
+
+
+	德意刮刮乐
+	<a href="javascript:history.go(-1);" class="header_but"><img src="__IMAGES__/l_left.png" width="100%"></a>
+
+</div>
+<!--  / header  -->
+<div class="banner">
+
+
+
+
+
+	<img src="__IMAGES__/banner.png" width="100%">
+
+
+	<div class="banner_txt">
+
+
+
+	</div>
+	<div class="banner_txt">
+
+		<span>您今天还有{$jinri}次机会，{$yr.integral}积分一次</span>
+
+
+	</div>
+
+</div>
+<!--  / header  -->
+
+<div class="warpper">
+
+
+	<div class="box">
+
+		<div class="content">
+			<div id="mask_img_bg" style="font-size: 1rem;color: #ff5b3f"><span class="cont-span"></span>
+
+			</div>
+			<img id="redux" src="__IMAGES__/layer.png"/>
+		</div>
+
+	</div>
+
+
+	<div id="bg1"></div>
+	<div id="show" style="position:absolute;" align="center">
+		<img id="show_img" src="__IMAGES__/dialog_bg.png" width="100%" height="100%">
+		<div style="margin-top:-145px;margin-left:40px;padding-right: 40px;line-height:1.5;color:#000000;font-size: 17px;font-family: '黑体'" >
+			亲，您今天的机会已经用完了~明天再接再励！
+		</div>
+		<img id="show_btn" src="__IMAGES__/btn_sure.png" style="margin-top: 30px;" onclick="hidediv()">
+	</div>
+
+
+
+
+	<div class="agin_o" >
+		<a href=""style="margin-top: 10px"><img src="__IMAGES__/btnn.png" width="100%"> </a>
+	</div>
+	<div class="zhong_list">
+		<h5>中奖名单</h5>
+		<div class="bggg">
+			<img src="__IMAGES__/bggg.png" width="100%">
+		</div>
+		<div class="index_zx_con_lbox">
+
+			<ul class="clearfix">
+				<li>
+
+
+					<foreach name="zhongj_all" item="v">
+					<div class="jfdh_con clearfix">
+
+						<div class="left">{$v.telephone} </div>
+						<div class="center">{$v.person_name}</div>
+						<div class="right">{$v.goods_name}</div>
+
+					</div>
+					</foreach>
+
+				</li>
+
+			</ul>
+
+
+		</div>
+
+	</div><notempty>
+	<div class="prizes">
+
+
+		<h5>我的奖品</h5>
+		<foreach name="zhongj" item="v">
+		<div class="prizes_1 clearfix">
+			<p>恭喜您获得{$v.goods_name} </p>
+		</div>
+		</foreach>
+	</div>
+
+</notempty>
+	<div class="rules">
+		<h5>活动规则</h5>
+
+		<textarea style="width: 100%;min-height: 80px;max-height:180px;resize: none;background-color: #ffe3c2;border-color: #ffe3c2;">{$yr.describe}</textarea>
+
+
+	</div>
+
+</div>
+<div class="hint-show">
+	<img class="hint-img" src="__IMAGES__/hint.png">
+	<img class="colour-img" src="__IMAGES__/colour.png">
+	<!--<img class="prize-img"/>-->
+	<span class="prize-span"></span>
+	<h1 class="prize-span_h1" style="display: none"></h1>
+	<a class="close"></a>
+	<a href="javascript:;" class="btn" id="url_jie"></a>
+	<!--<a class="btn close"></a>-->
+</div>
+
+<div style="display: none" id="name_name"><foreach name="list_datad" item="v" key="i"><switch name="v.type">
+	<case value="1">{$v['param']}元优惠券</case>
+	<case value="2">{$v['param']}积分</case>
+	<case value="3">{$v['yui']['goods_name']|mb_substr=###,0,6,'utf-8'}</case>
+	<case value="4">{$v['param']}</case>
+</switch><if condition="$v['yu'] neq count($list_datad)">,</if>
+</foreach></div>
+
+
+
+<input id="jiang_id" value="" hidden >
+
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/index1.css">
+
+<script>
+
+    $(document).ready(function(){
+
+    })
+</script>
+
+<script>
+    /*******中奖名单**********/
+
+    $( document ).ready( function()
+    {
+        var y1 = $( '.index_zx_con_lbox>ul>li' ).size();
+        var x1 = $( '.index_zx_con_lbox>ul>li' ).height() ;
+        var play = 0;
+        var x = 0;
+        var d = 0;
+
+        function gundong()
+        {
+            if( y1 > 1 )
+            {
+
+                play = setInterval( function()
+                {
+                    if( x > x1 )
+                    {
+                        x = 0;
+                        $( '.index_zx_con_lbox>ul' ).find( 'li:first-child' ).appendTo( $( '.index_zx_con_lbox>ul' ) );
+                        $( '.index_zx_con_lbox>ul' ).css( { marginTop: 0 } );
+                        $( '.index_zx_con_lbox>ul' ).stop( true, true ).animate( { marginTop: -x }, 0, 'linear' );
+                    }
+                    else
+                    {
+                        $( '.index_zx_con_lbox>ul' ).stop( true, true ).animate( { marginTop: -x }, 1, 'linear' );
+                        x++;
+                    }
+                }, 40 );
+            }
+        }
+
+        gundong();
+
+    } )
+
+    /*******中奖名单**********/
+</script>
+
+<script type="text/javascript">
+    var thanks;
+    $(window).load(function () {
+        //动态添加大转盘的奖品与奖品区域背景颜色
+        var html= $("#name_name").html();
+        ss =html.split(",");// 在每个逗号(,)处进行分解。
+
+        var imgarr = ss;
+        var clickNum = 10;
+        if(clickNum>=1){
+
+            $('.clicknum').text(clickNum);
+            $('#redux').eraser({
+
+                size: 50,   //设置橡皮擦大小
+                completeRatio: .7, //设置擦除面积比例
+                completeFunction: showResetButton   //大于擦除面积比例触发函数
+            });
+			/*获取随机数*/
+            $.ajax({
+                type:"POST",
+                url:"/Wx/Games/guaguale_chou.html",
+                data:'id='+1,
+                cache:false,
+                async:false,
+                dataType:"json",
+                beforeSend:function(){
+
+                },
+                success:function(data){
+                    if(data.status=="success"){
+                        var info =data.jiang_id;
+						/*通过判断设置出现概率*/
+                        if(info){
+
+                            arrinfo = imgarr[info];
+                            thanks = true;
+                        }
+                        $("#mask_img_bg>span").text(arrinfo);
+                        $("#jiang_id").val(info);
+
+                        $(" .hint-show .close,.main_box .hint-show .btn").click(function () {
+                            $(".hint-show,.main_box .mask").fadeOut(300);
+                        });
+                    }
+                },
+                error: function(){
+
+                }
+            })
+
+
+
+        }else {
+            alert("123")
+        }
+
+   	 })
+
+    function showResetButton() {
+
+var idd=  $("#jiang_id").val();
+       var d= ajax_into(idd);
+
+    }
+
+    //插入数据库id
+	function ajax_into(jiang_id) {
+
+        $.ajax({
+            type:"POST",
+            url:"/Wx/Games/guaguale_chou.html",
+            data:{
+                id			:2,
+                jiang_id	:jiang_id,
+			},
+            cache:false,
+            async:false,
+            dataType:"json",
+            beforeSend:function(){
+
+            },
+            success:function(data){
+
+               		if(data.status=='success'){
+                        $(".prize-span").text(arrinfo);
+                        if (thanks == true) {
+                            $(".hint-show,.main_box .mask").fadeIn(300)
+                        }
+
+                        if(data.case_status==3){
+                            	$("#url_jie").attr("href","/Wx/Games/infor/id/"+data.id);
+						}
+
+					}
+               		if(data.status=='error_er'){
+                        alert(data.html);
+                        return false;
+					}
+               		if(data.status=='error'){
+
+                          alert(data.html);
+							return false;
+					}
+
+
+            },
+            error: function(){
+
+            }
+        })
+
+    }
+</script>
+</html>

@@ -1,0 +1,177 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">支付设置</div>
+
+		</div>
+
+		<div class="administer">
+			<volist name="info" id="vo">
+				<div class="drawal  drawal_2 clearfix drawal_bord " onclick="up_default(this);" id="{$vo.id}"<eq name="vo['is_default']" value="1"> data-status="2"<else />data-status="1"</eq>>
+
+					<div class="drawal_img">
+						<img src="__IMAGES__/weixin.png" width="100%">
+					</div>
+
+					<div class="drawal_txt">
+						<h5>{$vo.bank_name}</h5>
+						<p>尾号{$vo.wei_num} 储蓄卡</p>
+					</div>
+					<if condition="$vo['is_default'] eq 1">
+						<div class="drawal_s drawal_bgin drawal_ad_bg" onclick="up_default(this);" id="{$vo.id}" data-status="1">
+							<span></span>
+						</div>
+					<else />
+						<div class="drawal_s drawal_bgin">
+							<span></span>
+						</div>
+					</if>
+				</div>
+			</volist>
+
+			<div class="nister">
+				<a href="javascript:volid(0);">添加银行卡 <img src="__IMAGES__/add.png" width="16"></a>
+			</div>
+		</div>
+
+		<div class="  phone_nn phone_number">
+			<div class="integral" style="position: relative;">
+
+				<a href="javascript:history.go(-1)">
+					<div class="screening_btn1">
+						<span></span>
+					</div>
+				</a>
+
+				<div class="tegral">添加银行卡</div>
+
+			</div>
+
+			<div class="binding_card">
+
+				<div class="ding_card clearfix"><span>银行卡号</span> <input type="tel" name="bank_no" maxlength="19" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+
+			</div>
+			<div class="binding_card">
+
+				<div class="ding_card clearfix"><span>手机号    </span> <input type="tel" name="telephone" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+
+			</div>
+			<p class="tongui">同意《服务协议》</p>
+			<div class="next_butt to_account">
+				<a href="javascript:volid(0);">下一步</a>
+			</div>
+		</div>
+		<div class="  phone_nn phone_shou">
+			<div class="integral" style="position: relative;">
+
+				<a href="javascript:history.go(-1)">
+					<div class="screening_btn1">
+						<span></span>
+					</div>
+				</a>
+
+				<div class="tegral">验证手机号</div>
+
+			</div>
+
+			<div class="confirm_y">
+
+				本次操作需要短信确认，请输入 158 03 收到的短信验 证码
+			</div>
+
+			<div class="cation clearfix">
+
+				<div class="cation_le">
+					验证码:
+				</div>
+				<div class="cation_cen">
+
+					<input class="input1" type="text" onFocus="this.value = '';" onBlur="if
+
+(this.value == '') {this.value = '填写验证码';}" value="填写验证码"/>
+				</div>
+				<div class="cation_rig">
+					58秒后重发
+				</div>
+			</div>
+
+			<div class="next_butt next_butt_1 ">
+				<a href="javascript:volid(0);" onclick="add_bank();">验证成功</a>
+				<p>收不到校验码？</p>
+			</div>
+		</div>
+		<div class="refunds_bg"></div>
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/ucenter/user_zhif.js"></script>
+<script>
+$( document ).ready( function()
+{
+
+	$( ".phone_nn" ).height( $( window ).height() )
+	$( ".drawal_2" ).click( function()
+	{
+		var _this = $( this ).find( ".drawal_bgin" );
+
+		if( _this.hasClass( "drawal_ad_bg" ) )
+		{
+			$( ".drawal_bgin" ).removeClass( "drawal_ad_bg" )
+
+		}
+		else
+		{
+
+			$( ".drawal_bgin" ).removeClass( "drawal_ad_bg" )
+			_this.addClass( "drawal_ad_bg" );
+
+		}
+
+	} )
+	$( ".nister" ).click( function()
+	{
+		$( '.refunds_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.phone_number' ).stop( true, true ).animate( { top: "0" }, 500 );
+	} )
+
+	$( ".phone_number .to_account a" ).click( function()
+	{
+		// var telephone = $("input[name='telephone']").val();
+	 //    var bank_no = $("input[name='bank_no']").val();
+	 //    alert(111);
+	 //    if(bank_no == ""){
+	 //        alert("银行卡号不能为空");return false;
+	 //    }
+	 //    if(telephone == ""){
+	 //        alert("手机号不能为空");return false;
+	 //    }
+		$( '.refunds_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.phone_shou' ).stop( true, true ).animate( { top: "0" }, 500 );
+	} )
+
+	$( ".phone_shou .next_butt_1 a" ).click( function()
+	{
+		$( '.refunds_bg' ).stop( true, true ).fadeOut( 300 );
+		$( '.phone_shou' ).stop( true, true ).animate( { top: "100%" }, 500 );
+		$( '.phone_number' ).stop( true, true ).animate( { top: "100%" }, 500 );
+	} )
+
+} )
+
+</script>
+</html>

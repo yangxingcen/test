@@ -1,0 +1,215 @@
+<include file="Public:head"/>
+<style>
+    #albums-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+        z-index: 998
+    }
+</style>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">会员等级<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <div class="clearfix"><a href="javascript:;" class="btn btn-success" onclick="J_Edit(this,'add_vip')">添加等级</a></div>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>等级名称</td>
+                        <td>升级条件</td>
+                        <td>折扣率</td>
+                        <td>状态</td>
+                        <td>添加时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="cache" id="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.vip_name}</td>
+                            <td>{$vo.num}</td>
+                            <td>{$vo.discount}</td>
+                            <td>
+                                <switch name="vo.status">
+                                    <case value="0">正常</case>
+                                    <case value="1">冻结</case>
+                                    <default/>
+                                    未知
+                                </switch>
+                            </td>
+                            <td>{$vo.add_time}</td>
+                            <td>
+                                <p>
+                                    <a href="javascript:;" class="btn btn-warning" data-id='{$vo.id}' data-name='{$vo.vip_name}' data-status='{$vo.status}' data-num='{$vo.num}' data-discount='{$vo.discount}'  onclick="J_Edit(this,'edit_vip')"><i class="gicon-edit white"></i></a>
+                                </p>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <!-- end wxtables -->
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="albums-overlay" class="disshow"></div>
+
+<div class="jbox add_vip addfenlei disshow" style="height:auto;top: 38%;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">修改等级</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="add_vip">
+        <div class="jbox-container" style="height: auto;">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>等级名称：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="vip" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>升级条件：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="num" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>折扣率：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="discount" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>状态：&nbsp;&nbsp;&nbsp;</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="padding-top:0px;">
+                        <label><input type="radio" name="status" value="0" checked>正常</label>
+                        <label><input type="radio" name="status" value="1">冻结</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="type" value="add_vip">
+        <div class="jbox-buttons">
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'add_vip')">确定</a>
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+        </div>
+    </form>
+</div>
+
+
+<div class="jbox edit_vip addfenlei disshow" style="height:auto;top: 38%;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">修改等级</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="edit_vip">
+        <div class="jbox-container" style="height: auto;">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>等级名称：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_vip" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>升级条件：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_num" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>折扣率：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_discount" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>状态：&nbsp;&nbsp;&nbsp;</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="padding-top:0px;">
+                        <label><input type="radio" name="edit_status" value="0" checked>正常</label>
+                        <label><input type="radio" name="edit_status" value="1">冻结</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="type" value="edit_vip">
+        <input type="hidden" name="edit_id" value="">
+        <div class="jbox-buttons">
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_vip')">确定</a>
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function J_Edit(obj,cla) {
+        $('.'+cla).show();
+        $('#albums-overlay').show();
+        if('edit_vip' == cla){
+            $('input[name=edit_id]').val($(obj).attr('data-id'));
+            $('input[name=edit_num]').val($(obj).attr('data-num'));
+            $('input[name=edit_discount]').val($(obj).attr('data-discount'));
+            $(":radio[name='edit_status'][value='" + $(obj).attr('data-status') + "']").prop("checked", "checked");
+            $('input[name=edit_vip]').val($(obj).attr('data-name'));
+        }
+    }
+
+    function J_Confirm(obj,id) {
+        var post =$("#"+id).serialize();
+        $.post('/Admin/Member/do_vip', post, function (res) {
+            if (res.status == 1) {
+                dialog.showTips(res.info, '', 1);
+                return false;
+            } else {
+                dialog.showTips(res.info, 'warn');
+                return false;
+            }
+        }, "json");
+    }
+
+</script>
+<include file="Public:foot"/>

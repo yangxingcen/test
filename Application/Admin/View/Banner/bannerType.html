@@ -1,0 +1,83 @@
+<include file="Public:head"/>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">广告位管理<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="clearfix"><a href="javascript:;" class="btn btn-success fl BtnAddClass">添加广告位</a></div>
+            <table class="wxtables mgt15">
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>广告位名称</td>
+                    <td>状态</td>
+                    <td>排序</td>
+                    <td>添加/编辑时间</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.classname}</td>
+                        <td onclick="J_Change(this)" data-item="status" data-id="{$vo.id}" style="cursor: pointer">
+                            <eq name="vo.status" value="0"><span class="green">启用中</span></eq>
+                            <eq name="vo.status" value="1"><span class="red">已禁用</span></eq>
+                        </td>
+                        <td>{$vo.sorts}</td>
+                        <td>{$vo.add_time}<br/>{$vo.edit_time}</td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-warning" onclick="J_Edit(this)" title="编辑" data-id="{$vo.id}"
+                               data-classname="{$vo.classname}" data-sorts="{$vo.sorts}"><i class="gicon-edit white"></i></a>
+                            <a href="javascript:;" class="btn btn-danger"  onclick="J_Change(this)" data-item="is_del" data-id="{$vo.id}" title="删除"><i class="gicon-trash white"></i></a>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="tables-btmctrl clearfix">
+                <div class="fl">
+                    <div class="pages" style="width:100%;">
+                        {$page}
+                    </div>
+                    <!-- end paginate -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end container -->
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height:auto;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加/编辑广告位</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>广告位名称：</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="classname">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>排序：</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="sorts" value="0" maxlength="4" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="id">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+</div>
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/banner/bannerType.js"></script><!--页面js-->

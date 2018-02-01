@@ -1,0 +1,96 @@
+<div class="header">
+  <div class="header_top">
+    <div class="container clearfix">
+
+      <div class="header_top_ad">
+
+        <ul class="clearfix">
+          <li><a href="##"><i class="fa fa-map-marker"></i>杭州</a></li>
+          <li><a href="/goodslist.html">新品<span>NEW</span></a></li>
+          <li><a href="activity.html">促销<span>SALE</span></a></li>
+          <li><a href="http://deyi1.unohacha.com?telephone={$topInfo.telephone}" target="_blank"><img src="__IMAGES__/head_guan.png" width="100%" class="hea_icon"> 公司官网</a></li>
+          <li class="weixin"><a href="##"><img src="__IMAGES__/head_wei.png" width="100%" class="hea_icon">微信商城</a>
+            <div class="weixin_box">
+              <img src="{$shop_config.wx_shop}" width="100%">
+            </div>
+          </li>
+        </ul>
+
+      </div>
+      <div class="header_top_right">
+
+        <ul class="clearfix">
+          <li>
+            <div class="head_gong">
+              <p><a href="##">
+                <marquee direction=left scrollamount=3 onmouseover="stop()" onmouseout="start()">
+                  {$gundong_gonggao}
+                </marquee>
+              </a></p>
+            </div>
+
+          </li>
+          <empty name="topInfo">
+            <li class="fl fore"> <img src="__IMAGES__/head_pe.png" width="16">
+              <a class="drop-title" href="/login.html">登录</a>
+              <a href="##">/</a>
+              <a class="drop-title" href="/register.html" style="padding-right:10px;">注册</a></li>
+            <else />
+            <li class="fl fore"><a class="drop-title" href="/my_index.html" style="padding-right:10px;">欢迎 <notempty name="topInfo.person_name">{$topInfo['person_name']}<else />{$topInfo['telephone']}</notempty></a></li>
+
+            <li class="fl fore"> <a class="drop-title" href="/login.html"  style="padding-right:10px;">退出登录</a></li>
+
+            <li class="fl fore"> <a class="drop-title" href="/my_orderList.html"  style="padding-right:10px;"><img class="i-user" style="vertical-align: middle;" src="__IMAGES__/i-user.png" width="15">个人中心</a></li>
+          </empty>
+          <li><a href="tencent://message/?uin={$shop_config.servise_qq}&Site=sc.chinaz.com&Menu=yes"><span class="kefu"></span>联系客服</a></li>
+          <li style="padding-right:0;"><a href="/goods_cart.html"><i class="gouwu"></i>购物车<span class="three">{$topInfo['cart_nums']}</span></a></li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="header_center">
+    <div class="container">
+      <div class="header_center_img">
+        <!--<img src="__IMAGES__/h_bg.gif" width="600">-->
+        <div class="header_center_img_con clearfix">
+          <div class="logo"><a href="__HOST__"><img src="{$shop_config.logo}" width="100%"></a></div>
+          <!--<div class="header_center_nav">
+              <span>热门关键词:  </span><a href="##">穹顶</a>|<a href="##">蓝极光</a>|<a href="##">变频</a>
+          </div>-->
+          <div class="input_shu">
+
+            <div class="input_txt">
+              <form action="/goodslist.html" method="get">
+              <input type="text" class="soso" name="keyword">
+
+              <input type="submit" class="dome" value="搜索">
+              </form>
+            </div>
+            <ul>
+              <volist name="tui_goodsCate" id="vo">
+              <li><a href="/goodslist.html?cate={$vo.id}" class="">{$vo.classname}<span>&nbsp</span></a></li>
+             </volist>
+              
+
+            </ul>
+
+          </div>
+
+          <div class="logo_tight">
+
+            <img src="__HOST__{$shop_index_config.pic2}" width="149">
+          </div>
+        </div>
+      </div>
+      <!--<div class="header_center_icon">-->
+      <!--<a href="##"><img src="__IMAGES__/h_s.png" width="24"></a>-->
+      <!--<a href="##"><img src="__IMAGES__/h_g.png" width="24"></a>-->
+      <!--</div>-->
+    </div>
+  </div>
+  <eq name="header_bot" value="1">
+    <include file ="Public:header_bot"/>
+  </eq>
+</div>

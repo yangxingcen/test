@@ -1,0 +1,190 @@
+<include file='Public:header'/>
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+<!--  / user  -->
+
+<div class="user">
+  <div class="container">
+    <div class="row">
+      <include file="Public:ucenterLeft" />
+      <div class="col-sm-10">
+        <notempty name="cache">
+        <div class="user_r_list1">
+          <table>
+            <tr>
+              <th><a href="/my_orderList.html" <empty name="status">class="checkon"</empty>>全部订单</a></th>
+              <th><a href="/my_orderList.html?status=1" <eq name="status" value="1">class="checkon"</eq>>待付款</a></th>
+              <th><a href="/my_orderList.html?status=2" <eq name="status" value="2">class="checkon"</eq>>待发货</a></th>
+              <th><a href="/my_orderList.html?status=3" <eq name="status" value="3">class="checkon"</eq>>待收货</a></th>
+              <th><a href="/my_orderList.html?status=4" <eq name="status" value="4">class="checkon"</eq>>已完成</a></th>
+              <th><a href="/my_orderList.html?status=0" <eq name="status" value="0">class="checkon"</eq>>已取消</a></th>
+              <th><a href="/my_orderList.html?status=6" <eq name="status" value="6">class="checkon"</eq>>退款中</a></th>
+            </tr>
+          </table>
+        </div>
+
+        <div class="user_r">
+          <volist name="cache" id="val">
+
+              <div class="user_r_list">
+              <h5><span>下单时间：{$val.order_time}</span><span>订单号：{$val.order_no}</span></h5>
+              <table>
+                <tr>
+                  <th class="user_r_frist" style="width:38%;">商品</th>
+                  <th style="width:10%;">单价</th>
+                  <th style="width:10%;">数量</th>
+                  <th style="width:10%;">应付</th>
+                  <th style="width:10%;">收货人</th>
+                  <th style="width:10%;">状态</th>
+                  <th style="width:12%;">操作</th>
+                </tr>
+                <volist name="val.data" id="vo" key="key">
+                <tr>
+                  <td class="user_r_frist">
+                    <a class="user_proa" href="<eq name='vo.type' value='3'>/timerDetail.html?id={$vo.goods_id}</eq><eq name='vo.type' value='1'>/detail.html?id={$vo.goods_id}</eq><eq name='vo.type' value='2'>/mealDetail.html?id={$vo.goods_id}</eq>"><img src="{$vo.goods_pic}" width="100px" height="100px"><span>{$vo.goods_name}</span></a>
+                  </td>
+                  <td>¥{$vo.goods_price}</td>
+                  <td>{$vo.goods_nums}</td>
+                  <td>¥{$vo.goods_priceall}</td>
+                  <if condition="($key eq 1)">
+                  <td rowspan="{$val.count}">{$val.consignee}</td>
+                  <td rowspan="{$val.count}">{$val.status}</td>
+                  <td rowspan="{$val.count}">
+                    <!--<eq name="val.order_status" value="1"><a class="fukuan" href="/pays?order_id={$val.id}">付款</a></eq><a href="/my_orderdetail.html?id={$val.id}">查看详情</a><eq name="val.order_status" value="1"><a href="javascript:void(0);" onclick="cancel({$val['id']})">取消订单</a></eq>-->
+                    <!--<if condition = "($nameval['order_status'] eq 2) OR ($nameval['order_status'] eq 3)"><a href="javascript:void(0);" onclick="cancel({$val['id']})">取消订单</a></if>-->
+                    <!--<eq name="val.order_status" value="3"><a class="qrsh" href="/pays?order_id={$val.id}">确认收货</a></eq>-->
+                    <switch name="val['order_status']">
+                      <case value="0">
+                        <a class="fukuan" href="##" onclick="del({$val['id']})">删除订单</a>
+                      </case>
+                      <case value="1">
+                        <a class="fukuan" href="/pays?order_id={$val.id}">付款</a>
+                      </case>
+                      <case value="2">
+                        <a class="fukuan" href="javascript:void(0);" onclick="refund({$val['id']})">申请退款</a>
+                      </case>
+                      <case value="3">
+                        <a class="fukuan" href="javascript:void(0);" onclick="receive({$val['id']})">确认收货</a>
+                        <a class="fukuan" href="javascript:void(0);" onclick="refund({$val['id']})">申请退款</a>
+                      </case>
+                      <case value="4">
+                        <a class="fukuan" href="javascript:void(0);" onclick="del({$val['id']})">删除订单</a>
+                      </case>
+                    </switch>
+
+                    <a href="/my_orderdetail.html?id={$val.id}">查看详情</a>
+
+                    <switch name="val['order_status']">
+                      <case value="1">
+                        <a href="javascript:void(0);" onclick="cancel({$val['id']})">取消订单</a>
+                      </case>
+                    </switch>
+                  </td>
+                  </if>
+                </tr>
+                </volist>
+              </table>
+            </div>
+          </volist>
+        </div>
+        <else />
+          <div class="user_r_list1">
+            <table>
+              <tr>
+                <th><a href="/my_orderList.html" <empty name="status">class="checkon"</empty>>全部订单</a></th>
+                <th><a href="/my_orderList.html?status=1" <eq name="status" value="1">class="checkon"</eq>>待付款</a></th>
+                <th><a href="/my_orderList.html?status=2" <eq name="status" value="2">class="checkon"</eq>>待发货</a></th>
+                <th><a href="/my_orderList.html?status=3" <eq name="status" value="3">class="checkon"</eq>>待收货</a></th>
+                <th><a href="/my_orderList.html?status=4" <eq name="status" value="4">class="checkon"</eq>>已完成</a></th>
+                <th><a href="/my_orderList.html?status=0" <eq name="status" value="0">class="checkon"</eq>>已取消</a></th>
+                <th><a href="/my_orderList.html?status=6" <eq name="status" value="6">class="checkon"</eq>>退款中</a></th>
+              </tr>
+            </table>
+          </div>
+          <div class="user_r_kong">
+            <div class="kong" style="height: 1140px;">
+              <div class="kong_con">
+                <img src="/Public/Shop/Images/order_no.png" width="70">
+                <h5>暂无订单</h5>
+                <a href="/goodslist.html">去逛逛<i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </notempty>
+      </div>
+    </div>
+        
+  </div>      
+</div>
+<include file='Public:footer'/>
+<include file="Public:menu_right"/>
+<script>
+    function cancel(id){
+        if(status == 1){return false;}
+        dialog.showTips("确认取消订单？","firm",function (){
+            status = 1;
+            $.post("{:U('Shop/Order/cancelOrder')}", {id:id}, function (data){
+                if(data.status){
+                    dialog.showTips(data.info, "warn");
+                    window.location.reload();
+                }else{
+                    dialog.showTips(data.info, "warn");
+                }
+                status = 0;
+            },"json");
+        });
+    }
+
+    function refund(id){
+        if(status == 1){return false;}
+        dialog.showTips("确认申请退款？","firm",function (){
+            status = 1;
+            $.post("{:U('Shop/Order/refundOrder')}", {id:id}, function (data){
+                if(data.status){
+                    dialog.showTips(data.info, "warn");
+                    window.location.reload();
+                }else{
+                    dialog.showTips(data.info, "warn");
+                }
+                status = 0;
+            },"json");
+        });
+    }
+
+    /*确认收货*/
+    function receive(id){
+        if(status == 1){return false;}
+        dialog.showTips("确认收货？","firm",function (){
+            status = 1;
+            $.post("{:U('Shop/Order/confirmOrder')}", {id:id}, function (data){
+                if(data.status){
+                    dialog.showTips(data.info, "warn");
+                    window.location.reload();
+                }else{
+                    dialog.showTips(data.info, "warn");
+                }
+                status = 0;
+            },"json");
+        });
+    }
+
+    /*删除*/
+    function del(id){
+        if(status == 1){return false;}
+        dialog.showTips("确认删除？","firm",function (){
+            status = 1;
+            $.post("{:U('Shop/Order/delOrder')}", {id:id}, function (data){
+                if(data.status){
+                    dialog.showTips(data.info, "warn");
+                    window.location.reload();
+                }else{
+                    dialog.showTips(data.info, "warn");
+                }
+                status = 0;
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">活动配置<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="alert alert-info disable-del"> 目前拥有 <span style="font-size:16px;">{$count}</span>个活动。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <div class="tablesWrap">
+                <!-- end tables-searchbox -->
+                <table class="wxtables" style="text-align:center;">
+                    <thead>
+                    <tr>
+                        <td>分类ID</td>
+                        <td>名称</td>
+                        <td>状态</td>
+                        <td>活动时间</td>
+                        <td>更新时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="cache" item="vo">
+                        <tr >
+                            <td>{$vo.id}</td>
+                            <td>{$vo.title}</td>
+                            <td onclick="J_ChangeStatusCom(this)" data-tab="activity_config" data-id='{$vo.id}' data-item="status" data-value="{$vo.status}" style="cursor: pointer">
+                                <eq name="vo.status" value="0"><span class="green">启用中</span></eq>
+                                <eq name="vo.status" value="1"><span class="red">已禁用</span></eq>
+                            </td>
+                            <td>{$vo.start_time}-{$vo.end_time}</td>
+                            <td>{$vo.update_time}</td>
+                            <td>
+                                <a href="{:U('/Admin/Activity/activityConfigInfo/id')}/{$vo.id}" class='btn btn-warning' title="编辑" ><i class="gicon-edit white"></i></a>
+                                <a href="JavaScript:;" class='btn btn-danger'  onclick="J_ChangeStatusCom(this)" data-tab="activity_config" data-id="{$vo.id}" data-item="is_del" data-value="{$vo.status}" title="删除"><i class="gicon-trash white"></i></a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+

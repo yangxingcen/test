@@ -1,0 +1,211 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="timer">
+
+            <span class="sp_icon"></span> <span class="xianshi">严选限时购</span>
+            <span class="shengyu">本场剩余：</span>
+
+            <div class="time xian">
+                <span class="tx" id="t_h1">00</span><span class="dain">:</span><span class="tx" id="t_m1">50</span><span class="dain">:</span><span class="tx" id="t_s1">30</span>
+            </div>
+
+        </div>
+        <div class="polite">
+
+            <div class="container">
+
+                <img src="__HOST__{$time_index_config}" width="100%">
+
+                <div class="session clearfix">
+
+                    <div class="item1">
+                        <div class="item1_date"><span>25日</span><span class="titter">18:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>25日</span><span class="titter">19:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>25日</span><span class="titter">20:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>25日</span><span class="titter">21:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1 red_bg">
+                        <div class="item1_date"><span>25日</span><span class="titter">22:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>25日</span><span class="titter">23:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>26日</span><span class="titter">00:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                    <div class="item1">
+                        <div class="item1_date"><span>26日</span><span class="titter">01:00</span></div>
+                        <div class="start">已开抢</div>
+                    </div>
+                </div>
+
+                <div class="purchase">
+                    <div class="row">
+                        <volist name="info" id="val">
+                            <eq name="val.is_preference" value="0">
+                                <div class="col-sm-6">
+                                    <div class="list_inner list_inner_y clearfix">
+                                        <input type="hidden" id="end_time_{$i+1}" class="end_time" value="{$val.limited_time_end}">
+                                        <a href="/timerDetail?id={$val.id}"><div class="list_img list_img_yy">
+                                                <img src="{$val.logo_pic}" style="text-align:center; margin: 0 auto; display: block;width: 69%">
+                                            <span>促</span>
+                                        </div></a>
+                                        <div class="list_txt list_img_yy2">
+                                            <a href="/timerDetail?id={$val.id}" class="name_a">{$val.goods_name}</a>
+                                            <p>{$val.promotion_label}</p>
+                                            <div class="indexRoot">
+                                                <span class="tx" id="t_h{$i+1}">00</span><span>:</span><span class="tx" id="t_m{$i+1}">00</span><span>:</span><span class="tx" id="t_s{$i+1}">00</span>
+                                            </div>
+                                            <div class="price">
+                                                促销价￥<span class="money_red">{$val.price}</span>
+                                                <span class="yuanjia">原价:</span><i class="money">￥{$val.oprice}</i>
+                                            </div>
+                                            <a href="/timerDetail?id={$val.id}" class=" snap">立即抢购</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </eq>
+                        </volist>
+                    </div>
+                    <div class="page page1 page2  clearfix">
+                        <div class="pages"> {$page}</div>
+                    </div>
+                </div>
+
+                <div class="tabulation">
+                    <div class="line1"></div>
+
+
+
+
+                    <span class="tehui prefer">
+
+							<i class="san1"></i>
+							<i class="san"></i><span class="icon_sapn"></span>特惠列表</span>
+
+                </div>
+
+                <div class="special">
+                    <div class="row">
+                        <volist name="preference" id="vo">
+                        <div class="col-sm-3">
+                            <a href="/timerDetail?id={$vo.id}">
+                                <div class="special_one">
+                                    <div class="special_img">
+                                        <img src="{$vo.logo_pic}" width="100%">
+                                        <img src="__IMAGES__/te2.jpg" width="100%" class="img2">
+                                    </div>
+                                    <div class="special_txt">
+                                        <h5>特惠{$vo.discount}折</h5>
+                                        <h4>{$vo.goods_name}</h4>
+                                        <p>{$vo.buysome}</p>
+                                        <div class="pre_money">￥{$vo.price}<span>原价：<i>{$vo.oprice}</i></span></div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        </volist>
+                        <!--<div class="col-sm-3">-->
+                            <!--<a href="products_inner_xs.html">-->
+                                <!--<div class="special_one">-->
+                                    <!--<div class="special_img">-->
+
+                                        <!--<img src="__IMAGES__/te5.jpg" width="100%">-->
+                                        <!--<img src="__IMAGES__/te6.jpg" width="100%" class="img2">-->
+
+                                    <!--</div>-->
+
+                                    <!--<div class="special_txt">-->
+                                        <!--<h5>特惠7折</h5>-->
+                                        <!--<h4>嵌入式消毒柜</h4>-->
+                                        <!--<p>70℃高温冲洗，3D高温喷淋，轻松洁净，干燥除菌</p>-->
+                                        <!--<div class="pre_money">￥2000<span>原价：<i>3000</i></span></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</a>-->
+
+                        <!--</div>-->
+                        <!--<div class="col-sm-3">-->
+                            <!--<a href="products_inner_xs.html">-->
+                                <!--<div class="special_one">-->
+                                    <!--<div class="special_img">-->
+
+                                        <!--<img src="__IMAGES__/te7.jpg" width="100%">-->
+                                        <!--<img src="__IMAGES__/te8.jpg" width="100%" class="img2">-->
+
+                                    <!--</div>-->
+
+                                    <!--<div class="special_txt">-->
+                                        <!--<h5>特惠7折</h5>-->
+                                        <!--<h4>嵌入式家用灶具</h4>-->
+                                        <!--<p>特种钢化玻璃面板，60°安全断气</p>-->
+                                        <!--<div class="pre_money">￥2000<span>原价：<i>3000</i></span></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</a>-->
+
+                        <!--</div>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+</div>
+
+</body>
+<script language="javascript" src="__JS__/timer.js"></script>
+<script>
+    function GetRTime()
+    {
+        var num = $('.end_time').length;
+        for(var i=2;i<=num+1;i++) {
+            var second = $('#end_time_'+i).val();
+            var EndTime = new Date(second);
+            var NowTime = new Date();
+            var t = EndTime.getTime() - NowTime.getTime();
+            var d = 0;
+            var h = 0;
+            var m = 0;
+            var s = 0;
+            if( t >= 0 )
+            {
+                h = Math.floor( t / 1000 / 60 / 60 );
+                m = Math.floor( t / 1000 / 60 % 60 );
+                s = Math.floor( t / 1000 % 60 );
+            }
+            //document.getElementById("t_d").innerHTML = d + "天";
+
+            document.getElementById( "t_h"+i ).innerHTML = h < 10 ? "0" + h : h;
+            document.getElementById( "t_m"+i ).innerHTML = m < 10 ? "0" + m : m;
+            document.getElementById( "t_s"+i ).innerHTML = s < 10 ? "0" + s : s;
+        }
+    }
+
+    setInterval( GetRTime, 0 );
+</script>
+</html>

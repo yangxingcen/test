@@ -1,0 +1,86 @@
+<include file="Public:header"/>
+
+<body>
+
+
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="/wx_ucenter.html">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">我的积分</div>
+
+			<div class="problem"><img src="__IMAGES__/wen.png" width="100%"></div>
+		</div>
+
+		<div class="gral clearfix">
+
+			<div class="gral_img">
+
+				<img src="{$info.person_img}" width="100%">
+
+			</div>
+			<div class="gral_txt">
+				<h5><span>{$info.integral}</span>积分</h5>
+				<p>今年购物已省218元</p>
+			</div>
+
+			<div class="user_a"><a href="/wx_integral">去使用</a></div>
+		</div>
+
+		<div class="gral_con">
+			<a href="/wx_integral_add.html" class="on">赚取积分</a>
+			<a href="/wx_integral_info.html">积分明细</a>
+		</div>
+
+		<div class="to_use">
+
+			<div class="to_use">
+
+				<div class="user8_2">
+					<ul>
+						
+						<volist name="Integral_list" id="vo">
+							<li class="clearfix">
+								<div class="user8_2a">
+									<img src="__IMAGES__/user8_2a.png" width="30"> {$vo.integral_type}
+								</div>
+								<if condition="$vo['id'] neq 7">
+									<if condition="$vo['status'] neq 1">
+										<div class="user8_2b">
+											+{$vo.integral} 
+											<a href="##">前往</a>
+										</div>
+									<else />
+										<div class="user8_2b">
+											+{$vo.integral} 
+										</div>
+									</if>
+								<else />
+										<div class="user8_2b">
+											+N
+											<a href="##">前往</a>
+										</div>
+								</if> 
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,477 @@
+<include file="Public:header"/>
+<body>
+<!--首页头部广告-->
+<div class="home_sec1">
+    <div class="container"><a href="##"><img src="__HOST__{$shop_index_config.pic1}" width="100%"></a></div>
+    <div class="closer_y">关闭</div>
+</div>
+<include file="Public:top"/>
+<div class="banner">
+    <div class="banner_img" style="background-image:url('__HOST__{$index_banner.pic}');"></div>
+    <div class="warpper">
+        <div class="home_sec2">
+            <div class="container">
+                <div class="index_home">
+                    <div class="index_home1 ">
+                        <div class="titt clearfix">
+                            <h3>{$shop_index_config.title1}</h3><span>{$shop_index_config.title1_1}</span>
+                            <!--<a href="##"><p>更多推荐 &gt;</p></a>-->
+                        </div>
+
+                        <div class="clearfix home_one_fa">
+                            <a href="/timer.html">
+                                <div class="home_one">
+                                    <div class="home_one_imh">
+                                        <img src="__HOST__{$shop_index_config.pic3}" width="100%">
+                                    </div>
+                                    <div class="home_one_txt">
+                                        <h5><img src="__HOST__{$shop_index_config.pic3_1}" width="20">{$shop_index_config.title3_1}</h5>
+                                        <p>{$shop_index_config.title3_2}</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/activity.html">
+                                <div class="home_one">
+                                    <div class="home_one_imh">
+                                        <img src="__HOST__{$shop_index_config.pic4}" width="100%">
+                                    </div>
+                                    <div class="home_one_txt">
+                                        <h5><img src="__HOST__{$shop_index_config.pic4_1}" width="20">{$shop_index_config.title4_1}</h5>
+                                        <p>{$shop_index_config.title4_2}</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/integral.html">
+                                <div class="home_one">
+                                    <div class="home_one_imh">
+                                        <img src="__HOST__{$shop_index_config.pic5}" width="100%">
+                                    </div>
+                                    <div class="home_one_txt">
+                                        <h5><img src="__HOST__{$shop_index_config.pic5_1}" width="20">{$shop_index_config.title5_1}</h5>
+                                        <p>{$shop_index_config.title5_2}</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/meal.html">
+                                <div class="home_one home_one4">
+                                    <div class="home_one_imh">
+                                        <img src="__HOST__{$shop_index_config.pic6}" width="100%">
+                                    </div>
+                                    <div class="home_one_txt">
+                                        <h5><img src="__HOST__{$shop_index_config.pic6_1}" width="20">{$shop_index_config.title6_1}</h5>
+                                        <p>{$shop_index_config.title6_2}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!--
+                                        <div class="home1_line2"></div>
+                                        <div class="reader">
+                                            <a href="##">MORE</a>
+                                        </div>-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="index_on4">
+            <div class="container">
+
+                <div class="titt clearfix">
+
+                    <h3>{$shop_index_config.title7_1}</h3><span>{$shop_index_config.title7_2}</span>
+
+                    <a href="/timer.html"><p>更多特惠 ></p></a>
+                </div>
+
+                <div class="limit clearfix">
+                    <div class="ference_img" style="background-image:url('__HOST__{$shop_index_config.pic7}');">
+                        <div class="ference_img_txt">
+
+                            <div class="screen">
+                                14点场
+                            </div>
+                            <div class="screen_line"></div>
+                            <div class="screenEndTips">距离结束还剩</div>
+
+                            <div class="indexRoot">
+
+                                <span class="tx" id="t_h6">00</span><span>:</span><span class="tx" id="t_m6">00</span><span>:</span><span class="tx" id="t_s6">00</span>
+
+                            </div>
+
+                            <div class="seeMoreBtn">
+
+                                <a href="/timer.html">查看全部</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="ference">
+                        <notempty name="market_list">
+                            <volist name="market_list" id="val_m" key="ii">
+                                <div class="limit_on <if condition='$ii eq 2'>limit_on1<elseif condition='$ii eq 3' />limit_on_bott<elseif condition='$ii eq 4' /> limit_on1  limit_on_bott </if>">
+                                    <div class="ference_img_y">
+                                        <a href="/timerDetail?id={$val_m.id}">
+                                            <div class="pro_box_ls1">
+                                                <div class="pro_b_a1 pro_b_a{$ii+1}" style="display:block;opacity: 1;">
+                                                    <img src="{$val_m.pic1.0}" width="100%">
+                                                </div>
+                                                <div class="pro_b_a1 pro_b_a{$ii+1}">
+                                                    <img src="{$val_m.pic1.1}" width="100%">
+                                                </div>
+                                                <div class="pro_b_a1 pro_b_a{$ii+1}" style="display:none;opacity: 1;">
+                                                    <img src="{$val_m.pic1.2}" width="100%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro_box_tit{$ii+1}">
+                                            <notempty name="val_m.pic1.0"><a class="pro_currt{$ii+1}"><img src="{$val_m.pic1.0}" width="100%"> </a></notempty>
+                                            <notempty name="val_m.pic1.1"><a ><img src="{$val_m.pic1.1}" width="100%"> </a></notempty>
+                                            <notempty name="val_m.pic1.2"><a ><img src="{$val_m.pic1.2}" width="100%"> </a></notempty>
+                                        </div>
+                                    </div>
+                                    <a href="/timerDetail?id={$val_m.id}">
+                                        <div class="ference_txt count_down_{$i}">
+                                            <h5>{$val_m.goods_name}</h5>
+                                            <p class="limit_huo">{$val_m.promotion_label}</p>
+                                            <div class="indexRoot">
+                                                <input type="hidden" id="end_time_{$ii+1}" class="end_time" value="{$val_m.limited_time_end}">
+                                                <span class="tx" id="t_h{$ii+1}">00</span><span class="span_txt">小时</span><span class="tx" id="t_m{$ii+1}">00</span><span class="span_txt">分</span><span class="tx" id="t_s{$ii+1}">00</span>
+                                            </div>
+                                            <div class="">
+                                                <p>特惠价￥<span>{$val_m.price}</span><i class="yuan">原价：<i>￥{$val_m.oprice}</i></i></p>
+                                                <div class="snap">
+                                                    <span>立即抢购</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </volist>
+                        </notempty>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="index_on5">
+            <div class="container">
+
+                <div class="titt clearfix">
+
+                    <h3>{$shop_index_config.title8_1}</h3><span>{$shop_index_config.title8_2}</span>
+
+                    <a href="/mealList.html"><p>更多套餐 ></p></a>
+                </div>
+                <input type="hidden" id="img_url" value="__IMAGES__">
+                <div class="limit clearfix">
+                    <notempty name="set_meal_goods">
+                        <volist name="set_meal_goods" id="val_set">
+                            <div class="limit_on limit_on_5 <eq name='i' value='4'>limit_on1</eq>">
+                                <a href="/mealDetail.html?id={$val_set.id}">
+                                    <div class="in_tao_img"><img src="{$val_set.logo_pic}" width="100%"></div>
+
+                                    <h5>{$val_set.goods_name}</h5>
+
+                                    <p class="limit_huo">{$val_set.goods_des}</p>
+
+                                    <p class="tao_mo">￥<span>{$val_set.price}</span><i class="yuan"><i>￥{$val_set.oprice}</i></i></p>
+                                    <div class="snap">
+                                        <span>立即抢购</span>
+                                    </div>
+                                </a>
+                                <input type="hidden" id="goods_id{$i}" value="{$val_set.id}">
+                                <input type="hidden" id="isactivity" value="2">
+                                <div <notempty name='val_set.coll'>style="background-image: url(__IMAGES__/love2.png);" class="lover collection{$i}" <else/>class="lover collection{$i}"</notempty>></div>
+                            </div>
+                        </volist>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+
+        <div class="home_sec5">
+
+        </div>
+
+        <div class="home_sec6" id="one">
+            <div class="container clearfix">
+
+                <div class="fenlei">
+                    <div class="home_sec6_title">
+
+                    </div>
+                    <div class="clearfix">
+                        <div class="homekk_tit">
+                            <b class="tit_kkimg"> 1</b>
+                            <div>{$shop_index_config.title9_1}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="home_sec_kk_box clearfix">
+                    <div class="home_sec6_left">
+
+                        <div class="home_sec6_left_timg" style="background-image:url('__HOST__{$shop_index_config.pic9}')">
+                        </div>
+                        <div class="home_sec6_left_box clearfix">
+                        </div>
+                    </div>
+                    <input type="hidden" id="shop_img" value="__IMAGES__">
+                    <div class="clearfix home_sec6_right">
+                        <div class="home_right_list">
+                            <ul>
+                                <notempty name="shop_cate">
+                                    <li id="{$shop_cate.0.id}"><a href="/goodslist.html?cate={$shop_cate.0.id}">{$shop_cate.0.classname}</a></li>
+                                    <volist name="shop_cate" id="cate" offset="1">
+                                        <li id="{$cate.id}">|<a href="/goodslist.html?cate={$shop_cate.0.id}">{$cate.classname}</a></li>
+                                    </volist>
+                                </notempty>
+                            </ul>
+                        </div>
+                        <div class="home_right_line clearfix shop">
+                            <volist name="goods_list" id="val_g">
+                                <div class="home_sec6_con <eq name='i%3' value='0'>mr</eq>">
+                                    <a href="/detail.html?id={$val_g.id}">
+                                        <div class="home_sec6_con_img">
+                                            <img src="{$val_g.logo_pic}" width="100%">
+                                            <div class="hot2">
+                                                <hot></hot>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="home_sec6_con_text">
+                                        <h5><a href="/detail.html?id={$val_g.id}">{$val_g.pid_cate_name} {$val_g.cate_name} {$val_g.goods_name}</a>
+                                        </h5>
+                                        <div class="huo"><a href="/detail.html?id={$val_g.id}">{$val_g.goods_des}</a></div>
+                                        <div class="price_kk">
+                                            <h4>￥<span class="x">{$val_g.price}</span><span class="y">￥{$val_g.oprice}</span></h4>
+
+                                            <div class="xiao">
+                                                <a href="javascript:void(0);"><img src="__IMAGES__/gou.png" width="100%" class="addcart"></a>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" class="nums" value="1">
+                                        <input type="hidden" id="user_id" value="{$user_id}">
+
+                                        <div class="chengjiao">
+                                            该款月成交 <span>1000笔</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                    <div class="hot_pro">
+                        <div class="hot_pro_md">
+                            <h5 class="hot_pro_md_tit">热门商品</h5>
+                            <div class="hot_pro_con">
+                                <ul>
+                                    <notempty name="product_sales_desc">
+                                        <volist name="product_sales_desc" id="val1" key="k">
+                                            <li>
+                                                <a href="/detail.html?id={$val1.id}" class="clearfix">
+                                                    <div class="hot_pro_con_img <if condition='$key eq 1'>hot_pro_con_img2</if><if condition='$key eq 2'>hot_pro_con_img3</if> ">
+                                                        <img src="{$val1.logo_pic}" width="100%">
+                                                        <if condition="$k elt 3"><span>{$k}</span></if>
+                                                    </div>
+                                                    <div class="hot_pro_con_text">
+                                                        <p>德意 {$val1.pid_cate_name} {$val1.cate_name}{$val1.goods_name}
+                                                        </p>
+                                                        <span>
+														￥{$val1.price}
+													</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </volist>
+                                    </notempty>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="home_sec7 home_sec7_1 " id="two">
+            <div class="container">
+                <div class="fenlei">
+                    <div class="home_sec6_title">
+
+                    </div>
+                    <div class="clearfix">
+                        <div class="homekk_tit">
+                            <b class="tit_kkimg tit_kkimg2"> 2</b>
+                            <div>{$shop_index_config.title10_1}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="home_sec7_cont clearfix">
+                    <div class="home_sec_kk_box clearfix">
+                        <div class="home_sec6_left">
+                            <a href="integral.html">
+                                <div class="home_sec6_left_timg home_sec6_left_timg_cj" style="background-image:url('__HOST__{$shop_index_config.pic10}')">
+                                    <!--<div class="home_img_bg"></div>
+                                    <div class="home_img_tit">
+                                        <h3><a href="products_inner.html"> 吸油烟机 <i class="fa fa-angle-right"></i> </a></h3>
+                                        <h5>Oil absorption</h5>
+                                    </div>-->
+
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clearfix home_sec6_right">
+                            <div class="home_right_list">
+                                <ul>
+                                    <notempty name="int_shop_cate">
+                                        <li class="shop_cate" id="{$int_shop_cate.0.id}"><a href="./integral.html?cate={$int_cate.id}">{$int_shop_cate.0.name}</a></li>
+                                        <volist name="int_shop_cate" id="int_cate" offset="1">
+                                            <li id="{$int_cate.id}">|<a href="./integral.html?cate={$int_cate.id}">{$int_cate.name}</a></li>
+                                        </volist>
+                                    </notempty>
+                                </ul>
+                            </div>
+                            <div class="home_right_line clearfix int_shop">
+                                <volist name="integral_list" id="val_in">
+                                    <div class="home_sec6_con <eq name='i%3' value='0'>mr</eq>">
+                                        <a href="/integral_del.html?id={$val_in.id}">
+                                            <div class="home_sec6_con_img">
+                                                <img src="{$val_in.logo_pic}" width="100%">
+                                                <div class="hot2">
+                                                    <hot></hot>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="home_sec6_con_text">
+                                            <h5><a href="/integral_del.html?id={$val_in.id}">{$val_in.goods_name}</a>
+                                            </h5>
+                                            <div class="huo"><a href="/integral_del.html?id={$val_in.id}">{$val_in.goods_des}</a></div>
+                                            <div class="price_kk">
+                                                <h4><span class="x">{$val_in.price}</span>积分</h4>
+
+                                                <div class="xiao">
+                                                    <a href="javascript:void(0);"><img src="__IMAGES__/ji.png" width="100%" class="addcart"></a>
+                                                </div>
+                                            </div>
+                                            <div class="chengjiao">
+                                                该款月成交 <span>1000笔</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </volist>
+                            </div>
+                        </div>
+                        <div class="hot_pro">
+                            <div class="hot_pro_md">
+                                <h5 class="hot_pro_md_tit">兑换排行</h5>
+                                <div class="hot_pro_con">
+                                    <ul>
+                                        <notempty name="integral_sales_desc">
+                                            <volist name="integral_sales_desc" id="val2" key="k2">
+                                                <li>
+                                                    <a href="/integral_del.html?id={$val2.id}" class="clearfix">
+                                                        <div class="hot_pro_con_img <if condition='$key eq 1'>hot_pro_con_img2</if><if condition='$key eq 2'>hot_pro_con_img3</if>">
+                                                            <img src="{$val2.logo_pic}" width="100%">
+                                                            <if condition="$k2 elt 3"><span>{$k2}</span></if>
+                                                        </div>
+                                                        <div class="hot_pro_con_text">
+                                                            <p>{$val2.goods_name}
+
+                                                            </p>
+                                                            <span>
+																{$val2.price} 积分
+															</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </volist>
+                                        </notempty>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="in_news">
+            <div class="container">
+                <div class="in_news_con">
+                    <div class="titt clearfix">
+                        <h3>{$shop_index_config.title11_1}</h3><span>{$shop_index_config.title11_2}</span>
+                        <a href="{:U('Shop/Announ/announ')}"><p>了解更多 &gt;</p></a>
+                    </div>
+                    <div class="in_news_big_box">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="in_news_box">
+                                    <div class="in_news_box_img">
+                                        <a href="{:U('Shop/Announ/announ')}"><img src="__HOST__{$shop_index_config.pic11}" width="100%"></a>
+                                    </div>
+                                    <div class="in_news_box_text">
+                                        <h5>专家问询</h5>
+                                        <ul>
+										<foreach item="vo" name="zjwx">
+                                            <li>
+                                                <div class="in_news_box_q"><a href="/announ_inner2.html?id={$vo.id}">Q：{$vo.title}</a></div>
+                                                <div class="in_news_box_a"><a href="/announ_inner2.html?id={$vo.id}">专家建议：{$vo.gai}</a>
+                                                </div>
+                                            </li>
+										</foreach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="in_news_box">
+                                    <div class="in_news_box_img">
+                                        <a href="{:U('Shop/Announ/announ2')}"><img src="__HOST__{$shop_index_config.pic12}" width="100%"></a>
+                                    </div>
+                                    <div class="in_news_box_text2">
+                                        <h5>德意小博士</h5>
+										<ul>
+										<foreach item="vo" name="dyxbs">
+                                        <li style="margin-bottom:12px;"><a href="/announ_inner.html?id={$vo.id}">{$vo.title}</a></li>
+										</foreach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="in_news_box">
+                                    <div class="in_news_box_img">
+                                        <a href="{:U('Shop/Announ/announ3')}"><img src="__HOST__{$shop_index_config.pic13}" width="100%"></a>
+                                    </div>
+                                    <div class="in_news_box_text2">
+                                        <h5>商城公告</h5>
+										<ul>
+										<foreach item="vo" name="scgg">
+                                        <li style="margin-bottom:12px;"><a href="/announ_inner.html?id={$vo.id}">{$vo.title}</a></li>
+										</foreach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <include file="Public:footer"/>
+        <include file="Public:menu_right"/>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="__JS__/index/index.js"></script>
+</html>

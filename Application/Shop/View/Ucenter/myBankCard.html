@@ -1,0 +1,197 @@
+<include file='Public:header'/>
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+<div class="warpper width100" style="padding-bottom:60px; background:#fff;">
+  <div class="user">
+    <div class="container">
+      <div class="row">
+      {/* 导航栏 */}
+      <include file="Public:ucenterLeft" />
+      {/* 导航栏 */}
+        <div class="col-sm-10">
+          <div class="user_right" style="border:none;">
+            <div class="user_r5 ">
+              <div class="user_tit">
+                <p style="color:white;">我的银行卡<a href="##" class="addbank">+添加银行卡</a></p>
+              </div>
+              <notempty name="cache">
+                <table>
+                  <tr>
+                    <th style="width:10%;">银行</th>
+                    <th style="width:20%;">银行卡号</th>
+                    <th style="width:20%;">开户行</th>
+                    <th style="width:10%;">户名</th>
+                    <th style="width:10%;">预留手机号</th>
+                    <th style="width:15%;">操作时间</th>
+                    <th style="width:15%;">操作</th>
+                  </tr>
+
+                    <foreach name="cache" item="v">
+                      <tr>
+                        <td style=" border:0;">{$v['bank_name']}</td>
+                        <td>{$v['bank_no']}</td>
+                        <td>{$v['bank_branch']}</td>
+                        <td>{$v['username']}</td>
+                        <td>{$v['telephone']}</td>
+                        <td>{$v['create_at']|date="Y-m-d",###}</td>
+                        <td><a class="dizhi_bj editbank" href="##" data-id="{$v['id']}" data-bank_no="{$v['bank_no']}" data-bank_branch="{$v['bank_branch']}" data-username="{$v['username']}" data-telephone="{$v['telephone']}" data-bank_name="{$v['bank_name']}">编辑</a><a href="##" class="delbank" data-id="{$v['id']}">删除</a></td>
+                      </tr>
+                    </foreach>
+                  </table>
+                <else />
+                <div class="user_r_kong">
+                  <div class="kong" style="height: 1140px;">
+                    <div class="kong_con">
+                      <img src="/Public/Shop/Images/order_no.png" width="70">
+                      <h5>暂无银行卡信息</h5>
+                    </div>
+                  </div>
+                </div>
+              </notempty>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="dizhi">
+  <div class="dizhi_bg"></div>
+  <div class="dizhi_con"> <img class="cancel" src="__IMAGES__/dizhi_close.png" width="24">
+    <div class="dizhi_list clearfix">
+      <table class="table bank-box">
+        <input type="hidden" class="id">
+        <tr>
+          <td width="30%;" class="p1">银行卡号：</td>
+          <td width="70%;"><input type="text" class="bank_no"></td>
+        </tr>
+        <tr>
+          <td width="30%;" class="p1">银行：</td>
+          <td width="70%;"><input type="text" class="bank_name"></td>
+        </tr>
+        <tr>
+          <td class="p1">开户行：</td>
+          <td><input type="text" class="bank_branch"></td>
+        </tr>
+        <tr>
+          <td class="p1">户名：</td>
+          <td><input type="text" class="username"></td>
+        </tr>
+        <tr>
+          <td class="p1">预留手机号：</td>
+          <td><input type="text" class="telephone"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><div class="dizhi_btn1"> <a href="##" class="dizhi_btn1_on save">确定</a> <a href="##" class="cancel">取消</a> </div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--  / warpper  -->
+
+<div class="jg"></div>
+
+<!--  / footer  -->
+<include file="Public:footer" />
+<include file='Public:menu_right'/>
+<script>
+  $(".addbank,.editbank").click(function (){
+    $('.dizhi').stop(true).fadeIn(1000);
+    setTimeout(function(){
+      $('.dizhi_con').addClass('dizhi_con_on');
+    },300)
+  })
+  $(".cancel").click(function (){
+    $('.dizhi').stop(true).fadeOut(1000);
+    $('.dizhi_con').removeClass('dizhi_con_on');
+  })
+  $(".addbank").click(function (){
+    var id = $(".bank-box .id").val()
+    if(id){
+      $(".bank-box .bank_no").val("")
+      $(".bank-box .bank_name").val("")
+      $(".bank-box .bank_branch").val("")
+      $(".bank-box .username").val("")
+      $(".bank-box .telephone").val("")
+      $(".bank-box .id").val("")
+    }
+  })
+  $(".editbank").click(function (){
+    var id          = $(this).attr('data-id')
+    var bank_no     = $(this).attr('data-bank_no')
+    var bank_name   = $(this).attr('data-bank_name')
+    var bank_branch = $(this).attr('data-bank_branch')
+    var username    = $(this).attr('data-username')
+    var telephone   = $(this).attr('data-telephone')
+    $(".bank-box .bank_no").val(bank_no)
+    $(".bank-box .bank_name").val(bank_name)
+    $(".bank-box .bank_branch").val(bank_branch)
+    $(".bank-box .username").val(username)
+    $(".bank-box .telephone").val(telephone)
+    $(".bank-box .id").val(id)
+  })
+  $(".save").click(function (){
+    var post = {};
+    post.bank_no     = $(".bank-box .bank_no").val()
+    post.bank_name   = $(".bank-box .bank_name").val()
+    post.bank_branch = $(".bank-box .bank_branch").val()
+    post.username    = $(".bank-box .username").val()
+    post.telephone   = $(".bank-box .telephone").val()
+    post.id          = $(".bank-box .id").val()
+    if(!post.bank_no.match(/^(\d{16}|\d{19})$/)){
+      alert("银行卡号格式错误！");return false;
+    }
+    if(!post.bank_name){
+      alert("请填写银行名称！");return false;
+    }
+    if(!post.bank_branch){
+      alert("请填写开户支行名称！");return false;
+    }
+    if(!post.username){
+      alert("请填写户名！");return false;
+    }
+    if(!post.telephone){
+      alert("请填写预留号码！");return false;
+    }
+    if(!post.telephone.match(/^1[356789][0-9]{9}$/)){
+      alert("预留号码格式错误！");return false;
+    }
+
+    $.post("{:U('Ucenter/saveBank')}", post, function (data){
+      if(data.status==1){
+        dialog.showTips(data.info, "firm",function (){
+          window.location.reload();
+        })
+      }else{
+        alert(data.info)
+      }
+    }, "json")
+  })
+  $(".delbank").click(function (){
+    var id = $(this).attr("data-id");
+    var that = $(this)
+    if(!id){
+      alert("无效的操作！");return false;
+    }
+    dialog.showTips("确认删除？", "firm",function (){
+        $.post("{:U('Ucenter/delBank')}",{id:id},function(data){
+          if(data.status == 1){
+            that.parent().parent().fadeOut();
+          }else{
+            alert(data.info)
+          }
+        })
+    })
+  })
+  $('.dizhi_btn1>a.dizhi_btn1_on').click(function(){
+      $('.dizhi').stop(true).fadeOut(1000);
+      $('.dizhi').stop(true).fadeOut(1000);
+      $('.dizhi_con').removeClass('dizhi_con_on');
+  })
+</script>
+<link rel="stylesheet" type="text/css" href="__CSS__/myBankCard.css">
+</body>

@@ -1,0 +1,85 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="container">
+            <div class="about clearfix">
+
+                <h5 class="xinsh">支付/配送</h5>
+
+                <div class="about_left">
+                    <div class="pro_con">
+                        <include file='Public:help_2'/>
+                    </div>
+                </div>
+
+                <div class="about_right">
+
+                    <div class="brand">
+                        <h5>付款方式 <span>发布日期：2015-08-20 00:00</span></h5>
+
+
+                        <div class="help">
+
+                            <div class="help_list">
+                                <h4>网银支付</h4>
+                                <p>本商城提供网银付款方式，请在下单时选择正确的银联卡，感谢支持。</p>
+                            </div>
+
+                            <div class="help_list">
+                                <h4>支付宝支付</h4>
+                                <p>本商城支持支付宝交易付款，接收支付宝的相关交易管理，请放心购买。</p>
+                            </div>
+
+                            <div class="help_list">
+                                <h4>微信支付</h4>
+                                <p>本商城支持微信交易付款，接收微信的相关交易管理，请放心购买。</p>
+                            </div>
+
+                            <div class="help_list">
+                                <h4>付款说明</h4>
+                                <p>请在48小时内完成付款， 超过时间系统将自动取消订单，请您及时付款以免影响收货周期。</p>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+</div>
+
+</body>
+
+<script>
+
+    //	$( ".swiper1" ).height( 600 )
+
+    $( document ).ready( function()
+    {
+
+        var hei = $( ".meal_img" ).width() + 75;
+
+        $( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+    } )
+    $( window ).resize( function()
+    {
+
+        //      $( ".swiper1" ).height( 600 )
+
+    } )
+    $( window ).scroll( function()
+    {
+
+    } )
+
+</script>
+</html>

@@ -1,0 +1,213 @@
+	<include file="Public:header"/>
+	<script type="text/javascript" src="__JS__/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="__JS__/iscroll.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CSS__/common1.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/catalog.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="__CSS__/seacher.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/index1.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css">
+	<script type="text/javascript" src="__JS__/index.js"></script>
+
+	<script type="text/javascript" src="__JS__/jquery.lazyload.min.js"></script>
+	<script type="text/javascript">
+	var myScroll, myScrollri;
+	var $ulLeft;
+	var cataId = 0;
+
+	function pullUpAction()
+	{
+		setTimeout( function()
+		{
+			myScrollri.refresh();
+		}, 500 );
+	}
+
+	function init_left_li()
+	{
+		var total_hei = $ulLeft.height();//总高度
+		var li_height = $ulLeft.find( "li" ).height();//单个li高度
+		var li_num = $ulLeft.find( "li" ).length;//个数
+		console.log( $ulLeft.find( ".off" ).offset().top );
+	}
+	/**
+	 * 初始化iScroll控件
+	 */
+	function loaded()
+	{
+		$ulLeft = $( "#con_left" );
+		myScroll = new IScroll( "#con_left", {
+			mouseWheel: true,
+			click: true,
+			preventDefault: false,
+			preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/ }
+		} )
+		myScrollri = new IScroll( "#con_right", {
+			mouseWheel: true, click: true
+		} )
+		myScrollri.on( "scrollStart", function()
+		{
+			pullUpAction();
+		} );
+		myScrollri.on( "scroll", function()
+		{
+			pullUpAction();
+		} );
+		myScrollri.on( "scrollEnd", function()
+		{
+			$( '.fr_ite_' + cataId ).find( "img" ).lazyload( {
+				threshold: 200
+			} ).on( 'load', function()
+			{
+				pullUpAction();
+			} );
+		} );
+		$( '.job_sub li' ).eq( 0 ).click();
+	}
+	//初始化绑定iScroll控件
+	document.addEventListener( 'touchmove', function( e )
+	{
+		e.preventDefault();
+	}, false );
+	document.addEventListener( 'DOMContentLoaded', loaded, false );
+
+	/* 切换内容*/
+	$( function()
+	{
+		$( '.job_sub li' ).click( function()
+		{
+			$( this ).addClass( 'off' ).siblings().removeClass( 'off' );
+			var str = "#con_left li:nth-child(" + ($( this ).index() + 1) + ")";
+			setTimeout( function()
+			{
+				myScroll.scrollToElement( document.querySelector( str ) );
+			}, 300 );
+			cataId = $( this ).attr( "data-cataId" );
+			$( '.fr_ite_' + $( this ).attr( "data-cataId" ) ).removeClass( 'disp' ).siblings().addClass( 'disp' );
+			/* $('.fr_ite_'+$(this).attr("data-cataId")).find("img").lazyload({effect: "fadeIn"}); */
+			pullUpAction();
+			myScrollri.scrollTo( 0, 0, 100, IScroll.utils.ease.elastic );
+			/* myScrollri = new IScroll("#con_right",{
+			 mouseWheel: true, click: true
+			 }) */
+		} );
+		$( ".fr_ite ul" ).each( function()
+		{
+			if( $( this ).find( "li" ).length == 1 )
+			{
+				$( this ).addClass( "left_num1" );
+			}
+			else
+				if( $( this ).find( "li" ).length == 2 )
+				{
+					$( this ).addClass( "left_num2" );
+				}
+		} )
+		$( ".img_lazy" ).lazyload( { effect: "fadeIn" } );
+	} );
+
+
+	setInterval( "myInterval()", 1000 );//1000为1秒钟
+	function myInterval()
+	{
+		$( "body" ).height( $( window ).height() );
+	}
+
+	</script>
+</head>
+<body>
+
+		<include file="Public:foot"/>
+
+	<div class="new_wap_con" style="max-width:100%;">
+		<div class="integral">
+
+				<div class="screening_btn1">
+					<a href="javascript:history.go(-1)">
+					<span></span>
+					</a>
+				</div>
+
+			<div class="tegral">商品分类</div>
+			<a href="search.html"><input type="button" class="in_one2 in_one3"></a>
+		</div>
+		<div class="l_left" id="con_left">
+			<!--标题-->
+			<ul class="job_sub" id="scroller1">
+				<volist name="goods_type" id="vo">
+					<if condition="$i eq 1 ">
+						<li class="off" data-cataid="{$vo.id}"><a href="javascript:void(0)">{$vo.classname}</a></li>
+					<else />
+						<li data-cataid="{$vo.id}" class=""><a href="javascript:void(0)">{$vo.classname}</a></li>
+					</if>
+				</volist>		
+			</ul>
+		</div>
+		<div class="l_right" id="con_right">
+			<div class="rightBox" id="scroller" >
+				<!-- 二级  -->
+				<volist name="goods_type" id="vo">
+					<if condition="$i eq 1 ">
+						<div class="fr_ite   fr_ite_{$vo.id}" data-cataid="{$vo.id}">
+							<a href="javascript:void(0)">
+								<img class="img1 img_lazy" src="{$vo.pic5}">
+							</a>
+							<!-- 二级数据显示 -->
+							<volist name="vo.son_type" id="zo">
+								<div class="sub_ites">
+									<span>{$zo.classname}</span>
+									<a href="/wx_product.html?cate_id={$zo.id}">全部商品</a>
+								</div>
+							<!-- 三级显示 -->
+								<ul>
+									<volist name="zo.goods" id="xo">
+										<li>
+											<a href="wx_detail.html?id={$xo.id}">
+												<img class="img_lazy"  src="{$xo.logo_pic}"><br>
+												<span>{$xo.goods_name}</span>
+											</a>
+										</li>
+									</volist>
+								</ul>
+							</volist>
+							<a class="all_cata" href="/wx_product.html?cate_pid={$xo.id}">
+									<span>浏览全部产品</span>
+							</a>
+						</div>
+					<else />
+						<div class="fr_ite   fr_ite_{$vo.id} disp" data-cataid="{$vo.id}">
+							<a href="javascript:void(0)">
+								<img class="img1 img_lazy" src="{$vo.pic5}">
+							</a>
+							<!-- 二级数据显示 -->
+							<volist name="vo.son_type" id="zo">
+								<div class="sub_ites">
+									<span>{$zo.classname}</span>
+									<a href="/wx_product.html?cate_id={$zo.id}">全部商品</a>
+								</div>
+							<!-- 三级显示 -->
+								<ul>
+									<volist name="zo.goods" id="xo">
+										<li>
+											<a href="/wx_detail.html?id={$xo.id}">
+												<img class="img_lazy"  src="{$xo.logo_pic}"><br>
+												<span>{$xo.goods_name}</span>
+											</a>
+										</li>
+									</volist>
+								</ul>
+							</volist>
+							<a class="all_cata" href="/wx_product.html?cate_pid={$xo.id}">
+									<span>浏览全部产品</span>
+							</a>
+						</div>
+					</if>
+				</volist>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

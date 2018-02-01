@@ -1,0 +1,306 @@
+<include file="Public:head"/>
+
+
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">商品搭配<a href="javascript:history.go(-1);" style="float:right" class="btn" title="返回"><i class="gicon-chevron-left"></i></a></h1>
+            <a href="javascript:;" class="btn btn-success" title="发布" onclick="J_Add(this,1)"><i class="gicon-plus white"></i></a>
+            <form action="{:U('/Admin/Goodsmarket/spikeGoods')}" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="产品名称" class="input" name="name" value="{$name}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{$id}">
+                    <button class="btn btn-primary" style="line-height:26px;" title="查询"><i class="gicon-search white"></i></button>
+                </div>
+            </form>
+            <!-- end tabs -->
+            <div class="tabs clearfix mgt10">
+                <a href="{:U('/Admin/goods/match/',array('class'=>1,'id'=>$goods_id))}"
+                   class="<eq name="status" value="1">active</eq> tabs_a fl">类似风格({$count1|default='0'})</a>
+                <a href="{:U('/Admin/goods/match/',array('class'=>2,'id'=>$goods_id))}"
+                   class="<eq name="status" value="2">active</eq> tabs_a fl">推荐同等价位({$count2|default='0'})</a>
+                <a href="{:U('/Admin/goods/match/',array('class'=>3,'id'=>$goods_id))}"
+                   class="<eq name="status" value="3">active</eq> tabs_a fl">推荐同类热销品({$count3|default='0'})</a>
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品标题</td>
+                    <td>价格(元)</td>
+                    <td>库存<br/>销量</td>
+                    <!--<td>开始时间<br/>结束时间</td>-->
+                    <!--<td>上架</td>-->
+                    <!--<td>回收站</td>-->
+                    <td>排序</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td><input type="checkbox" class="checkbox table-ckbs" value="{$vo['mh_id']}"></td>
+                        <td>{$vo.mh_id}</td>
+                        <td align="left"><div class="table-item-img" style="float: left"><img src="{$vo['logo_pic']}" alt=""></div><div>{$vo.goods_name}</div></td>
+                        <td>￥{$vo.price}元</td>
+                        <td>{$vo.stock}<br/>{$vo.sales}</td>
+
+
+                        <td width="100px">
+
+                            <input  type="text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onblur="changeTableVal('goods_match','mh_id',{$vo['mh_id']},'sorts',this)" size="4" value="{$vo.sorts}"  style="width: 45px;border-radius: 4px;">
+
+                        <td>
+                            <a href="javascript:;" class="btn btn-danger " onclick="Y_del_match(this)"  data-item="is_del" data-id="{$vo.mh_id}"  data-dan="dan" title="删除"><i class="gicon-trash white"></i></a>
+
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+            <div class="tables-btmctrl clearfix">
+                <div style="margin:4px 0px;">
+                    <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                    <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                    <a href="javascript:;" class="btn btn-danger " onclick="Y_del_match(this)"  data-item="is_del" data-value="0"  title="删除"><i class="gicon-trash white"></i></a>
+                </div>
+                <div>
+                    <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+
+            <!-- end content-right -->
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+<!--检索普通商品S-->
+<div id="albums-overlay" style="display: none;"></div>
+<div class="jbox addfenlei select-goods disshow" style="height: auto;margin-top:-280px;width: 700px;left: 40%">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">请选择商品</div>
+        <a href="javascript:void(0);" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <div class="formitems">
+                <label class="fi-name" style="width: 100px"><span class="colorRed"></span>搭配类型：</label>
+                <div class="form-controls" style="margin-left:0px;float: left">
+                    <select name='status' class="select" id="select_status">
+                        <option value="">请选择</option>
+                        <option value="1">推荐类似风格</option>
+                        <option value="2">推荐同等价位</option>
+                        <option value="3">推荐同类热销</option>
+                    </select>
+                    <span class="fi-help-text"></span>
+                </div>
+
+                <label class="fi-name" style="width: 80px"><span class="colorRed"></span>商品类型：</label>
+                <div class="form-controls" style="margin-left:0px;float: left;display: inline" >
+                    <select name='goods_type' class="select" id="select_goods_type">
+                        <option value="">普通商品</option>
+                        <option value="1">活动商品</option>
+                    </select>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name" style="width: 100px"><span class="colorRed"></span>商品名称：</label>
+                <div class="form-controls" style="margin-left:0px;float: left">
+                    <input type="text" class="input xxlarge" name="keyword" placeholder="请输入搜索的商品名称" style="width: 425px">
+                </div>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_SelectGood(this)">确定</a>
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品名称</td>
+                    <td>价格(元)</td>
+                </tr>
+                </thead>
+                <tbody class="goods_list"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="type" id="type" value="">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm_Select(this)">确定添加</a>
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="__JS__/Goodsmarket/goodsmarket_com.js"></script>
+<script type="text/javascript" src="__JS__/Goodsmarket/spikegoods.js"></script>
+<link type="text/css" rel="stylesheet" href="__JEDATE__/jeDate-test.css">
+<link type="text/css" rel="stylesheet" href="__JEDATE__/skin/jedate.css">
+<script type="text/javascript" src="__JEDATE__/jquery.jedate.js"></script>
+<script>
+    $("#limited_time").jeDate({
+        format: "YYYY-MM-DD hh:mm:ss",
+        range:" To "
+    });
+
+    function J_Add(obj,num){
+        $('input[name=isactivity]').val(num);
+        $('#albums-overlay').show();
+        $('.select-goods').show();
+    }
+
+
+    /*营销活动搜索商品 确定选择 1*/
+
+    $("#select_goods_type").change(function(){
+        var goods_type=$("#select_goods_type  option:selected").val();
+        $("#type").val(goods_type);
+    });
+    function J_Confirm_Select(obj){
+        console.log(11);
+
+        var status = $('#select_status').val();
+        if(!status){
+            dialog.showTips('请选择搭配类型','warn');return false;
+        }
+        var post     = {};
+        post.goods_id = "{$goods_id}";
+        post.status = status;
+        post.type =  $("#type").val();
+
+        var goods_ids= '';
+        $("input[type=checkbox]:checked").each(function(){
+            var id =$(this).val()?$(this).val():"";
+            goods_ids +=','+id;
+        });
+        if(!goods_ids){
+            dialog.showTips('请选择操作对象1','warn');return false;
+        }
+        post.goods_ids  = goods_ids;
+        $(".loader" ).fadeIn("fast");
+        console.log(post);
+        $.post("/Admin/Goods/do_match", post, function (res) {
+            $(".loader" ).fadeOut("fast");
+            if (res.status == 1) {
+                dialog.showTips(res.info,'',1);
+                return false;
+            }
+            dialog.showTips(res.info,'warn');
+            return false;
+        }, "json")
+
+    }
+
+    function J_SelectGood(obj){
+        var post ={};
+        post.keyword = $(obj).prev().find('input').val();
+        post.goods_type =  $('#select_goods_type').val();
+
+        if(!post.keyword){
+            dialog.showTips('请输入搜索的商品标题');
+        }
+
+        $(".loader" ).fadeIn("fast");
+        $.post("/Admin/Goods/goods_match_select", post, function (result) {
+
+            $(".loader" ).fadeOut("fast");
+            if (result.status == 1) {
+                $(".goods_list").empty().append(result.data);
+                return false;
+            }
+            dialog.showTips(result.info,'warn');
+            return false;
+        }, "json")
+    }
+/*
+删除商品搭配  单个
+ */
+    function Y_del_match(obj){
+        var dan=$(obj).attr("data-dan");
+        if(dan=='dan'){
+        var id=$(obj).attr("data-id");
+        }else{
+        var id='';
+            $("input[type=checkbox]:checked").each(function(){
+                var goods_ids =$(this).val()?$(this).val():"";
+                id +=','+goods_ids;
+            });
+        }
+
+
+        dialog.showTips("确定要进行操作吗?", "firm", function () {
+
+
+                $.ajax({
+                    url: "{:U('/Admin/Goods/del_match')}",
+                    type:'post',
+                    data : 'id='+id ,
+                    success : function(data){
+                        if(data.status==1){
+                            dialog.showTips(data.info, "",1);
+                        }else{
+                            dialog.showTips(data.info, "warn");
+                        }
+                    }
+                });
+
+        })
+
+
+    }
+
+    /*
+     删除商品搭配  全选
+     */
+    function Y_del_match_all(obj){
+
+        var id=$(obj).attr("data-id");
+
+
+        dialog.showTips("确定要进行操作吗?", "firm", function () {
+
+
+            $.ajax({
+                url: "{:U('/Admin/Goods/del_match')}",
+                type:'post',
+                data : 'id='+id ,
+                success : function(data){
+                    if(data.status==1){
+                        dialog.showTips(data.info, "",1);
+                    }else{
+                        dialog.showTips(data.info, "warn");
+                    }
+                }
+            });
+
+        })
+
+
+    }
+
+
+    /*更新排序 */
+
+    function changeTableVal(table,id_name,id_value,field,obj)
+    {
+
+            var value = $(obj).val();
+
+
+        $.ajax({
+            url:"/index.php?m=Admin&c=Goods&a=match_order&table="+table+"&id_name="+id_name+"&id_value="+id_value+"&field="+field+'&value='+value,
+            success: function(data){
+                if(!$(obj).hasClass('no') && !$(obj).hasClass('yes'))
+
+
+                dialog.showTips("更新成功", "",1);
+            }
+        });
+    }
+</script>

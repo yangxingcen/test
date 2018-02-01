@@ -1,0 +1,48 @@
+<include file="Public:head"/>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">管理员日志<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="账号" class="input" name="account" value="{:I('get.account')}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{:I('get.id')}">
+                    <button class="btn btn-primary" style="line-height:28px;"><i class="gicon-search white"></i>查询</button>
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>账号</td>
+                        <td style="width: 60%;text-align: center">事件</td>
+                        <td >时间</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="cache" id="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.account}</td>
+                            <td>{$vo.content}</td>
+                            <td>{$vo.add_time}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:foot"/>

@@ -1,0 +1,41 @@
+<include file="Public:head"/>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl" style="min-height: 650px;">
+            <h1 class="content-right-title">会员概述</h1>
+            <div class="zh_infor_box">
+                <div class="zh_infor_left">
+
+                </div>
+                <div class="clear"></div>
+            </div>
+            <table class="wxtables data mgt15">
+
+                <thead>
+                <tr>
+                    <td colspan="10" class="left" style="font-size:14px;">会员概述</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><div class="dataItems">总会员数</div></td>
+                    <td><div class="dataItems">今日新增会员</div></td>
+                    <td><div class="dataItems">昨日新增会员</div></td>
+                    <td><div class="dataItems">过去七天新增会员</div></td>
+
+                </tr>
+                <tr>
+                    <td><span class="num1">{$cache['count']}</span></td>
+                    <td><span class="num1">{$cache['count1']}</span></td>
+                    <td><span class="num1">{$cache['count2']}</span></td>
+                    <td><span class="num1">{$cache['count3']}</span></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+

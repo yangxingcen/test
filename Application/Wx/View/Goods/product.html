@@ -1,0 +1,328 @@
+<include file="Public:header"/>
+
+<body>
+
+	<include file="Public:foot"/>
+
+	<!--  / warpper  -->
+	<div class="warpper">
+
+		<div class="screening clearfix">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="serach">
+				<input type="text" class="in_one" onFocus="this.value = '';" onBlur="if(this.value == '') {this.value = '油烟机';}" value="油烟机">
+
+				<input type="button" class="in_one2">
+			</div>
+
+			<div class="pro_share1" style="    top: 13px;">
+
+				<div class="pro_share_rig">
+
+					<span></span>
+
+					<div class="message"><ul class="message_ul">
+						<include file="Public:left"/>
+					</ul>
+						<div class="triangle">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="fication">
+			<div class="toggle">
+				<div class="swiper-container swiper_fen">
+					<div class="swiper-wrapper">
+						<volist name="goods_type" id="vo">
+							<div class="swiper-slide">
+								<div class="ggle_txt <eq name='cate_pid' value='$vo.id'> bord_li</eq>"><a href="/wx_product.html?cate_pid={$vo.id}" <eq name='cate_pid' value='$vo["id"]'> class="bord_li"</eq>>{$vo.classname}</a></div>
+							</div>
+						</volist>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="fication_im">
+				<span></span>
+			</div>
+
+		</div>
+
+		<div class="wap_tanc">
+			<div class="pro_list_bg"></div>
+
+			<div class="pro_list">
+
+				<div class="all_fen">
+					<h5>全部分类</h5>
+					<span></span>
+				</div>
+
+				<div class="pro_list_fen">
+					<div class="row">
+						<volist name="goods_type" id="vo">
+							<div class="col-xs-4">
+								<div class="pro_list_img">
+
+									<img src="{$vo.pic}" width="100%">
+									<p>{$vo.classname}</p>
+								</div>
+							</div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="screen clearfix">
+
+			<div class="screen_on screen_on_y">
+
+				<div class="thesise">综合<span class="sapn"></span></div>
+
+				<ul>
+					<li>综合排序<img style="display:block;" src="__IMAGES__//show_xb.png" width="20"></li>
+					<li>上市时间<img src="__IMAGES__//show_xb.png" width="20"></li>
+					<li>价格最高<img src="__IMAGES__//show_xb.png" width="20"></li>
+					<li>价格最低<img src="__IMAGES__//show_xb.png" width="20"></li>
+				</ul>
+			</div>
+			<div class="screen_on">
+				<div class="thesise thesise2">销量<span class="sapn"></span></div>
+			</div>
+			<div class="screen_on">
+
+				<div class="thesise thesise3">价格<span class="sapn"></span></div>
+			</div>
+			<div class="screen_on screen_on4">
+				<div class="thesise thesise4">筛选<span class="sapn1"></span></div>
+			</div>
+
+		</div>
+		<div class="pro_lest">
+			<div class="row clm5">
+				<volist name="goods" id="vo">
+					<a href="product_inner.html">
+						<div class="col-xs-6 clp6">
+							<div class="list_one">
+								<div class="list_img">
+									<img src="{$vo.logo_pic}" width="100%">
+								</div>
+
+								<div class="list_txt">
+									<h5>{$vo.classname}{$vo.goods_name}</h5>
+									<div class="labelling"><span>{$vo.goods_des}</span></div>
+									<p class="piece">￥ <span>2600</span> <i class="install">分期免息</i></p>
+									<div class="high_pj ">{$vo.comment_num}条评价</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</volist>
+			</div>
+		</div>
+
+		<div class="screening_bg"></div>
+		<div class="screen_sai">
+
+			<div class="screen_sai1">
+				<h5>折扣</h5>
+				<div class="discount discount_yy1">
+
+					<a href="##">包邮</a>
+					<a href="##">蚂蚁花呗</a>
+					<a href="##">货到付款</a>
+					<a href="##">7天内退货</a>
+					<a href="##">货到付款</a>
+					<a href="##">7天内退货</a>
+				</div>
+
+			</div>
+			<div class="screen_sai1">
+				<h5>系列</h5>
+				<div class="discount discount_yy2">
+
+					<a href="##">铭典系列</a>
+					<a href="##">铭典系列</a>
+
+				</div>
+
+			</div>
+			<div class="screen_sai1">
+				<h5>型号</h5>
+				<div class="discount discount_yy2">
+
+					<a href="##">KWS2503</a>
+					<a href="##">KWS2503</a>
+
+				</div>
+
+			</div>
+			<div class="screen_sai1">
+				<h5>颜色</h5>
+				<div class="discount discount_yy2">
+
+					<a href="##">黑色</a>
+					<a href="##">灰色</a>
+
+				</div>
+
+			</div>
+			<div class="screen_sai1">
+				<h5>价格区间（元）</h5>
+				<div class="discount1 clearfix">
+
+					<div class="count1_left">
+						<input class="input1" type="text" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '最低价';}" value="最低价"/>
+					</div>
+					<div class="count1_center">
+						-
+					</div>
+					<div class="count1_right">
+						<input class="input1" type="text" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '最高价';}" value="最高价"/>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="resetting clearfix">
+				<a href="##">重置</a>
+				<a href="##" style="background: #ff5806">完成</a>
+			</div>
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+
+$( document ).ready( function()
+{
+
+	var mySwiper = new Swiper( '.swiper_fen', {
+		slidesPerView: 4,
+
+		spaceBetween: 0,
+		paginationClickable: true,
+	} )
+
+	$( '.screen_on .thesise ' ).click( function()
+	{
+		var _this=$(this ).parents(".screen_on")
+
+		if( _this.hasClass( 'products_pxon' ) )
+		{
+			_this.removeClass( 'products_pxon' );
+			if(_this.hasClass("screen_on_y")){
+				$( '.screen_on_y ul' ).stop( true ).slideUp( 300 );
+			}
+		}
+		else
+		{
+			_this.addClass( 'products_pxon' );
+			$( '.screen_on_y ul' ).stop( true ).slideUp( 300 );
+			if(_this.hasClass("screen_on_y")){
+				$( '.screen_on_y ul' ).stop( true ).slideDown( 300 );
+			}
+		}
+	} )
+
+	$( '.screen_on_y ul li' ).click( function()
+	{
+		$( '.screen_on_y ul li' ).find( 'img' ).fadeOut( 0 );
+		$( this ).find( 'img' ).fadeIn( 0 );
+
+		$( this ).parents(".screen_on").removeClass( 'products_pxon' );
+
+		$( this ).parents("ul").stop( true ).slideUp( 300 );
+
+	} )
+
+	$( '.fication_im' ).click( function()
+	{
+		$( '.wap_tanc' ).stop( true ).fadeIn( 600 );
+		$( '.pro_list' ).stop( true ).fadeIn( 600 );
+	} )
+
+	$( ".all_fen" ).click( function()
+	{
+		$( '.wap_tanc' ).stop( true ).fadeOut( 600 );
+		$( '.pro_list' ).stop( true ).fadeOut( 600 );
+
+	} )
+
+	$( ".ggle_txt a" ).click( function()
+	{
+
+		$( ".ggle_txt a" ).removeClass();
+		$( this ).addClass( "bord_li" );
+
+	} )
+
+	$( ".screen_sai" ).height( $( window ).height() )
+
+	$( ".discount_yy1 a" ).click( function()
+	{
+
+		if( $( this ).hasClass( "disco_sp" ) )
+		{
+			//			$( ".discount a" ).removeClass( "disco_sp" )
+		}
+		else
+		{
+
+			$( this ).addClass( "disco_sp" )
+		}
+
+	} )
+
+
+	$( ".discount_yy2 a" ).click( function()
+	{
+
+		if( $( this ).hasClass( "disco_sp" ) )
+		{
+			//			$( ".discount a" ).removeClass( "disco_sp" )
+		}
+		else
+		{
+			$( ".discount_yy2 a" ).removeClass( "disco_sp" )
+			$( this ).addClass( "disco_sp" )
+		}
+
+	} )
+
+	$( ".thesise4" ).click( function()
+	{
+
+		$( '.screening_bg' ).stop( true, true ).fadeIn( 300 );
+		$( '.screen_sai' ).stop( true, true ).animate( { right: "0" }, 500 );
+		$( 'body' ).addClass( 'body_on' );
+
+	} )
+
+	$( ".resetting a " ).click( function()
+	{
+		$( '.screening_bg' ).stop( true, true ).fadeOut( 300 );
+		$( '.screen_sai' ).stop( true, true ).animate( { right: "-85%" }, 500 );
+
+	} )
+
+} )
+
+</script>
+</html>

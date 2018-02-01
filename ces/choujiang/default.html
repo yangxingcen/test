@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html style="font-size: 40px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="layoutmode" content="standard">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="renderer" content="webkit">
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Pragma" content="no-cache">
+    <script type="text/javascript">
+        var _htmlFontSize = (function () {
+            var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+            if (clientWidth > 640) clientWidth = 640;
+            document.documentElement.style.fontSize = clientWidth * 1 / 16 + "px";
+            return clientWidth * 1 / 16;
+        })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/base.min.css"/>
+
+</head>
+
+<body class="main_box" style="background-color: #eee">
+<div class="box">
+
+    <div class="content">
+        <div id="mask_img_bg"><span class="cont-span"></span>
+
+        </div>
+        <img id="redux" src="picture/layer.png"/>
+    </div>
+
+</div>
+<div class="hint-show">
+    <img class="hint-img" src="picture/hint.png">
+    <img class="colour-img" src="picture/colour.png">
+    <!--<img class="prize-img"/>-->
+    <span class="prize-span"></span>
+    <a class="close"></a>
+    <a class="btn"></a>
+</div>
+
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.eraser.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+
+        var imgarr = ["特等奖", "一等奖", "二等奖", "三等奖", "四等奖", "五等奖", "谢谢参与"];
+        var clickNum = 10;
+        if(clickNum>=1){
+            $('.clicknum').text(clickNum);
+            $('#redux').eraser({
+                size: 50,   //设置橡皮擦大小
+                completeRatio: .6, //设置擦除面积比例
+                completeFunction: showResetButton   //大于擦除面积比例触发函数
+            });
+            /*获取随机数*/
+            var info =2;
+            var thanks;
+            console.log(info)
+            /*通过判断设置出现概率*/
+            if(info){
+
+                arrinfo = imgarr[0];
+                thanks = true;
+               }
+            $("#mask_img_bg>span").text(arrinfo);
+            function showResetButton() {
+
+                $(".prize-span").text(arrinfo);
+                if (thanks == true) {
+                    $(".main_box .hint-show,.main_box .mask").fadeIn(300)
+                }
+            }
+            $(".main_box .mask,.main_box .hint-show .close,.main_box .hint-show .btn").click(function () {
+                $(".main_box .hint-show,.main_box .mask").fadeOut(300);
+            });
+        }else {
+            alert("123")
+        }
+
+    })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">配置详情</h1>
+            <form id="web_config_form">
+                <div class="panel-single panel-single-light mgt20">
+                    <h3 class="cst_h3 mgb20">基本信息</h3>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>首页头部公告：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="fl mgr10">
+                                <img src="{$cache['pic1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic1" value="{$cache['pic1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽1600高160）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>首页搜索栏右侧广告位：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="fl mgr10">
+                                <img src="{$cache['pic2']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic2" value="{$cache['pic2']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽150高60）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title1}" name="title1">
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题1—1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title1_1}" name="title1_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片3：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic3']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic3" value="{$cache['pic3']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽340高220）</span>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片3-1：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic3_1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic3_1" value="{$cache['pic3_1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽200高200）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题3-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title3_1}" name="title3_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题3-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title3_2}" name="title3_2">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片4：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic4']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic4" value="{$cache['pic4']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽340高220）</span>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片4-1：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic4_1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic4_1" value="{$cache['pic4_1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽200高200）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题4-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title4_1}" name="title4_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题4-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title4_2}" name="title4_2">
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片5：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic5']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic5" value="{$cache['pic5']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽340高220）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片5-1：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic5_1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic5_1" value="{$cache['pic5_1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽200高200）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题5-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title5_1}" name="title5_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题5-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title5_2}" name="title5_2">
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片6：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic6']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic6" value="{$cache['pic6']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽340高220）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片6-1：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic6_1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic6_1" value="{$cache['pic6_1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽200高200）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题6-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title6_1}" name="title6_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题6-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title6_2}" name="title6_2">
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片7：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic7']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic7" value="{$cache['pic7']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽350高780）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题7-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title7_1}" name="title7_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题7-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title7_2}" name="title7_2">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题8-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title8_1}" name="title8_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题8-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title8_2}" name="title8_2">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片9：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic9']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic9" value="{$cache['pic9']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽350高780）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题9-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title9_1}" name="title9_1">
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片10：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic10']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic10" value="{$cache['pic10']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽350高780）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题10-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title10_1}" name="title10_1">
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题11-1：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title11_1}" name="title11_1">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>标题11-2：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title11_2}" name="title11_2">
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片11：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic11']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic11" value="{$cache['pic11']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽800高500）</span>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片12：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic12']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic12" value="{$cache['pic12']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽800高500）</span>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>图片13：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic13']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="pic13" value="{$cache['pic13']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽800高500）</span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>上次更新时间：</label>
+                        <div class="form-controls">{$cache.update_time}</div>
+                    </div>
+                    <div class="panel-single panel-single-light mgt20 txtCenter">
+                        <button type="button" class="btn btn-primary" onclick="J_Confirm(this)">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="__JS__/Index/shopindexConfig.js"></script><!--页面js-->
+<include file="Public:foot"/>

@@ -1,0 +1,111 @@
+<include file="Public:header"/>
+<body style="min-width:1024px">
+<include file='Public:top'/>
+
+<div class="login_wap">
+    <div class="container clearfix">
+        <div class="login_con login_con3">
+            <h5>密码找回</h5>
+                <form action="" id="form">
+                    <div class="login_cons">
+                        <input type="text" class="telephone" placeholder="手机号" maxlength="11" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span><img src="__IMAGES__/zhuc_phone.png" width="20"></span>
+                    </div>
+                    <div class="login_cons">
+                        <input class="yzm" id="vcodes" type="text" placeholder="请输入验证码" maxlength="6" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span><img src="__IMAGES__/zhuc_yzm.png" width="20"></span>
+                        <img  style="width: 84px;height: 40px; position: absolute;right: 0;top: 0;margin-top: 4px;" width="100%" height="100%" id="vcode"  alt="验证码" src="{:U('/Shop/User/verify_c',array())}" title="点击刷新">
+                    </div>
+                    <div class="login_cons">
+                        <input class="yzm" class="code" id="code" type="text" placeholder="验证码" maxlength="6" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span><img src="__IMAGES__/zhuc_yzm.png" width="20"></span>
+                        <a href="javascript:;" class="getCode" onclick="get_yzm(this);">获取验证码</a>
+                    </div>
+
+                    <div class="login_cons">
+                        <input type="password" placeholder="设置新密码(6-20位字母或数字)" class="password" maxlength="20">
+                        <span><img src="__IMAGES__/login_mima.png" width="20"></span>
+                        <input type="submit" style="display: none;">
+                    </div>
+                    <div class="login_cons">
+                        <input type="password" placeholder="重复新密码(6-20位字母或数字)" class="repassword" maxlength="20">
+                        <span><img src="__IMAGES__/login_mima.png" width="20"></span>
+                        <input type="submit" style="display: none;">
+                    </div>
+
+                    <div class="foget clearfix">
+                        <p><a href="{:U('Shop/User/login')}">又想起来啦？</a></p>
+                    </div>
+                    <input type="hidden" id="url" value="{:U('Shop/User/findPass')}">
+                </form>
+
+            <a href="" class="tijiao" id="reg"> 提交</a>
+
+        </div>
+    </div>
+</div>
+<include file="Public:footer"/>
+<include file="Public:menu_right"/>
+<script language="javascript" src="__JS__/forgetPass.js"></script>
+<script>
+    var captcha_img = $('#vcode')
+    var verifyimg = captcha_img.attr("src");
+    captcha_img.attr('title', '点击刷新');
+    captcha_img.click(function () {
+        $(this).attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+    });
+    var wait = 60;
+    function get_yzm(obj){
+        var post = {};
+        _this = $(obj);
+        post.telephone=$('.telephone').val();
+        post.vcode = $('#vcodes').val();
+        post.type = 2;
+        if (!post.telephone) {
+            dialog.showTips("请填写手机号！", "warn");
+            return false;
+        }
+        if (!post.vcode) {
+            dialog.showTips("请输入短信验证码！", "warn");
+            return false;
+        }
+        $.ajax({
+            url:"{:U('Shop/User/validate')}",
+            type:'post',
+            data:{'data':post},
+            dataType:'json',
+            cache:false,
+            success:function(res){
+                if(res.status == 1){
+                    dialog.showTips(res.msg, "warn");
+                    time(_this);
+                }else{
+                    var captcha_img = $('#vcode')
+                    var verifyimg = captcha_img.attr("src");
+                    captcha_img.attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+                    dialog.showTips(res.msg, "warn");
+                }
+            }
+        })
+    }
+    function time(obj) {
+        // console.log(wait);
+        // console.log(obj);
+        if (wait == 0) {
+            obj.attr("onclick","get_yzm(this)");
+            obj.html("重新获取");
+            wait = 60;
+        } else {
+            obj.removeAttr('onclick');
+            obj.html("重新发送(" + wait + ")");
+            wait--;
+            setTimeout(function () {
+                time(obj)
+            }, 1000);
+        }
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<include file='Public:header'/>
+<body style="min-width:1024px">
+<include file='Public:top'/>
+
+<!--  / shopcar  -->
+<div class="shopcar">
+    <div class="container">
+        <div class="pro_inner_t">
+            <a href="index.html"><h5>首页</h5></a><i class="fa fa-angle-right"></i>
+            <p>购物车</p>
+        </div>
+        <div class="shopcar_con">
+            <table style="margin-bottom:20px;">
+                <tr class="shopcar_1">
+                    <th class="shopcar_frist" style="width:40%;">
+                        <input type="checkbox" class="j_checkbox j_checkbox_on"><span>全选</span> <b>商品名称</b>
+                    </th>
+                    <th style="width:15%;">单价</th>
+                    <th style="width:15%;">数量</th>
+                    <th style="width:15%;">小计(元)</th>
+                    <th style="width:15%;">操作</th>
+                </tr>
+            </table>
+            <table style="border:1px solid #e8e8e8;">
+                <volist name="data" id="val">
+                    <tr>
+                    <td style="width:40%;" class="shopcar_sec">
+                        <a href="<eq name='val.type' value='3'>/timerDetail?id={$val.goods_id}</eq><eq name='val.type' value='1'>/detail?id={$val.goods_id}</eq><eq name='val.type' value='2'>/mealDetail?id={$val.goods_id}</eq>">
+                            <input type="checkbox" class="j_checkbox j_checkbox_on strid" value="{$val.id}"><img src="{$val.goodsinfo.logo_pic}" width="100"><span>{$val.goodsinfo.goods_name}<br/>{$val.sku_name}</span>
+                        </a>
+                    </td>
+                    <td style="width:15%;">¥{$val.goodsinfo.price}</td>
+                    <td style="width:15%;">
+                        <div class="shopcar_nums">
+                            <!--<span class="pro_jian">-</span>-->
+                            <span class="pro_num" style="border-right:1px solid #e8e8e8; width:60px; color:#6C6C6C;">{$val.num}</span>
+                            <!--<span class="pro_jia">+</span>-->
+                        </div>
+                    </td>
+                    <td style="width:15%;">¥{$val.allprice}</td>
+                    <td style="width:15%;"><span class="shopcar_close" data-id="{$val.id}"><img src="__IMAGES__/shop_cloae.png" width="24"></span></td>
+                </tr>
+                </volist>
+            </table>
+
+            <div class="shopcar_btn clearfix">
+                <a class="shopcar_btn1" href="/goodslist.html">继续购物</a>
+                <a class="shopcar_btn2 .delall" id="delall" href="javascript:void(0);">清空购物车</a>
+                <a class="shopcar_btn2" href="/goods_cart.html">刷新购物车</a>
+            </div>
+
+            <div class="shopcar_zj">
+                <p><input type="checkbox" class="j_checkbox j_checkbox_on">已选择<span>{$num|default="0"}</span>件商品</p>
+                <div class="sjf">
+                    <h5>您可获得积分{$integal|default="0"}分</h5>
+                </div>
+                <div class="shopcar_zjs">
+                    <p>商品合计：¥{$price|default="0"}</p>
+                    <!--<p>优惠：¥0</p>-->
+                    <div class="shopcar_zjs_btn">
+                        <p>商品数量: <span>{$num|default="0"}</span>个 &nbsp; &nbsp; &nbsp; 付款金额：<b>{$price|default="0"}</b>元</p>
+                        <a href="javascript:;" id="nowbuy">去购买</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<form id="buy" action="{:U('Order/buy')}" target="_blank" method="post">
+    <input type="hidden" name="cart_ids">
+</form>
+<!--  / shopcar  -->
+
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+</body>
+<script>
+    /*删除购物车中一个商品*/
+    $(".shopcar_close").click(function (){
+        var that = $(this);
+        var id   = that.attr("data-id");
+        dialog.showTips('是否删除？','firm',function (){
+            $.ajax({
+                url:"/Order/delCart/",
+                type:'post',
+                data:{id:id},
+                datatyp:'json'
+            }).done(function(g){
+                if(g.status==1){
+                    that.parent().parent().remove();
+                    $('.wap_tanc').stop(true).fadeOut(600);
+                    $('.wap_tanc_con').stop(true).fadeOut(600);
+                }
+            })
+        });
+    })
+
+    // 去下单
+    // $('#tijiao').click(function(){
+    //     if($('.shop_goods .j_checkbox_on').length==0){
+    //         dialog.showTips('请选择要购买的商品','warn');
+    //         //alert('请选择要购买的商品');
+    //         return false;
+    //     }
+    //     var str='-';
+    //     $(".shop_goods .j_checkbox_on").each(function(){
+    //         str = str + $(this).val() + '-';
+    //     });
+    //     $("#buy input").val(str);
+    //     $("body").css('overflow',"hidden");
+    //     $('.index_show').stop(true).fadeIn(1000)
+    //     $("#buy").submit();
+    // })
+    $('#nowbuy').click(function(){
+    <empty name="data">
+            dialog.showTips('购物车内暂无商品','warn');
+        return false;
+    </empty>
+        if($('.shopcar_sec .j_checkbox_on').length==0){
+            dialog.showTips('请选择要购买的商品','warn');
+            //alert('请选择要购买的商品');
+            return false;
+        }
+
+        var str='-';
+        $(".shopcar_sec .strid").each(function(){
+            str = str + $(this).val() + '-';
+        });
+        $("#buy input").val(str);
+        $("body").css('overflow',"hidden");
+        $('.index_show').stop(true).fadeIn(1000)
+        $("#buy").submit();
+    })
+
+    // 清空购物车
+    $("#delall").click(function (){
+        dialog.showTips('是否清空购物车？','firm', function (){
+            $.ajax({
+                url:"{:U('Order/clearCart')}",
+                type:'post',
+                datatyp:'json'
+            }).done(function(g){
+                if(g.status == 1){
+                    window.location.reload();
+                }
+            })
+        })
+    })
+
+
+</script>
+
+</html>

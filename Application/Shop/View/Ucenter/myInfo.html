@@ -1,0 +1,75 @@
+<include file='Public:header'/>
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+<script src="__PUBLIC__/Admin/lhgcalendar/lhgcore.min.js"></script>
+<script src="__PUBLIC__/Admin/lhgcalendar/lhgcalendar.min.js"></script>
+
+<div class="user">
+    <div class="container">
+        <div class="row">
+            <include file="Public:ucenterLeft" />
+            <div class="col-sm-10">
+                <div class="user_r6" style="margin: 20px 0">
+                    <div class="user_r6a">
+                        <p style="margin-bottom:25px;">您好<span>{$userinfo[person_name]}</span>，欢迎进入会员中心 &nbsp;&nbsp;&nbsp;&nbsp;
+                        </p> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <!--<span class="qiand qxdd">签到</span>(每日签到获得10积分) </p>-->
+                        <p>您目前是：<span><notempty name="grade.vip_name">[{$grade['vip_name']}]<else />[普通会员]</notempty></span> &nbsp;&nbsp;&nbsp;&nbsp; </p>
+                        <p>账户总积分：<span style="font-size:16px; font-weight:600;">{$userinfo['integral']}</span>分
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('Shop/Ucenter/conversionRecord.html')}">查看积分记录</a> (下单金额累积到10000元可成为白金高级会员，可享受2倍积分并享更高折扣价)
+                        </p>
+                    </div>
+                    <div class="user8_con2">
+                        <p><span>用户名：</span><input type="text" value="{$userinfo[telephone]}" readonly></p>
+                        <p><span>姓名：</span><input type="text" value="{$userinfo[realname]}" name='realname'></p>
+                        <p><span>昵称：</span><input type="text" value="{$userinfo[person_name]}" name='person_name'></p>
+                        <p><span>性别：</span><input class="gc-radio" type="radio" name="sex" id="sex"
+                                                  value="1" <?php if($userinfo['sex']==1){ echo "checked='checked'";}?>
+                            >&nbsp;先生
+                            <input class="gc-radio" type="radio" name="sex" id="sex"
+                                   value="2" <?php if($userinfo['sex']==2){ echo "checked='checked'";}?> >&nbsp;女士
+                        </p>
+
+                        <p><span>生日：</span><input type="text" id='birth' value="{$userinfo['birth']}" readonly></p>
+                        <p><span>邮箱：</span><input type="text" name='email' value="{$userinfo['email']}"></p>
+                        <p><span>QQ：</span><input type="text" name='QQ' value="{$userinfo['qq']}"></p>
+                        <p><span>微信：</span><input type="text" name='wx_number' value="{$userinfo['wx_number']}" ></p>
+                        <p><span>微博：</span><input type="text" name='weibo' value="{$userinfo['weibo']}" ></p>
+                        <p><span>手机号码：</span><input type="text" value="{$userinfo['telephone']}" name='telephone' ></p>
+                        <p><span>身份证号码：</span><input type="text" value="{$userinfo['idcard']}" name='IDcard' placeholder="身份证号最后一位是X，请大写！"></p>
+
+                        <p>
+                            <span>联系地址：</span><input style="width:70%;" type="text" value="{$userinfo['address']}" name="address"  placeholder="用于官网给会员不定期寄送礼品，务必填写准确哦！">
+                        </p>
+
+                        <p><span>绑定微信号：</span><img src="__IMAGES__/weixin_erweima.jpg" width="120"><b class="saomiao">扫描二维码绑定微信号</b>
+                        </p>
+                        <div class="user_r6_line"></div>
+                        <input type="hidden" id="url" value="/my_editinfo.html">
+                        <a href="##" id='save'>保存</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--  / user  -->
+
+<div class="wap_tanc">
+    <div class="wap_tanc_bg"></div>
+    <div class="wap_tanc_con wap_tanc_con1">
+        <p>×</p>
+        <h5><img src="__IMAGES__/qdcg.png" width="80"> <p>签到成功</br>恭喜您获得<span>10</span>积分</p></h5>
+        <a href="user10.html">查看我的积分</a>
+    </div>
+</div>
+
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+<script language="javascript" src="__JS__/myInfo.js"></script>
+</body>
+
+</html>

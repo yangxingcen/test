@@ -1,0 +1,78 @@
+<include file="Public:head"/>
+<style>
+    .access-padding {
+        padding: 3px;
+    }
+    .access-padding div {
+        float: left;
+        margin-right: 5px;
+    }
+    .access-padding a:hover {
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">权限分配————[{$per_name}]<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+
+            <div class="alert alert-info disable-del">建议将[首页]——[后台主页]——[主页]——[主页]勾选，避免出现用户无法登入后台的现象。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <form action="" method="post">
+                <div class="clearfix"><a href="javascript:;" class="btn btn-success fl check-all">全选</a>
+                <input type="button" class="btn btn-primary"  style="float: right" onclick="J_Submit(this)"  data-id="{$id}" value="保存">
+                </div>
+            </form>
+
+            <table class="wxtables">
+                <tbody>
+                <foreach name="cache" item="v1">
+                    <tr>
+                        <td class="access-padding level-1" style="background-color: #58A0D3;"> [头部导航]
+                            <input type="checkbox" value="{$v1.id}"  data-pid="{$v1.pid}" data-pid2="{$v1.pid2}" data-pid3="{$v1.pid3}" class="checkbox table-ckbs" data-id="{$v1.id}" <if condition="in_array($v1['id'],$node_arr)">checked</if> data-name="">
+                            <b>{$v1.classname} </b>
+                        </td>
+                    </tr>
+                    <foreach name="v1['nodes']" item="v2">
+                        <tr>
+                            <td class="access-padding  level-2" style="background-color:#D9D9D9;">&nbsp;&nbsp;[左侧标签]
+                                <input type="checkbox" value="{$v2.id}" data-pid="{$v2.pid}" data-pid2="{$v2.pid2}" data-pid3="{$v2.pid3}" class="checkbox table-ckbs" data-id="{$v2.id}" <if condition="in_array($v2['id'],$node_arr)">checked</if> data-name="">
+                                {$v2.classname}
+                            </td>
+                        </tr>
+                        <foreach name="v2['nodes']" item="v3" key="k">
+                            <tr>
+                                <td class="access-padding  level-3">&nbsp;&nbsp;&nbsp;&nbsp;[左侧导航]
+                                    <input type="checkbox" value="{$v3.id}" data-pid="{$v3.pid}" data-pid2="{$v3.pid2}" data-pid3="{$v3.pid3}" class="checkbox table-ckbs" data-id="{$v3.id}" <if condition="in_array($v3['id'],$node_arr)">checked</if> data-name="">
+                                    <b>{$v3.classname}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="access-padding  level-4">
+                                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[内容节点]</div>
+                                    <volist name="v3['nodes']" id="v4">
+                                    <div>
+                                        <input type="checkbox" value="{$v4['id']}" data-pid="{$v4['pid']}" data-pid2="{$v4['pid2']}" data-pid3="{$v4['pid3']}" class="checkbox table-ckbs" data-id="{$v4['id']}" data-name="" <if condition="in_array($v4['id'],$node_arr)">checked</if> >
+                                        {$v4['classname']}
+                                    </div>
+                                    </volist>
+                                </td>
+                            </tr>
+                        </foreach>
+                    </foreach>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="panel-single panel-single-light mgt20 txtCenter">
+                <a href="javascript:;" class="btn" onclick="history.back()">返回</a>
+                <input type="button" class="btn btn-primary"  onclick="J_Submit(this)" data-id="{$id}" value="保存">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end container -->
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/System/roleSet.js"></script><!--页面js-->

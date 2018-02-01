@@ -1,0 +1,202 @@
+<div class="header_bot">
+    <div class="container">
+        <div class="header_bot_nav">
+            <ul class="clearfix">
+                <li class="nav_ti">
+                    <a href="##">全部分类</a>
+                    <span class="menu_mm">
+                        <i class=""></i>
+                                <i class=""></i>
+                                <i class=""></i>
+                        </span>
+                    <eq name="category" value="1">
+                        <div class="banner_nav banner_nav2">
+                        <div class="div_lo">
+                            <div class="erji_nav">
+                                <div class="erji_nav_bg"></div>
+                                <ul class=" clearfix"><!--class="clear"-->
+                                    <volist  name="cateList" id = "vo">
+                                        <notempty name="vo.classname">
+                                            <li>
+                                                <div class="erji_li">
+                                                    <h5>
+                                                        <a href="goodslist.html?cate={$vo.id}"><span><img class="erji_img1" src="{$vo.pic}" width="25"><img class="erji_img2" src="{$vo.pic}" width="25"></span>{$vo.classname}</a>
+                                                    </h5>
+                                                    <span style="display: none;"><i class="fa fa-caret-left"></i></span>
+                                                </div>
+                                                <div class="snaji_nav" style="display: none;">
+                                                    <ul class="clearfix">
+                                                       <volist name="vo.sub" id="val">
+                                                            <a href="goodslist.html?cate={$val.id}">
+                                                                <li>{$val.classname}</li>
+                                                            </a>
+                                                       </volist>
+                                                    </ul>
+                                                    <div class="snaji_nav_img">
+                                                        <div class="row clm1 snaji_nav_mar">
+                                                            <volist name="vo.product" id="val1" key="key1">
+                                                                <neq name="key1%2" value="0">
+                                                                    <div class="col-sm-6 clp1">
+                                                                        <a href="/detail?id={$val1.id}">
+                                                                            <div class="sec1_list ">
+                                                                                <div class="tx2_box">
+                                                                                    <img src="{$val1.logo_pic}" width="100%">
+                                                                                </div>
+                                                                                <h5>{$val1.goods_name}</h5>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </neq>
+                                                            </volist>
+                                                            <volist name="vo.product" id="val2" key="key2">
+                                                                <eq name="key2%2" value="0">
+                                                                    <div class="col-sm-6 clp1">
+                                                                        <a href="/detail?id={$val2.id}">
+                                                                            <div class="sec1_list">
+                                                                                <div class="tx2_box">
+                                                                                    <img src="{$val2.logo_pic}" width="100%">
+                                                                                </div>
+                                                                                <h5>{$val2.goods_name}</h5>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </eq>
+                                                            </volist>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </notempty>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </eq>
+                </li>
+                <li class="logo"><a href="__HOST__"><img src="__IMAGES__/logo.png" width="180"></a></li>
+                <li class="hd_nav"><a href="__HOST__">首页</a></li>
+                <li class="hd_nav hd_nav_o" data-id="0"><a href="/goodslist.html">产品中心</a></li>
+                <li class="hd_nav"><a href="/timer.html">限时特惠</a></li>
+                <li class="hd_nav"><a href="/activity.html">活动促销</a></li>
+                <li class="hd_nav"><a href="/integral.html">积分兑换</a></li>
+                <li class="hd_nav"><a href="/mealList">套餐活动</a></li>
+                <li class="hd_nav hd_nav_o" data-id="1"><a href="{:U('Shop/Service/index')}">门店服务</a></li>
+                <li class="hd_nav hd_nav_o" data-id="2"><a href="{:U('Shop/About/index')}">关于我们</a></li>
+            </ul>
+            <div class="serach">
+                <div class="serach_input">
+
+                    <input class="input1" type="text" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '请输入关键词';}" value="请输入关键词"/>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="header_nav">
+        <div class="container" style="">
+            <div class="header_nav_cont_pro header_nav_cont">
+                <div class="container">
+                    <div class="row">
+                        <foreach name="cateList" item="val">
+                            <div class="header_nav_con">
+                            <div class="title">
+                                <a href="goodslist.html?cate={$val.id}">
+                                    <div class="head_pro_icon">
+                                        <img src="{$val.pic_s}" width="100%">
+                                    </div>
+                                    <div class="head_pro_icon_text">
+                                        {$val.classname}
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header_nav_cont">
+                <div class="container">
+                    <div class="row ">
+
+                        <div class="col-sm-3 peidong">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/serv1.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/Service/index')}">配送方式</a></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/serv2.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/Service/index')}">安装流程</a></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/serv3.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/Service/index')}">售后服务</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="header_nav_cont">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/abb1.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/About/index#about_1')}">关于我们</a></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/abb2.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/About/index#about_2')}">服务流程</a></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/abb3.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/About/index#about_2')}">在线帮助</a></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="header_nav_con header_nav_yy">
+
+                                <div class="loser">
+                                    <img src="__IMAGES__/abb4.jpg" width="100%">
+                                </div>
+                                <div class="title title11"><a href="{:U('Shop/About/index#about_3')}">常见问题</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

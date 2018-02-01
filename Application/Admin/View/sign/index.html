@@ -1,0 +1,64 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">积分配置列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="alert alert-info disable-del"> 目前拥有 <span style="font-size:16px;">{$count}</span>。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <div class="tablesWrap">
+                <!-- end tables-searchbox -->
+                <table class="wxtables" style="text-align:center;">
+                    <thead>
+                    <tr>
+                        <td>分类ID</td>
+                        <td>名称</td>
+
+                        <td>更新时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="list" item="v">
+                    <tr>
+                        <td>{$v.id}</td>
+                        <td>{$v.title}</td>
+                        <td>{$v.addtime}</td>
+
+                        <td>
+                           <switch name="v.id">
+                               <case  value="1">
+                                 <a href="/Admin/sign/sign_config" class="btn btn-warning" title="编辑"><i class="gicon-edit white"></i></a>
+                               </case>
+
+                               <case  value="2">
+                                   <a href="/Admin/sign/sign_config_jl" class="btn btn-warning" title="编辑"><i class="gicon-edit white"></i></a>
+                               </case>
+
+                           </switch>
+                        </td>
+                    </tr>
+                    </foreach>
+
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+

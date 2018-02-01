@@ -1,0 +1,67 @@
+<include file="Public:header_dazhuanpan"/>
+<body style="background-color: #fdd727; padding-top: 30px;">
+
+
+	<!--<div class="header list_header" style="background: #ffffff">-->
+		<!--幸运大转盘-->
+		<!--<a href="javascript:history.go(-1);" class="header_but"><img src="__IMAGES__/l_left.png" width="100%"></a>-->
+	<!--</div>-->
+	<div class="integral">
+		<a href="javascript:history.go(-1)">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+		<div class="tegral">我的奖品</div>
+		<!--<div class="collect_zt_btn1">编辑</div>-->
+	</div>
+	<!--<div class="luck_bg1">-->
+
+	<!--</div>-->
+
+	<div class="warpper" style="z-index: 1;position: relative; padding-top:43px;">
+
+		
+
+		<div class="my_jiangg">
+
+
+			<h5><i class="">我的奖品</i></h5>
+
+			<foreach name="list" item="v">
+			<div class="prize clearfix">
+			<div class="prize_img">
+
+				<switch name="v.prize_type">
+					<case value="3"><img src="{$v.goods_pic}" width="100%"></case>
+					<default /><img src="__IMAGES__/djj.png" width="100%">
+
+				</switch>
+			</div>
+
+				<div  class="prize_txt">
+				<p>	{$v.goods_name}</p>
+				<span>中奖时间：{$v.addtime|date="Y年m月d日",###}</span>
+				</div>
+			</div>
+			</foreach>
+
+
+		</div>
+
+	
+		
+		
+		
+	</div>
+	
+
+	
+
+</body>
+<script type="text/javascript">
+
+
+
+</script>
+</html>

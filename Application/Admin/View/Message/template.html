@@ -1,0 +1,118 @@
+<include file="Public:head"/>
+<style>
+    #albums-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+        z-index: 998
+    }
+</style>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">短信模板<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>模板内容</td>
+                        <td>添加时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="cache" id="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.msg}</td>
+                            <td>{$vo.add_time}</td>
+                            <td>
+                                <p>
+                                    <a href="javascript:;" class="btn btn-warning"  data-id='{$vo.id}' data-msg='{$vo.msg}' title="编辑" onclick="J_Edit(this)"><i class="gicon-edit white"></i></a>
+                                </p>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <!-- end wxtables -->
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="albums-overlay" class="disshow"></div>
+
+
+<div class="jbox edit addfenlei disshow" style="height:auto;top: 38%;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">修改模板</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="edit">
+        <div class="jbox-container" style="height: auto;">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>模板编号：</label>
+                <div class="form-controls">
+                    <span id="sms_id"></span>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>模板内容：</label>
+                <div class="form-controls">
+                    <label>
+                        <textarea rows="5" cols="30" id="text" name="sms" style="margin: 0px;padding: 0px;list-style: none;outline:none;resize:none;padding:5px;"></textarea>
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="edit_id" value="">
+        <div class="jbox-buttons">
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function J_Edit(obj) {
+        $('.edit').show();
+        $('#albums-overlay').show();
+        $('input[name=edit_id]').val($(obj).attr('data-id'));
+        $("#sms_id").text($(obj).attr('data-id'));
+        $("#text").text($(obj).attr('data-msg'));
+    }
+
+    function J_Confirm(obj) {
+        var post =$("#edit").serialize();
+        $.post('/Admin/Message/template', post, function (res) {
+            if (res.status == 1) {
+                dialog.showTips(res.info, '', 1);
+                return false;
+            } else {
+                dialog.showTips(res.info, 'warn');
+                return false;
+            }
+        }, "json");
+    }
+
+</script>
+<include file="Public:foot"/>

@@ -1,0 +1,154 @@
+<include file="Public:head"/>
+<style>
+    p{
+        font-size:20px;
+        text-align:center;
+        cursor:pointer;
+    }
+    .tabs .tabs_a{
+        padding: 12px 45px;
+    }
+</style>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">积分商品列表</h1>
+            <a href="{:U('/Admin/Integralgoods/addgoods')}" class="btn btn-success">发布积分商品</a>
+            <form action="{:U('/Admin/Integralgoods/index')}" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="产品名称" class="input" name="name" value="{$name}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{$id}">
+                    <input type="hidden" class="input mini" name="status" value="{$status}">
+                    <button class="btn btn-primary" style="line-height:26px;"><i class="gicon-search white"></i>查询
+                    </button>
+                </div>
+            </form>
+            <!-- end tabs -->
+            <div class="tabs clearfix mgt10">
+
+                <a href="{:U('/Admin/Integralgoods/index/status/10')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="10">active</eq> tabs_a fl">积分商品({$count10|default='0'})</a>
+                <a href="{:U('/Admin/Integralgoods/index/status/11')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="11">active</eq> tabs_a fl">出售中({$count11|default='0'})</a>
+                <a href="{:U('/Admin/Integralgoods/index/status/12')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="12">active</eq> tabs_a fl">已售罄({$count12|default='0'})</a>
+                <a href="{:U('/Admin/Integralgoods/index/status/13')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="13">active</eq> tabs_a fl">仓库中({$count13|default='0'})</a>
+                <a href="{:U('/Admin/Integralgoods/index/status/14')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="14">active</eq> tabs_a fl">回收站({$count14|default='0'})</a>
+               <!--  <a href="{:U('/Admin/Integralgoods/index/t/1/status/15')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="15">active</eq> tabs_a fl">待审核({$count15|default='0'})</a> -->
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <colgroup>
+                    <col width="2%">
+                    <col width="5%">
+                    <col width="18%">
+                    <col width="4%">
+                    <col width="6%">
+                    <col width="6%">
+                    <col width="5%">
+                    <col width="4%">
+                    <col width="5%">
+                    <col width="8%">
+                </colgroup>
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品名称</td>
+                    <td>LOGO</td>
+                    <td>积分</td>
+                    <td>库存(件)</td>
+                    <td>排序</td>
+                    <td>上架</td>
+                    <td>回收站</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="lists" item="vo">
+                    <tr>
+                        <td><input type="checkbox" class="checkbox table-ckbs" data-id="{$vo['id']}"></td>
+                        <td>{$vo.id}</td>
+                        <td align="left">{$vo.goods_name}</td>
+                        <td>
+                            <div class="table-item-img"><img src="{$vo['logo_pic']}" alt=""></div>
+                        </td>
+                        <td>{$vo.price}积分</td>
+                        <td>{$vo.stock}</td>
+                        <td>{$vo.sort}</td>
+                        <td>
+                            <if condition="($vo.is_sale eq 1)"><p style="color: green" class="change_status" data-id="{$vo.id}" title="下架"  data-item="is_sale" data-value="0">√</p>
+                                <else/>
+                                <p style="color: red" class="change_status" data-id="{$vo.id}" title="上架"  data-item="is_sale" data-value="1">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_del eq 1)">
+                                <p style="color: green" class="change_status" data-id="{$vo.id}" title="还原"  data-item="is_del" data-value="0">√</p>
+                                <else/>
+                                <p style="color: red" class="change_status" data-id="{$vo.id}" title="删除"  data-item="is_del" data-value="1">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <a href="{:U('/Admin/integralgoods/addgoods/malltype/2/id')}/{$vo.id}/page/{$pag}" class="btn btn-warning" title="编辑"><i class="gicon-edit white"></i></a>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+            <div class="tables-btmctrl clearfix">
+                <div style="margin:4px 0px;">
+                    <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                    <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                    <a href="javascript:;" class="btn btn-success change_status" data-item="is_sale" data-value="1" title="上架"><i class="gicon-arrow-up white"></i></a>
+                    <a href="javascript:;" class="btn btn-warning change_status" data-item="is_sale" data-value="0" title="下架"><i class="gicon-arrow-down white"></i></a>
+                    <a href="javascript:;" class="btn btn-danger change_status"  data-item="is_del" data-value="1" title="删除"><i class="gicon-trash white"></i></a>
+                    <a href="javascript:;" class="btn btn-success change_status" data-item="is_del" data-value="0" title="恢复"><i class="gicon-retweet white"></i></a>
+                </div>
+                <div>
+                    <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+
+            <!-- end content-right -->
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+<!--上架 下架 删除 1-->
+<script>
+$(".change_status").click(function () {
+    var item  = $(this).attr("data-item");
+    var value = $(this).attr("data-value");
+    var title = $(this).attr("title");
+    var ids   = "";
+    $(".table-ckbs:checked").each(function (i) {
+        ids += $(this).attr("data-id") + "-"
+    })
+    if(!ids){
+        var ids = $(this).attr("data-id");
+    }
+    if (!ids) {
+        alert("请选择商品！"); return false;
+    }
+    dialog.showTips("确定要进行"+title+"的操作吗?", "firm", function () {
+        var data = {item: item,data:value, ids: ids};
+        // console.log(data);
+        $.post("{:U('/Admin/integralgoods/changeStatus')}", data , function (g) {
+            console.log(g);
+            if (g.status == 1) {
+                dialog.showTips(g.info, "", 1);return false;
+            } else {
+                dialog.showTips(g.info, "warn");return false;
+            }
+        })
+    })
+});
+</script>
+<!--上架 下架 删除 2-->

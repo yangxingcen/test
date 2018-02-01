@@ -1,0 +1,666 @@
+<include file="Public:head"/>
+<style>
+  .imgnav{
+    max-height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .imgwrapper{
+    display: block;
+    width: 78px;
+    height: 78px;
+    overflow: hidden;
+  }
+  .imgwrapper img{
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border:0;
+  }
+  .spanpd10{
+    margin:10px;
+  }
+  .wxtables.wxtables-sku.newtable{
+    width: 40%;
+    margin: 0;
+  }
+  .img-list li{
+    width: 60px;
+    height:60px;
+  }
+  .cst_h3 span{font-weight: normal;}
+  #imgdiv img{ max-width:190px; max-height:190px; display:none; margin:5px;}
+  .btnimage{width:80px; height:30px; background:white; border:1px solid #d9d9d9;cursor:pointer; position:relative; text-align:center; line-height:31px;}
+  .file{ position:absolute; top:0px; left:0; width:80px; height:30px; background:white; border:1px solid #d9d9d9;cursor:pointer; opacity:0}
+  #imgdiv2 img{ max-width:88px; max-height:88px; display:none; margin:5px;}
+  #xuanze2{ width:60px; height:30px; background:white; border:1px solid #d9d9d9; }
+  #xuanze2:hover{ background:#E6E6E6; }
+  .huase{display:none; width:86px; height:30px; margin:5px; text-indent:5px;}
+
+  </style>
+<script type="text/javascript" src="__LHG__/lhgcore.min.js"></script>
+<script type="text/javascript" src="__LHG__/lhgcalendar.min.js"></script>
+<script type="text/javascript" src="__JS__/datepicker/WdatePicker.js"></script>
+<div class="container">
+
+  <div class="inner clearfix"> 
+
+  <include file="Public:left"/>
+    <!-- end content-left -->
+
+    <div class="content-right fl">
+      <h1 class="content-right-title"><eq name="cache.id" value="">添加<else/>修改</eq>内容</h1>
+      <form  enctype="multipart/form-data" method="post" id="add_step2" >
+      <input type="hidden" name="id" value="{$cache['id']}">
+      <input type="hidden" name="classid" <eq name="cache.id" value="">value="{$classid}"<else/>value="{$cache.classid}"</eq>>
+      <div class="panel-single panel-single-light mgt20">
+        <h3 class="cst_h3 mgb20">基本信息</h3>
+		
+      
+
+   
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>标题：</label>
+            <div class="form-controls">
+              <input type="text" class="input xxlarge" name="title" id="title" value='{$cache.title}'>
+            <span class="fi-help-text"></span> </div>
+        </div>
+
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>标题（英）：</label>
+          <div class="form-controls">
+            <input type="text" class="input xxlarge" name="en_title" id="en_title" value="{$cache.en_title}">
+            <span class="fi-help-text"></span> 
+          </div>
+        </div>
+
+        <in name="classid" value="4">
+         <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>标题1：</label>
+            <div class="form-controls">
+              <input type="text" class="input xxlarge" name="gai" id="gai" value='{$cache.gai}'>
+            <span class="fi-help-text"></span> </div>
+        </div>
+
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>标题1（英）：</label>
+          <div class="form-controls">
+            <input type="text" class="input xxlarge" name="en_gai" id="en_gai" value="{$cache.en_gai}">
+            <span class="fi-help-text"></span> 
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="7">
+         <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>年份：</label>
+            <div class="form-controls">
+              <input type="text" class="input xxlarge" name="gai1" id="gai1" value='{$cache.gai1}'>
+            <span class="fi-help-text"></span> </div>
+        </div>
+
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>年份（英）：</label>
+          <div class="form-controls">
+            <input type="text" class="input xxlarge" name="en_gai1" id="en_gai1" value="{$cache.en_gai1}">
+            <span class="fi-help-text"></span> 
+          </div>
+        </div>
+        </in>
+
+
+        <in name="classid" value="41,42,43,44,45,50,51">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传图片：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge fl mgr10"> 
+				<notempty name="cache.pic">
+				<img src ="__ROOT__{$cache.pic}" height="80"/>
+				</notempty>
+			  </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic" id="xuanze" class="file" >
+              </div>
+              <div class="xuanze_progress fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="41">
+                   600 * 300 px
+              </case>
+              <case value="50">
+                   622 * 88 px
+              </case>
+              <case value="51">
+                   1037 * 583 px
+              </case>
+              <case value="42">
+                   1764 * 1114 px
+              </case>
+              <case value="43">
+                   351 * 228 px 
+              </case>
+              <case value="44">
+                   350 * 600 px 
+              </case>
+              <case value="45">
+                   400 * 200 px 
+              </case>
+              <case value="49">
+                   400 * 200 px 
+              </case>
+              <case value="17">
+                   400 * 320 px   
+              </case>
+              <case value="18">
+                   335 * 200 px   
+              </case>
+              <default>
+              <case value="19">
+                   366 * 524 px   
+              </case>
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in>
+<!--         <in name="classid" value="">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传图片(手机)：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge3 fl mgr10"> 
+                <notempty name="cache.pic3">
+				<img src ="__ROOT__{$cache.pic3}" height="80"/>
+                </notempty>
+			  </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic3" id="xuanze3" class="file" >
+              </div>
+              <div class="xuanze_progress3 fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent3">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="12">
+                   900 * 1146 px  
+              </case>
+              <case value="14">
+                   800 * 1200 px  
+              </case>
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in> -->
+
+        <in name="classid" value="3,4,8,14,19,50">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传图片1：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge1 fl mgr10"> 
+                <notempty name="cache.pic1">
+        <img src ="__ROOT__{$cache.pic1}" height="80"/>
+                </notempty>
+        </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic1" id="xuanze1" class="file" >
+              </div>
+              <div class="xuanze_progress1 fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent1">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="3">
+                    316 * 545 px 
+              </case>
+              <case value="50">
+                    622 * 290 px 
+              </case>
+              <case value="4">
+                    345 * 128 px 
+              </case>
+              <case value="8">
+                   600 * 392 px 
+              </case>
+              <case value="14">
+                   750 * 393 px 
+              </case>
+              <case value="19">
+                    750 * 393 px 
+              </case>
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in>
+        <in name="classid" value="50">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传图片2：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge3 fl mgr10"> 
+                <notempty name="cache.pic3">
+        <img src ="__ROOT__{$cache.pic3}" height="80"/>
+                </notempty>
+        </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic3" id="xuanze3" class="file" >
+              </div>
+              <div class="xuanze_progress3 fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent3">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="50">
+                   622 * 246 px  
+              </case>
+              
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in>
+        <in name="classid" value="17">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传内页图片：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge1 fl mgr10"> 
+                <notempty name="cache.pic1">
+				<img src ="__ROOT__{$cache.pic1}" height="80"/>
+                </notempty>
+			  </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic1" id="xuanze1" class="file" >
+              </div>
+              <div class="xuanze_progress1 fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent1">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="17">
+                   431 * 593 px 
+              </case>
+              <case value="19">
+                    750 * 393 px 
+              </case>
+              <case value="3">
+                    921 * 921 px 
+              </case>
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in>
+        
+ 
+        <in name="classid" value="3">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传内页图片：</label>
+            <div class="form-controls pdt5 j-imglistPanel">
+              <div class="xuanze_showimge2 fl mgr10"> 
+                <notempty name="cache.pic2">
+				<img src ="__ROOT__{$cache.pic2}" height="80"/>
+                </notempty>
+			  </div>
+              <div class="btnimage fl">选择图片
+                <input type="file"  accept="image/jpg,image/jpeg,image/png" name="pic2" id="xuanze2" class="file" >
+              </div>
+              <div class="xuanze_progress2 fl mgr15" style="display:none"><img src="__IMAGES__/loadings.gif" width="30" /><span class="xuanze_percent2">80%</span></div>
+              <span class="fi-help-text fl lh30 mgl10" style="color:red">建议大小：
+              <switch name="classid">
+              <case value="3">
+                    921 * 921 px 
+              </case>
+              <case value="11">
+                   800 * 1200 px 
+              </case>
+              <case value="12">
+                   900 * 1146 px 
+              </case>
+              <default>
+              参考页面尺寸
+              </default>
+              </switch>
+              </span>
+            </div>
+        </div>
+        </in>
+        <in name="classid" value="51,52,53,54,55,60,61,62,63,65,66,68,69">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>发布日期：</label>
+            <div class="form-controls">
+                <input type="text" class="input xxlarge" value="{$cache.gai}"  onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" name="gai" id="gai">
+             </div>
+        </div>        
+        </in>
+        <in name="classid" value="70">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述：</label>
+          <div class="form-controls">
+            <textarea  name="gai" id="gai" class="textarea" >{$cache.gai}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_gai" id="en_gai" class="textarea">{$cache.en_gai}</textarea>     
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="2,3,7,17,50">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述1：</label>
+          <div class="form-controls">
+            <textarea  name="gai" id="gai" class="textarea" >{$cache.gai}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述1（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_gai" id="en_gai" class="textarea">{$cache.en_gai}</textarea>     
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="50">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述2：</label>
+          <div class="form-controls">
+            <textarea  name="gai1" id="gai1" class="textarea" >{$cache.gai1}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述2（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_gai1" id="en_gai1" class="textarea">{$cache.en_gai1}</textarea>     
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="50">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述3：</label>
+          <div class="form-controls">
+            <textarea  name="gai2" id="gai2" class="textarea" >{$cache.gai2}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>概述3（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_gai2" id="en_gai2" class="textarea">{$cache.en_gai2}</textarea>     
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="41,44,46,52,53,54,55,47,48,60,61,62,63,64,65,66,67,68,69,71,72">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容：</label>
+          <div class="form-controls">
+            <textarea  name="content" id="content" >{$cache.content}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_content" id="en_content" >{$cache.en_content}</textarea>     
+          </div>
+        </div>
+        </in>
+        <in name="classid" value="41,44">
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容：</label>
+          <div class="form-controls">
+            <textarea  name="content1" id="content1" >{$cache.content1}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_content1" id="en_content1" >{$cache.en_content1}</textarea>     
+          </div>
+        </div>
+		</in>
+        <in name="classid" value="41">		
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容：</label>
+          <div class="form-controls">
+            <textarea  name="resource" id="resource" >{$cache.resource}</textarea>     
+          </div>
+        </div>
+        <div class="formitems">
+          <label class="fi-name"><span class="colorRed">*</span>内容（英）：</label>
+          <div class="form-controls">
+            <textarea  name="en_resource" id="en_resource" >{$cache.en_resource}</textarea>     
+          </div>
+        </div>		
+        </in>		
+        <!-- end 详情及其它 -->
+       
+        <div class="panel-single panel-single-light mgt20 txtCenter">
+          <a href="{:U('Admin/'.CONTROLLER_NAME.'/'.$action.$urllink)}" class="btn">返回</a>
+          <input type="submit" class="btn btn-primary" onclick="return tijiao()" value="保存">
+        </div>
+      </form>
+    </div>
+    <!-- end content-right -->
+  </div>
+</div>
+
+<include file="Public:foot"/>
+
+<script type="text/javascript">
+function tijiao(){
+ 
+	var form = $('#add_step2').serializeArray();
+		var post = {};
+		 $.each(form, function() {
+		  post[this.name] = this.value;
+		});
+
+		if(post.title==""||post.title==null){
+		  alert('标题必填');
+          $('#title').focus();
+          return false;
+		}
+      
+		var url; 
+		<eq name="cache.id" value="">
+            url  =   "{:U('Admin/Index/getcontentadd')}";
+        <else/>
+            url  =   "{:U('Admin/Index/getcontentedit')}";
+        </eq>
+		post.tab = "content";
+		$.post(url,post, function(data){
+			if(data.status){
+   
+                 var url  =   "{:U('Admin/'.CONTROLLER_NAME.'/'.$action.$urllink)}";
+ 
+				 dialog.showTips(data.info,"",url);
+			}else{
+			  alert(data.info);
+			}
+      }, "json");
+	  return false;
+}
+  
+    
+ UE.getEditor('en_content');
+
+ UE.getEditor('content');
+
+ UE.getEditor('en_content1');
+
+ UE.getEditor('content1');
+ UE.getEditor('resource');
+
+ UE.getEditor('en_resource'); 
+
+</script>
+<!--选择分类-end->-->
+
+
+<!--提交表单前验证-->
+<script type="text/javascript">
+ $(".start").click(function(){
+  var check = $(".start").attr("checked");
+  if(check==true){
+    $("input[name=integral_limit]").removeAttr("disabled");
+  }else{
+    $("input[name=integral_limit]").attr("disabled","true");
+  }
+ })
+
+
+</script>
+<!--提交表单前验证end
+
+<!--上传图片-->
+
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/uploadPreview.min.js"></script>
+
+<script type="text/javascript" src="__JS__/jquery-form.js"></script>
+<script type="text/javascript">
+
+  $(function () {
+    //防伪码图片1
+  var percent = $('.xuanze_percent1');
+    var progress = $('.xuanze_percent1');
+    $("#xuanze1").wrap("<form id='myupload11' action='{:U('/Admin/Index/addImage')}' method='post' enctype='multipart/form-data'></form>");
+    $("#xuanze1").change(function(){ //选择文件
+      $("#myupload11").ajaxSubmit({
+        dataType:  'json', //数据格式为json
+        beforeSend: function() { //开始上传
+          progress.show(); //显示进度条
+          var percentVal = '0%';
+          percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+          var percentVal = percentComplete + '%'; //获得进度
+          percent.html(percentVal); //显示上传进度百分比
+        },
+        success: function(data) { //成功
+          var img = '<img src="__ROOT__'+data[0]["savepath"].substr(1)+data[0]["savename"]+'" height="80" ><input type="hidden" name="pic1" id="pic1" value="'+data[0]["savepath"].substr(1)+data[0]["savename"]+'"></input>';
+          $('.xuanze_showimge1').html(img);
+          progress.hide();
+        },
+        error:function(xhr){ //上传失败
+          //console.log(xhr.status)
+        }
+      });
+    });
+
+        var percent = $('.xuanze_percent2');
+    var progress = $('.xuanze_percent2');
+    $("#xuanze2").wrap("<form id='myupload12' action='{:U('/Admin/Index/addImage')}' method='post' enctype='multipart/form-data'></form>");
+    $("#xuanze2").change(function(){ //选择文件
+      $("#myupload12").ajaxSubmit({
+        dataType:  'json', //数据格式为json
+        beforeSend: function() { //开始上传
+          progress.show(); //显示进度条
+          var percentVal = '0%';
+          percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+          var percentVal = percentComplete + '%'; //获得进度
+          percent.html(percentVal); //显示上传进度百分比
+        },
+        success: function(data) { //成功
+          var img = '<img src="__ROOT__'+data[0]["savepath"].substr(1)+data[0]["savename"]+'" height="80" ><input type="hidden" name="pic2" id="pic2" value="'+data[0]["savepath"].substr(1)+data[0]["savename"]+'"></input>';
+          $('.xuanze_showimge2').html(img);
+          progress.hide();
+        },
+        error:function(xhr){ //上传失败
+          //console.log(xhr.status)
+        }
+      });
+    });
+        var percent = $('.xuanze_percent');
+    var progress = $('.xuanze_percent');
+    $("#xuanze").wrap("<form id='myupload13' action='{:U('/Admin/Index/addImage')}' method='post' enctype='multipart/form-data'></form>");
+    $("#xuanze").change(function(){ //选择文件
+      $("#myupload13").ajaxSubmit({
+        dataType:  'json', //数据格式为json
+        beforeSend: function() { //开始上传
+          progress.show(); //显示进度条
+          var percentVal = '0%';
+          percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+          var percentVal = percentComplete + '%'; //获得进度
+          percent.html(percentVal); //显示上传进度百分比
+        },
+        success: function(data) { //成功
+          var img = '<img src="__ROOT__'+data[0]["savepath"].substr(1)+data[0]["savename"]+'" height="80" ><input type="hidden" name="pic" id="pic" value="'+data[0]["savepath"].substr(1)+data[0]["savename"]+'"></input>';
+          $('.xuanze_showimge').html(img);
+          progress.hide();
+        },
+        error:function(xhr){ //上传失败
+          //console.log(xhr.status)
+        }
+      });
+    });
+
+    $("#xuanze3").wrap("<form id='myupload131' action='{:U('/Admin/Index/addImage')}' method='post' enctype='multipart/form-data'></form>");
+    $("#xuanze3").change(function(){ //选择文件
+      $("#myupload131").ajaxSubmit({
+        dataType:  'json', //数据格式为json
+        beforeSend: function() { //开始上传
+          $('.xuanze_progress3').show(); //显示进度条
+          var percentVal = '0%';
+          $('.xuanze_percent3').html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+          var percentVal = percentComplete + '%'; //获得进度
+          $('.xuanze_percent3').html(percentVal); //显示上传进度百分比
+        },
+        success: function(data) { //成功
+          var img = '<img src="__ROOT__'+data[0]["savepath"].substr(1)+data[0]["savename"]+'" height="80" ><input type="hidden" name="pic3" id="pic3" value="'+data[0]["savepath"].substr(1)+data[0]["savename"]+'"></input>';
+          $('.xuanze_showimge3').html(img);
+           $('.xuanze_progress3').hide();
+        },
+        error:function(xhr){ //上传失败
+          //console.log(xhr.status)
+        }
+      });
+    });
+  
+        var percent = $('.xuanze_percent4');
+    var progress = $('.xuanze_percent4');
+    $("#xuanze4").wrap("<form id='myupload14' action='{:U('/Admin/Index/addImage')}' method='post' enctype='multipart/form-data'></form>");
+    $("#xuanze4").change(function(){ //选择文件
+      $("#myupload14").ajaxSubmit({
+        dataType:  'json', //数据格式为json
+        beforeSend: function() { //开始上传
+          progress.show(); //显示进度条
+          var percentVal = '0%';
+          percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+          var percentVal = percentComplete + '%'; //获得进度
+          percent.html(percentVal); //显示上传进度百分比
+        },
+        success: function(data) { //成功
+          var img = '<img src="__ROOT__'+data[0]["savepath"].substr(1)+data[0]["savename"]+'" height="80" ><input type="hidden" name="pic_tops" id="pic_tops" value="'+data[0]["savepath"].substr(1)+data[0]["savename"]+'"></input>';
+          $('.xuanze_showimge4').html(img);
+          progress.hide();
+        },
+        error:function(xhr){ //上传失败
+          //console.log(xhr.status)
+        }
+      });
+    });
+
+  });
+function add_re(r){
+  $('#restriction'+r).show();
+  }
+function del_re(r){
+  $('#restriction'+r).hide();
+  }
+</script>
+<!--上传图片-end->
+
+

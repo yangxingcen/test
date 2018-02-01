@@ -1,0 +1,209 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="container">
+            <div class="meal">
+                <!--<img src="__IMAGES__/jifen.jpg" width="100%">-->
+                <div class="inner_title">
+                    <div class="container">
+                        <h5><a href="__HOST__">首页</a></h5><i class="fa fa-angle-right"></i><span><a href="/integral.html">积分兑换</a></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 meal_left_w">
+                        <div class="jfdh_user clearfix">
+                            <div class="clearfix">
+                                <img src="{$person_img}" width="60">
+                                <div class="jfdh_user1">
+                                    <h5>{$person_name}</h5>
+                                    <p>积分：<span>{$integral}</span></p>
+                                </div>
+                            </div>
+                            <div class="jfdh_user2">
+                                <h5>积分兑换常见问题</h5>
+                                <a href="/integral_add.html"><p>如何获取积分？</p></a>
+                                <a href="integ1.html"><p>积分兑换须知？</p></a>
+                                <a href="integ2.html"><p>积分兑换要点？</p></a>
+                                <!--<a href="integ3.html"><p>积分使用规则？</p></a>-->
+                            </div>
+
+                        </div>
+                        <div class="code">
+
+                            <div class="code_img">
+                                <img src="__IMAGES__/ewm.png" width="100%">
+                            </div>
+
+                            <p>扫一扫 手机兑换更方便</p>
+
+                        </div>
+                        <div class="jfdh">
+                            <h5>积分兑换记录</h5>
+                            <div class="jfdh_con">
+                                <ul>
+                                     <volist name="integral_stream" id="vo">
+                                        <li>
+                                            <div>
+                                                <a href="javascript:volid(0);">
+                                                    <h5>{$vo.telephone}<span>{$vo.addtime}</span></h5>
+                                                    <div class="jfdh_cons clearfix">
+                                                        <img src="{$vo.goods_img}">
+                                                        <div class="jfdh_cons1">
+                                                            <h5>{$vo.goods_name}</h5>
+                                                            <span>{$vo.integral}积分</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-10 meal_right_w">
+                        <div class="pro_class pro_class1 pro_class1_yy">
+                            <h5 id="all_type_price">产品分类：
+                                <notempty name = "s_cate_id">
+                                    <span onclick="all_price(id,title);" style="color:#666;" calss="all_cate">全部</span>
+                                    <volist name="type_list" id="vo">
+                                        <if condition = "$vo['id'] eq $s_cate_id">
+                                            <span onclick="all_price(id,title);" id="{$vo.id}" title="{$vo.name}" style="color: #e50011">{$vo.name}</span>
+                                        <else />
+                                            <span onclick="all_price(id,title);" id="{$vo.id}" title="{$vo.name}">{$vo.name}</span>
+                                        </if>
+                                    </volist>
+                                <else />
+                                    <span onclick="all_price(id,title);" style="color:#e50011;" calss="all_cate">全部</span>
+                                    <volist name="type_list" id="vo">
+                                        <span onclick="all_price(id,title);" id="{$vo.id}" title="{$vo.name}">{$vo.name}</span>
+                                    </volist>
+                                </notempty>
+                            </h5>
+                            <h5 id="all_price" style="display: none;">积分区间：
+                            
+                            </h5>
+                            <h5>排序：<span style="margin-left:38px;color: #e50011" onclick="all_choose(this);" data-title="0">默认排序</span><span onclick="all_choose(this);" data-title="按积分" id="where_price">按积分</span><span onclick="all_choose(this);" data-title="按时间" id="where_time">按上架时间</span>
+                            </h5>
+                            <h5 id="choose">已选条件：
+                            </h5>
+                        </div>
+                        <div class="intergra clearfix">
+                            <div id="integral_goods" class="row">
+                                
+                            </div>
+                        </div>
+                        <div class="pro_page">
+                        <div id="page_num">
+            
+                        </div>
+                            </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <input type="hidden" id="s_cate_id" value="{$s_cate_id}">
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+
+</div>
+</body>
+<script type="text/javascript" src="__JS__/integral/index.js"></script>
+<script>
+
+    $( document ).ready( function()
+    {
+
+    } )
+    $( window ).resize( function()
+    {
+
+    } )
+    $( window ).scroll( function()
+    {
+
+    } )
+
+</script>
+
+<script>
+
+    /*******积分商城*******/
+    $( document ).ready( function(){
+
+        $('.meal_right_w').width($('.meal').width()-$('.meal_left_w').width()-30);
+
+        $( window ).resize( function(){
+            $('.meal_right_w').width($('.meal').width()-$('.meal_left_w').width()-30);
+        })
+
+        var y1 = $( '.jfdh_con>ul>li' ).size();
+        var x1 = $( '.jfdh_con>ul>li' ).height();
+        var play = 0;
+        var x = 0;
+        var d = 0;
+        $( '.jfdh_con' ).height( x1 * 4 );
+
+        function gd()
+        {
+
+            function gundong()
+            {
+                if( y1 > 5 )
+                {
+                    play = setInterval( function()
+                    {
+                        if( x > x1 )
+                        {
+                            x = 0;
+                            $( '.jfdh_con>ul' ).find( 'li:first-child' ).appendTo( $( '.jfdh_con>ul' ) );
+                            $( '.jfdh_con>ul' ).css( { marginTop: 0 } );
+                            $( '.jfdh_con>ul' ).stop( true, true ).animate( { marginTop: -x }, 0, 'linear' );
+                        }
+                        else
+                        {
+                            $( '.jfdh_con>ul' ).stop( true, true ).animate( { marginTop: -x }, 1, 'linear' );
+                            x++;
+                        }
+                    }, 40 );
+                }
+            }
+
+            gundong();
+
+            $( '.jfdh_con' ).hover( function()
+            {
+                d = 0;
+                clearInterval( play )
+            }, function()
+            {
+                if( d == 0 )
+                {
+                    gundong();
+                    d = 1;
+                    return;
+                }
+            } )
+
+        }
+
+        gd();
+
+    } )
+
+    /*******积分商城*******/
+
+</script>
+
+</html>
+

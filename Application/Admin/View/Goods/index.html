@@ -1,0 +1,178 @@
+<include file="Public:head"/>
+<style>
+    p{
+        font-size:20px;
+        text-align:center;
+        cursor:pointer;
+    }
+    .tabs .tabs_a{
+        padding: 12px 45px;
+    }
+</style>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">商品列表<a href="javascript:history.go(-1);" style="float:right" class="btn">返回</a></h1>
+            <a href="{:U('/Admin/Goods/addgoods')}" class="btn btn-success">发布商品</a>
+            <form action="{:U('/Admin/Goods/index')}" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="产品名称" class="input" name="keyword" value="{:I('get.keyword')}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{:I('get.id')}">
+                    <select name="cate" class="select large" onchange="J_Select_Cate(this)">
+                        <option value=""> 请选择商品一级分类</option>
+                        <volist name="goods_cate_new" id="vo">
+                            <option value="{$vo.id}"> {$vo.classname}</option>
+                            <volist name="vo['son']" id="voo">
+                                <option value="{$voo.id}">&nbsp;&nbsp; |--{$voo.classname}</option>
+                            </volist>
+                        </volist>
+                    </select>
+                    <button class="btn btn-primary" style="line-height:26px;"><i class="gicon-search white"></i>查询
+                    </button>
+                </div>
+            </form>
+
+            <div class="tabs clearfix mgt10">
+                <a href="{:U('/Admin/Goods/index/status/10')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="10">active</eq> tabs_a fl">普通商品({$count10|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/11')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="11">active</eq> tabs_a fl">出售中({$count11|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/12')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="12">active</eq> tabs_a fl">已售罄({$count12|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/13')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="13">active</eq> tabs_a fl">仓库中({$count13|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/14')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="14">active</eq> tabs_a fl">回收站({$count14|default='0'})</a>
+            </div>
+            <div class="tabs clearfix mgt10">
+                <a href="{:U('/Admin/Goods/index/status/20')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="20">active</eq> tabs_a fl">套餐商品({$count20|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/21')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="21">active</eq> tabs_a fl">出售中({$count21|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/22')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="22">active</eq> tabs_a fl">已售罄({$count22|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/23')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="23">active</eq> tabs_a fl">仓库中({$count23|default='0'})</a>
+                <a href="{:U('/Admin/Goods/index/status/24')}?keyword={:I('get.keyword')}&id={:I('get.id')}&time={$time}"
+                   class="<eq name="status" value="24">active</eq> tabs_a fl">回收站({$count24|default='0'})</a>
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <colgroup>
+                    <col width="2%">
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="18%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品图片</td>
+                    <td>商品名称</td>
+                    <td>价格(元)</td>
+                    <td>库存(件)</td>
+                    <td>排序</td>
+                    <td>上架</td>
+                    <td>新品</td>
+                    <td>促销</td>
+                    <td>回收站</td>
+                    <td>推荐</td>
+                    <td>推荐官网</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td><input type="checkbox" class="checkbox table-ckbs" value="{$vo['id']}"></td>
+                        <td>{$vo.id}</td>
+                        <td align="left"><div class="table-item-img" style="float: left"><img src="{$vo['logo_pic']}" onerror="this.src='http://dyshop.unohacha.com/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'" alt=""></div></td>
+                        <td>{$vo.goods_name}</td>
+                        <td>￥{$vo.price}元</td>
+                        <td>{$vo.stock}</td>
+                        <td>{$vo.sorts}</td>
+                        <td>
+                            <if condition="($vo.is_sale eq 1)"><p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="已上架"  data-item="is_sale" data-value="{$vo.is_sale}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="已下架"  data-item="is_sale" data-value="{$vo.is_sale}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_new eq 1)"><p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="新品"  data-item="is_new" data-value="{$vo.is_new}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="非新品"  data-item="is_new" data-value="{$vo.is_new}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_cuxiao eq 1)"><p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="促销"  data-item="is_cuxiao" data-value="{$vo.is_cuxiao}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="非促销"  data-item="is_cuxiao" data-value="{$vo.is_cuxiao}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_del eq 1)">
+                                <p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="已删除"  data-item="is_del" data-value="{$vo.is_del}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="未删除"  data-item="is_del" data-value="{$vo.is_del}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_groom eq 1)">
+                                <p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="推荐"  data-item="is_groom" data-value="{$vo.is_groom}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="非推荐"  data-item="is_groom" data-value="{$vo.is_groom}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_pc eq 1)">
+                                <p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="推荐"  data-item="is_pc" data-value="{$vo.is_pc}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="非推荐"  data-item="is_pc" data-value="{$vo.is_pc}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <a href="{:U('/Admin/goods/addgoods/id')}/{$vo.id}/page/{:I('get.page')}" class="btn btn-warning j-editClass" title="编辑"><i class="gicon-edit white"></i></a>
+                            <a href="{:U('/Admin/goods/match',['id'=>$vo['id']])}" class="btn btn-primary j-editClass" title="商品搭配">商品搭配</a>
+                            <eq name="vo['is_pc']" value="1">
+                                <a href="{:U('/Admin/goods/goods_pc/id')}/{$vo.id}/page/{:I('get.page')}" class="btn btn-success j-editClass" title="官网配置"><i class="gicon-cog white"></i></a>
+                            </eq>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+            <div class="tables-btmctrl clearfix">
+                <div style="margin:4px 0px;">
+                    <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                    <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                    <a href="javascript:;" class="btn btn-success" onclick="J_ChangeStatus(this)" data-item="is_sale" data-value="0" title="上架"><i class="gicon-arrow-up white"></i></a>
+                    <a href="javascript:;" class="btn btn-warning" onclick="J_ChangeStatus(this)" data-item="is_sale" data-value="1" title="下架"><i class="gicon-arrow-down white"></i></a>
+                    <a href="javascript:;" class="btn btn-danger" onclick="J_ChangeStatus(this)" data-item="is_del" data-value="0" title="删除"><i class="gicon-trash white"></i></a>
+                    <a href="javascript:;" class="btn btn-success" onclick="J_ChangeStatus(this)" data-item="is_del" data-value="1" title="恢复"><i class="gicon-retweet white"></i></a>
+                </div>
+                <div>
+                    <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+
+            <!-- end content-right -->
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+
+<script src="__JS__/Goods/index.js"></script>

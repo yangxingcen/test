@@ -1,0 +1,83 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="container">
+            <div class="about clearfix">
+
+                <h5 class="xinsh">购物指南</h5>
+
+                <div class="about_left">
+                    <div class="pro_con">
+                        <include file='Public:help_1'/>
+                    </div>
+                </div>
+
+                <div class="about_right">
+
+                    <div class="brand">
+                        <h5>{$result.title}</h5>
+                        <div class="help">
+
+                            <div class="help_list">
+                                <h4>{$result.gai}</h4>
+                                <div class="zhu_img">
+                                    <img src="{$result.pic}" width="100%">
+                                </div>
+
+                            </div>
+                            <div class="help_list">
+                                <h4>
+                                    {$result.gai1}</h4>
+                                <div class="zhu_img">
+                                    <img src="{$result.pic1}" width="100%">
+                                </div>
+
+                            </div>
+
+                            <div class="help_list">
+                                <h4>{$result.gai2}</h4>
+                                <div class="zhu_img">
+                                    <img src="{$result.pic3}" width="100%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+</div>
+
+</body>
+
+<script>
+
+    //	$( ".swiper1" ).height( 600 )
+
+    $( document ).ready( function()
+    {
+
+        var hei = $( ".meal_img" ).width() + 75;
+
+        $( ".div_img" ).height( (hei - 15) / 2 - 75 )
+
+    } )
+    $( window ).resize( function()
+    {
+
+        //      $( ".swiper1" ).height( 600 )
+
+    } )
+    $( window ).scroll( function()
+    {
+
+    } )
+
+</script>
+
+</html>

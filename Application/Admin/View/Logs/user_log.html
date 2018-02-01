@@ -1,0 +1,52 @@
+<include file="Public:head"/>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">会员日志<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="用户ID" class="input" name="id" value="{:I('get.id')}">
+                    <input type="text" placeholder="用户手机" class="input mini" name="telephone" value="{:I('get.telephone')}">
+                    <button class="btn btn-primary" style="line-height:28px;"><i class="gicon-search white"></i>查询</button>
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>用户ID</td>
+                        <td>用户手机</td>
+                        <td style="width: 50%;text-align: center">事件</td>
+                        <td >控制器</td>
+                        <td >方法</td>
+                        <td >记录时间</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="cache" id="vo">
+                        <tr>
+                            <td>{$vo.user_id}</td>
+                            <td>{$vo.telephone}</td>
+                            <td>{$vo.content}</td>
+                            <td>{$vo.controller}</td>
+                            <td>{$vo.action}</td>
+                            <td>{$vo.add_time}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:foot"/>

@@ -1,0 +1,104 @@
+<include file='Public:header'/>
+<body style="min-width:1190px">
+<include file='Public:top'/>
+
+
+<script src="__PUBLIC__/Admin/lhgcalendar/lhgcore.min.js"></script>
+<script src="__PUBLIC__/Admin/lhgcalendar/lhgcalendar.min.js"></script>
+<!--  / header  -->
+<script>
+    J(function () {
+        J('#birth').calendar({format: 'yyyy-MM-dd'});
+    });
+</script>
+<!--  / user  -->
+
+<div class="user">
+    <div class="container">
+
+        <div class="row">
+            <include file="Public:ucenterLeft"/>
+            <div class="col-sm-10">
+
+                <div class="user_right" style="border:none;">
+                    <div class="user_r">
+                        <div class="user_r6">
+                            <div class="data_bottom ">
+
+                                <div class="zhgl_cont">
+                                    <ul class="clearfixed zhgl_top">
+                                        <li class="li_n1">您当前的账号</li>
+                                        <li class="li_n2"><notempty name="userinfo.person_name">{$userinfo['person_name']}<else />{$userinfo['telephone']}</notempty></li>
+                                        <li class="li_n3"></li>
+                                    </ul>
+                                    <div class="zhgl_cont1">
+                                        <ul class="clearfixed zhgl_body">
+                                            <li class="li_n1"><img src="__IMAGES__/bd_shou.png" width="20">绑定手机</li>
+                                            <li class="li_n2">还没有绑定手机，立即绑定。</li>
+                                            <li class="li_n3"><a href="##">绑定</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="clearfixed zhgl_body">
+                                            <li class="li_n1"><img src="__IMAGES__/bd_sucess.png" width="20">更换手机号</li>
+                                            <li class="li_n2">绑定手机后，您可享受德意丰富的手机服务以及重要信息更改时的身份验证</li>
+                                            <li class="li_n3">
+                                                <a href="##">更改</a></li>
+                                        </ul>
+                                        <ul class="clearfixed zhgl_body">
+                                            <li class="li_n1"><img src="__IMAGES__/ganth.png" width="20">绑定邮箱</li>
+                                            <li class="li_n2">绑定邮箱后，您可享受德意丰富的邮箱服务以及重要信息更改时的身份验证</li>
+                                            <li class="li_n3"><a href="##">绑定</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                                <div class="zhgl_bottom">
+                                    <h4>安全服务提示</h4>
+                                    <p>• 确认您登录的是德意官网*****,注意防范进入钓鱼网站，不要轻信各种即时通讯工具发送的商品或支付链接，谨防网购诈骗</p>
+                                    <p>• 建议您安装杀毒软件，并定期更新操作系统等软件补丁，确保帐号及交易安全</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<include file='Public:footer'/>
+<include file="Public:menu_right"/>
+</body>
+<script language="javascript" src="__JS__/index.js"></script>
+<script>
+    $(function () {
+        $("#save").click(function () {
+            var post = {};
+            post.person_name = $("input[name=person_name]").val();
+            post.realname = $("input[name=realname]").val();
+            post.telephone = $("input[name=telephone]").val();
+            post.sex = $("input[name=sex]:checked").val();
+            post.birth = $("#birth").val();
+            post.email = $("input[name=email]").val();
+            if (post['birth'] && !post['birth'].match(/^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/)) {
+                dialog.showTips("生日格式错误！", "warn");
+                return false;
+            }
+            if (post['email'] && !post['email'].match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
+                dialog.showTips("邮箱格式错误", "warn");
+                return false;
+            }
+
+            $.post("{:U('Home/Ucenter/editInfo')}", post, function (data) {
+                if (data.status == 1) {
+                    dialog.showTips(data.info, "", 1);
+                } else {
+                    dialog.showTips(data.info, "warn");
+                }
+            }, "json")
+        })
+    })
+</script>
+</html>

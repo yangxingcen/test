@@ -1,0 +1,64 @@
+<include file="Public:header"/>
+
+<body>
+
+<include file="Public:top"/>
+
+	<div class="warpper">
+		<div class="back_bg">
+			<div class="container">
+				<div class="">
+					<img src="__IMAGES__/au1.jpg" width="100%">
+				</div>
+				<div class=" customer">
+					<div class="newsdot_text newsdot_text2">
+						<h4>
+							{$news.title}
+						</h4>
+						<h5>提问时间：{$news.addtime}</h5>
+						<div class="go_back">
+							<a href="{:U('Shop/Announ/announ')}">
+								<i>返回</i>
+								<span></span>
+							</a>
+						</div>
+					</div>
+					<div class="stomer">
+						{$news.content}
+					</div>
+																							
+					<div class="nesx_bu clearfix">
+						<div class="nesx_bu_left">
+						<if condition="$prev neq 'none'">
+							<a href="/announ_inner2.html?id={$previd}" style="text-decoration: none;"><p><span>上一篇</span>{$prev}</p></a><else/><a href="javascript:void" style="text-decoration: none;"><p><span>上一篇</span>无</p></a>
+						</if>
+						</div>
+						<div class="nesx_bu_right">
+						<if condition="$next neq 'none'">
+							<a href="/announ_inner2.html?id={$nextid}" style="text-decoration: none;"><p><span>下一篇</span>{$next}</p></a><else/><a href="javascript:void" style="text-decoration: none;"><p><span>下一篇</span>无</p></a>
+						</if>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>				
+	<include file="Public:footer"/>			
+	<include file="Public:menu_right"/>	
+	</body>
+
+<script>
+$( document ).ready( function(){
+	$( window ).resize( function()
+	{
+	} )
+	var hei = $( ".meal_img" ).width() + 75;
+	$( ".div_img" ).height( (hei - 15) / 2 - 75 )
+} )
+$( window ).scroll( function()
+{
+} )
+</script>
+<script>
+</script>
+</html>

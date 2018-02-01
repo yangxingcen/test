@@ -1,0 +1,398 @@
+<include file="Public:header"/>
+<body>
+
+	<include file="Public:foot"/>
+	<include file="Public:header_index"/>
+	<!--  / warpper  -->
+	<div class="warpper">
+
+		<div class="banner">
+			<div class="swiper-container swiper-container-banner">
+				<div class="swiper-wrapper">
+					<volist name="banner" id="vo">
+						<div class="swiper-slide"><img src="{$vo.pic}" width="100%"></div>
+					</volist>
+				</div>
+				<div class="swiper-pagination swiper-pagination-banner"></div>
+			</div>
+		</div>
+		<div class="head_gong">
+			<a href="/wx_detail.html">
+				<marquee direction="left" scrollamount="3" onmouseover="stop()" onmouseout="start()">
+					{$gundong_gonggao}
+				</marquee>
+			</a>
+
+
+		</div>
+
+		<div class="ind_dg">
+			<ul class="clearfix">
+				<li>
+					<img src="__IMAGES__/duigou.png" width="16">品质保证
+				</li>
+				<li>
+					<img src="__IMAGES__/duigou.png" width="16">14天退货
+				</li>
+				<li>
+					<img src="__IMAGES__/duigou.png" width="16">48小时发货
+				</li>
+			</ul>
+		</div>
+
+		<div class="spacing10"></div>
+
+		<div class="ind_class">
+				<div class="row">
+					<div class="col-xs-3">
+						<a href="/wx_activity.html">
+							<div class="menu_con">
+									<img src="__IMAGES__/si1.png" width="42">
+								<h5>活动专区</h5>
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="/wx_meal.html">
+							<div class="menu_con">
+									<img src="__IMAGES__/si2.png" width="42">
+								<h5>热卖组合</h5>
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="/wx_integral.html">
+							<div class="menu_con">
+									<img src="__IMAGES__/si3.png" width="42">
+								<h5>积分商城</h5>
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="wx_product.html">
+							<div class="menu_con">
+									<img src="__IMAGES__/si4.png" width="42">
+								<h5>全部产品</h5>
+							</div>
+						</a>
+					</div>
+				</div>
+		</div>
+
+		<div class="spacing10"></div>
+
+		<!--<div class="guanggao">-->
+
+			<!--<img src="__IMAGES__/guanggao.jpg" width="100%">-->
+		<!--</div>-->
+		<div class="ind_new">
+			<div class="ind_new_h">
+				<h5>人气推荐· 新品上市</h5>
+				<a href="wx_product.html">查看全部<i class="fa fa-angle-right"></i></a>
+			</div>
+			<div class="ind_new_con">
+				<div class="swiper-container swiper-container-new">
+					<div class="swiper-wrapper">
+						<volist name="isnew" id="vo">
+							<div class="swiper-slide">
+								<a href="/wx_detail.html?id={$vo.id}">
+									<div class="ind_new_list">
+										<div class="ind_new_img">
+											<img src="{$vo.logo_pic}" width="100%">
+										</div>
+										<div class="ind_new_zi">
+											<span><i>新品</i></span>
+											<h5>{$vo.goods_name}</h5>
+											<p>{$vo.goods_des}</p>
+											<b>￥{$vo.price}</b>
+										</div>
+									</div>
+								</a>
+							</div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="spacing10"></div>
+		<div class="ind_time">
+			<h5><i></i>定时促销<i></i><a href="/wx_sale.html">更多<span class="fa fa-angle-right"></span></a></h5>
+			<a href="/wx_detail.html?id={$express.id}">
+				<div class="ind_time_list">
+
+					<div class="ind_time_bg1" style="background:#d2d2d2;"></div>
+					<div class="ind_time_bg2" style="background:#DCDCDC;"></div>
+					<img src="{$express.logo_pic}" width="40%">	
+					<div id="djx" class="ind_time_num">
+						<!-- <span>据结束<i>{$express.hour}</i>:<i>{$express.minute}</i>:<i>{$express.second}</i>秒</span> -->
+					</div>
+					<div class="ind_time_zi">
+						<h5>{$express.goods_name}</h5>
+						<span><i style="right:105%;"></i>CXW-230-HJ9855<i style="left:105%;"></i></span>
+						<p>{$express.goods_des}</p>
+					</div>
+
+				</div>
+				<input id="sec" type="hidden" value={$express.sec}>
+				<div class="ind_time_h">
+					<h5>{$express.classname}</h5>
+					<span>{$express.goods_des}</span>
+					<div class="ind_time_h_ri">
+						<i>¥{$express.price}</i>
+						<div>¥{$express.oprice}</div>
+					</div>
+
+				</div>
+			</a>
+
+		</div>
+
+		<div class="spacing10"></div>
+
+
+		<div class="ind_hot">
+			<h5><i></i>热卖组合<i></i><a href="/wx_meal.html">更多<span class="fa fa-angle-right"></span></a></h5>
+			<div class="main_sec3_con clearfix">
+
+				<div class="main_sec3_con1 clearfix">
+					<a href="/wx_detail.html?id={$r_shop.id}">
+						<div class="main_sec3_con1_zi">
+
+							<h5>{$r_shop.goods_name}<br/><span>{$r_shop.goods_des}</span></h5>
+							<p><span>￥{$r_shop.price}</span></p>
+						</div>
+						<div class="main_sec3_con1_img">
+							<img src="{$r_shop.logo_pic}" width="100%">
+						</div>
+					</a>
+				</div>
+
+				<div class="main_sec3_con2">
+					<volist name="r_shop2" id="vo">
+						<a href="/wx_detail.html?id={$vo.id}">
+							<div class="main_sec3_con2s clearfix">
+								<div class="main_sec2_zi">
+
+									<h5>{$vo.goods_name}<br/><span>{$vo.goods_des}</span></h5>
+									<p><span>￥{$vo.price}</span></p>
+								</div>
+								<div class="main_sec2_img"><img src="{$vo.logo_pic}" width="100%"></div>
+							</div>
+						</a>
+					</volist>
+				</div>
+			</div>
+		</div>
+
+		<div class="spacing10"></div>
+
+
+		<div class="ind_hb">
+			<a href="{:U('/Wx/Index/games')}">
+				<img src="{$banner2.pic}" width="100%">
+			</a>
+		</div>
+		<div class="spacing10"></div>
+
+		<div class="ind_jf">
+			<h5><i></i>积分活动<i></i><a href="wx_integral.html">更多<span class="fa fa-angle-right"></span></a></h5>
+			<div class="swiper-container swiper-container-jf">
+				<div class="swiper-wrapper">
+					<volist name="integral" id="vo">
+						<div class="swiper-slide">
+							<a href="/wx_integral_detail.html?id={$vo.id}">
+								<div class="ind_jf_list">
+									<h5>热门兑换<i class="fa fa-angle-double-right"></i></h5>
+									<p>{$vo.tname}</p>
+									<div class="ind_jf_list_img">
+										<img src="{$vo.logo_pic}" width="100%" height="164px">
+										<span>{$vo.price}<i></i></span>
+									</div>
+									<h4>{$vo.goods_name} <i>兑换</i></h4>
+								</div>
+							</a>
+						</div>
+					</volist>
+				</div>
+			</div>
+		</div>
+		<div class="spacing10"></div>
+
+		<volist name="cate_info" id="vo">
+			<if condition="$vo['goods'] ">
+				<div class="index_titlt">
+					<h5 class="tii"><img src="__IMAGES__/line1.png" width="100%"> {$vo.classname} <img src="__IMAGES__/line2.png" width="100%">
+					</h5>
+					<div class="ind_pro">
+						<div class="row clm5">
+							<volist name="vo.goods" id="zo">
+								<div class="col-xs-6 clp5">
+									<a href="/wx_detail.html?id={$zo.id}">
+										<div class="ind_pro_list">
+											<div class="ind_pro_img">
+												<img src="{$zo.logo_pic}" width="100%">
+											</div>
+											<div class="ind_pro_zi">
+												<h5>{$zo.goods_name}</h5>
+												<h5>{$zo.goods_des}</h5>
+												<span>￥{$zo.price}</span>
+											</div>
+										</div>
+									</a>
+								</div>
+							</volist>
+						</div>
+						<div class="read_more">
+							<a href="/wx_product.html?cate_pid={$vo.id}">查看更多</a>
+						</div>
+					</div>
+				</div>
+			</if>
+		</volist>
+	</div>
+	<!--  / warpper  -->
+
+	<div class="pro_show_bg"></div>
+	<div class="home_menu">
+		<div class="home_menu_se"><input type="text"><img src="__IMAGES__/mes3_1.png" width="25"></div>
+		<div class="home_menu_tx"><a href="/wx_login.html">登录</a> | <a href="/wx_register.html ">注册</a></div>
+		<div class="home_menu_nav">
+			<ul>
+				<li><a href="/wx_ucenter.html"><img src="__IMAGES__/si5.png">个人中心 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="/wx_integral.html"><img src="__IMAGES__/si6.png">积分商城 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="/wx_product.html"><img src="__IMAGES__/si7.png">全部产品 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="/wx_sale.html"><img src="__IMAGES__/si10.png">限时促销 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="/wx_fen_x.html"><img src="__IMAGES__/si11.png">邀请码 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="javascript:volid(0);" onclick="tui_login();"><img src="__IMAGES__/si11.png">退出登录 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="http://dyshop.unohacha.com"><img src="__IMAGES__/si8.png">德意官网 <i class="fa fa-angle-right"></i></a></li>
+
+			</ul>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script>
+$( document ).ready( function()
+{
+
+	var mySwiperBanner = new Swiper( '.swiper-container-banner', {
+		autoplay: 4000,
+		loop: true,
+		speed: 500,
+		pagination: '.swiper-pagination-banner',
+		paginationClickable: true,
+		autoplayDisableOnInteraction: false,
+	} )
+
+	var mySwiperNav = new Swiper( '.swiper-container-nav', {
+		autoplay: 4000,
+		slidesPerView: 4,
+		speed: 300,
+		autoplayDisableOnInteraction: false,
+		grabCursor: true,
+		paginationClickable: true
+	} )
+
+	var mySwiperJf = new Swiper( '.swiper-container-jf', {
+//		autoplay: 4000,
+		speed: 500,
+		slidesPerView: 2,
+		spaceBetween: 6,
+		paginationClickable: true,
+		autoplayDisableOnInteraction: false,
+	} )
+
+	var mySwiperNew = new Swiper( '.swiper-container-new', {
+//		autoplay: 4000,
+		speed: 300,
+		slidesPerView: 2.5,
+		spaceBetween: 10,
+		paginationClickable: true,
+		autoplayDisableOnInteraction: false,
+	} )
+
+} )
+</script>
+
+<script>
+$(document ).ready(function(){
+	$(".header_n" ).click(function(){
+		$(".pro_show_bg" ).stop(true ).fadeIn(500)
+		$(".home_menu").stop(true ).animate({"left":"0"},500)
+	})
+	$(".pro_show_bg").click(function(){
+		$(".pro_show_bg" ).stop(true ).fadeOut(500)
+		$(".home_menu").stop(true ).animate({"left":"-80%"},500)
+	})
+
+
+
+})
+
+</script>
+<!-- 倒计时 -->
+<script>
+	//声明 要倒计时 的秒数
+	var seconds = $("#sec").val();
+	
+	//调用run
+	run();
+	
+	//定时函数
+	var timer = setInterval(run, 1000);
+	
+	//定义函数
+	function run(){
+		//判断 倒计时结束
+		// if (seconds <= 0) {
+		// 	document.getElementById('box').innerHTML = "<a href='fu/hehe.html'><button>抢购</button></a>";
+		// 	clearInterval(timer);
+		// 	return;
+		// }
+		//取出 时间中 的小时数
+		var h = Math.floor(seconds / 3600);
+		//获取分钟数
+		var s = seconds - h * 3600;
+		var i = Math.floor(s / 60);
+		//获取秒数
+		s -= i * 60;
+		
+		//处理 时分秒 的格式
+		h = (h > 9)?h:'0'+h;
+		i = (i > 9)?i:'0'+i;
+		s = (s > 9)?s:'0'+s;
+		
+		//把时分秒 输出 到指定位置
+		
+		var timeStr = '<span>据结束<i>'+h+'</i>:<i>'+i+'</i>:<i>'+s+'</i>秒</span>';
+		document.getElementById('djx').innerHTML = timeStr;
+		
+		//秒数 -1
+		seconds --;
+	}
+function tui_login(){
+	$(".pro_show_bg" ).stop(true ).fadeOut(500);
+	$(".home_menu").stop(true ).animate({"left":"-80%"},500);
+	var id=1;
+	dialog.showTips("确定要退出登录吗?", "firm", function () {
+        $.ajax({
+	        url:'{:U("Wx/User/tlogin")}',
+	        type:'post',
+	        data:{'id':id},
+	        dataType:'json',
+	        cache:false,
+	        success:function(res){
+	          if(res.status == 1){   
+	            window.location.href="/wx_login.html";
+	          }else{
+	            dialog.showTips(res.msg, "warn");
+	          }
+	        }
+	    })
+    })
+}
+</script>
+</html>
+
+        

@@ -1,0 +1,142 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">配置详情</h1>
+            <form id="web_config_form">
+                <div class="panel-single panel-single-light mgt20">
+                    <h3 class="cst_h3 mgb20">基本信息</h3>
+                    <div class="formitems">
+                        <label class="fi-name">网站LOGO：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="fl mgr10">
+                                <img src="{$cache['logo']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="logo" value="{$cache['logo']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl"></span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>商城名称：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.web_name}" name="web_name">
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>商城简介：</label>
+                        <div class="form-controls">
+                            <textarea name="brief" style="padding: 10px;width: 400px;height: 100px;"> {$cache.brief}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>SEO标题：</label>
+                        <div class="form-controls">
+                            <textarea name="seo_title" style="padding: 10px;width: 400px;height: 50px;">{$cache.seo_title}</textarea>
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>SEO关键字：</label>
+                        <div class="form-controls">
+                            <textarea name="seo_keywords" style="padding: 10px;width: 400px;height: 50px;">{$cache.seo_keywords}</textarea>
+
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>SEO描述：</label>
+                        <div class="form-controls">
+                            <textarea name="seo_description" style="padding: 10px;width: 400px;height: 50px;">{$cache.seo_description}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>版权设置：</label>
+                        <div class="form-controls">
+                            <textarea  name="copyright" style="padding: 10px;width:400px;height:50px;">{$cache.copyright}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>客服电话：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.servise_phone}" name="servise_phone" placeholder="">
+                        </div>
+                    </div>
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>客服QQ：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.servise_qq}" name="servise_qq" placeholder="">
+                        </div>
+                    </div>
+
+                    <!--<div class="formitems">
+                        <label class="fi-name">售罄图标：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['sell_out_pic']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="sell_out_pic" value="{$cache['sell_out_pic']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议大小（宽?高?）</span>
+                        </div>
+                    </div>-->
+
+
+                    <!--<div class="formitems">
+                        <label class="fi-name">加载图标：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['load_pic']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="load_pic" value="{$cache['load_pic']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议大小（宽?高?）</span>
+                        </div>
+                    </div>-->
+
+                    <div class="formitems">
+                        <label class="fi-name">微信商城：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['wx_shop']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="wx_shop" value="{$cache['wx_shop']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议大小（宽?高?）</span>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name">微博：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['weibo']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,1)">
+                                <input name="weibo" value="{$cache['weibo']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议大小（宽?高?）</span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed"></span>上次更新时间：</label>
+                        <div class="form-controls">{$cache.update_time}</div>
+                    </div>
+                    <div class="panel-single panel-single-light mgt20 txtCenter">
+                        <button type="button" class="btn btn-primary" onclick="J_Confirm(this)">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="__JS__/Index/web_config.js"></script><!--页面js-->
+<include file="Public:foot"/>

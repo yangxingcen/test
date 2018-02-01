@@ -1,0 +1,77 @@
+<include file="Public:header"/>
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-top: 52px; background: #f5f5f9;padding-bottom: 0%;">
+
+		<div class="screening  clearfix">
+
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="serach">
+				<input type="text" class="in_one" onFocus="this.value = '';" onBlur="if(this.value == '') {this.value = '油烟机';}" value="油烟机">
+
+				<input type="button" class="in_one2">
+			</div>
+
+			<div class="pro_share1" style="top: 12px;">
+
+				<div class="pro_share_rig">
+
+					<span></span>
+
+					<div class="message">
+						<ul class="message_ul">
+								<include file="Public:left"/>
+							</ul>
+						<div class="triangle">
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="search">
+			<div class="search_top clearfix">历史搜索 <img src="__IMAGES__/dele1.png" width="25"></div>
+			<div class="search_con clearfix">
+				<a href="##">油烟机</a><a href="##">套装组合</a><a href="##">电烤箱</a>
+				<a href="##">防油烟</a><a href="##">油烟机</a><a href="##">油烟机</a>
+				<a href="##">油烟机</a><a href="##">油烟机</a><a href="##">油烟机</a>
+				<a href="##">油烟机</a><a href="##">油烟机</a><a href="##">油烟机</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="pro_show_bg"></div>
+	<div class="search_sc">
+		<div class="search_sc_text">确认删除全部历史记录?</div>
+		<div class="search_sc_btn"><a href="##" style="background: #8c8c8c;">取消</a><a href="##">确认</a></div>
+	</div>
+
+
+	<!--  / warpper  -->
+
+</body>
+<script>
+$( document ).ready( function()
+{
+	$(".search_top img" ).click(function(){
+		$(".pro_show_bg,.search_sc" ).stop(true ).fadeIn(500)
+	})
+	$(".pro_show_bg,.search_sc_btn a").click(function(){
+		$(".pro_show_bg,.search_sc" ).stop(true ).fadeOut(500)
+	})
+
+} )
+
+</script>
+</html>

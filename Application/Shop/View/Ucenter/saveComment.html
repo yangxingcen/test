@@ -1,0 +1,219 @@
+<include file='Public:header'/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<body  style="min-width:1024px">
+<include file='Public:top'/>
+
+<div class="user">
+    <div class="container">
+        <div class="row">
+            <include file="Public:ucenterLeft" />
+            <div class="col-sm-10">
+                <div class="user_right" style="margin-top: 20px;">
+                    <div class="eval clearfixed">
+                        <div class="eval_top" style="text-align: left;">商品
+                            <div class="em_ping">评价</div>
+                        </div>
+
+                        <volist name="info['shop']" id="vo">
+                            <div class="return clearfix ">
+                                <div class="ret_left">
+                                    <a href="##"><img src="{$vo.goods_logo}" width="100"></a>
+                                    <div class="eval_left_text">
+                                        <div class="text">{$vo.goods_name}</div>
+                                        <div class="tx">系列：{$vo.cate_name}</div>
+                                        <div class="tx">售价：￥{$vo.price}</div>
+                                    </div>
+                                </div>
+                                <div class="ret_right">
+                                    <div class="refund_con">
+                                        <div class=" clearfix refund_mar">
+
+                                        </div>
+                                        <div class="clearfix refund_mar">
+                                            <div class="left"></div>
+                                            <div class="right right_em">
+                                                <if condition="$vo['discuss_type'] eq 1">
+                                                    <textarea readonly="readonly" name="content" onfocus="if(this.value=='非常完美') {this.value='';}" onblur="if(this.value=='') {this.value='非常完美';this.style.color='#333';}">{$vo.discuss_content}</textarea>
+                                                <else />
+                                                    <textarea name="content" onfocus="if(this.value=='非常完美') {this.value='';}" onblur="if(this.value=='') {this.value='非常完美';this.style.color='#333';}">非常完美</textarea>
+                                                </if>
+                            
+                                            </div>
+                                        </div>
+                                        <div class="clearfix refund_mar sc">
+                                            <div class="left"></div>
+                                            <div class="right right_em2 clearfix">
+                                             
+                                            <div class="formitems">
+                                                <label class="fi-name"><span class="colorRed"></span>轮播展示图(多选)：</label>
+                                                <div class="form-controls pdt5">
+                                                    <if condition="$vo['discuss_type'] neq 1">
+                                                        <div class=" fl mgr10">
+                                                            <img src="{$info['pic1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg_more(this,2)" data-name="pic1[]" data-view="J_imageView_1">
+                                                      
+                                                        </div>
+                                                    </if>
+                                                </div>
+                                            </div>
+                                            <!--图片区-->
+                                            <div style="margin-left:148px;" class="input-group multi-img-details ui-sortable dad-active dad-container" id="J_imageView_1">
+                                                <if condition="$vo['discuss_type'] eq 1">
+                                                    <notempty name="vo['discuss_pic']">
+                                                        <volist name="vo['discuss_pic']" id="xo">
+                                                            <div class="goods_imgs">
+                                                                <img src="{$xo}" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail">
+                                                            </div>
+                                                        </volist>
+                                                    </notempty>
+                                                <else />
+                                                    <notempty name="vo['discuss_pic']">
+                                                        <volist name="info['pic1']" id="vo">
+                                                            <div class="goods_imgs">
+                                                                <img src="{$vo}" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail">
+                                                                <input type="hidden" name="pic1[]" value="{$vo}">
+                                                                <em class="close" title="删除这张图片" onclick="deleteMultiImage(this)">×</em>
+                                                            </div>
+                                                        </volist>
+                                                    </notempty>
+                                                </if>
+                                            </div>
+                                            <!--图片区-->
+                                                <div class="eval_right_1">
+                                                    <if condition="$vo['discuss_type'] neq 1">
+                                                        <a href="javascript:volid(0)" onclick="sub_discuss(id)" id="{$vo.id}" class="eval_bot_r goods">提交</a>
+                                                    
+                                                    </if>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+
+                        <div class="user12_1_con">
+                            <p>综合评价 </p>
+
+                            <div class="content">
+
+                                <div id="startone" class="block clearfix">
+                                    <p style="float:left;">商品：</p>
+                                    <div class="star_score"></div>
+
+                                    <div class="attitude"></div>
+                                </div>
+                                <div id="startone1" class="block clearfix">
+                                    <p style="float:left;">物流：</p>
+                                    <div class="star_score"></div>
+
+                                    <div class="attitude"></div>
+                                </div>
+                                <div id="startone2" class="block clearfix">
+                                    <p style="float:left;">卖家：</p>
+                                    <div class="star_score"></div>
+
+                                    <div class="attitude"></div>
+                                </div>
+                                <div id="startone3" class="block clearfix">
+                                    <p style="float:left;">服务：</p>
+                                    <div class="star_score"></div>
+
+                                    <div class="attitude"></div>
+                                </div>
+                                <p class="clearfix p_index"><span>评价：</span>
+                                    <textarea name="texta1" cols="" rows="" onfocus="if(this.value=='非常完美') {this.value='';}" onblur="if(this.value=='') {this.value='非常完美';this.style.color='#333';}">非常完美</textarea>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    <a href="javascript:volid(0);" onclick="sub_order(id)" id="{$info.order_id}" class="eval_bot_r">提交</a></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file='Public:footer'/>
+<include file='Public:menu_right'/>
+</body>
+<script charset="utf-8" src="__JS__/admincommon.js"></script>
+<script type="text/javascript" src="__JS__/startScore.js"></script>
+
+<script>
+    scoreFun( $( "#startone" ) )
+    scoreFun( $( "#startone1" ) )
+    scoreFun( $( "#startone2" ) )
+    scoreFun( $( "#startone3" ) )
+    scoreFun( $( "#starttwo" ), {
+        fen_d: 22,//每一个a的宽度
+        ScoreGrade: 5//a的个数 10或者
+    } )
+</script>
+<link rel="stylesheet" href="__UPLOADIMG__/jquery.dad.css" />
+<script src="__UPLOADIMG__/jquery.dad.min.js"></script>
+<script language="javascript">
+    $('#J_imageView_1').dad({
+        draggable: 'img'//拖拽区域
+    });
+</script>
+<script>
+/*获取商品轮播图 1*/
+function get_many_pic() {
+    var detailpic = '';
+    $("input[name='pic1[]']").each(function(){
+        var value = $.trim($(this).val());
+        if(value.length > 5){
+            detailpic += value + ',';
+        }
+    });
+    if(detailpic){
+        detailpic = detailpic.substring(0,detailpic.length-1);
+    }
+    return detailpic;
+}
+function sub_discuss(id){
+    var content = $("textarea[name='content']").val();
+    var detailpic  = get_many_pic();
+    dialog.showTips("确定要评论吗?", "firm", function () {
+        $.post("{:U('Shop/Ucenter/ok_discuss')}", {id:id,'discuss_content':content,'discuss_pic':detailpic}, function (result) {
+            if (result.status == 1) {
+                dialog.showTips(result.info , "", "1");
+                        return false;
+            }
+                dialog.showTips(result.info ,'warn');
+                    return false;
+        }, "json")
+    }) 
+}
+function sub_order(id){
+    var startone = $("#startone").find('.clibg').css('z-index');
+    var startone1 = $("#startone1").find('.clibg').css('z-index');
+    var startone2 = $("#startone2").find('.clibg').css('z-index');
+    var startone3 = $("#startone3").find('.clibg').css('z-index');
+    var content = $("textarea[name='texta1']").val();
+    dialog.showTips("确定要评论吗?", "firm", function () {
+        $.post("{:U('Shop/Ucenter/discuss_order')}", {id:id,'startone':startone,'startone1':startone1,'startone2':startone2,'startone3':startone3,'content':content}, function (result) {
+            if (result.status == 1) {
+                window.location.href = "/conversionRecord.html";
+            }
+                dialog.showTips(result.info ,'warn');
+                    return false;
+        }, "json")
+    }) 
+    
+}
+</script>
+</html>

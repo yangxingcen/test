@@ -1,0 +1,84 @@
+<include file='Public:header'/>
+<body>
+<include file='Public:top'/>
+
+<div class="warpper">
+    <div class="back_bg">
+        <div class="container">
+            <div class="meal">
+                <img src="__HOST__{$meal_index_config}" width="100%">
+
+                <div class="tabulation">
+                    <div class="line1"></div>
+                    <span class="tehui taocan">
+                        <i class="san1"></i>
+                        <i class="san"></i><span class="icon_sapn"></span>套餐活动</span>
+                </div>
+
+                <div class="meal_all clearfix">
+                    <div class="meal_img">
+                        <span class="top_1"><img src="__IMAGES__/news.png" width="100%"> </span>
+                        <img src="__HOST__{$meal_index_config_left}" width="100%">
+                    </div>
+
+                    <div class="meal_right">
+                        <notempty name="list">
+                            <volist name="list" id="val1" offset="0" length='6'>
+                                <a href="/mealDetail?id={$val1.id}">
+                                    <div class="meal_img1">
+                                        <div class="div_img">
+                                            <div class="div_img_txt">特惠</div>
+                                            <img src="{$val1.logo_pic}" width="100%">
+                                        </div>
+                                        <div class="meal_txt meal_txt1">
+                                            <h5>{$val1.goods_name}</h5>
+                                            <p>￥{$val1.price}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </volist>
+                        </notempty>
+                    </div>
+
+                </div>
+
+                <div class="meal_all clearfix">
+
+                    <div class="meal_right meal_right1">
+                        <notempty name="list">
+                            <volist name="list" id="val1" offset="6" length='6'>
+                                <a href="/mealDetail?id={$val1.id}">
+                                    <div class="meal_img1">
+                                        <div class="div_img">
+                                            <div class="div_img_txt">特惠</div>
+                                            <img src="{$val1.logo_pic}" width="100%">
+                                        </div>
+                                        <div class="meal_txt meal_txt1">
+                                            <h5>{$val1.goods_name}</h5>
+                                            <p>￥{$val1.price}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </volist>
+                        </notempty>
+                    </div>
+                    <gt name="num" value="6">
+                        <div class="meal_img">
+                            <span class="top_1"><img src="__IMAGES__/news.png" width="100%"> </span>
+                            <img src="__HOST__{$meal_index_config_right}" width="100%">
+                        </div>
+                    </gt>
+                </div>
+                <div class="page page1 page2  clearfix" id="page_num">
+                    <div class="pages"> {$page}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file='Public:footer'/>
+    <include file='Public:menu_right'/>
+</div>
+<script language="javascript" src="__JS__/meal.js"></script>
+
+</body>
+</html>

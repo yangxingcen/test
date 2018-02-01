@@ -1,0 +1,51 @@
+<include file="Public:header"/>
+<body>
+	<!-- top -->
+	<div class="integral">
+
+		<a href="javascript:history.go(-1)">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+
+		<div class="tegral">忘记密码</div>
+
+	</div>
+	<!-- top end -->
+	<!-- user -->
+	<div class="warpper" style="padding-bottom: 0;">
+		<div class="login">
+			<div class="forgetp">
+				<ul>
+					<li class="phone">
+						<span>手机号</span>
+						<input type="tel" name="telephone" placeholder="请输入手机号" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+
+					</li>
+					<li class="phone">
+						<span>验证码</span>
+						<input type="text" name="vcode" placeholder="请输入验证码" maxlength="4" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="padding-right: 100px;">
+					
+						<img style="width: 84px;height: 40px; position: absolute;right: 0;top: 0;margin-top: 4px;" width="100%" height="100%" id="vcode"  alt="验证码" src="{:U('/Wx/User/verify_c',array())}" title="点击刷新">
+						
+					</li>
+					<li class="yzm">
+						<span>验证码</span>
+						<input type="text" name="telcode" onFocus="this.value = '';"  placeholder="请输入手机验证码" maxlength="6" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+						<div class="getyzm" onclick="get_yzm(this);">获取验证码</div>
+					</li>
+				</ul>
+			</div>
+			<div class="nextp">
+				<a href="javascript:volid(0);" onclick="next();">下一步</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- user end -->
+
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/user/forget.js"></script>
+</html>

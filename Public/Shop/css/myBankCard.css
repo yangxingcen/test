@@ -1,0 +1,39 @@
+
+.user_tit p{
+    box-sizing: border-box;
+    padding:0 15px;
+    font-size: 120%;
+    color:white;
+    line-height: 42px;
+}
+.user_tit p a{
+    float:right;
+    line-height: 40px;
+    color: white;
+}
+.user_tit a:hover{
+    color:white !important;
+}
+.user_r10 a{
+    line-height: 20px;
+}
+.user_r5 table td a:hover{
+    background: #CEAF64;
+    color:white !important;
+}
+.dizhi_list table .p1 {
+    text-align: right;
+    line-height: 24px;
+    color: #666;
+}
+.dizhi_list table td {
+    border: 0 !important;
+    padding: 12px 8px !important;
+}
+.dizhi_list table input {
+    width: 80%;
+    line-height: 24px;
+    padding-left: 10px;
+    color: #666;
+    border: 1px solid #ccc;
+}

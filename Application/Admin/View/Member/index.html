@@ -1,0 +1,83 @@
+<include file="Public:head"/>
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">用户列表<a href="javascript:history.go(-1);" style="float:right" class="btn btn-success">返回</a></h1>
+            <div class="alert alert-info disable-del">
+                目前拥有 <span style="font-size:16px;">{$count}</span>名用户。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="用户昵称|手机号码" class="input" name="keyword" value="{:I('get.keyword')}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{:I('get.id')}">
+                    <button class="btn btn-primary" style="line-height:28px;"><i class="gicon-search white"></i>查询</button>
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>头像</td>
+                        <td>用户昵称/手机</td>
+                        <td>性别</td>
+                        <td>状态</td>
+                        <td>注册时间<br/>上次登录时间</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="cache" id="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td><img src="{$vo.person_img}" width="50"></td>
+                            <td>{$vo.person_name}<br/>{$vo.telephone}</td>
+
+                            <td>
+                                <switch name="vo.sex">
+                                    <case value="0">保密</case>
+                                    <case value="1">男</case>
+                                    <case value="2">女</case>
+                                    <default/>
+                                    未知
+                                </switch>
+                            </td>
+
+                            <td class="status">
+                                <switch name="vo.status">
+                                    <case value="0"><p class="green">正常</p></case>
+                                    <case value="1"><p class="red">冻结</p></case>
+                                </switch>
+                            </td>
+                            <td>{$vo.add_time}<br/>{$vo.last_login_time}</td>
+                            <td>
+                                <p>
+                                    <a href="{:U('/Admin/Member/detail/id')}/{$vo.id}" class="btn btn-warning" title="编辑"><i class="gicon-edit white"></i></a>
+                                </p>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <!-- end wxtables -->
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <div class="pages" style="width:100%;margin-left:0px;">
+                            {$page}
+                        </div>
+                        <!-- end paginate -->
+                    </div>
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+            <!-- end tablesWrap -->
+        </div>
+        <!-- end content-right -->
+    </div>
+</div>
+
+<include file="Public:foot"/>

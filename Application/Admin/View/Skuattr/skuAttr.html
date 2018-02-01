@@ -1,0 +1,138 @@
+<include file="Public:head"/>
+
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+
+        <div class="content-right fl">
+            <h1 class="content-right-title">规格列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+
+            <div class="alert alert-info disable-del">
+                <h4>提示</h4>
+                删除sku属性会删除sku下面所有的sku属性值 <a href="javascript:;" class="alert-delete" title="隐藏"> <i
+                    class="gicon-remove"></i></a></div>
+            <form action="" method="post">
+                <div class="clearfix">
+                    <a href="javascript:;" class="btn btn-success fl BtnAddClass">添加sku</a>
+                </div>
+            </form>
+            <table class="wxtables mgt15">
+                <colgroup>
+                    <col width="5%">
+                    <col width="20%">
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="20%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>分类名称</td>
+                    <td>排序</td>
+                    <td>创建时间</td>
+                    <td class="center">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <notempty name="vo.data">
+                            <td class="cate" data-id="{$vo.id}" data-open="0"><span class="colorBlue bold">+</span>&nbsp;{$vo.classname}</td>
+                        <else/>
+                            <td>{$vo.classname}</td>
+                        </notempty>
+                        <td>{$vo.sorts}</td>
+                        <td>{$vo.add_time}</td>
+                        <td class="center">
+                            <a href="javascript:void(0);" class="btn btn-warning" title="编辑"
+                               onclick="J_Edit(this)"
+                               data-id="{$vo.id}"
+                               data-classname="{$vo.classname}"
+                               data-pid="{$vo.pid}"
+                               data-sorts="{$vo.sorts}"><i class="gicon-edit white"></i></a>
+                            <a href="javascript:;" class="btn btn-danger"  onclick="J_Change(this)" data-item="is_del" data-id="{$vv.id}" title="删除"><i class="gicon-trash white"></i></a>
+                        </td>
+                    </tr>
+                    <foreach name="vo.data" item="vo1">
+                        <tr class="subcate_{$vo.id}_{$vo1.id}" style="display:none;">
+                            <td>{$vo1.id}</td>
+                            <td>|---{$vo1.classname}</td>
+                            <td>{$vo1.sorts}</td>
+                            <td>{$vo1.add_time}</td>
+                            <td class="center">
+                                <a href="javascript:void(0);" class="btn btn-warning j-editClass" title="编辑"
+                                   onclick="J_Edit(this)"
+                                   data-id="{$vo1.id}"
+                                   data-classname="{$vo1.classname}"
+                                   data-pid="{$vo1.pid}"
+                                   data-sorts="{$vo1.sorts}"><i class="gicon-edit white"></i></a>
+                                <a href="javascript:;" class="btn btn-danger"  onclick="J_Change(this)" data-item="is_del" data-id="{$vv.id}" title="删除"><i class="gicon-trash white"></i></a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+            <div class="tables-btmctrl clearfix">
+
+                <div class="pages">
+                    {$page}
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+            <!-- end content-right -->
+        </div>
+    </div>
+</div>
+<!-- end container -->
+
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height:auto;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加规格/属性</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="Form_one">
+    <div class="jbox-container">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>规格/属性名称：</label>
+
+            <div class="form-controls">
+                <input type="text" class="input" name="classname">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>规格：</label>
+
+            <div class="form-controls">
+                <select name='pid' class="select">
+                    <option value="0">--请选择规格--</option>
+                    <foreach name="cate" item="vo">
+                        <option value="{$vo.id}">{$vo.classname}</option>
+                    </foreach>
+                </select>
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>排序：</label>
+
+            <div class="form-controls">
+                <input type="text" value="0" class="input" name="sorts">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="id" value="">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+    </form>
+</div>
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/Skuattr/skuAttr.js"></script><!--页面js-->

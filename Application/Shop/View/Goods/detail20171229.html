@@ -1,0 +1,783 @@
+<include file="Public:header"/>
+
+<body>
+<include file="Public:top"/>
+
+
+<div class="warpper">
+    <input type="hidden" id="user_id" value="{$user_id}">
+    <input type="hidden" id="is_sku" value="{$goodsInfo.is_sku}">
+    <input type="hidden" id="goods_id" value="{$goodsInfo.id}">
+    <input type="hidden" id="url" value="/addtocart.html">
+    <input type="hidden" id="login_url" value="/login.html">
+    <input type="hidden" id="isactivity" value="{$isactivity}">
+    <div class="inner_title">
+        <div class="container">
+            <h5><a href="__HOST__">首页</a></h5><i class="fa fa-angle-right"></i><span><if condition="$isactivity eq 2"><a href="/mealList.html">套餐活动</a><elseif condition="$isactivity eq 3" /><a href="/timer.html">限时特惠</a><else /><a href="{:U('Shop/Goods/goodsList')}">产品中心</a></if></span>
+            <notempty name="cate_one"><i class="fa fa-angle-right"></i><span>{$cate_one.classname}</span><i class="fa fa-angle-right"></i>
+                <p>{$cate_two.classname}</p>
+                <else />
+                <i class="fa fa-angle-right"></i><span>{$cate_two.classname}</span><i class="fa fa-angle-right"></i>
+            </notempty>
+        </div>
+    </div>
+
+    <div class="products">
+        <div class="container">
+            <div class="pro_inner">
+                <div class="pro_inner_con">
+                    <div class="row clm0">
+                        <div class="col-sm-6 clp0">
+                            <div class="pro_xx clearfix">
+                                <ul class="pro_xximg">
+                                    <!--<li class="pro_xximg_show">-->
+                                        <!--<a href="" class="cloud-zoom" id="zoom1" rel="adjustX: 0, adjustY:0"><img src="{$goodsInfo.logo_pic}" width="497px" height="451px"></a>-->
+                                    <!--</li>-->
+                                    <volist name="goodsInfo['pic1']" id="vo" mod="1"  >
+                                        <li>
+                                            <a href="{$vo}" class="cloud-zoom" id="zoom1" rel="adjustX: 0, adjustY:0"><img src="{$vo}" width="100%"></a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                                <div class="pro_xx_box">
+                                    <div class="pro_xx_next"><i class="fa fa-angle-down"></i></div>
+                                    <div class="pro_xx_prev"><i class="fa fa-angle-up"></i></div>
+                                    <div class="pro_xx_s_box">
+                                        <ul class="pro_xx_s clearfix">
+                                            <volist name="goodsInfo['pic1']" id="vo" mod="1">
+                                                <eq name="mod">
+                                                    <li class="pro_xx_son"><img src="{$vo}" width="100%">
+                                                </eq>
+                                            </volist>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="share_y"><i class="fa fa-share-alt"></i>分享</div>
+                                <div class="pro_sc">
+
+                                    <h5 class="collection <notempty name='coll'>pro_scon</notempty>"><i class="fa fa-star"></i>收藏商品<span>(<i id="c_nums">{$goodsInfo.collection_num|default="0"}</i>人气)</span></h5>
+                                    <p>购买送<span>{$goodsInfo.integral|default="0"}</span>积分</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 clp0">
+                            <div class="pro_inner_zi">
+                                <h5>{$goodsInfo.goods_name}</h5>
+                                <p style="color:#e50011;">{$goodsInfo.goods_des}</p>
+                                <p style="color:#447def;">{$goodsInfo.goods_ser}</p>
+                                <div class="pro_inner_zi1">
+                                    <notempty name="goodsInfo.isactivity">
+                                        <input type="hidden" name="second" id="second" value="{$goodsInfo.limited_time_end}">
+                                        <div class="time_to">
+                                        <span class="time_gou">限时购</span>
+
+                                        距离结束还剩:
+                                        <div class="indexRoot indexRoot_y">
+
+                                            <span class="tx" id="t_h6">00</span>时<span class="tx" id="t_m6">00</span>分<span class="tx" id="t_s6">00</span>秒
+
+                                        </div>
+
+                                        <div class="time_to_a">
+                                            <a href="timer.html">更多抢购</a>
+                                        </div>
+                                    </div>
+                                    </notempty>
+                                    <p>
+                                        现价<span class="pro_jg price" style="margin-left:6px;">¥{$goodsInfo.price}</span><span class="pro_jg pro_jg1 oprice">¥{$goodsInfo.oprice}</span>
+                                    </p>
+                                    <p class="youhui">
+                                        <span><i class="inner_i1"></i>每满149减30元券 <i class="inner_i2"></i>  </span>
+                                        <a href="##">立即领取</a>
+                                    </p>
+                                    <div class="div_appraise">
+                                        客户评价：<span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <div class="taries taries1">评论: {$goodsInfo.comment_num|default="0"}</div>
+                                        <div class="taries">已售: {$goodsInfo.sales|default="0"}</div>
+                                    </div>
+
+                                </div>
+                                <notempty name="goodsInfo['is_sku']">
+                                    <notempty name="sku_data">
+                                        <foreach name="sku_item" item="v" key="k">
+                                            <div class="pro_inner_zi2">
+                                                <p><!-- pro_xz -->
+                                                    <b>{$v.classname}：</b>
+                                                    <foreach name="v.subset" item="vv" key="kk">
+                                                        <span class="sku-item" data-id="{$vv.skuid}" data-pid="{$v.skuid}">{$vv.classname}</span>
+                                                    </foreach>
+                                                    <input type="hidden" id="sku_{$v.skuid}" class="sku_id" value="">
+                                                </p>
+                                            </div>
+                                        </foreach>
+                                    </notempty>
+                                </notempty>
+                                <div class="pro_inner_zi3">
+                                    <p>
+                                        <b>数量：</b>
+                                        <span class="pro_jian">-</span><span class="pro_num"><input type="text" value="1" class="nums" ></span><span class="pro_jia">+</span>
+                                    </p>
+                                    <input type="hidden" value="{$goodsInfo.stock}" id="store" class="store">
+                                    <p>库存：<i class="kucun">{$goodsInfo.stock}</i>台</p>
+                                </div>
+                                <div class="pro_inner_zi4">
+                                    <form name="buyform" id="buyform" target="_blank" action="{:U('Shop/Order/buy')}" method="post">
+                                        <input type="hidden" name="goodsid"  id="goodsid" value="">
+                                        <input type="hidden" name="nums"  id="nums" value="">
+                                        <input type="hidden" name="skuid" id="skuid"  value="">
+                                        <input type="hidden" name="isactivity" value="{$isactivity}">
+                                    </form>
+                                    <a href="javascript:void(0);" class="pro_innrt_btn1 nowbuy">立即购买</a>
+                                    <a href="javascript:void(0);" class="pro_innrt_btn2">
+                                        <!--加入购物车-->
+                                        <div class="btnCart addcart">加入购物车
+                                        </div>
+                                    </a>
+
+                                    <span>扫一扫购买<img src="__IMAGES__/pro_phone.png" width="42"><img class="pro_inner_zi4_img" src="__IMAGES__/weixin_erweima.jpg" width="120"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p_content ">
+
+                <div class="chandise">
+                    <h5 class="on">商品详情</h5>
+                    <h5>商品评价 <span>（{$goodsInfo.comment_num|default="0"}）</span></h5>
+
+                    <a href="##">
+                        <div class="souwu btnCart">加入购物车</div>
+
+                    </a>
+                </div>
+
+                <div class="p_content_box">
+                    <div class="p_content_list p_content_list_y" style="display:block;">
+                        <div class="p_attrlist clearfix">
+                            <volist name="goods_param" id="val_p">
+                            <div class="attrlist1">
+                                <p><span>{$val_p.0}</span>{$val_p.1}</p>
+                            </div>
+                            </volist>
+                        </div>
+                        {$goodsInfo.detail|htmlspecialchars_decode|stripslashes}
+                    </div>
+
+                    <div class="p_content_list">
+                            <div class="pingj">
+                                <div class="pingj_one clearfix">
+                                    <div class="pingj_one_left">
+
+                                        <div class="label2">好评率</div>
+                                        <div class="goodRate">94.8%</div>
+                                        <div class="goodRate_star"><span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span></div>
+                                    </div>
+                                    <div class="pingj_one_right">
+                                        <h5>大家都在说：</h5>
+                                        <div class="labelList">
+                                            <span class="zhong">全部(100)</span>
+                                            <span>追评（40）</span>
+                                            <span>质量上乘（137）</span>
+                                            <span>性价比高（51）</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="pingj_t">
+                                    <p class="pingj_on"><span></span>全部(100)</p>
+                                    <p><span></span>有图(30)</p>
+                                </div>
+                                <div class="pingj_con">
+                                    <ul class="clearfix" style="display:block;">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="clearfix">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <div class="ping_img" id="0">
+                                                            <img src="__IMAGES__/pingj1_x.jpg" width="90">
+                                                            <img src="__IMAGES__/pingj2_x.jpg" width="90">
+                                                            <img src="__IMAGES__/pingj3_x.jpg" width="90">
+                                                        </div>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                        <div class="ping_img_con">
+                                                            <div class="ping_img_con_prev">
+                                                                <img src="__IMAGES__/left1.png" width="50"></div>
+                                                            <div class="ping_img_con_next">
+                                                                <img src="__IMAGES__/right1.png" width="50"></div>
+                                                            <div class="ping_img_con_close">
+                                                                <img src="__IMAGES__/pingj_close.png" width="20"></div>
+                                                            <div class="ping_img_cons">
+                                                                <ul class="clearfix">
+                                                                    <li><img src="__IMAGES__/pingj1.jpg" width="100%"></li>
+                                                                    <li><img src="__IMAGES__/pingj2.jpg" width="100%"></li>
+                                                                    <li><img src="__IMAGES__/pingj3.jpg" width="100%"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <div class="ping_img" id="1">
+                                                            <img src="__IMAGES__/pingj1_x.jpg" width="90">
+                                                            <img src="__IMAGES__/pingj2_x.jpg" width="90">
+                                                        </div>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                        <div class="ping_img_con">
+                                                            <div class="ping_img_con_prev">
+                                                                <img src="__IMAGES__/left1.png" width="50"></div>
+                                                            <div class="ping_img_con_next">
+                                                                <img src="__IMAGES__/right1.png" width="50"></div>
+                                                            <div class="ping_img_con_close">
+                                                                <img src="__IMAGES__/pingj_close.png" width="20"></div>
+                                                            <div class="ping_img_cons">
+                                                                <ul class="clearfix">
+                                                                    <li><img src="__IMAGES__/pingj1.jpg" width="100%"></li>
+                                                                    <li><img src="__IMAGES__/pingj2.jpg" width="100%"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="pingj_con_img">
+                                                        <img src="__IMAGES__/pj_user.png">
+                                                        <p>y****m</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="pingj_con_zi">
+                                                        <p>安装师傅非常专业称职，遇到问题细心解决服务态度很棒！这款抽烟机款式是我想要的！以后还会支持！</p>
+                                                        <p class="clearfix"><span class="pjzi1">颜色:黑色  数量：×1</span>
+                                                            <span class="pjzi2">2016-06-13 11:40</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="pro_con pro_con1">
+
+                    <div class="pro_box_tit1">
+                        <notempty name="cate_like">
+                            <a href="javascript:void(0);" class="pro_currt1"> 类似风格</a>
+                        </notempty>
+                        <notempty name="price_like">
+                            <a href="javascript:void(0);">推荐同等价位</a>
+                        </notempty>
+                        <notempty name="cate_like_hot">
+                            <a href="javascript:void(0);">推荐同类热销品</a>
+                        </notempty>
+                    </div>
+                    <div class="pro_box_ls">
+                        <div class="pro_b_a pro_b_a1"  style="display:block;">
+
+                            <div class="first_product_bg"></div>
+                            <div class="first_product clearfix">
+                                <volist name="cate_like" id="val_cate" key="k_1">
+                                    <a href={$url}?id={$val_cate.id}>
+                                    <div class="first_one">
+                                        <div class="first_one_ab">
+                                            <h2>0{$k_1}</h2>
+                                            <p>TOP</p>
+                                        </div>
+                                        <div class="first_one_img">
+                                            <img src="{$val_cate.logo_pic}" width="100%">
+                                        </div>
+                                        <div class="first_txt">
+                                            <h4>{$val_cate.goods_name}</h4>
+                                            <h5>原价：￥{$val_cate.price}</h5>
+                                            <p>现价：￥{$val_cate.oprice}</p>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </volist>
+                            </div>
+                        </div>
+
+                        <div class="pro_b_a pro_b_a1">
+                            <div class="first_product_bg"></div>
+                            <div class="first_product clearfix">
+                                <volist name="price_like" id="val_price" key="k_2">
+                                    <a href={$url}?id={$val_price.id}>
+                                    <div class="first_one">
+                                        <div class="first_one_ab">
+                                            <h2>0{$k_2}</h2>
+                                            <p>TOP</p>
+                                        </div>
+                                        <div class="first_one_img">
+                                            <img src="{$val_price.logo_pic}" width="100%">
+                                        </div>
+                                        <div class="first_txt">
+                                            <h4>{$val_price.goods_name}</h4>
+                                            <h5>原价：￥{$val_price.price}</h5>
+                                            <p>现价：￥{$val_price.oprice}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                </volist>
+                            </div>
+                        </div>
+
+                        <div class="pro_b_a pro_b_a1">
+                            <div class="first_product_bg"></div>
+                            <div class="first_product clearfix">
+                                <volist name="cate_like_hot" id="val_hot" key="k_3">
+                                    <a href={$url}?id={$val_hot.id}>
+                                        <div class="first_one">
+                                            <div class="first_one_ab">
+                                                <h2>0{$k_3}</h2>
+                                                <p>TOP</p>
+
+                                            </div>
+                                            <div class="first_one_img">
+                                                <img src="{$val_hot.logo_pic}" width="100%">
+
+                                            </div>
+                                            <div class="first_txt">
+                                                <h4>{$val_hot.goods_name}</h4>
+                                                <h5>原价：￥{$val_hot.price}</h5>
+                                                <p>现价：￥{$val_hot.oprice}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </volist>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file='Public:footer'/>
+<!---navshow-->
+<include file="Public:right"/>
+</body>
+<!--<link href="css/city-picker.css" rel="stylesheet">-->
+<!--<script language="javascript" src="__JS__/city-picker.data.js"></script>-->
+<!--<script language="javascript" src="__JS__/city-picker.js"></script>-->
+
+<script type="text/javascript" src="__JS__/parabola.js"></script>
+<script type="text/javascript" src="__JS__/goods/detail.js"></script>
+<script>
+    $('.nowbuy').click(function() {
+        var user_id = $('#user_id').val();
+        var login_url = $('#login_url').val();
+        var isactivity = $('#isactivity').val();
+        if (user_id) {
+            var nums = parseInt($('.nums').val());
+            var kucun = parseInt($('.kucun').html());
+            if(kucun < nums) {
+                alert('该商品库存不足！');
+                return false;
+            }
+            var sku_id = '';
+            var goodsid = $('#goods_id').val();
+            $(".sku_id").each(function () {
+                sku_id += $(this).val() + ',';
+            });
+
+            if (sku_id.length > 0) {
+                sku_id = sku_id.substr(0, sku_id.length - 1);
+            }
+
+
+            var is_sku = $('#is_sku').val();
+            if (is_sku == '0') {
+                sku_id = '';
+            }else{
+
+            }
+            if (is_sku == '1' && sku_id==',,') {
+                alert('请选择正确的商品！');
+                return false;
+            }
+
+            $('#nums').val(nums);
+            $('#goodsid').val(goodsid);
+            $('#skuid').val(sku_id);
+            $('#buyform').submit();
+        } else {
+            window.location.href = login_url;
+        }
+    })
+
+    var sku_id = 0;
+    <notempty name="goodsInfo['is_sku']">
+        <notempty name="sku_data">
+        (function (){
+            var discount = 1;
+            var sku = {$sku_data};                                      //当前商品的全部SKU数列
+            $(".sku-item").click(function (){                        //触发
+                setTimeout(function(){                                  //
+                    var keys = getSkuKey();                              //获取sku key值
+                    var data = sku[keys];
+                    if(data){
+                        $(".oprice").html("¥"+data['oprice']);
+                        $(".price").html("¥"+data['price']);              //打折是在现价的基础上打折
+                        $(".kucun").html(data['store']);
+                        sku_id = data['id'];
+                    }else{
+                        $(".kucun").html(0);
+                        sku_id = 0;
+                    }
+                }, 0)
+            })
+
+            function getSkuKey(){
+                var arr = [];
+                $(".pro_xz").each(function (i){
+                    arr.push($(this).attr('data-id'))
+                })
+                arr.sort(function (a, b){
+                    return a-b;
+                })
+                return "-"+arr.join("-")+"-";
+            }
+
+            Array.prototype.zyffliter = function (str){
+                var arr = [];
+                for(var i=0;i<this.length;i++){
+                    if(this[i] != str){
+                        arr.push(this[i])
+                    }
+                }
+                return arr;
+            }
+
+        }())
+        </notempty>
+        </notempty>
+
+    function GetRTime()
+    {
+        var second = $('#second').val();
+        var EndTime = new Date(second);
+        var NowTime = new Date();
+        var t = EndTime.getTime() - NowTime.getTime();
+        var d = 0;
+        var h = 0;
+        var m = 0;
+        var s = 0;
+        if( t >= 0 )
+        {
+            //d=Math.floor(t/1000/60/60/24);
+            //h=Math.floor(t/1000/60/60%24);
+            h = Math.floor( t / 1000 / 60 / 60 );
+            m = Math.floor( t / 1000 / 60 % 60 );
+            s = Math.floor( t / 1000 % 60 );
+            document.getElementById( "t_h6" ).innerHTML = h < 10 ? "0" + h : h;
+            document.getElementById( "t_m6" ).innerHTML = m < 10 ? "0" + m : m;
+            document.getElementById( "t_s6" ).innerHTML = s < 10 ? "0" + s : s;
+        }
+        //document.getElementById("t_d").innerHTML = d + "天";
+        // document.getElementById("t_d").innerHTMLh < 10 ? "0" + h : h;
+    }
+
+    setInterval( GetRTime, 0 );
+
+   </script>
+
+
+
+</html>

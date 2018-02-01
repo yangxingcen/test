@@ -1,0 +1,103 @@
+<include file="Public:header"/>
+
+
+<body>
+	<div class="integral">
+		<a href="javascript:history.go(-1)">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+		<div class="tegral">退款/售后</div>
+		<div class="pro_share1">
+			<div class="pro_share_rig">
+				<span></span>
+				<div class="message"><ul class="message_ul">
+								<include file="Public:left"/>
+							</ul>
+					<div class="triangle">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-bottom: 0%; background: #f5f5f9;">
+		<!--有订单-->
+
+		<div class="refund_sec1">
+			<div class="tit">退款成功</div>
+			<div class="text">2017年11月22日 11:37</div>
+		</div>
+		<div class="refund_sec2">
+			<div class="refund_sec2_con clearfix">
+				<div class="left">退款总金额</div>
+				<div class="right" style="color: #e60012;">￥3000.00</div>
+			</div>
+			<div class="refund_sec2_con clearfix">
+				<div class="left">退回余额</div>
+				<div class="right">￥3000.00</div>
+			</div>
+		</div>
+
+		<div class="refund_sec3">
+			<div class="refund_sec3_tit">退款信息</div>
+			<div class="user_order_list_ct clearfix">
+				<a href="##">
+					<div class="img"><img src="images/simi1.jpg" width="100%"></div>
+					<div class="user_order_list_tx">
+						<div class="title">德意(DE&E)M5新品 851T油烟机 欧式大吸力抽油烟机</div>
+						<div class="tx">系列:851T+715B烟灶套装（天然气）</div>
+						<div class="text">
+							<div class="now">￥3988.00</div>
+							<div class="bef">￥4117.00</div>
+							<div class="num">x<span>1</span></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="refund_sec3_text">
+				<div>退款原因：协商一致退款</div>
+				<div>退款金额：￥3000.00</div>
+				<div>申请时间：2017-11-22 11:37 </div>
+				<div>退款编号：59987116389745</div>
+			</div>
+		</div>
+
+
+		<!--有订单-->
+		
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+$( document ).ready( function()
+{
+	var clickNumber = 0;
+	$( '.pro_share_rig' ).click( function()
+	{
+		if( clickNumber == 0 )
+		{
+			$( this ).find( ".message" ).fadeIn();
+			clickNumber = 1;
+		}
+		else
+		{
+
+			$( this ).find( ".message" ).fadeOut();
+			clickNumber = 0;
+		}
+
+	} )
+
+
+
+} )
+
+</script>
+</html>

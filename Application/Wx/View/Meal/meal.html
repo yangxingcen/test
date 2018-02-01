@@ -1,0 +1,104 @@
+<include file="Public:header"/>
+	<script src="__SCRIPT__/mobiscroll.2.13.2.js"></script>
+	<link href="__STYLE__/mobiscroll.2.13.2.css" rel="stylesheet" />
+	<script type="text/javascript">
+
+	</script>
+
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style="padding-bottom: 0%;">
+
+		<div class="integral1 clearfix">
+			<a href="javascript:history.go(-1)">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+			<div class="tegral">热卖组合</div>
+			<include file="Public:goods_righttop_com"/>
+		</div>
+
+
+
+		<div class="integral_sx">
+			<div class="integral_sx_top clearfix">
+				<div class="integral_sx_top_t <eq name='is_groom' value='1' >on</eq>  "><a href="javascript:;" class="groom">推荐</a></div>
+				<div class="integral_sx_top_t <in name='is_rq' value='0,1'>on</in> "><a href="javascript:;" data-value="{$is_rq}" class="rq">人气 <eq name="is_rq" value="1"><img src="__IMAGES__/iti5.png"><else/><img src="__IMAGES__/iti5_1.png"></eq></a></div>
+				<div class="integral_sx_top_t <in name='jg' value='0,1'>on</in> "><a href="javascript:;" data-value="{$jg}" class="jg">价格 <eq name="jg" value="1"><img src="__IMAGES__/iti5.png"><else/><img src="__IMAGES__/iti5_1.png"></eq></a></div>
+				<div class="integral_sx_top_t">
+					<a href="##">筛选 <img src="__IMAGES__/iti6.png"></a>
+					<select id="city" class="demo-test-select" data-role="none">
+						<option value="1">0-20000</option>
+						<option value="2">20000-50000</option>
+						<option value="3">50000-100000</option>
+						<option value="4">100000-200000</option>
+						<option value="5">大于200000</option>
+					</select>
+				</div>
+			</div>
+			<div class="integral_sx_t integral_sx_t1 clearfix">
+				<div class="swiper-container swiper-container-nav">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="/wx_meal.html">
+								<div class="menu_con">
+									<div class="menu_list" style=" background:#ff4548;">
+										<img src="__IMAGES__/main_list11.png" width="28">
+									</div>
+									<h5>全部</h5>
+								</div>
+							</a>
+						</div>
+						<volist name="goods_cate" id="vo">
+							<div class="swiper-slide">
+								<a href="/wx_meal.html?cate_pid={$vo.id}">
+									<div class="menu_con">
+										<div class="menu_list" style=" background:#ffa600;">
+											<img src="{$vo.pic}" width="28">
+										</div>
+										<h5>{$vo.classname}</h5>
+									</div>
+								</a>
+							</div>
+						</volist>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pro_lest">
+			<div class="row clm5">
+				<volist name="cache" id="vo">
+					<a href="/wx_detail.html?id={$vo.id}">
+						<div class="col-xs-6 clp6">
+							<div class="list_one">
+								<div class="list_img">
+									<img src="{$vo.logo_pic}" onerror="this.src='http://dyshop.unohacha.com/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'" width="100%">
+								</div>
+								<div class="list_txt">
+									<h5>{$vo.goods_name}</h5>
+									<div class="list_txt_line"><i></i></div>
+									<div class="list_txt_price clearfix">
+										<div class="left"><span>￥{$vo.price}</span><img src="__IMAGES__/iti4.png" width="25"></div>
+										<div class="right">已售{$vo.sales}套</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</volist>
+			</div>
+
+			<div class="pro_page">
+				{$page}
+			</div>
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+</body>
+<script src="__JS__/meal/meal.js"></script>
+</html>

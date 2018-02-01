@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .siblings *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="./jquery-1.11.3.min.js">
+    </script>
+    <script>
+
+
+        $('.sdf').click(function () {
+            alert(111);
+            $("h2").next().css({"color":"red","border":"2px solid red"});
+        })
+//        function  ces() {
+//
+//            var d=$(this).attr("data-id");
+//            alert(d);
+////            $(obj).next("h3").html("222");
+////            $(obj).children("h3.1").html("222");
+//            $("div").children("h3.1").css({"color":"red","border":"2px solid red"});
+//        }
+
+
+    </script>
+</head>
+<body class="siblings">
+
+<div>
+    <!--<a href="javascript:;"  onclick="ces()"></a>-->
+    div (父)
+    <p>p</p>
+    <span>span</span>
+    <h2 class="sdf" data-id="1">h2</h2>
+    <h2 class="yu" data-id="1">h2</h2>
+    <h2 class="yu" data-id="1">h2</h2>
+    <h3 class="1">h3</h3>
+    <h3>h3</h3>
+    <h2 class="yu"  data-id="1">h2</h2>
+    <h3>h3</h3>
+    <p>p</p>
+</div>
+
+</body>
+</html>

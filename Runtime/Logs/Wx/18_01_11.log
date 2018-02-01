@@ -1,0 +1,100 @@
+[ 2018-01-11T08:31:38+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_web_config` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `tb_shop_web_config` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0370s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0110s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0190s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_announ` [ RunTime:0.0230s ]
+SQL: SELECT * FROM `tb_announ` WHERE `cate_id` = 4 ORDER BY id desc LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-01-11T17:24:08+08:00 ] 127.0.0.1 /wx
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `tb_shop_web_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_shop_web_config` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: wx_user_id E:\WWW\deyiShop\Application\Wx\Controller\PublicController.class.php 第 26 行.
+SQL: SHOW COLUMNS FROM `tb_shop_banner` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=1 and status=0 and is_del=0 ) ORDER BY sorts  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_shop_banner` WHERE ( type=2 and status=0 and is_del=0 ) ORDER BY sorts LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_new=1 and is_del=0 and type=1 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_goods_market` [ RunTime:0.0060s ]
+SQL: SELECT g.id,g.goods_name,g.goods_des,g.logo_pic,g.price,g.oprice,c.classname,g.limited_time_end FROM tb_goods_market g INNER JOIN tb_shop_goods_cate as c on c.id=g.cate_id  WHERE ( g.is_sale=1 and g.isactivity=1 and g.is_del=0 ) ORDER BY g.add_time desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_goods` WHERE ( is_sale=1 and is_groom=1 and is_del=0 and type=2 ) ORDER BY sorts,add_time desc LIMIT 1,2   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_integral_goods` [ RunTime:0.0060s ]
+SQL: SELECT i.id,t.name as tname,i.goods_name,i.goods_name,i.price,i.logo_pic FROM tb_integral_goods i INNER JOIN tb_integral_shop_type as t on t.id=i.cate_id  WHERE ( i.is_sale=1 and i.is_del=0 and t.is_del=0 and t.status=0 ) ORDER BY i.create_at desc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_shop_goods_cate` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`classname` FROM `tb_shop_goods_cate` WHERE ( is_del=0 and status=0 and pid=0 and is_tui=1 ) ORDER BY sorts desc,id asc  [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="1" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="2" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="3" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="4" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0010s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="5" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="6" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="8" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`goods_name`,`logo_pic`,`goods_des`,`price` FROM `tb_goods` WHERE ( is_sale=1 and is_del=0 and cate_pid="9" and type=1 ) ORDER BY add_time desc LIMIT 4   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_announ` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `tb_announ` WHERE `cate_id` = 4 ORDER BY id desc LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: topInfo E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 64 行.
+NOTIC: [8] Undefined index: hour E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: minute E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+NOTIC: [8] Undefined index: second E:\WWW\deyiShop\Runtime\Cache\Wx\7cc27bd2696aa3c64f3c7bf02c98ba60.php 第 215 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

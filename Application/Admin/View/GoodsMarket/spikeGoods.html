@@ -1,0 +1,183 @@
+<include file="Public:head"/>
+
+
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">限时特惠列表<a href="javascript:history.go(-1);" style="float:right" class="btn" title="返回"><i class="gicon-chevron-left"></i></a></h1>
+            <a href="javascript:;" class="btn btn-success" title="发布" onclick="J_Add(this,1)"><i class="gicon-plus white"></i></a>
+            <form action="{:U('/Admin/Goodsmarket/spikeGoods')}" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="产品名称" class="input" name="name" value="{$name}">
+                    <input type="text" placeholder="ID" class="input mini" name="id" value="{$id}">
+                    <button class="btn btn-primary" style="line-height:26px;" title="查询"><i class="gicon-search white"></i></button>
+                </div>
+            </form>
+            <!-- end tabs -->
+            <div class="tabs clearfix mgt10">
+                <a href="{:U('/Admin/Goodsmarket/spikeGoods/status/10')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="10">active</eq> tabs_a fl">普通商品({$count10|default='0'})</a>
+                <a href="{:U('/Admin/Goodsmarket/spikeGoods/status/11')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="11">active</eq> tabs_a fl">出售中({$count11|default='0'})</a>
+                <a href="{:U('/Admin/Goodsmarket/spikeGoods/status/12')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="12">active</eq> tabs_a fl">已售罄({$count12|default='0'})</a>
+                <a href="{:U('/Admin/Goodsmarket/spikeGoods/status/13')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="13">active</eq> tabs_a fl">仓库中({$count13|default='0'})</a>
+                <a href="{:U('/Admin/Goodsmarket/spikeGoods/status/14')}?name={$name}&id={$id}&time={$time}"
+                   class="<eq name="status" value="14">active</eq> tabs_a fl">回收站({$count14|default='0'})</a>
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品标题</td>
+                    <td>价格(元)</td>
+                    <td>库存<br/>销量</td>
+                    <td>开始时间<br/>结束时间</td>
+                    <td>上架</td>
+                    <td>回收站</td>
+                    <td>排序</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="cache" item="vo">
+                    <tr>
+                        <td><input type="checkbox" class="checkbox table-ckbs" value="{$vo['id']}"></td>
+                        <td>{$vo.id}</td>
+                        <td align="left"><div class="table-item-img" style="float: left"><img src="{$vo['logo_pic']}" alt=""></div><div>{$vo.goods_name}</div></td>
+                        <td>￥{$vo.price}元</td>
+                        <td>{$vo.stock}<br/>{$vo.sales}</td>
+                        <td>{$vo.limited_time_start}<br/>{$vo.limited_time_end}</td>
+                        <td>
+                            <if condition="($vo.is_sale eq 1)">
+                                <p style="color: green"  onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="下架"  data-item="is_sale" data-value="{$vo.is_sale}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="上架"  data-item="is_sale" data-value="{$vo.is_sale}">×</p>
+                            </if>
+                        </td>
+                        <td>
+                            <if condition="($vo.is_del eq 0)">
+                                <p style="color: green" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="还原"  data-item="is_del" data-value="{$vo.is_del}">√</p>
+                                <else/>
+                                <p style="color: red" onclick="J_ChangeStatus(this)" data-id="{$vo.id}" title="删除"  data-item="is_del" data-value="{$vo.is_del}">×</p>
+                            </if>
+                        </td>
+                        <td>{$vo.sorts}</td>
+                        <td>
+                            <a href="javascript:;" onclick="J_Config(this)"
+                               data-limited_time ="{$vo.limited_time_start} To {$vo.limited_time_end}"
+                               data-promotion_label ="{$vo.promotion_label}"
+                               data-id="{$vo.id}" class='btn btn-primary' title="限时配置" ><i class="gicon-cog white"></i></a>
+                            <a href="{:U('/Admin/Goodsmarket/spikeGoodsAdd/tt/1')}/id/{$vo.id}/page/{$pag}" class="btn btn-warning j-editClass" title="编辑"><i class="gicon-edit white"></i></a>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <!-- end wxtables -->
+            <div class="tables-btmctrl clearfix">
+                <div style="margin:4px 0px;">
+                    <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                    <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                    <a href="javascript:;" class="btn btn-success" onclick="J_ChangeStatus(this)"  data-item="is_sale" data-value="0" title="上架"><i class="gicon-arrow-up white"></i></a>
+                    <a href="javascript:;" class="btn btn-warning" onclick="J_ChangeStatus(this)"  data-item="is_sale" data-value="1" title="下架"><i class="gicon-arrow-down white"></i></a>
+                    <a href="javascript:;" class="btn btn-danger " onclick="J_ChangeStatus(this)"  data-item="is_del" data-value="0"  title="删除"><i class="gicon-trash white"></i></a>
+                    <a href="javascript:;" class="btn btn-success" onclick="J_ChangeStatus(this)"  data-item="is_del" data-value="1"  title="恢复"><i class="gicon-retweet white"></i></a>
+                </div>
+                <div>
+                    <div class="pages" style="width:100%;margin-left:0px;"> {$page}</div>
+                </div>
+                <!-- end tables-btmctrl -->
+            </div>
+
+            <!-- end content-right -->
+        </div>
+    </div>
+</div>
+<include file="Public:foot"/>
+<!--检索普通商品S-->
+<div id="albums-overlay" style="display: none;"></div>
+<div class="jbox addfenlei select-goods disshow" style="height: auto;margin-top:-280px;width: 700px;left: 40%">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">请选择商品</div>
+        <a href="javascript:void(0);" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <div class="formitems">
+                <label class="fi-name" style="width: 100px"><span class="colorRed"></span>商品名称：</label>
+                <div class="form-controls" style="margin-left:0px;float: left">
+                    <input type="text" class="input xxlarge" name="keyword" placeholder="请输入搜索的商品名称">
+                </div>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_SelectGoods(this)">确定</a>
+            </div>
+            <table class="wxtables mgt10" style="text-align:center;">
+                <thead>
+                <tr class="po_list">
+                    <td><i class="icon_check"></i></td>
+                    <td>ID</td>
+                    <td>商品名称</td>
+                    <td>价格(元)</td>
+                </tr>
+                </thead>
+                <tbody class="goods_list"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="isactivity" value="1">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm_Select(this)">确定添加</a>
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+</div>
+<!--检索普通商品E-->
+
+<div class="jbox addfenlei config disshow" style="height: auto;margin-top:-280px;width: 700px;left: 40%">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">限时特惠配置</div>
+        <a href="javascript:void(0);" class="jbox-close cancle"></a>
+    </div>
+    <div class="jbox-container" style="height: auto;">
+        <div class="formitems">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed">*</span>抢购起止时间：</label>
+                <div class="form-controls">
+                    <input type="text" class="input xxlarge w1" name="limited_time"  id="limited_time" value="" onFocus="this.blur()">
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed">*</span>抢购活动标签：</label>
+                <div class="form-controls">
+                    <input type="text" class="input xxlarge w1" name="promotion_label" value=""
+                           placeholder="" maxlength="50">
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="isactivity" value="1">
+        <input type="hidden" name="id" value="">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Submit_Config(this)">确定添加</a>
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+</div>
+<!--检索普通商品E-->
+
+
+<script type="text/javascript" src="__JS__/Goodsmarket/goodsmarket_com.js"></script>
+<script type="text/javascript" src="__JS__/Goodsmarket/spikegoods.js"></script>
+<link type="text/css" rel="stylesheet" href="__JEDATE__/jeDate-test.css">
+<link type="text/css" rel="stylesheet" href="__JEDATE__/skin/jedate.css">
+<script type="text/javascript" src="__JEDATE__/jquery.jedate.js"></script>
+<script>
+    $("#limited_time").jeDate({
+        format: "YYYY-MM-DD hh:mm:ss",
+        range:" To "
+    });
+</script>

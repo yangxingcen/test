@@ -1,0 +1,241 @@
+<include file="Public:header"/>
+<body>
+<include file="Public:top"/>
+
+<!--  / order1  -->
+<div class="order1">
+  <div class="container" style="">
+    <div class="pro_inner_t">
+      <a href="index.html"><h5>首页</h5></a><i class="fa fa-angle-right"></i>
+      <p>提交订单</p>
+    </div>
+    <div class="order_sh">
+      <h5>收货信息 <span>亲，为确保给您送货入户，下单地址务必精确到几幢几楼或几组几号哦~</span></h5>
+      <div class="order_shon clearfix address">
+        <ul class="order_shonc clearfix">
+          <foreach name="address1" item="v">
+            <li data-id="{$v['id']}" data-province = "{$v['province']}" data-city = "{$v['city']}" data-district = "{$v['district']}" data-place = "{$v['place']}" data-consignee = "{$v['consignee']}" data-telephone = "{$v['telephone']}" <eq name="key" value="0"> class="order_shoncon"</eq> <if condition="($key+1)%4 eq 0">style="margin-right:0;"</if>>
+            <h5>{$v['province']}<b>{$v['city']}</b><span>{$v['consignee']}(收)</span></h5>
+            <p>{$v['district']} {$v['place']} {$v['telephone']}</p>
+            <a href="##"  class="edit" data-id="{$v.id}" data-consignee='{$v.consignee}' data-province='{$v.province}' data-city='{$v.city}' data-district='{$v.district}' data-place='{$v.place}' data-telephone='{$v.telephone}' data-default='{$v.default}'>修改</a>
+            </li>
+          </foreach>
+        </ul>
+        <ul class="order_shonc order_shond clearfix">
+          <foreach name="address2" item="v">
+            <li data-id="{$v['id']}" data-province = {$v['province']} data-city = {$v['city']} data-district = {$v['district']} data-place = {$v['place']} data-consignee = {$v['consignee']} data-telephone = {$v['telephone']} <if condition="($key+1)%4 eq 0">style="margin-right:0;"</if>>
+              <h5>{$v['province']}<b>{$v['city']}</b><span>{$v['consignee']}(收)</span></h5>
+              <p>{$v['district']} {$v['place']} {$v['telephone']}</p>
+              <a href="##"  class="edit" data-id="{$v.id}" data-consignee='{$v.consignee}' data-province='{$v.province}' data-city='{$v.city}' data-district='{$v.district}' data-place='{$v.place}' data-telephone='{$v.telephone}' data-default='{$v.default}'>修改</a>
+            </li>
+          </foreach>
+        </ul>
+        <div class="order_shone clearfix">
+          <div class="order_shone1"><a style="display:block;" href="##">显示全部地址</a><a href="javascript:void(0);" id="add">使用新地址</a>
+          </div>
+          <!--<div class="order_shone2"><a href="{:U('Shop/Ucenter/address')}">管理收货地址</a></div>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="user_r_list user_r_list_order">
+      <table>
+        <tr>
+          <th class="user_r_frist" style="width:45%;">商品信息</th>
+          <th style="width:15%;">单价</th>
+          <th style="width:25%;">数量</th>
+          <th style="width:15%;">小计(元)</th>
+          <th style="width:15%;">实付</th>
+        </tr>
+        <foreach name="order_list" item="v">
+          <tr>
+            <td class="user_r_frist"><a style="text-align:left;" href="{:U('Shop/Goods/detail',array('id'=>$v['goods_id']))}"><img src="{$v[goods_img]}" width="100"><span>{$v[goods_title]}</span> <br/>{$v[sku_name]}</a></td>
+            <td><del>¥{$v['oprice']}</del><br>¥{$v['price']}</td>
+            <td>
+              <div class="shopcar_nums">
+                <span class="pro_num" style="border-right:1px solid #e8e8e8; width:60px; color:#6C6C6C;">{$v['num']}</span>
+              </div>
+            </td>
+            <td>¥{$v['allprice']}</td>
+            <td>¥{$v['allprice']}</td>
+          </tr>
+        </foreach>
+      </table>
+    </div>
+    <div class="order1_yh">
+      <h5>发票/优惠信息 </h5>
+      <!--<div class="order1_yh_con">-->
+        <!--<div class="order1_yh_con1">-->
+          <!--<h5>发票类型</h5>-->
+          <!--<ul class="clearfix">-->
+            <!--<li class="order1_yhon"><span></span>电子发票-增值普票</li>-->
+            <!--<li><span></span>纸质发票-增值普票</li>-->
+            <!--<li><span></span>纸质发票-增值专票</li>-->
+          <!--</ul>-->
+
+          <!--<div class="order1_yh_l">-->
+            <!--<div class="order1_yh_list" style="display:block;">-->
+              <!--<span>发票抬头</span>-->
+              <!--<input type="text" placeholder="填写需要开票的个人或个人信息">-->
+              <!--<div class="order1_yh_lista">-->
+                <!--<p>德意开具的电子发票均为真实有效的合法发票，与传统纸质发票具有同等法律效力，可作为用户维权、保修、报销的有效凭据。</p>-->
+                <!--<p>电子发票会在确认收货后15天内，将发票代码和发票号码以短信方式发送到收货人手机上。</p>-->
+                <!--<p>-->
+                  <!--开具成功后，您可登录电子发票查询系统<span>http://unohacha.hk:9090/case/dysc6/</span>下载电子发票-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="order1_yh_list">-->
+              <!--<span>发票抬头</span>-->
+              <!--<input type="text" placeholder="填写需要开票的个人或个人信息">-->
+            <!--</div>-->
+            <!--<div class="order1_yh_list order1_yh_list1">-->
+              <!--<ul>-->
+                <!--<li><input type="checkbox" class="j_checkbox j_checkbox_on">吾诺瀚卓 &nbsp;&nbsp; 李亮-->
+                  <!--&nbsp;&nbsp; 浙江省杭州西湖区文三路 &nbsp;&nbsp; 杭州银行 &nbsp;&nbsp; 654126541235038-->
+                <!--</li>-->
+                <!--<li><input type="checkbox" class="j_checkbox">吾诺瀚卓 &nbsp;&nbsp; 李亮 &nbsp;&nbsp;-->
+                  <!--浙江省杭州西湖区文三路 &nbsp;&nbsp; 杭州银行 &nbsp;&nbsp; 654126541235038-->
+                <!--</li>-->
+                <!--<li><input type="checkbox" class="j_checkbox">吾诺瀚卓 &nbsp;&nbsp; 李亮 &nbsp;&nbsp;-->
+                  <!--浙江省杭州西湖区文三路 &nbsp;&nbsp; 杭州银行 &nbsp;&nbsp; 654126541235038-->
+                <!--</li>-->
+                <!--<li><input type="checkbox" class="j_checkbox j_checkbox_xz">新增增值税发票</li>-->
+              <!--</ul>-->
+              <!--<div class="user8_con2">-->
+                <!--<p><span>单位名称：</span><input type="text" value="13429614578"></p>-->
+                <!--<p><span>纳税人识别号：</span><input type="text" value="李亮"></p>-->
+                <!--<p><span>注册地址：</span><input type="text" value=""></p>-->
+                <!--<p><span>注册电话：</span><input type="text" value=""></p>-->
+                <!--<p><span>开户银行：</span><input type="text" value=""></p>-->
+                <!--<p><span>银行账户：</span><input type="text" value=""></p>-->
+                <!--<div class="user_r6_line"></div>-->
+                <!--<a href="##">保存</a>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="order1_tall1" style="padding:15px;">
+        <h5>买家留言</h5>
+        <textarea name="liuyan" id="liuyan"></textarea>
+      </div>
+    </div>
+    <div class="order1_tall">
+      <div class="shopcar_zj clearfix">
+        <div class="shopcar_zjs">
+          <!--<p>商品合计：¥{$countoprice}</p>-->
+          <p>运费：¥{$express_fee|number_format=###,2}</p>
+          <h5><span>配送至：</span><bdo id="address">{$address1.0.province} {$address1.0.city} {$address1.0.district} {$address1.0.place}</bdo></h5>
+          <h5><span>收货人：</span><bdo class="consignee">{$address1.0.consignee} {$address1.0.telephone}</bdo></h5>
+          <div class="shopcar_zjs_btn">
+            <p>商品数量: <span>{$num}</span>个
+              &nbsp; &nbsp; &nbsp; 商品总金额: <span>{$countprice}</span>元
+              &nbsp; &nbsp; &nbsp; 付款金额：<b>{$countprice}</b>元</p>
+            <a href="javascript:void(0);" id="makeorder">下单</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  / order1  -->
+
+<div class="dizhi">
+  <div class="dizhi_bg"></div>
+  <div class="dizhi_con">
+    <img src="__IMAGES__/dizhi_close.png" width="24">
+    <h5>新建地址</h5>
+    <div class="dizhi_list clearfix">
+      <p class="dizhi_l">收货人：<input type="text" name="consignee"></p>
+      <p class="dizhi_r">手机号码：<input type="text" name="telephone"></p>
+    </div>
+    <input type="hidden" id="url" value="{:U('Shop/Ucenter/addAddress')}">
+    <input type="hidden" name="id">
+    <div class="dizhi_list clearfix">
+      <span style="position:relative; top:8px;">所在地区:</span>
+      <div class="docs-methods" style="display:inline-block; width:82%;">
+        <form class="form-inline" style="width:100%;">
+          <div id="distpicker" style="width:100%;">
+            <div class="form-group" style="width:100%;">
+              <div style="position: relative; width:100%;">
+                <input id="city-picker3" class="form-control" readonly type="text" value="浙江省/杭州市/西湖区" data-toggle="city-picker" name="city">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dizhi_list clearfix">
+      <span>详细地址：</span>
+      <textarea name="address"></textarea>
+    </div>
+    <div class="dizhi_btn clearfix">
+      <div class="w_chkbox"><input type="checkbox" name="dft" id='dft' class="j_checkbox"><span>设为默认</span></div>
+      <div class="dizhi_btn1">
+        <a href="##" class="dizhi_btn1_on" id="btn">确定</a>
+        <a href="##" class="cancel">取消</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<include file='Public:footer'/>
+<!---navshow-->
+<include file="Public:right"/>
+</body>
+<script language="javascript" src="__JS__/index.js"></script>
+<script language="javascript" src="__JS__/city-picker.data.js"></script>
+<script language="javascript" src="__JS__/city-picker.js"></script>
+<script language="javascript" src="__JS__/address.js"></script>
+<script language="javascript" src="__JS__/order/buy.js"></script>
+<script>
+    $("#makeorder").click(function (){
+
+        var post = {};
+        // var receipt        = get_checked_receipt(); //获取发票
+        // post.invoice_type  = receipt.invoice_type;  //发票类型
+        // post.invoice_title = receipt.invoice_title;
+        // post.receipt_id    = receipt.receipt_id;
+        var address        = get_checked_address();
+        post.address_id    = address.address_id;
+        var pay_way        = get_checked_payway();
+        post.pay_way       = pay_way.pay_way;
+        post.liuyan        = $('#liuyan').val();
+        if(!post.address_id){
+            dialog.showTips("请选择收货地址！", "warn");return false;
+        }
+        // if(!post.pay_way){
+        //     dialog.showTips("请选择支付方式！", "warn");return false;
+        // }
+        // if(post.invoice_type == 1 || post.invoice_type == 2){
+        //     if(!$.trim(post.invoice_title)){
+        //         dialog.showTips("请填写发票抬头", "warn");return false;
+        //     }
+        // }else if(post.invoice_type == 3){
+        //     if(!post.receipt_id){
+        //         dialog.showTips("请选择发票！", "warn");return false;
+        //     }
+        // }else{
+        //     dialog.showTips("请选择发票信息！", "warn");return false;
+        // }
+        // post.order_info = $('#order_info').val();
+        // post.cart_ids   = $('#cart_ids').val();
+        post.order_info = '{$order_info}';
+        post.cart_ids = "{$cart_ids}";
+        post.countprice = "{$countprice}";
+        //console.log(post.cart_ids);
+        console.log(post.countprice);
+        $.post("/Order/makeOrder", post, function (data){
+            if(data.status == 1){
+                window.location.href = data.url;
+            }else{
+                dialog.showTips(data.info, "warn");return false;
+            }
+        }, "json")
+    })
+</script>
+</html>

@@ -1,0 +1,132 @@
+<include file="Public:header_zajindan"/>
+<body style="background:#000022;">
+
+	<div class="wapper">
+		<div class="header list_header">
+			奖品列表
+			<a href="javascript:history.go(-1);" class="header_but"><img src="__IMAGES__/l_left.png" width="100%"></a>
+		</div>
+
+		<div class="list_cont2">
+            
+
+
+
+
+			<foreach name="yi" item="v" key="k">
+
+					<if condition="$v['type']	eq 3 && $v['type']	neq 4">
+
+				<div class="prize_list clearfix">
+
+					<div class="num_div">
+
+						<switch name="k">
+							<case value="0">
+								<img src="__IMAGES__/num1.png" width="100%">
+							</case>
+							<case value="1">
+								<img src="__IMAGES__/num2.png" width="100%">
+							</case>
+							<case value="2">
+								<img src="__IMAGES__/num3.png" width="100%">
+							</case>
+							<case value="3">
+								<img src="__IMAGES__/num4.png" width="100%">
+							</case>
+							<case value="4">
+								<img src="__IMAGES__/num5.png" width="100%">
+							</case>
+							<case value="5">
+								<img src="__IMAGES__/num6.png" width="100%">
+							</case>
+
+						</switch>
+
+					</div>
+
+					<div class="prize_txt">
+						<div class="prize_txt_cell">{$v.ii.0.goods_name|mb_substr=###,0,8,'utf-8'}</div>
+					</div>
+					<div class="prize_img">
+						<img src="{$v.ii.0.logo_pic}" width="100%">
+					</div>
+				</div>
+
+				<elseif condition=" $v['type']	neq 4" />
+					<div class="prize_list clearfix">
+						<div class="num_div">
+							<switch name="k">
+								<case value="0">
+									<img src="__IMAGES__/num1.png" width="100%">
+								</case>
+								<case value="1">
+									<img src="__IMAGES__/num2.png" width="100%">
+								</case>
+								<case value="2">
+									<img src="__IMAGES__/num3.png" width="100%">
+								</case>
+								<case value="3">
+									<img src="__IMAGES__/num4.png" width="100%">
+								</case>
+								<case value="4">
+									<img src="__IMAGES__/num5.png" width="100%">
+								</case>
+								<case value="5">
+									<img src="__IMAGES__/num6.png" width="100%">
+								</case>
+
+							</switch>
+							</div>
+							<div class="prize_txt">
+							<div class="prize_txt_cell">
+								<switch name="v['type']">
+									<case value="1">
+									优惠券{$v.param}
+									</case>
+									<case value="2">
+									积分{$v.param}
+									</case>
+
+								</switch>
+
+							</div>
+							</div>
+							<div class="prize_img">
+								<img src="__IMAGES__/car6.jpg" width="100%">
+							</div>
+						</div>
+					</if>
+
+			</foreach>
+
+		</div>
+
+
+		<div class="list_bottom clearfix">
+			<div class="list_bottom_con on"><a href="{:U('Wx/Games/zajindanList')}">奖品列表</a></div>
+			<div class="list_bottom_con"><a href="{:U('Wx/Games/zajindanCheck')}">中奖查询</a></div>
+
+		</div>
+	</div>
+
+</body>
+<script>
+$( document ).ready( function()
+{
+
+	var mySwiper1 = new Swiper( '.swiper-container-dan', {
+		autoplay: 4000,
+		loop: true,
+		slidesPerView: 3,
+		speed: 400,
+		paginationClickable: true,
+		autoplayDisableOnInteraction: false,
+	} )
+
+	$(".list" ).css("min-height",$(window ).height())
+
+	$(".prize_txt").height($(".prize_img").width())
+} )
+</script>
+</html>

@@ -1,0 +1,96 @@
+<include file="Public:header_ucenter"/>
+
+
+<body>
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="/wx_ucenter.html">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">设置</div>
+
+		</div>
+
+		<div class="administer">
+			<div class="user6" style="padding:0;">
+
+				<div class="user_r6" style="padding:0; border-bottom:none;">
+					<div class="user_1b">
+
+						<ul>
+
+							<li style="padding:10px; position: relative;  " class="clearfix">
+								<img src="{$info.person_img}" width="50" style="border-radius:100%; float: left">
+								<div class="user_name">
+									<if condition="$info['person_name']">
+										<div class="user_name1">{$info.person_name}</div>
+									<else />
+										<div class="user_name1">{$info.telephone}</div>
+									</if>
+									<div class="user_name2">用户ID: {$info.telephone}</div>
+								</div>
+								<a href="/wx_my_set.html" class="geren">个人设置 <i class="fa fa-angle-right"></i></a>
+							</li>
+
+							<a href="/wx_address.html">
+								<li>我的收货地址 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+							<a href="##">
+								<li>账号管理 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+							<a href="##">
+								<li>钱包余额 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+							<a href="##">
+								<li>邀请码 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			<div class="user6" style="padding:0;">
+
+				<div class="user_r6" style="padding:0; border-bottom:none;">
+					<div class="user_1b">
+						<ul><a href="##">
+							<li>绑定手机 <span><b>138****5803</b><i class="fa fa-angle-right"></i></span></li>
+						</a>
+							<a href="/wx_user_zhif.html">
+								<li>支付设置 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--
+			<div class="user6" style="padding:0;">
+
+				<div class="user_r6" style="padding:0; border-bottom:none;">
+					<div class="user_1b">
+						<ul>
+							<a href="##">
+								<li>求助反馈 <span><i class="fa fa-angle-right"></i></span></li>
+							</a>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			-->
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+</html>

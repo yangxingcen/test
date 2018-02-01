@@ -1,0 +1,49 @@
+<div class="show_nav">
+    <ul class="clearfix">
+      <li class="on">
+        <a href="/wx_index.html">
+          <img class="show_nav_img1" src="__IMAGES__/nav_1.png" width="100%">
+          <img class="show_nav_img2" src="__IMAGES__/nav_1a.png" width="100%">
+          <h5>首页</h5>
+        </a>
+      </li>
+      <li>
+        <a href="/wx_cart.html">
+          <img class="show_nav_img1" src="__IMAGES__/nav_2.png" width="100%">
+          <img class="show_nav_img2" src="__IMAGES__/nav_2a.png" width="100%">
+          <h5>购物车</h5>
+        </a>
+      </li>
+      <li>
+        <a href="tel:{{$shop_config.servise_phone}">
+          <img class="show_nav_img1" src="__IMAGES__/nav_3.png" width="100%">
+          <img class="show_nav_img2" src="__IMAGES__/nav_3a.png" width="100%">
+          <h5>客服中心</h5>
+        </a>
+      </li>
+      <li>
+        <a href="/wx_goodslist.html">
+          <img class="show_nav_img1" src="__IMAGES__/nav_4.png" width="100%">
+          <img class="show_nav_img2" src="__IMAGES__/nav_4a.png" width="100%">
+          <h5>商品分类</h5>
+        </a>
+      </li>
+      <if condition="$topInfo['id']">
+        <li>
+          <a href="/wx_ucenter.html">
+            <img class="show_nav_img1" src="__IMAGES__/nav_5.png" width="100%">
+            <img class="show_nav_img2" src="__IMAGES__/nav_5a.png" width="100%">
+            <h5>个人中心</h5>
+          </a>
+        </li>
+      <else />
+        <li class="on">
+          <a href="/wx_login.html">
+            <img class="show_nav_img1" src="__IMAGES__/nav_5.png" width="100%">
+            <img class="show_nav_img2" src="__IMAGES__/nav_5a.png" width="100%">
+            <h5>登录</h5>
+          </a>
+        </li>
+      </if>
+    </ul>
+  </div>

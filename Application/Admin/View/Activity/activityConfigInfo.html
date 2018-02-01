@@ -1,0 +1,267 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">[{$cache.title}]--活动配置详情<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="tabs clearfix mgt10">
+                <a href="javascript:void(0);" class="tabs_a fl tab1 " onclick="tab_show(this,1)">活动基本信息</a>
+                <a href="javascript:void(0);" class="tabs_a fl tab2 active" onclick="tab_show(this,2)">奖品配置</a>
+            </div>
+
+            <div>
+                <div class="panel-single panel-single-light mgt20" id="tab1" style="display: none">
+                    <h3 class="cst_h3 mgb20">活动基本信息</h3>
+                    <form id="Form_one">
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>活动起止时间：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge w1" name="time"  id="time" <notempty name="cache.start_time">value="{$cache.start_time} To {$cache.end_time}"</notempty> onFocus="this.blur()">
+                            <span class="fi-help-text"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>活动名称：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.title}" name="title">
+                        </div>
+                    </div>
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>优惠券有效天数：</label>
+                            <div class="form-controls">
+                                <input type="text" class="input xxlarge" value="{$cache.add_days}" name="add_days" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+                            </div>
+                        </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>每次消耗积分：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.integral}" name="integral" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>每天可参与次数/人：</label>
+                        <div class="form-controls">
+                            <input type="text" class="input xxlarge" value="{$cache.num}" name="num" onKeyUp="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name">头部背景图：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['pic1']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,6)">
+                                <input name="pic1" value="{$cache['pic1']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl">建议图片大小:(640*400)</span>
+                        </div>
+                    </div>
+
+
+                        <div class="formitems">
+                            <label class="fi-name">主体背景图：</label>
+                            <div class="form-controls pdt5 j-imglistPanel">
+                                <div class="showimage fl mgr10">
+                                    <img src="{$cache['pic2']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,6)">
+                                    <input name="pic2" value="{$cache['pic2']}" type="hidden">
+                                </div>
+                                <span class="fi-help-text fl lh30 mgl10">建议图片大小:(640*1130)</span>
+                            </div>
+                        </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>活动规则：</label>
+                        <div class="form-controls">
+                            <textarea name="describe" style="padding: 10px;width: 400px;height: 50px;"> {$cache.describe}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>分享标题：</label>
+                        <div class="form-controls">
+                            <textarea name="share_title" style="padding: 10px;width: 400px;height: 50px;"> {$cache.share_title}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>分享描述：</label>
+                        <div class="form-controls">
+                            <textarea name="share_desc" style="padding: 10px;width: 400px;height: 50px;"> {$cache.share_desc}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="formitems">
+                        <label class="fi-name">分享图片：</label>
+                        <div class="form-controls pdt5 j-imglistPanel">
+                            <div class="showimage fl mgr10">
+                                <img src="{$cache['share_logo']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,6)">
+                                <input name="share_logo" value="{$cache['share_logo']}" type="hidden">
+                            </div>
+                            <span class="fi-help-text fl lh30 mgl10">建议图片大小:（）</span>
+                        </div>
+                    </div>
+
+                        <div class="formitems">
+                            <label class="fi-name">列表图片：</label>
+                            <div class="form-controls pdt5 j-imglistPanel">
+                                <div class="showimage fl mgr10">
+                                    <img src="{$cache['list_pic']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,6)">
+                                    <input name="list_pic" value="{$cache['list_pic']}" type="hidden">
+                                </div>
+                                <span class="fi-help-text fl lh30 mgl10">建议图片大小:(604*289)</span>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>列表标题：</label>
+                            <div class="form-controls">
+                                <input type="text" class="input xxlarge" value="{$cache.list_title}" name="list_title">
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>列表介绍：</label>
+                            <div class="form-controls">
+                                <input type="text" class="input xxlarge" value="{$cache.list_desc}" name="list_desc">
+                            </div>
+                        </div>
+
+                    <div class="formitems">
+                        <label class="fi-name"><span class="colorRed">*</span>上次更新时间：</label>
+                        <div class="form-controls">{$cache.update_time}</div>
+                    </div>
+                    <div class="panel-single panel-single-light mgt20 txtCenter">
+                        <input type="hidden" name="id" value="{$cache.id}">
+                        <button type="button" class="btn btn-primary" onclick="J_Confirm(this)">保存</button>
+                    </div>
+                    </form>
+                </div>
+
+                <div class="panel-single panel-single-light mgt20" id="tab2">
+                <h3 class="cst_h3 mgb20">奖品配置</h3>
+                <form id="Form_two">
+                    <div>
+                        <a href="javascript:void(0)" class="btn btn-primary btn-mini" onclick="J_add_param(this)" title="添加"><i class="gicon-plus white"></i></a>
+                    </div>
+                    <div class="jiangxiang">
+                        <empty name="jiang_list">
+                            <input type="hidden" name="jiang_id[]"value="0">
+                            <div class="panel-single jiang">
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>奖项一：</label>
+                                    <div class="form-controls">
+                                        <input type="text" class="input mini" name="percent[]" value="{$cache.percent}" placeholder="中奖百分比">%
+                                    </div>
+                                </div>
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>奖品：</label>
+                                    <div class="form-controls">
+                                        <div class="radio-group">
+                                            <label ><input type="radio" name="type[0]"value="1" <eq name="info.type" value='1'>checked</eq>>优惠券</label>
+                                            <label><input type="radio" name="type[0]"value="2" <eq name="info.type" value='2'>checked</eq>>积分</label>
+                                            <label ><input type="radio" name="type[0]"value="3" <eq name="info.type" value='3'>checked</eq>>积分商品</label>
+                                            <label ><input type="radio" name="type[0]"value="4" <eq name="info.type" value='4'>checked</eq>>未中奖</label>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>参数：</label>
+                                    <div class="form-controls">
+                                        <input type="text" class="input mini fl" name="param[]" value="{$cache.percent}" >
+                                        <span class="fi-help-text">请填写：优惠券面额/积分值/积分商品ID</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <else />
+                            <foreach name="jiang_list" item="v" key="k">
+
+                                <input type="hidden" name="jiang_id[]"value="{$v.jiang_id}">
+
+                            <div class="panel-single jiang">
+                                <a href="javascript:;" class="btn btn-danger btn-mini" style="float: right" onclick="J_del_del({$id})" title="删除"><i class="gicon-minus white"></i></a>
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>奖项<if condition="$k eq 0">一</if><if condition="$k eq 1">二</if><if condition="$k eq 2">三</if><if condition="$k eq 3">四</if><if condition="$k eq 4">五</if><if condition="$k eq 5">六</if><if condition="$k eq 6">七</if><if condition="$k eq 7">八</if>：</label>
+                                    <div class="form-controls">
+                                        <input type="text" class="input mini" name="percent[]" value="{$v.percent}" placeholder="中奖百分比">%
+                                    </div>
+                                </div>
+                                <input name="ben_id[]" value="{$v.id}" type="hidden">
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>奖品：</label>
+                                    <div class="form-controls">
+                                        <div class="radio-group">
+
+                                            <label ><input type="radio" name="type[{$k}]"value="1" <eq name="v.type" value='1'>checked</eq>>优惠券</label>
+                                            <label><input type="radio" name="type[{$k}]"value="2" <eq name="v.type" value='2'>checked</eq>>积分</label>
+                                            <label ><input type="radio" name="type[{$k}]"value="3" <eq name="v.type" value='3'>checked</eq>>积分商品</label>
+                                            <label ><input type="radio" name="type[{$k}]"value="4" <eq name="v.type" value='4'>checked</eq>>未中奖</label>
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="formitems">
+                                    <label class="fi-name"><span class="colorRed">*</span>参数：</label>
+                                    <div class="form-controls">
+                                        <input type="text" class="input mini fl" name="param[]" value="{$v.param}" >
+                                        <span class="fi-help-text">请填写：优惠券面额/积分值/积分商品ID</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </foreach>
+
+
+                        </empty>
+
+
+
+                    </div>
+
+
+
+
+                    <div class="panel-single panel-single-light mgt20 txtCenter">
+                        <input type="hidden" name="id" value="{$cache.id}">
+                        <button type="button" class="btn btn-primary" onclick="J_Confirm_prize(this)">保存</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="__JS__/Activity/activityConfigInfo.js"></script><!--页面js-->
+<include file="Public:foot"/>
+<link type="text/css" rel="stylesheet" href="__JEDATE__/jeDate-test.css">
+<link type="text/css" rel="stylesheet" href="__JEDATE__/skin/jedate.css">
+<script type="text/javascript" src="__JEDATE__/jquery.jedate.js"></script>
+<script>
+    $("#time").jeDate({
+        format: "YYYY-MM-DD hh:mm:ss",
+        range:" To "
+    });
+
+</script>
+
+
+

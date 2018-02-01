@@ -1,0 +1,125 @@
+<include file="Public:head"/>
+
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css"/><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css"/>
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css"/>
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+
+<link rel="stylesheet" href="__CSS__/Goods/addGoods.css"/><!--当前页面自定义-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">
+                <empty name="info.id">商品官网展示配置</empty>
+                <a href="javascript:history.back(-1)" class="btn" style="float: right">返回</a>
+            </h1>
+            <div class="tabs clearfix mgt10">
+                <a href="javascript:void(0);" class="tabs_a fl tab1 active" onclick="tab_show(this,1)">官网展示信息</a>
+            </div>
+            <div>
+                <!--官网展示信息 1-->
+                <div class="panel-single panel-single-light mgt20 " id="tab1" >
+                    <form id="Form_1">
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>官网排序：</label>
+                            <div class="form-controls">
+                                <input type="text" class="input xxlarge w1" name="sorts_pc" value="{$info.sorts_pc|default=0}"
+                                       maxlength="6" onKeyUp="this.value=this.value.replace(/\D/g,'')"
+                                       onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                                <span class="fi-help-text">数字越大，排名越靠前,如果为0，默认排序方式为创建时间</span>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>商品名称(英文)：</label>
+
+                            <div class="form-controls">
+                                <input type="text" class="input xxlarge w1" name="en_goods_name_pc" value="{$info.en_goods_name_pc}"
+                                       placeholder="输入商品名称(英文)" maxlength="50">
+                                <span class="fi-help-text">最长50个字符</span>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>列表前景图：</label>
+                            <div class="form-controls pdt5">
+                                <div class=" fl mgr10">
+                                    <img src="{$info['pic1_pc']}" width="100px"
+                                         onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"
+                                         onclick="J_uploadImg(this,3)">
+                                    <input name="pic1_pc" value="{$info['pic1_pc']}" type="text" class="input xxlarge" onFocus="this.blur()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>列表背景图：</label>
+                            <div class="form-controls pdt5">
+                                <div class=" fl mgr10">
+                                    <img src="{$info['pic2_pc']}" width="100px"
+                                         onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"
+                                         onclick="J_uploadImg(this,3)">
+                                    <input name="pic2_pc" value="{$info['pic2_pc']}" type="text" class="input xxlarge" onFocus="this.blur()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>安装图示：</label>
+                            <div class="form-controls pdt5">
+                                <div class=" fl mgr10">
+                                    <img src="{$info['pic_install_pc']}" width="100px"
+                                         onerror="this.src='http://dyshop.unohacha.com/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"
+                                         onclick="J_uploadImg(this,3)">
+                                    <input name="pic_install_pc" value="{$info['pic_install_pc']}" type="text" class="input xxlarge" onFocus="this.blur()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>产品特点：</label>
+                            <div class="form-controls pdt3">
+                                <script id="goods_tedian_pc" type="text/plain" name="goods_tedian_pc" class="edui-container">{$info.goods_tedian_pc|htmlspecialchars_decode|stripslashes}</script>
+                            </div>
+                        </div>
+
+                        <div class="formitems">
+                            <label class="fi-name"><span class="colorRed">*</span>产品详情：</label>
+                            <div class="form-controls pdt3">
+                                <script id="detail_pc" type="text/plain" name="detail_pc" class="edui-container">{$info.detail_pc|htmlspecialchars_decode|stripslashes}</script>
+                            </div>
+                        </div>
+
+                        <div class="panel-single panel-single-light mgt20 txtCenter ">
+                            <input type="hidden" name="id" value="{$info.id}">
+                            <a href="javascript:history.back(-1)" class="btn">返回</a>
+                            <input type="button" class="btn btn-primary" onclick="J_Submit(this)" value="保存">
+                        </div>
+                    </form>
+                </div>
+                <!--官网展示信息 2-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+<input type="hidden" name="page" value="{$page|default=1}">
+<include file="Public:foot"/>
+<!--validate 1-->
+<!--<script src="__JS__/jquery.js"></script>-->
+<script type="text/javascript" src="__JS__/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__JS__/jquery.validate.messages_cn.js"></script>
+<script type="text/javascript" src="__JS__/jquery.validate.additional-methods.js"></script>
+<!--validate 2-->
+
+
+<script type="text/javascript" src="__JS__/jquery-form.js"></script>
+
+<script type="text/javascript" src="__JS__/Goods/goods_pc.js"></script>

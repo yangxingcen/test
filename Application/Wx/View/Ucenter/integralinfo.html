@@ -1,0 +1,69 @@
+<include file="Public:header"/>
+
+<body>
+
+
+
+	<!--  / warpper  -->
+	<div class="warpper" style=" background: #f9f9f9">
+
+		<div class="integral">
+
+			<a href="/wx_ucenter.html">
+				<div class="screening_btn1">
+					<span></span>
+				</div>
+			</a>
+
+			<div class="tegral">我的积分</div>
+
+			<div class="problem"><img src="__IMAGES__/wen.png" width="100%"></div>
+		</div>
+
+		<div class="gral clearfix">
+
+			<div class="gral_img">
+
+				<img src="{$info.person_img}" width="100%">
+
+			</div>
+			<div class="gral_txt">
+				<h5><span>{$info.integral}</span>积分</h5>
+				<p>今年购物已省218元</p>
+			</div>
+
+			<div class="user_a"><a href="/wx_integral">去使用</a></div>
+		</div>
+		<div class="gral_con">
+			<a href="/wx_integral_add.html" >赚取积分</a>
+			<a href="/wx_integral_info.html" class="on">积分明细</a>
+		</div>
+
+		<div class="to_use">
+
+			<h4 class="to_use_h4">本月</h4>
+			<volist name="integral_info" id="vo">
+			<div class="to_use_one">
+				<if condition="$vo['action'] gt 2">
+					<div class="to_use_one1">
+						<h5>{$vo.goods_name}<span class="use_one1">+{$vo.integral}</span></h5>
+						<p>{$vo.add_time} <span class="use_one2">已兑换</span></p>
+					</div>
+				<else />
+					<div class="to_use_one1">
+						<h5>{$vo.action_name}<span class="use_one1">+{$vo.integral}</span></h5>
+						<p>{$vo.add_time} <span class="use_one2">已完成</span></p>
+					</div>
+				</if> 
+				</div>
+			</volist>
+		</div>
+
+	</div>
+	<!--  / warpper  -->
+
+</body>
+<script>
+
+</script>
+</html>

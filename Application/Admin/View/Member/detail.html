@@ -1,0 +1,394 @@
+<include file="Public:head"/>
+
+<style>
+    .imgnav {
+        max-height: 30px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .imgwrapper {
+        display: block;
+        width: 78px;
+        height: 78px;
+        overflow: hidden;
+    }
+
+    .imgwrapper img {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+    #l-map {
+        height: 300px;
+        width: 100%;
+    }
+
+    .spanpd10 {
+        margin: 10px;
+    }
+
+    .wxtables.wxtables-sku.newtable {
+        width: 40%;
+        margin: 0;
+    }
+
+    .img-list li {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cst_h3 span {
+        font-weight: normal;
+    }
+    .wxtables td{
+        padding:17px 10px;
+        font-size: 15px;
+    }
+    .in{
+        outline:none;
+        border:none;
+        display:block;
+        height: 30px;
+        font-size: 14px;
+    }
+    #albums-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+        z-index: 998
+    }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A607d61b18d43a1ff27abf4ac67da83c"></script>
+
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+
+        <div class="content-right fl">
+            <a href="javascript:history.back(-1)" class="btn">返回会员列表</a><a href="javascript:history.back(-1)" class="btn btn-warning" style="float: right">返回</a>
+
+            <form aciton="{:U('/ubaohui/Member/edit')}" method="post" id="add_step2" onsubmit="return toVaild()">
+                <div class="panel-single panel-single-light mgt20">
+                    <!--<h3 class="cst_h3 mgb20">基本信息</h3>-->
+
+                    <table class="wxtables mgt15">
+                        <thead>
+                        <tr>
+                            <td align="center" colspan="4" style="font-weight: bold;">会员基本信息</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="is_mans">
+                            <td align="center">姓名</td>
+                            <td>{$memberdetail.realname}</td>
+                            <td rowspan="2" align="center">头像</td>
+                            <td rowspan="2" ><img src="{$memberdetail.person_img}" width="100" alt=""></td>
+                        </tr>
+
+                        <tr class="is_mans">
+                            <td align="center">手机号</td>
+                            <td >{$memberdetail.telephone}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">昵称</td>
+                            <td>{$memberdetail.person_name} <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_person_name')" data-id='{$vv.id}' data-pid='{$vv.pid}' title="编辑"><i class="gicon-edit white"></i></a></td>
+                            <td align="center">性别</td>
+                            <td>
+                                <if condition="($memberdetail.sex eq 1)"> 男
+                                    <elseif condition="$memberdetail.sex eq 2"/>女
+                                    <else /> 未知
+                                </if>
+                                <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_sex')"  title="编辑"><i class="gicon-edit white"></i></a></td>
+
+                        </tr>
+
+                        <tr>
+                            <td align="center">微信openid</td>
+                            <td>{$memberdetail.wx_openid}</td>
+                            <td align="center">微信用户名</td>
+                            <td>{$memberdetail.wx_name}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">微信头像</td>
+                            <td><img src="{$memberdetail.wx_img}" width="100" alt=""></td>
+                            <td align="center">个性签名</td>
+                            <td>{$memberdetail.signature}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">积分</td>
+                            <td>{$memberdetail.integral} <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_integral')"  title="编辑"><i class="gicon-edit white"></i></a></td>
+                            <td align="center">会员等级</td>
+                            <td>{$memberdetail.vip_name} <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_grade')"  title="编辑"><i class="gicon-edit white"></i></a></td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="center">邮箱</td>
+                            <td>{$memberdetail.email}</td>
+                            <td align="center">钱包</td>
+                            <td>{$memberdetail.wallet} <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_money')"  title="编辑"><i class="gicon-edit white"></i></a></td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="center">注册时间</td>
+                            <td><if condition="$memberdetail.add_time neq ''">{$memberdetail.add_time}</if></td>
+                            <td align="center">最后登录时间</td>
+                            <td><if condition="$memberdetail.last_login_time neq ''">{:date('Y-m-d H:i:s',$memberdetail['last_login_time'])}</if></td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">注册码</td>
+                            <td>{$memberdetail.reg_code}</td>
+                            <td align="center">状态</td>
+                            <td><eq  name="memberdetail.status" value="1">冻结<else/>正常</eq> <a style="float: right" href="JavaScript:void(0);" class='btn btn-warning' onclick="J_Edit(this,'edit_status')"  title="编辑"><i class="gicon-edit white"></i></a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="panel-single panel-single-light mgt20 txtCenter">
+                    <a href="javascript:history.back(-1)" class="btn btn-warning">返回</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="albums-overlay" class="disshow"></div>
+
+
+    <div class="jbox edit_person_name addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改昵称</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_person_name">
+            <div class="jbox-container" style="height: auto;">
+
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>修改昵称：</label>
+                    <div class="form-controls">
+                        <label>
+                            <input type="text" class="input" name="person_name" value="{$memberdetail.person_name}">
+                            <span class="red"></span>
+                        </label>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_person_name">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_person_name')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="jbox edit_sex addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改性别</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_sex">
+            <div class="jbox-container" style="height: auto;">
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>修改性别：&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-controls">
+                        <div class="radio-group" style="padding-top:0px;">
+                            <label><input type="radio" name="sex" value="1" <eq  name="memberdetail.sex" value="1">checked</eq>>男</label>
+                            <label><input type="radio" name="sex" value="2" <eq  name="memberdetail.sex" value="2">checked</eq>>女</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_sex">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_sex')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="jbox edit_integral addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改积分</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_integral">
+            <div class="jbox-container" style="height: auto;">
+
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>操作：</label>
+                    <div class="form-controls">
+                        <select name='do' class="select">
+                            <option value="1">加</option>
+                            <option value="0">减</option>
+                        </select>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>积分：</label>
+                    <div class="form-controls">
+                        <label>
+                            <input type="text" class="input" name="edit_integral" >
+                            <span class="red"></span>
+                        </label>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_integral">
+            <input type="hidden" name="integral" value="{$memberdetail.integral}">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_integral')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="jbox edit_money addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改积分</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_money">
+            <div class="jbox-container" style="height: auto;">
+
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>操作：</label>
+                    <div class="form-controls">
+                        <select name='do' class="select">
+                            <option value="1">加</option>
+                            <option value="0">减</option>
+                        </select>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>积分：</label>
+                    <div class="form-controls">
+                        <label>
+                            <input type="text" class="input" name="edit_money" >
+                            <span class="red"></span>
+                        </label>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_money">
+            <input type="hidden" name="wallet" value="{$memberdetail.wallet}">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_money')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="jbox edit_status addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改状态</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_status">
+            <div class="jbox-container" style="height: auto;">
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>修改状态：&nbsp;&nbsp;&nbsp;</label>
+                    <div class="form-controls">
+                        <div class="radio-group" style="padding-top:0px;">
+                            <label><input type="radio" name="status" value="0" <eq  name="memberdetail.status" value="0">checked</eq>>正常</label>
+                            <label><input type="radio" name="status" value="1" <eq  name="memberdetail.status" value="1">checked</eq>>冻结</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_status">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_status')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="jbox edit_grade addfenlei disshow" style="height:auto;top: 38%;">
+        <div class="jbox-title">
+            <div class="jbox-title-txt">修改等级</div>
+            <a href="javascript:;" class="jbox-close cancle"></a>
+        </div>
+        <form id="edit_grade">
+            <div class="jbox-container" style="height: auto;">
+                <div class="formitems">
+                    <label class="fi-name"><span class="colorRed"></span>会员等级：</label>
+                    <div class="form-controls">
+                        <select name='grade' class="select">
+                            <volist name="vips" id="v">
+                                <option value="{$v.id}" <if condition="$memberdetail.grade eq $v.id ">selected = "selected"</if> >{$v.vip_name}</option>
+                            </volist>
+                        </select>
+                        <span class="fi-help-text"></span>
+                    </div>
+                </div>
+
+            </div>
+            <input type="hidden" name="id" value="{$memberdetail.id}">
+            <input type="hidden" name="type" value="edit_grade">
+            <div class="jbox-buttons">
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_grade')">确定</a>
+                <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+            </div>
+        </form>
+    </div>
+
+<script>
+    /*编辑弹框 1*/
+    function J_Edit(obj,cla) {
+/*        $('input[name=id]').val($(obj).attr('data-id'));
+        $('select[name=pid]').val($(obj).attr('data-pid'));
+        $("input[name=is_tui][value='" + $(obj).attr('data-is_tui') + "']").prop("checked", "checked");
+        $('input[name=classname]').val($(obj).attr('data-classname'));
+        $('.images').find('img').attr('src',$(obj).attr("data-pic"));
+        $('input[name=pic]').val($(obj).attr("data-pic"));
+        $('input[name=sorts]').val($(obj).attr('data-sorts'));*/
+        $('.'+cla).show();
+        $('#albums-overlay').show();
+    }
+
+    function J_Confirm(obj,id) {
+        var post =$("#"+id).serialize();
+        $.post('/Admin/Member/detail', post, function (res) {
+            if (res.status == 1) {
+                dialog.showTips(res.info, '', 1);
+                return false;
+            } else {
+                dialog.showTips(res.info, 'warn');
+                return false;
+            }
+        }, "json");
+    }
+</script>
+<include file="Public:foot"/>
+
+
+

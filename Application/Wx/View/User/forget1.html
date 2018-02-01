@@ -1,0 +1,40 @@
+<include file="Public:header"/>
+<body>
+	<!-- top -->
+	<div class="integral">
+		<a href="javascript:history.go(-1)">
+			<div class="screening_btn1">
+				<span></span>
+			</div>
+		</a>
+		<div class="tegral">忘记密码</div>
+	</div>
+	<!-- top end -->
+	<!-- user -->
+	<div class="warpper" style="padding-bottom: 0;">
+		<div class="login">
+			<div class="forgetp1">
+				<ul>
+					<li class="phone">
+						<span>密码</span>
+						<input type="password" placeholder="请输入密码" name="pass" maxlength="20">
+
+					</li>
+					<li class="yzm">
+						<span>确认密码</span>
+						<input type="password" placeholder="请输入确认密码" name="ok_pass" maxlength="20">
+						<div class="chongzhi"><img src="__IMAGES__/cha.png" alt=""></div>
+					</li>
+				</ul>
+			</div>
+			<div class="nextp" onclick="showtext()">
+				<a href="javascript:volid(0)">确认更改</a>
+			</div>
+		</div>
+	</div>
+	<!-- user end -->
+	<input type="hidden" id="telphone" value={$telephone}>
+</body>
+<script type="text/javascript" src="__AJS__/alert.js"></script>
+<script type="text/javascript" src="__JS__/user/forget1.js"></script>
+</html>

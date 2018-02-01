@@ -1,0 +1,36 @@
+<include file="Public:head"/>
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+
+        <div class="content-right fl">
+            <h1 class="content-right-title">修改密码</h1>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed">*</span>新密码：</label>
+
+                <div class="form-controls">
+                    <input type="password" class="input" name="password" value="">密码不能少于6位数！
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed">*</span>重复密码：</label>
+
+                <div class="form-controls">
+                    <input type="password" class="input" name="re_password" value="">
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="mgl120">
+                <a href="javascript:;" onclick="javascript:history.back(-1);" class="btn">返回</a>
+                <input type="button" class="btn btn-primary" onclick="J_Submit(this)" value="保存">
+            </div>
+        </div>
+        <!-- end content-right -->
+    </div>
+</div>
+
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/Index/updatePwd.js"></script><!--页面js-->
+

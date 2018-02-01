@@ -1,0 +1,379 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<style>
+    #albums-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+        z-index: 998
+    }
+    .radio-group select{
+        height: 30px;
+        margin-top: 7px;
+    }
+</style>
+<script>
+    /*省市区联动 编辑 1*/
+    var options = jQuery.extend({
+        sheng:"s_province",		//省的网页ID
+        shi:"s_city",			//市的网页ID
+        xian:"s_county",		//县的网页ID
+        xiang:"xiang",		//乡的网页ID
+        sheng_val:"{:I('s_province')}",		//默认省份
+        shi_val:"{:I('s_city')}",			//默认地区
+        xian_val:"{:I('s_county')}",		//默认县
+        xiang_val:""		//默认乡镇
+    });
+    $(function(){initLocation(options);})
+    /*省市区联动 编辑 2*/
+</script>
+<!--三级联动-->
+<script src="__PROVINCE__/GlobalProvinces_main.js"></script>
+<script src="__PROVINCE__/GlobalProvinces_extend.js"></script>
+<script src="__PROVINCE__/initLocation.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <div class="content-right fl">
+            <h1 class="content-right-title">经销商列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="alert alert-info disable-del"> 目前拥有 <span style="font-size:16px;">{$count}</span> 个经销商。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <div class="clearfix"><a href="javascript:;" class="btn btn-success" onclick="J_Edit(this,'add_dealer')">添加经销商</a></div>
+            <form action="" method="get">
+                <div class="tables-searchbox newcearchbox">
+                    <input type="text" placeholder="编号/姓名/手机号" class="input" name="dealer_search" value="{:I('get.dealer_search')}" style="width: 130px;">
+                    <div class="formitems" style="display: inline;">
+                        <div class="form-controls"  style="display: inline;margin-left: 0">
+                            <div class="radio-group" style="display: inline;">
+                                <select name="s_province" id="s_province" class="select large" style="width: 130px;"></select>
+                                <select name="s_city" id="s_city" class="select large" style="width: 130px;"></select>
+                                <select name="s_county" id="s_county" class="select large" style="width: 130px;"></select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="position: relative;top:1px"><i class="gicon-search white"></i>查询</button>
+                    </div>
+
+                </div>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables" style="text-align:center;">
+                    <colgroup>
+                        <col width="1%">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <td><i class="icon_check"></i></td>
+                        <td>经销商编号</td>
+                        <td>姓名</td>
+                        <td>手机号</td>
+                        <td>省</td>
+                        <td>市</td>
+                        <td>区</td>
+                        <td>添加时间</td>
+                        <td>更新时间</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="cache" item="vo">
+                        <tr >
+                            <td><input type="checkbox" class="checkbox table-ckbs check" data-id="{$vo.id}" value="{$vo.id}" data-name=""></td>
+                            <td>{$vo.card}</td>
+                            <td>{$vo.name}</td>
+                            <td align="left">{$vo.telephone}</td>
+                            <td>{$vo.province}</td>
+                            <td>{$vo.city}</td>
+                            <td>{$vo.county}</td>
+                            <td>{$vo.add_time}</td>
+                            <td>{$vo.update_time}</td>
+                            <td>{$vo.status}</td>
+                            <td>
+                                <a href="javascript:;" class="btn btn-success" data-id='{$vo.id}' data-card='{$vo.card}' data-name='{$vo.name}' data-telephone='{$vo.telephone}' data-province='{$vo.province}' data-city='{$vo.city}' data-county='{$vo.county}' data-status='{$vo.status}'  onclick="J_Edit(this,'edit_dealer')"><i class="gicon-edit white"></i></a>
+                                <a href="JavaScript:void(0);" class='btn btn-danger'
+                                   onclick="J_Change(this)" data-type="0" data-id="{$vo.id}" title="删除"><i class="gicon-trash white"></i></a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <div class="tables-btmctrl clearfix">
+                    <div class="fl">
+                        <a href="javascript:;" class="btn btn-primary btn_table_selectAll">全选</a>
+                        <a href="javascript:;" class="btn btn-primary btn_table_Cancle">取消</a>
+                        <a href="javascript:;"  style="background-color:#f0ad4e;border-color:#eea236;"  class="btn btn-primary del">删除</a>
+                    </div>
+                    <div class="fr">
+                        <div class="pages">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="albums-overlay" class="disshow"></div>
+
+<div class="jbox add_dealer addfenlei disshow" style="height:auto;top: 38%;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加经销商</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="add_dealer">
+        <div class="jbox-container" style="height: auto;">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商唯一编号：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="card" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商姓名：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="name" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商手机：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="telephone" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>地区：</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="width: 170px;">
+                        <select name="province" id="province" class="select large" style="width: 185px;"></select>
+                        <select name="city" id="city" class="select large" style="width: 185px;"></select>
+                        <select name="county" id="county" class="select large" style="width: 185px;"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>状态：&nbsp;&nbsp;&nbsp;</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="padding-top:0px;">
+                        <label><input type="radio" name="status" value="0" checked>正常</label>
+                        <label><input type="radio" name="status" value="1">禁用</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <input type="hidden" name="type" value="0">
+        <div class="jbox-buttons">
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'add_dealer')">确定</a>
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+        </div>
+    </form>
+</div>
+
+
+<div class="jbox edit_dealer addfenlei disshow" style="height:auto;top: 38%;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">编辑经销商</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="edit_dealer">
+        <div class="jbox-container" style="height: auto;">
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商唯一编号：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_card" value="" readonly>
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商姓名：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_name" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"> * </span>经销商手机：</label>
+                <div class="form-controls">
+                    <label>
+                        <input type="text" class="input" name="edit_telephone" value="">
+                        <span class="red"></span>
+                    </label>
+                    <span class="fi-help-text"></span>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>地区：</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="width: 170px;">
+                        <select name="edit_province" id="edit_province" class="select large" style="width: 185px;"></select>
+                        <select name="edit_city" id="edit_city" class="select large" style="width: 185px;"></select>
+                        <select name="edit_county" id="edit_county" class="select large" style="width: 185px;"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formitems">
+                <label class="fi-name"><span class="colorRed"></span>状态：&nbsp;&nbsp;&nbsp;</label>
+                <div class="form-controls">
+                    <div class="radio-group" style="padding-top:0px;">
+                        <label><input type="radio" name="edit_status" value="0" checked>正常</label>
+                        <label><input type="radio" name="edit_status" value="1">禁用</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <input type="hidden" name="type" value="1">
+        <input type="hidden" name="edit_id" value="">
+        <div class="jbox-buttons">
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this,'edit_dealer')">确定</a>
+            <a href="javascript:void(0);" class="jbox-buttons-ok btn cancle">取消</a>
+        </div>
+    </form>
+</div>
+<script>
+    function J_Edit(obj,cla) {
+        $('.'+cla).show();
+        $('#albums-overlay').show();
+        if('edit_dealer' == cla){
+            $('input[name=edit_id]').val($(obj).attr('data-id'));
+            $('input[name=edit_card]').val($(obj).attr('data-card'));
+            $('input[name=edit_name]').val($(obj).attr('data-name'));
+            $('input[name=edit_telephone]').val($(obj).attr('data-telephone'));
+            $(":radio[name='edit_status'][value='" + $(obj).attr('data-status') + "']").prop("checked", "checked");
+
+            var option = jQuery.extend({
+                sheng:"edit_province",		//省的网页ID
+                shi:"edit_city",			//市的网页ID
+                xian:"edit_county",		//县的网页ID
+                xiang:"xiang",		//乡的网页ID
+                sheng_val:$(obj).attr('data-province'),		//默认省份
+                shi_val:$(obj).attr('data-city'),			//默认地区
+                xian_val:$(obj).attr('data-county'),		//默认县
+                xiang_val:""		//默认乡镇
+            });
+            $(function(){initLocation(option);})
+        }
+        if('add_dealer' == cla){
+            /*省市区联动 编辑 1*/
+            const option = jQuery.extend({
+                sheng:"province",		//省的网页ID
+                shi:"city",			//市的网页ID
+                xian:"county",		//县的网页ID
+                xiang:"xiang",		//乡的网页ID
+                sheng_val:"",		//默认省份
+                shi_val:"",			//默认地区
+                xian_val:"",		//默认县
+                xiang_val:""		//默认乡镇
+            });
+            initLocation(option);
+        }
+    }
+
+    function J_Confirm(obj,id) {
+        var post =$("#"+id).serialize();
+        $.post('/Admin/Dealer/do_dealer', post, function (res) {
+            if (res.status == 1) {
+                dialog.showTips(res.info, '', 1);
+                return false;
+            } else {
+                dialog.showTips(res.info, 'warn');
+                return false;
+            }
+        }, "json");
+    }
+
+    /*更新状态 删除 1*/
+    function J_Change(obj) {
+        var post  = {};
+        post.id   = $(obj).attr("data-id");
+        post.type = $(obj).attr("data-type");
+        dialog.showTips("确定要进行操作吗?", "firm", function () {
+            $.ajax({
+                url: '/Admin/Dealer/del_dealer',
+                type: "post",
+                dataType: "json",
+                data: post
+            }).done(function (res) {
+                if (res.status == 1) {
+                    dialog.showTips(res.info, "", 1);
+                    return false;
+                } else {
+                    dialog.showTips(res.info, "warn");
+                    return false;
+                }
+            })
+        })
+    }
+
+    $(function(){
+        $('.del').click(function(){
+            var Id ='';
+            if($('.check:checked').length ==0){
+                alert('请选择要删除的经销商');return false;
+            }
+            if(confirm('确定删除多个经销商吗！')){
+                $('.check:checked').each(function(){
+                    Id = Id + $(this).val() + ',';
+                });
+                $.ajax({
+                    url: '/Admin/Dealer/del_dealer',
+                    type: "post",
+                    dataType: "json",
+                    data: {'id':Id,'type':1}
+                }).done(function (res) {
+                    if (res.status == 1) {
+                        dialog.showTips(res.info, "", 1);
+                        return false;
+                    } else {
+                        dialog.showTips(res.info, "warn");
+                        return false;
+                    }
+                })
+            }
+        })
+    })
+</script>
+<include file="Public:foot"/>

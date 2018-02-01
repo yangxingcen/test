@@ -1,0 +1,166 @@
+<include file="Public:head"/>
+<!--上传图片 1-->
+<link rel="stylesheet" href="__UPLOADIMG__/uploadImg.css" /><!--自定义-->
+<link rel="stylesheet" href="__UPLOADIMG__/themes/default/default.css" />
+<link rel="stylesheet" href="__UPLOADIMG__/plugins/code/prettify.css" />
+<script charset="utf-8" src="__UPLOADIMG__/kindeditor-all.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__UPLOADIMG__/plugins/code/prettify.js"></script>
+<!--上传图片 2-->
+<div class="container">
+    <div class="inner clearfix">
+        <include file="Public:left"/>
+        <!-- end content-left -->
+        <div class="content-right fl">
+            <h1 class="content-right-title">广告列表<a href="javascript:;" style="float: right" class="btn"  onclick="history.back()">返回</a></h1>
+            <div class="alert alert-info disable-del">共有 <span style="font-size:16px;">{$count}</span> 张图片。
+                <a href="javascript:;" class="alert-delete" title="隐藏"><i class="gicon-remove"></i></a>
+            </div>
+            <div class="clearfix"><a href="javascript:;" class="btn btn-success BtnAddClass">添加广告</a></div>
+            <form action="" method="get">
+                <select class="select" style="width: 223px;" name="type">
+                    <option value="">请选择广告位置</option>
+                        <volist name="bannerType" id="vo">
+                        <option value="{$vo.id}" <if condition="$vo['id'] eq $type">selected</if> >{$vo.classname}</option>
+                    </volist>
+                </select>
+                <button class="btn btn-primary" id="search_m" style="vertical-align:-2px;"><i class="gicon-search white"></i>查询 </button>
+            </form>
+            <div class="tablesWrap">
+                <table class="wxtables" style="  text-align: center;">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="15%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>分类</td>
+                        <td>图片</td>
+                        <td>标题</td>
+                        <td>链接</td>
+                        <td>排序</td>
+                        <td>状态</td>
+                        <td align="center">操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <foreach name="cache" item="vo">
+                        <tr>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.classname}</td>
+                            <td><img src="{$vo.pic}" height="40px;"/></td>
+                            <td>{$vo.title}</td>
+                            <td>{$vo.param}</td>
+                            <td>{$vo.sorts}</td>
+                            <td onclick="J_Change(this)" data-item="status" data-id="{$vo.id}" style="cursor: pointer">
+                                <eq name="vo.status" value="0"><span class="green">启用中</span></eq>
+                                <eq name="vo.status" value="1"><span class="red">已禁用</span></eq>
+                            </td>
+                            <td align="right">
+                                <p style=" text-align:center">
+                                    <a class="btn btn-warning"
+                                       data-id="{$vo.id}"
+                                       data-type="{$vo.type}"
+                                       data-title='{$vo.title}'
+                                       data-param='{$vo.param}'
+                                       data-sorts="{$vo.sorts}"
+                                       data-pic="{$vo.pic}"
+                                            onclick="J_Edit(this)"><i class="gicon-edit white"></i></a>
+                                    <a href="JavaScript:void(0);" class='btn btn-danger' onclick="J_Change(this)" data-item="is_del" data-id="{$vo.id}"><i class="gicon-trash white"></i></a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+                <!-- end wxtables -->
+                <div class="tables-btmctrl clearfix">
+                    <div class="pages">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+            <!-- end tablesWrap -->
+        </div>
+        <!-- end content-right -->
+    </div>
+</div>
+<!-- end container -->
+
+<div id="albums-overlay" class="disshow"></div>
+<div class="jbox addfenlei disshow" style="height: auto;">
+    <div class="jbox-title">
+        <div class="jbox-title-txt">添加/编辑广告</div>
+        <a href="javascript:;" class="jbox-close cancle"></a>
+    </div>
+    <form id="Form_one">
+    <div class="jbox-container">
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>广告位：</label>
+
+            <div class="form-controls">
+                <select name='type' class="select large type">
+                    <option value="">--请选择--</option>
+                    <volist name="bannerType" id="vo">
+                        <option value="{$vo.id}">{$vo.classname}</option>
+                    </volist>
+                </select>
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>标题：</label>
+            <div class="form-controls">
+                <input type="text" class="input large" name="title" maxlength="50">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>链接参数：</label>
+            <div class="form-controls">
+                <input type="text" class="input large" name="param" placeholder="URL">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed"></span>排序：</label>
+            <div class="form-controls">
+                <input type="text" value="0" class="input large" placeholder="默认0" name="sorts"
+                       onKeyUp="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                <span class="fi-help-text"></span>
+            </div>
+        </div>
+        <div class="formitems">
+            <label class="fi-name"><span class="colorRed">*</span>上传图片：</label>
+
+            <div class="form-controls images">
+                <div class="fl mgr10">
+                    <img src="{$cache['pic']}" width="100px" onerror="this.src='__HOST__/Public/UploadImg/img/nopic.png'; this.title='图片未找到.'"  onclick="J_uploadImg(this,4)">
+                <input name="pic" value="{$cache['pic']}" type="hidden">
+                </div>
+                <span class="fi-help-text" style="left:85px; position:absolute; top:40px; width:150px; height:20px;"><!--建议大小:轮播图（宽300高150）--></span>
+            </div>
+        </div>
+    </div>
+    <div class="jbox-buttons">
+        <input type="hidden" name="id" value="">
+        <a href="javascript:void(0);" class="jbox-buttons-ok btn btn-primary" onclick="J_Confirm(this)">确定</a>
+        <a href="javascript:void (0);" class="jbox-buttons-ok btn cancle">取消</a>
+    </div>
+    </form>
+</div>
+<include file="Public:foot"/>
+<script type="text/javascript" charset="utf-8" src="__JS__/Banner/banner.js"></script><!--页面js-->
+
+
+
